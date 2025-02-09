@@ -4,11 +4,13 @@ document.getElementById("preferencesForm").addEventListener("submit", function (
   const formData = {
     destination: document.getElementById("destination").value,
     duration: document.getElementById("duration").value,
-    budget: document.getElementById("budget").value,
     accommodation: document.getElementById("accommodation").value,
     preferredActivities: document.getElementById("preferredActivities").value,
     nightlife: document.getElementById("nightlife").value
   };
+
+  // ✅ Show Loading Message
+  document.getElementById("responseContainer").innerHTML = `<p style="color: #007bff;">⏳ Generating your travel guide...</p>`;
 
   // ✅ Ensure this URL includes the correct backend endpoint
   fetch("https://travel-guide-app-hdgg.onrender.com/get-travel-guide", {
@@ -23,9 +25,11 @@ document.getElementById("preferencesForm").addEventListener("submit", function (
       return;
     }
 
+    // ✅ Format response by converting **Day 1**, **Day 2** into bold
+    let formattedGuide = data.guide.replace(/(Day \d+)/g, "<strong>$1</strong>");
     document.getElementById("responseContainer").innerHTML = `
       <h3>🌍 Your Travel Guide</h3>
-      <p>${data.guide.replace(/\n/g, "<br>")}</p>
+      <p>${formattedGuide.replace(/\n/g, "<br>")}</p>
     `;
   })
   .catch(error => {
