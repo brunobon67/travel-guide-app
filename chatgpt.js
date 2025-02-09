@@ -2,10 +2,8 @@ require("dotenv").config(); // ✅ Load environment variables
 
 const { OpenAI } = require("openai");
 
-console.log("🔑 OpenAI API Key Loaded:", process.env.OPENAI_API_KEY ? "YES" : "NO");
-
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY || process.env.MY_GITHUB_SECRET,
+  apiKey: process.env.OPENAI_API_KEY,
 });
 
 async function getTravelGuide(preferences) {
@@ -13,15 +11,20 @@ async function getTravelGuide(preferences) {
     console.log("📝 Generating travel guide for:", preferences);
 
     const prompt = `
-    Plan a detailed travel itinerary for:
+    You are a travel expert. Create a detailed itinerary for a trip based on the following details:
     - Destination: ${preferences.destination}
     - Duration: ${preferences.duration} days
-    - Budget: ${preferences.budget}
     - Accommodation: ${preferences.accommodation}
     - Preferred Activities: ${preferences.preferredActivities}
-    - Nightlife: ${preferences.nightlife}
-    
-    Include daily schedules, recommended hotels, restaurants, and must-do activities.
+    - Nightlife Preferences: ${preferences.nightlife}
+
+    🎯 **Format Requirements**:
+    - Use **bold titles** for each day (e.g., "**Day 1**").
+    - Provide detailed activities per day, including morning, afternoon, and evening plans.
+    - Mention **must-visit places**, hidden gems, and great local restaurants.
+    - Suggest **nearby cities** or day trips from ${preferences.destination}.
+
+    Please return the guide in a well-structured format.
     `;
 
     const response = await openai.chat.completions.create({
@@ -42,4 +45,5 @@ async function getTravelGuide(preferences) {
 }
 
 module.exports = getTravelGuide;
+
 
