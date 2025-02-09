@@ -2,12 +2,16 @@ require("dotenv").config(); // ✅ Load environment variables
 
 const { OpenAI } = require("openai");
 
+console.log("🔑 OpenAI API Key Loaded:", process.env.OPENAI_API_KEY ? "YES" : "NO");
+
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY || process.env.MY_GITHUB_SECRET,
 });
 
 async function getTravelGuide(preferences) {
   try {
+    console.log("📝 Generating travel guide for:", preferences);
+
     const prompt = `
     Plan a detailed travel itinerary for:
     - Destination: ${preferences.destination}
@@ -32,7 +36,7 @@ async function getTravelGuide(preferences) {
 
     return response.choices[0]?.message?.content.trim() || "No guide available.";
   } catch (error) {
-    console.error("🚨 OpenAI API error:", error);
+    console.error("🚨 OpenAI API error:", error.response ? error.response.data : error.message);
     throw new Error("OpenAI API request failed.");
   }
 }
