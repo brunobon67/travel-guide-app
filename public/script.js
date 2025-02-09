@@ -1,7 +1,6 @@
 document.getElementById("preferencesForm").addEventListener("submit", function (event) {
   event.preventDefault(); // Prevent page reload
 
-  // Collect form data
   const formData = {
     destination: document.getElementById("destination").value,
     duration: document.getElementById("duration").value,
@@ -11,10 +10,7 @@ document.getElementById("preferencesForm").addEventListener("submit", function (
     nightlife: document.getElementById("nightlife").value
   };
 
-  // Show loading message
-  document.getElementById("responseContainer").innerHTML = `<p>⏳ Generating your travel guide...</p>`;
-
-  // ✅ Update this URL with your Render backend URL!
+  // ✅ Replace this with your actual Render backend URL!
   fetch("https://your-app.onrender.com/get-travel-guide", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -27,7 +23,6 @@ document.getElementById("preferencesForm").addEventListener("submit", function (
       return;
     }
 
-    // Display travel guide
     document.getElementById("responseContainer").innerHTML = `
       <h3>🌍 Your Travel Guide</h3>
       <p>${data.guide.replace(/\n/g, "<br>")}</p>
