@@ -11,7 +11,7 @@ document.getElementById("preferencesForm").addEventListener("submit", function (
   };
 
   // ✅ Replace this with your actual Render backend URL!
-  fetch("https://your-app.onrender.com/get-travel-guide", {
+  fetch("https://travel-guide-app-hdgg.onrender.com", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ preferences: formData }),
