@@ -4,14 +4,14 @@ document.getElementById("preferencesForm").addEventListener("submit", function (
   const formData = {
     destination: document.getElementById("destination").value,
     duration: document.getElementById("duration").value,
-    groupSize: document.getElementById("groupSize").value,
-    tripType: document.getElementById("tripType").value,
+    budget: document.getElementById("budget").value,
+    accommodation: document.getElementById("accommodation").value,
     preferredActivities: document.getElementById("preferredActivities").value,
     nightlife: document.getElementById("nightlife").value
   };
 
-  // ✅ Replace this with your actual Render backend URL!
-  fetch("https://travel-guide-app-hdgg.onrender.com", {
+  // ✅ Ensure this URL includes the correct backend endpoint
+  fetch("https://travel-guide-app-hdgg.onrender.com/get-travel-guide", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ preferences: formData }),
