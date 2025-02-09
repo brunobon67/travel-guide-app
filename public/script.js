@@ -10,7 +10,9 @@ document.getElementById("preferencesForm").addEventListener("submit", function (
   };
 
   // ✅ Show Loading Message
-  document.getElementById("responseContainer").innerHTML = `<p style="color: #007bff;">⏳ Generating your travel guide...</p>`;
+  document.getElementById("responseContainer").innerHTML = `
+    <p style="color: #007bff; font-weight: bold;">⏳ Generating your travel guide... Please wait.</p>
+  `;
 
   // ✅ Ensure this URL includes the correct backend endpoint
   fetch("https://travel-guide-app-hdgg.onrender.com/get-travel-guide", {
@@ -18,7 +20,12 @@ document.getElementById("preferencesForm").addEventListener("submit", function (
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ preferences: formData }),
   })
-  .then(response => response.json())
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    return response.json();
+  })
   .then(data => {
     if (data.error) {
       document.getElementById("responseContainer").innerHTML = `<p style="color: red;">❌ ${data.error}</p>`;
@@ -34,6 +41,9 @@ document.getElementById("preferencesForm").addEventListener("submit", function (
   })
   .catch(error => {
     console.error("❌ Error:", error);
-    document.getElementById("responseContainer").innerHTML = `<p style="color: red;">❌ Something went wrong. Please try again.</p>`;
+    document.getElementById("responseContainer").innerHTML = `
+      <p style="color: red; font-weight: bold;">❌ Something went wrong. Please try again.</p>
+      <p>${error.message}</p>
+    `;
   });
 });
