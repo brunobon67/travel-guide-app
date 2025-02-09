@@ -9,9 +9,9 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-// ✅ Root Route - Health Check
+// ✅ Root Route - Health Check (Returns JSON)
 app.get("/", (req, res) => {
-  res.send("✅ Travel Guide API is running! Use /get-travel-guide to fetch travel guides.");
+  res.json({ message: "✅ Travel Guide API is running!" }); // ✅ JSON Response
 });
 
 // ✅ API Route for Travel Guide
@@ -19,19 +19,17 @@ app.post("/get-travel-guide", async (req, res) => {
   console.log("📩 Incoming request:", req.body);
 
   const { preferences } = req.body;
-  if (!preferences || !preferences.destination || !preferences.duration || !preferences.budget || !preferences.accommodation) {
+  if (!preferences || !preferences.destination || !preferences.duration || !preferences.accommodation) {
     console.warn("⚠️ Missing required fields:", preferences);
     return res.status(400).json({ error: "Missing required fields." });
   }
 
   try {
     const guide = await getTravelGuide(preferences);
-    res.json({ guide });
+    res.json({ guide }); // ✅ Return JSON
   } catch (error) {
-    console.error("❌ Error fetching travel guide:", error);
-    res.status(500).json({
-      error: "Failed to fetch travel guide. Please check the server logs for details."
-    });
+    console.error("❌ ERROR:", error.response ? error.response.data : error.message);
+    res.status(500).json({ error: "Failed to fetch travel guide. Please check the server logs for details." });
   }
 });
 
