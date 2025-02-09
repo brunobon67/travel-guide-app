@@ -6,7 +6,6 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY || process.env.MY_GITHUB_SECRET,
 });
 
-
 async function getTravelGuide(preferences) {
   try {
     const prompt = `
@@ -22,8 +21,11 @@ async function getTravelGuide(preferences) {
     `;
 
     const response = await openai.chat.completions.create({
-      messages: [{ role: "user", content: prompt }],
       model: "gpt-4",
+      messages: [
+        { role: "system", content: "You are a travel assistant providing detailed travel itineraries." },
+        { role: "user", content: prompt }
+      ],
       temperature: 0.7,
       max_tokens: 1200,
     });
@@ -36,3 +38,4 @@ async function getTravelGuide(preferences) {
 }
 
 module.exports = getTravelGuide;
+
