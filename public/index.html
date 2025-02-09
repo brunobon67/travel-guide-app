@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accento Italiano - Travel Planner</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container">
+        <h1>🌍 Accento Italiano - Plan Your Trip ✈️</h1>
+        
+        <div class="form-container">
+            <form id="preferencesForm">
+                <label for="destination">📍 Where would you like to go?</label>
+                <input type="text" id="destination" required>
+
+                <label for="startDate">📅 When are you planning to travel?</label>
+                <input type="date" id="startDate" required>
+
+                <label for="duration">⏳ How many days?</label>
+                <input type="number" id="duration" required>
+
+                <label for="budget">💰 Estimated Budget (Per Person):</label>
+                <select id="budget">
+                    <option value="Budget-Friendly">$500 - $1000</option>
+                    <option value="Mid-Range">$1000 - $3000</option>
+                    <option value="Luxury">$3000+</option>
+                </select>
+
+                <label for="accommodation">🏨 Preferred Accommodation:</label>
+                <select id="accommodation">
+                    <option value="Hotel">Hotel</option>
+                    <option value="Airbnb">Airbnb</option>
+                    <option value="Hostel">Hostel</option>
+                    <option value="Resort">Resort</option>
+                </select>
+
+                <label for="preferredActivities">🎭 Preferred Activities:</label>
+                <select id="preferredActivities">
+                    <option value="Sightseeing">Sightseeing</option>
+                    <option value="Hiking">Hiking</option>
+                    <option value="Beach Relaxation">Beach Relaxation</option>
+                    <option value="Food Tasting">Food Tasting</option>
+                    <option value="Adventure Sports">Adventure Sports</option>
+                </select>
+
+                <label for="nightlife">🌃 Nightlife Preferences:</label>
+                <select id="nightlife">
+                    <option value="Quiet Evenings">Quiet Evenings</option>
+                    <option value="Bars and Pubs">Bars and Pubs</option>
+                    <option value="Nightclubs">Nightclubs</option>
+                    <option value="Cultural Night Events">Cultural Night Events</option>
+                </select>
+
+                <button type="submit">📖 Generate My Travel Guide</button>
+            </form>
+        </div>
+
+        <div id="responseContainer"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
