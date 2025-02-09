@@ -3,8 +3,9 @@ require("dotenv").config(); // ✅ Load environment variables
 const { OpenAI } = require("openai");
 
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY, // ✅ Reads from .env file
+  apiKey: process.env.OPENAI_API_KEY || process.env.MY_GITHUB_SECRET,
 });
+
 
 async function getTravelGuide(preferences) {
   try {
