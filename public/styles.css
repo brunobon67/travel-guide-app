@@ -1,7 +1,7 @@
-/* General Styles */
+/* 🌍 General Styles */
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #ffffff;
+    background: url('https://source.unsplash.com/1600x900/?travel') no-repeat center center/cover;
     color: #333;
     display: flex;
     flex-direction: column;
@@ -10,31 +10,102 @@ body {
     margin: 0;
     text-align: center;
     padding: 20px 0;
+    overflow-y: auto;
 }
 
-/* Form Styling */
-.form-container {
-    background: white;
+/* 🌟 Container */
+.container {
+    width: 90%;
+    max-width: 600px;
     padding: 20px;
+    background: rgba(255, 255, 255, 0.9);
     border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    text-align: left;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    margin-top: 30px;
+    backdrop-filter: blur(10px);
 }
 
-/* Button */
+/* ✈️ Title */
+h1 {
+    color: #007bff;
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+/* 🏨 Form Styling */
+.form-container {
+    width: 100%;
+    padding: 20px;
+}
+
+/* 🎯 Labels */
+label {
+    font-weight: bold;
+    margin-top: 10px;
+    display: block;
+    font-size: 16px;
+    text-align: left;
+    color: #444;
+}
+
+/* 📋 Inputs & Selects */
+input, select {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    background: #f8f9fa;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Focus Effect */
+input:focus, select:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 6px rgba(0, 123, 255, 0.3);
+}
+
+/* ✈️ Submit Button */
 button {
     width: 100%;
-    background-color: #007bff;
+    background: #007bff;
     color: white;
     border: none;
     padding: 14px;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     cursor: pointer;
-    margin-top: 12px;
-    border-radius: 30px;
-}
-button:hover {
-    background-color: #0056b3;
+    margin-top: 15px;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
+/* Hover Effect */
+button:hover {
+    background: #0056b3;
+    transform: scale(1.03);
+}
+
+/* 🌍 Response Box */
+#responseContainer {
+    margin-top: 20px;
+    padding: 15px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* 📱 Responsive Design */
+@media screen and (max-width: 768px) {
+    .container {
+        width: 95%;
+        max-width: 100%;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+}
