@@ -1,15 +1,18 @@
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-const getTravelGuide = require("./chatgpt"); // Import ChatGPT logic
+const getTravelGuide = require("./chatgpt");
 
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-const PORT = process.env.PORT || 3001; // ✅ Use Render's dynamic port
+// ✅ Add a simple route for the root URL
+app.get("/", (req, res) => {
+  res.send("✅ Travel Guide API is running! Use /get-travel-guide to fetch travel guides.");
+});
 
-// API Route to generate a travel guide
+// API Route for fetching travel guides
 app.post("/get-travel-guide", async (req, res) => {
   console.log("📩 Incoming request:", req.body);
 
@@ -27,7 +30,8 @@ app.post("/get-travel-guide", async (req, res) => {
   }
 });
 
-// Start the server
+// Use Render’s assigned port
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`✅ Server is running on port ${PORT}`);
 });
