@@ -21,14 +21,6 @@ body {
     text-align: center;
 }
 
-/* 🏷️ Title */
-h1 {
-    color: #2a9d8f; /* Nice Green */
-    font-size: 1.8rem;
-    font-weight: bold;
-    margin-bottom: 20px;
-}
-
 /* 📋 Labels */
 label {
     font-weight: 500;
@@ -39,25 +31,7 @@ label {
     color: #444;
 }
 
-/* 📌 Inputs & Selects */
-input, select {
-    width: 100%;
-    padding: 12px;
-    margin-top: 5px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    font-size: 1rem;
-    background: #f8f9fa;
-    transition: border-color 0.2s;
-}
-
-/* Focus Effect */
-input:focus, select:focus {
-    border-color: #2a9d8f;
-    outline: none;
-}
-
-/* ✨ Submit Button */
+/* ✨ Buttons */
 button {
     width: 100%;
     background: #2a9d8f;
@@ -77,20 +51,20 @@ button:hover {
     background: #21867a;
 }
 
-/* 📍 Response Box */
-#responseContainer {
-    margin-top: 20px;
+/* 📂 Saved Plans Styling */
+.saved-plan {
+    border: 1px solid #ddd;
     padding: 15px;
-    background: #f1f1f1;
+    margin-top: 10px;
     border-radius: 6px;
-    display: none;
+    background: #f1f1f1;
+    text-align: left;
 }
 
-/* 📱 Responsive Design */
+/* Responsive Design */
 @media screen and (max-width: 480px) {
     .container {
         width: 90%;
     }
 }
-
 
