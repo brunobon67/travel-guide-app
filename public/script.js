@@ -9,12 +9,12 @@ document.getElementById("preferencesForm").addEventListener("submit", function (
     nightlife: document.getElementById("nightlife").value
   };
 
-  // ✅ Show Loading Message
+  // Show Loading Message
   document.getElementById("responseContainer").innerHTML = `
-    <p style="color: #007bff; font-weight: bold;">⏳ Generating your travel guide... Please wait.</p>
+    <p style="color: #2a9d8f; font-weight: bold;">⏳ Generating your travel guide... Please wait.</p>
   `;
 
-  // ✅ Ensure this URL includes the correct backend endpoint
+  // Fetch Travel Guide from Server
   fetch("https://travel-guide-app-hdgg.onrender.com/get-travel-guide", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -32,18 +32,17 @@ document.getElementById("preferencesForm").addEventListener("submit", function (
       return;
     }
 
-    // ✅ Format response by converting **Day 1**, **Day 2** into bold
+    // Format Response with Bold for Day Titles
     let formattedGuide = data.guide.replace(/(Day \d+)/g, "<strong>$1</strong>");
+    
+    // Display Plan to User
     document.getElementById("responseContainer").innerHTML = `
-      <h3>🌍 Your Travel Guide</h3>
+      <h3>Your Travel Guide</h3>
       <p>${formattedGuide.replace(/\n/g, "<br>")}</p>
+      <button id="savePlanBtn">Save Plan</button>
     `;
-  })
-  .catch(error => {
-    console.error("❌ Error:", error);
-    document.getElementById("responseContainer").innerHTML = `
-      <p style="color: red; font-weight: bold;">❌ Something went wrong. Please try again.</p>
-      <p>${error.message}</p>
-    `;
-  });
-});
+
+    // Save to Local Storage
+    document.getElementById("savePlanBtn").addEventListener("click", () => {
+      let savedPlans = JSON.parse(lo
+
