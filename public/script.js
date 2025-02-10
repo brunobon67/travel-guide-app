@@ -14,11 +14,11 @@ document.getElementById("preferencesForm").addEventListener("submit", function (
     <p style="color: #2a9d8f; font-weight: bold;">⏳ Generating your travel guide... Please wait.</p>
   `;
 
-  // Fetch Travel Guide from Server
+  // ✅ Correct Fetch Syntax
   fetch("https://travel-guide-app-hdgg.onrender.com/get-travel-guide", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ preferences: formData }),
+    body: JSON.stringify({ preferences: formData })
   })
   .then(response => {
     if (!response.ok) {
@@ -32,9 +32,9 @@ document.getElementById("preferencesForm").addEventListener("submit", function (
       return;
     }
 
-    // Format Response with Bold for Day Titles
+    // ✅ Fix: Format Response Correctly
     let formattedGuide = data.guide.replace(/(Day \d+)/g, "<strong>$1</strong>");
-    
+
     // Display Plan to User
     document.getElementById("responseContainer").innerHTML = `
       <h3>Your Travel Guide</h3>
@@ -42,7 +42,36 @@ document.getElementById("preferencesForm").addEventListener("submit", function (
       <button id="savePlanBtn">Save Plan</button>
     `;
 
-    // Save to Local Storage
-    document.getElementById("savePlanBtn").addEventListener("click", () => {
-      let savedPlans = JSON.parse(lo
+    // ✅ Fix: Add Event Listener Inside .then()
+    document.getElementById("savePlanBtn").addEventListener("click", function() {
+      let savedPlans = JSON.parse(localStorage.getItem("travelPlans")) || [];
+      savedPlans.push({
+        destination: formData.destination,
+        plan: data.guide,
+        date: new Date().toLocaleDateString()
+      });
 
+      localStorage.setItem("travelPlans", JSON.stringify(savedPlans));
+      alert("✅ Travel plan saved successfully!");
+    });
+  })
+  .catch(error => {
+    console.error("❌ Error:", error);
+    document.getElementById("responseContainer").innerHTML = `
+      <p style="color: red; font-weight: bold;">❌ Something went wrong. Please try again.</p>
+      <p>${error.message}</p>
+    `;
+  });
+});
+
+// ✅ Fix: Ensure View Saved Plans Button is Created Correctly
+document.addEventListener("DOMContentLoaded", function () {
+  const viewSavedPlansBtn = document.createElement("button");
+  viewSavedPlansBtn.innerText = "📂 View Saved Plans";
+  viewSavedPlansBtn.style.marginTop = "20px";
+  viewSavedPlansBtn.onclick = function() {
+    window.location.href = "saved-plans.html";
+  };
+
+  document.querySelector(".container").appendChild(viewSavedPlansBtn);
+});
