@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saved Travel Plans</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>📂 Saved Travel Plans</h1>
+        <div id="savedPlansContainer"></div>
+        <button onclick="window.location.href='index.html'">⬅️ Back to Planner</button>
+    </div>
+
+    <script>
+        function loadSavedPlans() {
+            let savedPlans = JSON.parse(localStorage.getItem("travelPlans")) || [];
+            const container = document.getElementById("savedPlansContainer");
+            container.innerHTML = savedPlans.length ? "" : "<p>No saved plans found.</p>";
+
+            savedPlans.forEach((plan, index) => {
+                const planDiv = document.createElement("div");
+                planDiv.classList.add("saved-plan");
+                planDiv.innerHTML = `
+                    <h3>${plan.destination} (Saved on ${plan.date})</h3>
+                    <p>${plan.plan.replace(/\n/g, "<br>")}</p>
+                    <button onclick="deletePlan(${index})">🗑️ Delete</button>
+                `;
+                container.appendChild(planDiv);
+            });
+        }
+
+        function deletePlan(index) {
+            let savedPlans = JSON.parse(localStorage.getItem("travelPlans"));
+            savedPlans.splice(index, 1);
+            localStorage.setItem("travelPlans", JSON.stringify(savedPlans));
+            loadSavedPlans();
+        }
+
+        document.addEventListener("DOMContentLoaded", loadSavedPlans);
+    </script>
+
+</body>
+</html>
