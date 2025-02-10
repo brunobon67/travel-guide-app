@@ -1,54 +1,52 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accento Italiano - Travel Planner</title>
+    <title>Travel Guide Planner</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <div class="container">
-        <h1>🇮🇹 Pianifica il tuo Viaggio Perfetto ✈️</h1>
+        <h1>Plan Your Perfect Trip</h1>
         
-        <div class="form-container">
-            <form id="preferencesForm">
-                <label for="destination">📍 Destinazione:</label>
-                <input type="text" id="destination" placeholder="E.g., Roma, Venezia, Firenze" required>
+        <form id="preferencesForm">
+            <label for="destination">Destination</label>
+            <input type="text" id="destination" placeholder="E.g., Paris, Tokyo, New York" required>
 
-                <label for="duration">⏳ Durata (giorni):</label>
-                <input type="number" id="duration" placeholder="E.g., 7" required>
+            <label for="duration">Duration (days)</label>
+            <input type="number" id="duration" placeholder="E.g., 7" required>
 
-                <label for="accommodation">🏨 Tipo di Alloggio:</label>
-                <select id="accommodation">
-                    <option value="Hotel">Hotel</option>
-                    <option value="Airbnb">Airbnb</option>
-                    <option value="B&B">B&B</option>
-                    <option value="Agriturismo">Agriturismo</option>
-                </select>
+            <label for="accommodation">Accommodation Type</label>
+            <select id="accommodation">
+                <option value="Hotel">Hotel</option>
+                <option value="Airbnb">Airbnb</option>
+                <option value="Hostel">Hostel</option>
+                <option value="Resort">Resort</option>
+            </select>
 
-                <label for="preferredActivities">🎭 Attività Preferite:</label>
-                <select id="preferredActivities">
-                    <option value="Arte e Cultura">Arte e Cultura</option>
-                    <option value="Enogastronomia">Enogastronomia</option>
-                    <option value="Relax in Spiaggia">Relax in Spiaggia</option>
-                    <option value="Montagna e Escursioni">Montagna e Escursioni</option>
-                    <option value="Shopping">Shopping</option>
-                    <option value="Esperienze Locali">Esperienze Locali</option>
-                </select>
+            <label for="preferredActivities">Preferred Activities</label>
+            <select id="preferredActivities">
+                <option value="Sightseeing">Sightseeing</option>
+                <option value="Hiking">Hiking</option>
+                <option value="Beach Relaxation">Beach Relaxation</option>
+                <option value="Food Tasting">Food Tasting</option>
+                <option value="Adventure Sports">Adventure Sports</option>
+                <option value="Shopping">Shopping</option>
+            </select>
 
-                <label for="nightlife">🌃 Vita Notturna:</label>
-                <select id="nightlife">
-                    <option value="Tranquillo (Ristoranti e Passeggiate)">Tranquillo (Ristoranti e Passeggiate)</option>
-                    <option value="Bar e Aperitivi">Bar e Aperitivi</option>
-                    <option value="Discoteche e Club">Discoteche e Club</option>
-                    <option value="Spettacoli Teatrali">Spettacoli Teatrali</option>
-                </select>
+            <label for="nightlife">Nightlife Preference</label>
+            <select id="nightlife">
+                <option value="Quiet Evenings">Quiet Evenings</option>
+                <option value="Bars and Pubs">Bars and Pubs</option>
+                <option value="Nightclubs">Nightclubs</option>
+                <option value="Cultural Night Events">Cultural Night Events</option>
+            </select>
 
-                <button type="submit">🎉 Genera il Mio Viaggio</button>
-            </form>
-        </div>
+            <button type="submit">Generate Travel Guide</button>
+        </form>
 
         <div id="responseContainer"></div>
     </div>
@@ -56,4 +54,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
