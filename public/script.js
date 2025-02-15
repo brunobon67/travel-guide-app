@@ -45,8 +45,8 @@ document.getElementById("preferencesForm").addEventListener("submit", function (
             </div>
         `;
 
-        // Display the "Go to My Saved Plans" button
-        document.getElementById("viewSavedPlansBtn").style.display = "inline-block";
+        // Display the "Save My Plan" button
+        document.getElementById("savePlanBtn").style.display = "inline-block";
     })
     .catch(error => {
         console.error("❌ Error:", error);
@@ -58,3 +58,4 @@ document.getElementById("preferencesForm").addEventListener("submit", function (
         `;
     });
 });
+
