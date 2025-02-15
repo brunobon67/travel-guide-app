@@ -12,7 +12,7 @@ const app = express();
 
 // ✅ Correct CORS Configuration to Allow Requests from Netlify
 const allowedOrigins = [
-    "https://your-actual-netlify-url.netlify.app", // 🔹 Replace this with your actual Netlify frontend URL
+    "https://travel-app-guide.netlify.app/, // 🔹 Replace this with your actual Netlify frontend URL
     "http://localhost:3000" // ✅ Allow local development
 ];
 
