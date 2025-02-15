@@ -15,6 +15,7 @@ document.getElementById("preferencesForm").addEventListener("submit", function (
             ⏳ Generating your travel guide... Please wait.
         </p>
     `;
+    document.getElementById("responseContainer").style.display = "block"; // Show response container
 
     // Send request to backend to generate travel guide
     fetch("https://travel-guide-app-hdgg.onrender.com/get-travel-guide", { 
@@ -30,12 +31,22 @@ document.getElementById("preferencesForm").addEventListener("submit", function (
             return;
         }
 
-        // Display the travel guide in the response container
+        // Display the structured travel guide in the response container
         document.getElementById("responseContainer").innerHTML = `
             <div class="itinerary-card">
-                ${data.guide.replace(/[`$]/g, "")}
+                <h3><strong>Itinerary for ${formData.destination}</strong></h3>
+                ${data.guide.replace(/[`$]/g, "").split('\n').map(line => {
+                    if (/^Day\s?\d+/i.test(line.trim())) {
+                        return `<h4>${line.trim()}</h4>`;
+                    } else {
+                        return `<p>${line.trim()}</p>`;
+                    }
+                }).join('')}
             </div>
         `;
+
+        // Display the "Go to My Saved Plans" button
+        document.getElementById("viewSavedPlansBtn").style.display = "inline-block";
     })
     .catch(error => {
         console.error("❌ Error:", error);
