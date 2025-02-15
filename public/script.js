@@ -1,4 +1,28 @@
-.then(data => {
+document.getElementById("generateBtn").addEventListener("click", function() {
+  const formData = {
+    destination: document.getElementById("destination").value,
+    duration: document.getElementById("duration").value,
+    accommodation: document.getElementById("accommodation").value,
+    preferredActivities: document.getElementById("preferredActivities").value,
+    nightlife: document.getElementById("nightlife").value
+  };
+
+  // Ensure form data is not empty before proceeding
+  if (!formData.destination || !formData.duration || !formData.accommodation) {
+    alert("Please fill out all required fields!");
+    return;
+  }
+
+  document.getElementById("responseContainer").innerHTML = "<p>🌀 Generating your travel guide...</p>";
+
+  // ✅ Fetch data from the backend API
+  fetch("https://travel-guide-app-hdgg.onrender.com/get-travel-guide", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ preferences: formData })
+  })
+  .then(response => response.json())
+  .then(data => {
     if (data.error) {
       document.getElementById("responseContainer").innerHTML = 
         `<p style="color: red;">❌ ${data.error}</p>`;
@@ -60,4 +84,9 @@
       localStorage.setItem("travelPlans", JSON.stringify(savedPlans));
       alert("✅ Travel plan saved successfully!");
     });
-})
+  })
+  .catch(error => {
+    document.getElementById("responseContainer").innerHTML = `<p style="color: red;">❌ Error generating the travel guide. Please try again later.</p>`;
+    console.error("Error:", error);
+  });
+});
