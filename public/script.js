@@ -21,8 +21,7 @@ document.getElementById("preferencesForm").addEventListener("submit", function (
   `;
 
   // ✅ Fix: Use relative URL instead of hardcoded API link (for local & production compatibility)
-  fetch("/get-travel-guide", {
-    method: "POST",
+fetch("https://travel-guide-app-hdgg.onrender.com", {    method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ preferences: formData })
   })
