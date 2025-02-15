@@ -6,11 +6,12 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     height: 100vh;
     margin: 0;
 }
 
-/* 🌟 Container */
+/* 🌟 Container for form and response */
 .container {
     width: 100%;
     max-width: 400px;
@@ -21,72 +22,18 @@ body {
     text-align: center;
 }
 
-/* 📋 Labels */
-label {
-    font-weight: 500;
-    display: block;
-    font-size: 14px;
-    text-align: left;  /* Keep labels left-aligned */
-    margin-top: 10px;
-    color: #444;
-}
-
-/* ✨ Buttons */
-button {
+/* New response container styling */
+.response-container {
     width: 100%;
-    background: #2a9d8f;
-    color: white;
-    border: none;
-    padding: 14px;
-    font-size: 1rem;
-    cursor: pointer;
-    margin-top: 15px;
-    border-radius: 6px;
-    font-weight: bold;
-    transition: background 0.3s;
+    max-width: 400px;
+    padding: 30px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: left; /* Align text to the left inside the response container */
+    margin-top: 20px;
+    display: none; /* Initially hidden */
 }
 
-/* Hover Effect */
-button:hover {
-    background: #21867a;
-}
+/* 🌟 The rest of your existing styles here (form, buttons, etc.) */
 
-/* 📂 Saved Plans Styling */
-.saved-plan {
-    border: 1px solid #ddd;
-    padding: 15px;
-    margin-top: 10px;
-    border-radius: 6px;
-    background: #f1f1f1;
-    text-align: left;
-}
-
-/* Responsive Design */
-@media screen and (max-width: 480px) {
-    .container {
-        width: 90%;
-    }
-}
-
-/* ─────────────────────────────────────────────────────
-   FIX: Left-align the form and ensure inputs/selects 
-   occupy full width under their labels
-   ───────────────────────────────────────────────────── */
-.trip-form {
-    text-align: left;     /* Force left alignment inside container */
-    margin: 0 auto;       /* Center the form block if needed */
-    width: 100%;          /* Use full container width */
-}
-
-.trip-form input[type="text"],
-.trip-form input[type="number"],
-.trip-form select {
-    display: block;
-    width: 100%;
-    box-sizing: border-box;
-    margin-top: 5px;      /* Small gap from label */
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 10px;
-    font-size: 14px;
-}
