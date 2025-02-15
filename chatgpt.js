@@ -1,48 +1,102 @@
-require("dotenv").config(); // ✅ Load environment variables
+// Listen for form submission
+document.getElementById("preferencesForm").addEventListener("submit", function (event) {
+  event.preventDefault(); // Prevent page reload
 
-const OpenAI = require("openai"); // ✅ Correct import for OpenAI v4
+  const formData = {
+    destination: document.getElementById("destination").value,
+    duration: document.getElementById("duration").value,
+    accommodation: document.getElementById("accommodation").value,
+    preferredActivities: document.getElementById("preferredActivities").value,
+    nightlife: document.getElementById("nightlife").value
+  };
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY
-});
+  // Debugging: Log the form data to check for errors
+  console.log("Sending request with data:", formData);
 
-async function getTravelGuide(preferences) {
-  try {
-    console.log("📝 Generating travel guide for:", preferences);
+  // Show Loading Message
+  document.getElementById("responseContainer").innerHTML = `
+    <p style="color: #2a9d8f; font-weight: bold;">
+      ⏳ Generating your travel guide... Please wait.
+    </p>
+  `;
 
-    const prompt = `
-    You are a travel expert. Create a detailed itinerary for a trip based on the following details:
-    - Destination: ${preferences.destination}
-    - Duration: ${preferences.duration} days
-    - Accommodation: ${preferences.accommodation}
-    - Preferred Activities: ${preferences.preferredActivities}
-    - Nightlife Preferences: ${preferences.nightlife}
+  // ✅ Fix: Use relative URL instead of hardcoded API link (for local & production compatibility)
+fetch("https://travel-guide-app-hdgg.onrender.com/get-travel-guide", { 
+  method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ preferences: formData })
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    return response.json();
+  })
+  .then(data => {
+    if (data.error) {
+      document.getElementById("responseContainer").innerHTML = 
+        `<p style="color: red;">❌ ${data.error}</p>`;
+      return;
+    }
 
-    🎯 **Format Requirements**:
-    - Use **bold titles** for each day (e.g., "**Day 1**").
-    - Provide detailed activities per day, including morning, afternoon, and evening plans.
-    - Mention **must-visit places**, hidden gems, and great local restaurants.
-    - Suggest **nearby cities** or day trips from ${preferences.destination}.
+    // ✅ Fix: Escape special characters to avoid syntax errors
+    const guideText = data.guide.replace(/[`$]/g, ""); 
 
-    Please return the guide in a well-structured format.
+    // 1. Split the AI-generated text by new lines
+    const lines = guideText.split('\n');
+
+    // 2. Build HTML for each line
+    let finalHTML = lines.map(line => {
+      if (/^Day\s?\d+/i.test(line.trim())) {
+        return `<h3 class="day-title">${line.trim()}</h3>`;
+      } else {
+        return `<p>${line.trim()}</p>`;
+      }
+    }).join("");
+
+    // 3. Wrap it in a "card" container
+    document.getElementById("responseContainer").innerHTML = `
+      <div class="itinerary-card">
+        ${finalHTML}
+        <button id="savePlanBtn" class="save-plan-btn">💾 Save Plan</button>
+      </div>
     `;
 
-    const response = await openai.chat.completions.create({
-      model: "gpt-4",
-      messages: [
-        { role: "system", content: "You are a travel assistant providing detailed travel itineraries." },
-        { role: "user", content: prompt }
-      ],
-      temperature: 0.7,
-      max_tokens: 1200,
+    // 4. Attach the Save Plan event
+    document.getElementById("savePlanBtn").addEventListener("click", function() {
+      let savedPlans = JSON.parse(localStorage.getItem("travelPlans")) || [];
+      savedPlans.push({
+        destination: formData.destination,
+        plan: guideText,
+        date: new Date().toLocaleDateString()
+      });
+
+      localStorage.setItem("travelPlans", JSON.stringify(savedPlans));
+      alert("✅ Travel plan saved successfully!");
     });
+  })
+  .catch(error => {
+    console.error("❌ Error:", error);
+    document.getElementById("responseContainer").innerHTML = `
+      <p style="color: red; font-weight: bold;">
+        ❌ Something went wrong. Please try again.
+      </p>
+      <p>${error.message}</p>
+    `;
+  });
+});
 
-    return response.choices[0]?.message?.content.trim() || "No guide available.";
-  } catch (error) {
-    console.error("🚨 OpenAI API error:", error.response ? error.response.data : error.message);
-    throw new Error("OpenAI API request failed.");
+// ✅ Fix: Ensure the button to view saved plans is added only once
+document.addEventListener("DOMContentLoaded", function () {
+  if (!document.getElementById("viewSavedPlansBtn")) {
+    const viewSavedPlansBtn = document.createElement("button");
+    viewSavedPlansBtn.innerText = "📂 View Saved Plans";
+    viewSavedPlansBtn.id = "viewSavedPlansBtn";
+    viewSavedPlansBtn.style.marginTop = "20px";
+    viewSavedPlansBtn.onclick = function() {
+      window.location.href = "saved-plans.html";
+    };
+
+    document.querySelector(".container").appendChild(viewSavedPlansBtn);
   }
-}
-
-module.exports = getTravelGuide;
-
+});
