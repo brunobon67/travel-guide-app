@@ -11,7 +11,7 @@ async function getTravelGuide(preferences) {
     console.log("📝 Generating travel guide for:", preferences);
 
     const prompt = `
-    You are a travel expert. Create a detailed itinerary for a trip based on the following details:
+    You are a travel expert. Create a **detailed itinerary** for a trip based on the following details:
     - Destination: ${preferences.destination}
     - Duration: ${preferences.duration} days
     - Accommodation: ${preferences.accommodation}
@@ -19,12 +19,19 @@ async function getTravelGuide(preferences) {
     - Nightlife Preferences: ${preferences.nightlife}
 
     🎯 **Format Requirements**:
-    - Use **bold titles** for each day (e.g., "**Day 1**").
+    - Use **bold titles** for each day (e.g., "**Day 1: Exploring Verona**").
     - Provide detailed activities per day, including morning, afternoon, and evening plans.
     - Mention **must-visit places**, hidden gems, and great local restaurants.
     - Suggest **nearby cities** or day trips from ${preferences.destination}.
 
-    Please return the guide in a well-structured format.
+    Please return the guide in a **well-structured format**, and use emojis to represent each section like:
+    - 🌞 **Morning:** 
+    - 🌆 **Afternoon:** 
+    - 🌙 **Evening:** 
+    - 📍 **Must-Visit:** 
+    - 🍽️ **Food Recommendations:** 
+
+    Make sure the text is well-formatted for easy reading.
     `;
 
     const response = await openai.chat.completions.create({
