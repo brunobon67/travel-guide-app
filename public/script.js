@@ -20,9 +20,9 @@ document.getElementById("preferencesForm").addEventListener("submit", function (
     </p>
   `;
 
-  // ✅ Fix: Use relative URL instead of hardcoded API link (for local & production compatibility)
-fetch("https://travel-guide-app-hdgg.onrender.com/get-travel-guide", { 
-  method: "POST",
+  // Send request to backend to generate travel guide
+  fetch("https://travel-guide-app-hdgg.onrender.com/get-travel-guide", { 
+    method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ preferences: formData })
   })
@@ -39,13 +39,11 @@ fetch("https://travel-guide-app-hdgg.onrender.com/get-travel-guide", {
       return;
     }
 
-    // ✅ Fix: Escape special characters to avoid syntax errors
-    const guideText = data.guide.replace(/[`$]/g, ""); 
+    // Escape special characters to avoid syntax errors
+    const guideText = data.guide.replace(/[`$]/g, "");
 
-    // 1. Split the AI-generated text by new lines
+    // Split the AI-generated text by new lines and format it
     const lines = guideText.split('\n');
-
-    // 2. Build HTML for each line
     let finalHTML = lines.map(line => {
       if (/^Day\s?\d+/i.test(line.trim())) {
         return `<h3 class="day-title">${line.trim()}</h3>`;
@@ -54,7 +52,7 @@ fetch("https://travel-guide-app-hdgg.onrender.com/get-travel-guide", {
       }
     }).join("");
 
-    // 3. Wrap it in a "card" container
+    // Display the generated travel guide in the response container
     document.getElementById("responseContainer").innerHTML = `
       <div class="itinerary-card">
         ${finalHTML}
@@ -62,7 +60,10 @@ fetch("https://travel-guide-app-hdgg.onrender.com/get-travel-guide", {
       </div>
     `;
 
-    // 4. Attach the Save Plan event
+    // Scroll smoothly to the response container
+    document.getElementById("responseContainer").scrollIntoView({ behavior: 'smooth' });
+
+    // Attach the Save Plan event
     document.getElementById("savePlanBtn").addEventListener("click", function() {
       let savedPlans = JSON.parse(localStorage.getItem("travelPlans")) || [];
       savedPlans.push({
@@ -86,7 +87,7 @@ fetch("https://travel-guide-app-hdgg.onrender.com/get-travel-guide", {
   });
 });
 
-// ✅ Fix: Ensure the button to view saved plans is added only once
+// Ensure the button to view saved plans is added only once
 document.addEventListener("DOMContentLoaded", function () {
   if (!document.getElementById("viewSavedPlansBtn")) {
     const viewSavedPlansBtn = document.createElement("button");
