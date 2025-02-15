@@ -70,22 +70,4 @@ button:hover {
 }
 
 /* 🌍 Responsive Design */
-@media screen and (max-width: 480px) {
-    .container,
-    .response-container {
-        width: 90%;
-    }
-}
-
-/* 🎯 Input Fields */
-input[type="text"],
-input[type="number"],
-select {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 14px;
-    box-sizing: border-box;
-}
+@media screen and (max-width: 480px)
