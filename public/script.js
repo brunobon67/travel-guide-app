@@ -37,7 +37,7 @@ document.getElementById("preferencesForm").addEventListener("submit", function (
                 <h3><strong>Itinerary for ${formData.destination}</strong></h3>
                 ${data.guide.replace(/[`$]/g, "").split('\n').map(line => {
                     if (/^Day\s?\d+/i.test(line.trim())) {
-                        return `<h4>${line.trim()}</h4>`;
+                        return `<h4><strong>${line.trim()}</strong></h4>`;
                     } else {
                         return `<p>${line.trim()}</p>`;
                     }
@@ -45,8 +45,21 @@ document.getElementById("preferencesForm").addEventListener("submit", function (
             </div>
         `;
 
-        // Display the "Save My Plan" button
+        // Show Save Plan button
         document.getElementById("savePlanBtn").style.display = "inline-block";
+
+        // Add event listener to "Save My Plan" button
+        document.getElementById("savePlanBtn").addEventListener("click", function () {
+            let savedPlans = JSON.parse(localStorage.getItem("travelPlans")) || [];
+            savedPlans.push({
+                destination: formData.destination,
+                plan: data.guide,
+                date: new Date().toLocaleDateString()
+            });
+
+            localStorage.setItem("travelPlans", JSON.stringify(savedPlans));
+            alert("✅ Travel plan saved successfully!");
+        });
     })
     .catch(error => {
         console.error("❌ Error:", error);
@@ -58,4 +71,3 @@ document.getElementById("preferencesForm").addEventListener("submit", function (
         `;
     });
 });
-
