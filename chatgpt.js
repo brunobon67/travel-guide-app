@@ -1,9 +1,9 @@
 require("dotenv").config(); // ✅ Load environment variables
 
-const { OpenAI } = require("openai");
+const OpenAI = require("openai"); // ✅ Correct Import
 
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
+  apiKey: process.env.OPENAI_API_KEY
 });
 
 async function getTravelGuide(preferences) {
