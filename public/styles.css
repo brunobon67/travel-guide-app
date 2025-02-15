@@ -5,7 +5,7 @@ body {
     color: #333;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     flex-direction: column;
     min-height: 100vh;
     margin: 0;
@@ -15,7 +15,7 @@ body {
 /* 🌟 Container for form */
 .container {
     width: 100%;
-    max-width: 600px; /* Increased container width for better responsiveness */
+    max-width: 700px; /* Increased container width for better responsiveness */
     padding: 30px;
     background: white;
     border-radius: 12px;
@@ -37,7 +37,7 @@ label {
 /* 🌟 Response Container for Travel Guide */
 .response-container {
     width: 100%;
-    max-width: 700px; /* Make the container larger */
+    max-width: 700px; /* Make the container even larger */
     padding: 30px;
     background: white;
     border-radius: 12px;
@@ -90,3 +90,14 @@ select {
     box-sizing: border-box;
 }
 
+/* 🎯 Saved Plans Button */
+#viewSavedPlansBtnContainer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* 🎯 Save Plan Button */
+#savePlanBtnContainer {
+    text-align: center;
+    margin-top: 20px;
+}
