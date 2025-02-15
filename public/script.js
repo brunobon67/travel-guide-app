@@ -1,3 +1,4 @@
+// Listen for form submission
 document.getElementById("preferencesForm").addEventListener("submit", function (event) {
   event.preventDefault(); // Prevent page reload
 
@@ -9,21 +10,19 @@ document.getElementById("preferencesForm").addEventListener("submit", function (
     nightlife: document.getElementById("nightlife").value
   };
 
-  // Ensure form data is not empty before proceeding
-  if (!formData.destination || !formData.duration || !formData.accommodation) {
-    alert("Please fill out all required fields!");
-    return;
-  }
+  // Debugging: Log the form data to check for errors
+  console.log("Sending request with data:", formData);
 
+  // Show Loading Message
   document.getElementById("responseContainer").innerHTML = `
     <p style="color: #2a9d8f; font-weight: bold;">
       ⏳ Generating your travel guide... Please wait.
     </p>
   `;
 
-  // ✅ Fetch data from the backend API
-  fetch("https://travel-guide-app-hdgg.onrender.com/get-travel-guide", { 
-    method: "POST",
+  // ✅ Fix: Use relative URL instead of hardcoded API link (for local & production compatibility)
+fetch("https://travel-guide-app-hdgg.onrender.com/get-travel-guide", { 
+  method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ preferences: formData })
   })
@@ -43,61 +42,38 @@ document.getElementById("preferencesForm").addEventListener("submit", function (
     // ✅ Fix: Escape special characters to avoid syntax errors
     const guideText = data.guide.replace(/[`$]/g, ""); 
 
-    // 1. Open new window for displaying the plan
-    const travelWindow = window.open("", "Travel Plan", "width=800,height=600,scrollbars=yes");
-
-    // 2. Build HTML for the new window
-    let finalHTML = `<h1 style="color: #2a9d8f; text-align: center;">🗺️ Travel Plan for ${formData.destination}</h1>`;
+    // 1. Split the AI-generated text by new lines
     const lines = guideText.split('\n');
 
-    lines.forEach(line => {
-      line = line.trim();
-
-      if (/^Day\s?\d+/i.test(line)) {
-        finalHTML += `<h2 style="color: #2a9d8f; font-size: 1.5em;">📅 ${line}</h2>`;
-      } else if (line.includes("Morning:")) {
-        finalHTML += `<p><strong>🌞 Morning:</strong> ${line.replace("Morning:", "").trim()}</p>`;
-      } else if (line.includes("Afternoon:")) {
-        finalHTML += `<p><strong>🌆 Afternoon:</strong> ${line.replace("Afternoon:", "").trim()}</p>`;
-      } else if (line.includes("Evening:")) {
-        finalHTML += `<p><strong>🌙 Evening:</strong> ${line.replace("Evening:", "").trim()}</p>`;
-      } else if (line.includes("Must-visit:")) {
-        finalHTML += `<p><strong>📍 Must-Visit:</strong> ${line.replace("Must-visit:", "").trim()}</p>`;
-        // Add image of must-visit place (can be a static or dynamic URL based on the destination)
-        finalHTML += `<img src="https://source.unsplash.com/800x600/?${formData.destination}" alt="Must Visit Image" style="width: 100%; height: auto; border-radius: 10px;">`;
-      } else if (line.includes("Local Food:")) {
-        finalHTML += `<p><strong>🍽️ Local Food:</strong> ${line.replace("Local Food:", "").trim()}</p>`;
+    // 2. Build HTML for each line
+    let finalHTML = lines.map(line => {
+      if (/^Day\s?\d+/i.test(line.trim())) {
+        return `<h3 class="day-title">${line.trim()}</h3>`;
       } else {
-        finalHTML += `<p>${line}</p>`;
+        return `<p>${line.trim()}</p>`;
       }
-    });
+    }).join("");
 
-    finalHTML += `
-      <p style="text-align: center;">
-        <button onclick="window.print();" style="background-color: #2a9d8f; color: white; padding: 10px 20px; border-radius: 5px; cursor: pointer;">
-          🖨️ Print This Plan
-        </button>
-      </p>
+    // 3. Wrap it in a "card" container
+    document.getElementById("responseContainer").innerHTML = `
+      <div class="itinerary-card">
+        ${finalHTML}
+        <button id="savePlanBtn" class="save-plan-btn">💾 Save Plan</button>
+      </div>
     `;
 
-    // Inject the generated content into the new window
-    travelWindow.document.write(`
-      <html>
-        <head>
-          <title>Travel Plan</title>
-          <style>
-            body { font-family: Arial, sans-serif; margin: 20px; }
-            h1, h2 { font-size: 24px; color: #2a9d8f; }
-            p { font-size: 16px; line-height: 1.5; }
-            img { margin-top: 15px; border-radius: 10px; }
-            button { background-color: #2a9d8f; color: white; padding: 10px; border-radius: 5px; cursor: pointer; }
-          </style>
-        </head>
-        <body>
-          ${finalHTML}
-        </body>
-      </html>
-    `);
+    // 4. Attach the Save Plan event
+    document.getElementById("savePlanBtn").addEventListener("click", function() {
+      let savedPlans = JSON.parse(localStorage.getItem("travelPlans")) || [];
+      savedPlans.push({
+        destination: formData.destination,
+        plan: guideText,
+        date: new Date().toLocaleDateString()
+      });
+
+      localStorage.setItem("travelPlans", JSON.stringify(savedPlans));
+      alert("✅ Travel plan saved successfully!");
+    });
   })
   .catch(error => {
     console.error("❌ Error:", error);
@@ -108,4 +84,19 @@ document.getElementById("preferencesForm").addEventListener("submit", function (
       <p>${error.message}</p>
     `;
   });
+});
+
+// ✅ Fix: Ensure the button to view saved plans is added only once
+document.addEventListener("DOMContentLoaded", function () {
+  if (!document.getElementById("viewSavedPlansBtn")) {
+    const viewSavedPlansBtn = document.createElement("button");
+    viewSavedPlansBtn.innerText = "📂 View Saved Plans";
+    viewSavedPlansBtn.id = "viewSavedPlansBtn";
+    viewSavedPlansBtn.style.marginTop = "20px";
+    viewSavedPlansBtn.onclick = function() {
+      window.location.href = "saved-plans.html";
+    };
+
+    document.querySelector(".container").appendChild(viewSavedPlansBtn);
+  }
 });
