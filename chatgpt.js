@@ -49,7 +49,7 @@ You are a travel expert. Create a **detailed, structured, and easy-to-read** iti
       max_tokens: 1200,
     });
 
-    // ✅ Safe Response Handling
+    // ✅ Safe Response Handling (no optional chaining)
     if (response.choices && response.choices[0] && response.choices[0].message) {
       return response.choices[0].message.content.trim();
     } else {
