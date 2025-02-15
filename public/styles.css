@@ -26,7 +26,7 @@ label {
     font-weight: 500;
     display: block;
     font-size: 14px;
-    text-align: left;
+    text-align: left;  /* Keep labels left-aligned */
     margin-top: 10px;
     color: #444;
 }
@@ -68,3 +68,25 @@ button:hover {
     }
 }
 
+/* ─────────────────────────────────────────────────────
+   FIX: Left-align the form and ensure inputs/selects 
+   occupy full width under their labels
+   ───────────────────────────────────────────────────── */
+.trip-form {
+    text-align: left;     /* Force left alignment inside container */
+    margin: 0 auto;       /* Center the form block if needed */
+    width: 100%;          /* Use full container width */
+}
+
+.trip-form input[type="text"],
+.trip-form input[type="number"],
+.trip-form select {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 5px;      /* Small gap from label */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    font-size: 14px;
+}
