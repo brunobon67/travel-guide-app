@@ -49,7 +49,13 @@ You are a travel expert. Create a **detailed, structured, and easy-to-read** iti
       max_tokens: 1200,
     });
 
-    return response.choices[0]?.message?.content.trim() || "No guide available.";
+    // ✅ Safe Response Handling
+    if (response.choices && response.choices[0] && response.choices[0].message) {
+      return response.choices[0].message.content.trim();
+    } else {
+      return "No guide available.";
+    }
+
   } catch (error) {
     console.error("🚨 OpenAI API error:", error.response ? error.response.data : error.message);
     throw new Error("OpenAI API request failed.");
