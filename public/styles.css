@@ -26,7 +26,7 @@ label {
     font-weight: 500;
     display: block;
     font-size: 14px;
-    text-align: left;  /* Keep labels left-aligned */
+    text-align: left;
     margin-top: 10px;
     color: #444;
 }
@@ -68,25 +68,38 @@ button:hover {
     }
 }
 
-/* ─────────────────────────────────────────────────────
-   FIX: Left-align the form and ensure inputs/selects 
-   occupy full width under their labels
-   ───────────────────────────────────────────────────── */
-.trip-form {
-    text-align: left;     /* Force left alignment inside container */
-    margin: 0 auto;       /* Center the form block if needed */
-    width: 100%;          /* Use full container width */
+/* ─────────────────────────────────────────────────────────────
+   NEW: Styles for the ChatGPT itinerary card and day headings
+   ───────────────────────────────────────────────────────────── */
+.itinerary-card {
+    background-color: #f1f1f1;
+    border-radius: 6px;
+    padding: 20px;
+    margin-top: 20px;
+    text-align: left;
+    line-height: 1.5;
 }
 
-.trip-form input[type="text"],
-.trip-form input[type="number"],
-.trip-form select {
-    display: block;
-    width: 100%;
-    box-sizing: border-box;
-    margin-top: 5px;      /* Small gap from label */
-    border: 1px solid #ccc;
+.day-title {
+    color: #2a9d8f;
+    margin: 15px 0 5px;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.save-plan-btn {
+    display: inline-block;
+    background-color: #2a9d8f;
+    color: #fff;
+    border: none;
+    padding: 10px 14px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 15px;
     border-radius: 4px;
-    padding: 10px;
-    font-size: 14px;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+.save-plan-btn:hover {
+    background-color: #21867a;
 }
