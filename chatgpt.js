@@ -1,6 +1,6 @@
 require("dotenv").config(); // ✅ Load environment variables
 
-const OpenAI = require("openai"); // ✅ Correct import for OpenAI v4
+const { OpenAI } = require("openai"); // ✅ Correct import for OpenAI v4
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY
@@ -11,26 +11,38 @@ async function getTravelGuide(preferences) {
     console.log("📝 Generating travel guide for:", preferences);
 
     const prompt = `
-    You are a travel expert. Create a detailed itinerary for a trip based on the following details:
-    - Destination: ${preferences.destination}
-    - Duration: ${preferences.duration} days
-    - Accommodation: ${preferences.accommodation}
-    - Preferred Activities: ${preferences.preferredActivities}
-    - Nightlife Preferences: ${preferences.nightlife}
+You are a travel expert. Create a **detailed, structured, and easy-to-read** itinerary for a trip based on the following details:
 
-    🎯 **Format Requirements**:
-    - Use **bold titles** for each day (e.g., "**Day 1**").
-    - Provide detailed activities per day, including morning, afternoon, and evening plans.
-    - Mention **must-visit places**, hidden gems, and great local restaurants.
-    - Suggest **nearby cities** or day trips from ${preferences.destination}.
+📍 **Destination:** ${preferences.destination}  
+📆 **Duration:** ${preferences.duration} days  
+🏨 **Accommodation Type:** ${preferences.accommodation}  
+🎯 **Preferred Activities:** ${preferences.preferredActivities}  
+🌙 **Nightlife Preferences:** ${preferences.nightlife}  
 
-    Please return the guide in a well-structured format.
-    `;
+### 🎯 **Format Requirements:**
+1️⃣ **Each day must start with "Day X"** (e.g., "Day 1: Exploring Verona").  
+2️⃣ For each day, provide:
+   - 🌞 **Morning:** Activities to start the day.
+   - 🌆 **Afternoon:** Recommended places and experiences.
+   - 🌙 **Evening:** Night activities or relaxation options.
+   - 📍 **Must-visit:** Highlight **2-3 important places**.
+   - 🍽️ **Local Food:** Suggested dishes & restaurants.
+   - 🛀 **Relaxation:** Best spots to unwind (if applicable).
+   - 🎶 **Nightlife:** Bars, clubs, or quiet spots for a chill evening.
+
+### 📝 **Style Guidelines:**
+- **Use bullet points** for activities to make the plan **easy to read**.
+- **Keep descriptions short & engaging** (1-2 sentences per activity).
+- **Include emoji icons** to visually organize the itinerary.
+- **Ensure consistent formatting** so it can be processed by a frontend script.
+
+🚀 Make the itinerary **fun, informative, and well-structured**!
+`;
 
     const response = await openai.chat.completions.create({
       model: "gpt-4",
       messages: [
-        { role: "system", content: "You are a travel assistant providing detailed travel itineraries." },
+        { role: "system", content: "You are a travel assistant providing structured, engaging travel itineraries." },
         { role: "user", content: prompt }
       ],
       temperature: 0.7,
