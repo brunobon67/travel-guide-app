@@ -12,7 +12,7 @@ const app = express();
 
 // ✅ Correct CORS Configuration to Allow Requests from Netlify
 const allowedOrigins = [
-    "https://travel-app-guide.netlify.app, //
+    "https://travel-app-guide.netlify.app", // ✅ Fixed string closing
     "http://localhost:3000" // ✅ Allow local development
 ];
 
@@ -54,18 +54,4 @@ app.post("/get-travel-guide", async (req, res) => {
         const guide = await getTravelGuide(preferences);
         res.json({ guide }); // ✅ Return itinerary as JSON
     } catch (error) {
-        console.error("❌ OpenAI API Error:", error.message);
-        res.status(500).json({ error: "Error generating itinerary. Please try again later." });
-    }
-});
-
-// ✅ Handle 404 Errors for Undefined Routes
-app.use((req, res, next) => {
-    res.status(404).json({ error: "Route not found" });
-});
-
-// ✅ Dynamic Port for Deployment (Render, Vercel, Heroku)
-const PORT = process.env.PORT || 3001;
-app.listen(PORT, () => {
-    console.log(`✅ Server running on http://localhost:${PORT}`);
-});
+        consol
