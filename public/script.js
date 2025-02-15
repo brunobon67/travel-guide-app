@@ -10,6 +10,9 @@ document.getElementById("preferencesForm").addEventListener("submit", function (
     nightlife: document.getElementById("nightlife").value
   };
 
+  // Debugging: Log the form data to check for errors
+  console.log("Sending request with data:", formData);
+
   // Show Loading Message
   document.getElementById("responseContainer").innerHTML = `
     <p style="color: #2a9d8f; font-weight: bold;">
@@ -17,53 +20,54 @@ document.getElementById("preferencesForm").addEventListener("submit", function (
     </p>
   `;
 
-  // Make the request
-  fetch("https://travel-guide-app-hdgg.onrender.com/get-travel-guide", {
+  // ✅ Fix: Use relative URL instead of hardcoded API link (for local & production compatibility)
+  fetch("/get-travel-guide", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ preferences: formData })
   })
   .then(response => {
     if (!response.ok) {
-      throw new Error(\`HTTP error! Status: \${response.status}\`);
+      throw new Error(`HTTP error! Status: ${response.status}`);
     }
     return response.json();
   })
   .then(data => {
     if (data.error) {
       document.getElementById("responseContainer").innerHTML = 
-        \`<p style="color: red;">❌ \${data.error}</p>\`;
+        `<p style="color: red;">❌ ${data.error}</p>`;
       return;
     }
 
+    // ✅ Fix: Escape special characters to avoid syntax errors
+    const guideText = data.guide.replace(/[`$]/g, ""); 
+
     // 1. Split the AI-generated text by new lines
-    const lines = data.guide.split('\\n');
+    const lines = guideText.split('\n');
 
     // 2. Build HTML for each line
     let finalHTML = lines.map(line => {
-      // If a line starts with "Day X" (case-insensitive), style it as a heading
-      if (/^Day\\s?\\d+/i.test(line.trim())) {
-        return \`<h3 class="day-title">\${line.trim()}</h3>\`;
+      if (/^Day\s?\d+/i.test(line.trim())) {
+        return `<h3 class="day-title">${line.trim()}</h3>`;
       } else {
-        // Otherwise, just wrap it in a paragraph
-        return \`<p>\${line.trim()}</p>\`;
+        return `<p>${line.trim()}</p>`;
       }
     }).join("");
 
     // 3. Wrap it in a "card" container
-    document.getElementById("responseContainer").innerHTML = \`
+    document.getElementById("responseContainer").innerHTML = `
       <div class="itinerary-card">
-        \${finalHTML}
-        <button id="savePlanBtn" class="save-plan-btn">Save Plan</button>
+        ${finalHTML}
+        <button id="savePlanBtn" class="save-plan-btn">💾 Save Plan</button>
       </div>
-    \`;
+    `;
 
     // 4. Attach the Save Plan event
     document.getElementById("savePlanBtn").addEventListener("click", function() {
       let savedPlans = JSON.parse(localStorage.getItem("travelPlans")) || [];
       savedPlans.push({
         destination: formData.destination,
-        plan: data.guide,
+        plan: guideText,
         date: new Date().toLocaleDateString()
       });
 
@@ -82,14 +86,17 @@ document.getElementById("preferencesForm").addEventListener("submit", function (
   });
 });
 
-// Create "View Saved Plans" button dynamically
+// ✅ Fix: Ensure the button to view saved plans is added only once
 document.addEventListener("DOMContentLoaded", function () {
-  const viewSavedPlansBtn = document.createElement("button");
-  viewSavedPlansBtn.innerText = "📂 View Saved Plans";
-  viewSavedPlansBtn.style.marginTop = "20px";
-  viewSavedPlansBtn.onclick = function() {
-    window.location.href = "saved-plans.html";
-  };
+  if (!document.getElementById("viewSavedPlansBtn")) {
+    const viewSavedPlansBtn = document.createElement("button");
+    viewSavedPlansBtn.innerText = "📂 View Saved Plans";
+    viewSavedPlansBtn.id = "viewSavedPlansBtn";
+    viewSavedPlansBtn.style.marginTop = "20px";
+    viewSavedPlansBtn.onclick = function() {
+      window.location.href = "saved-plans.html";
+    };
 
-  document.querySelector(".container").appendChild(viewSavedPlansBtn);
+    document.querySelector(".container").appendChild(viewSavedPlansBtn);
+  }
 });
