@@ -1,4 +1,3 @@
-// Listen for form submission
 document.getElementById("preferencesForm").addEventListener("submit", function (event) {
   event.preventDefault(); // Prevent page reload
 
@@ -21,8 +20,8 @@ document.getElementById("preferencesForm").addEventListener("submit", function (
   `;
 
   // ✅ Fix: Use relative URL instead of hardcoded API link (for local & production compatibility)
-fetch("https://travel-guide-app-hdgg.onrender.com/get-travel-guide", { 
-  method: "POST",
+  fetch("https://travel-guide-app-hdgg.onrender.com/get-travel-guide", { 
+    method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ preferences: formData })
   })
@@ -45,20 +44,32 @@ fetch("https://travel-guide-app-hdgg.onrender.com/get-travel-guide", {
     // 1. Split the AI-generated text by new lines
     const lines = guideText.split('\n');
 
-    // 2. Build HTML for each line
+    // 2. Build HTML for each line with enhanced formatting
     let finalHTML = lines.map(line => {
-      if (/^Day\s?\d+/i.test(line.trim())) {
-        return `<h3 class="day-title">${line.trim()}</h3>`;
+      line = line.trim();
+
+      if (/^Day\s?\d+/i.test(line)) {
+        return `<h3 class="day-title" style="color: #2a9d8f; font-size: 1.5em; margin-top: 15px;">📅 ${line}</h3>`;
+      } else if (line.includes("Morning:")) {
+        return `<p><strong>🌞 Morning:</strong> ${line.replace("Morning:", "").trim()}</p>`;
+      } else if (line.includes("Afternoon:")) {
+        return `<p><strong>🌆 Afternoon:</strong> ${line.replace("Afternoon:", "").trim()}</p>`;
+      } else if (line.includes("Evening:")) {
+        return `<p><strong>🌙 Evening:</strong> ${line.replace("Evening:", "").trim()}</p>`;
+      } else if (line.includes("Must-visit:")) {
+        return `<p><strong>📍 Must-Visit:</strong> ${line.replace("Must-visit:", "").trim()}</p>`;
+      } else if (line.includes("Local Food:")) {
+        return `<p><strong>🍽️ Local Food:</strong> ${line.replace("Local Food:", "").trim()}</p>`;
       } else {
-        return `<p>${line.trim()}</p>`;
+        return `<p>${line}</p>`;
       }
     }).join("");
 
-    // 3. Wrap it in a "card" container
+    // 3. Wrap it in a "card" container for better styling
     document.getElementById("responseContainer").innerHTML = `
-      <div class="itinerary-card">
+      <div class="itinerary-card" style="border: 2px solid #2a9d8f; padding: 15px; border-radius: 10px; background: #f9f9f9; max-width: 800px; margin: 0 auto;">
         ${finalHTML}
-        <button id="savePlanBtn" class="save-plan-btn">💾 Save Plan</button>
+        <button id="savePlanBtn" class="save-plan-btn" style="margin-top: 20px; background-color: #2a9d8f; color: white; padding: 10px; border-radius: 5px;">💾 Save Plan</button>
       </div>
     `;
 
@@ -100,3 +111,4 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector(".container").appendChild(viewSavedPlansBtn);
   }
 });
+
