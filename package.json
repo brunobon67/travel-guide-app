@@ -15,9 +15,7 @@
     "morgan": "^1.10.0",
     "openai": "^4.0.0"
   },
-"engines": {
-  "node": "18.x"
-}
-
+  "engines": {
+    "node": "18.x"
   }
 }
