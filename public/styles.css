@@ -5,11 +5,11 @@ body {
     color: #333;
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     flex-direction: column;
     min-height: 100vh;
     margin: 0;
-    overflow-y: auto; /* Allow vertical scrolling */
+    overflow-y: auto;
 }
 
 /* 🌟 Container for form */
@@ -37,15 +37,16 @@ label {
 /* 🌟 Response Container for Travel Guide */
 .response-container {
     width: 100%;
-    max-width: 600px; /* Ensure it matches the form width */
+    max-width: 700px; /* Make the container larger */
     padding: 30px;
     background: white;
     border-radius: 12px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     text-align: left;
     margin-top: 20px;
-    max-height: 80vh; /* Limit height to ensure readability */
-    overflow-y: auto; /* Allow vertical scrolling if content is too long */
+    max-height: 80vh;
+    overflow-y: auto;
+    display: none; /* Hidden initially */
 }
 
 /* 🌟 Button Styling */
@@ -88,3 +89,4 @@ select {
     font-size: 14px;
     box-sizing: border-box;
 }
+
