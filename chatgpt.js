@@ -1,8 +1,9 @@
-const { OpenAI } = require("openai"); // ✅ Correct import for OpenAI v4
+require("dotenv").config(); // ✅ Load environment variables
 
-// ✅ Use process.env directly (GitHub Secrets are exposed as environment variables)
+const OpenAI = require("openai"); // ✅ Correct import for OpenAI v4
+
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY // 🔹 Ensure this variable is set in GitHub Secrets
+  apiKey: process.env.OPENAI_API_KEY
 });
 
 async function getTravelGuide(preferences) {
