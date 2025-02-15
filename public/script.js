@@ -17,7 +17,7 @@ document.getElementById("preferencesForm").addEventListener("submit", function (
     `;
 
     // Send request to backend to generate travel guide
-    fetch("https://your-backend-url/get-travel-guide", { 
+    fetch("https://travel-guide-app-hdgg.onrender.com/get-travel-guide", { 
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ preferences: formData })
