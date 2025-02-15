@@ -1,3 +1,4 @@
+// Listen for form submission
 document.getElementById("preferencesForm").addEventListener("submit", function (event) {
   event.preventDefault(); // Prevent page reload
 
@@ -11,10 +12,12 @@ document.getElementById("preferencesForm").addEventListener("submit", function (
 
   // Show Loading Message
   document.getElementById("responseContainer").innerHTML = `
-    <p style="color: #2a9d8f; font-weight: bold;">⏳ Generating your travel guide... Please wait.</p>
+    <p style="color: #2a9d8f; font-weight: bold;">
+      ⏳ Generating your travel guide... Please wait.
+    </p>
   `;
 
-  // ✅ Correct Fetch Syntax
+  // Make the request
   fetch("https://travel-guide-app-hdgg.onrender.com/get-travel-guide", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -22,27 +25,40 @@ document.getElementById("preferencesForm").addEventListener("submit", function (
   })
   .then(response => {
     if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
+      throw new Error(\`HTTP error! Status: \${response.status}\`);
     }
     return response.json();
   })
   .then(data => {
     if (data.error) {
-      document.getElementById("responseContainer").innerHTML = `<p style="color: red;">❌ ${data.error}</p>`;
+      document.getElementById("responseContainer").innerHTML = 
+        \`<p style="color: red;">❌ \${data.error}</p>\`;
       return;
     }
 
-    // ✅ Fix: Format Response Correctly
-    let formattedGuide = data.guide.replace(/(Day \d+)/g, "<strong>$1</strong>");
+    // 1. Split the AI-generated text by new lines
+    const lines = data.guide.split('\\n');
 
-    // Display Plan to User
-    document.getElementById("responseContainer").innerHTML = `
-      <h3>Your Travel Guide</h3>
-      <p>${formattedGuide.replace(/\n/g, "<br>")}</p>
-      <button id="savePlanBtn">Save Plan</button>
-    `;
+    // 2. Build HTML for each line
+    let finalHTML = lines.map(line => {
+      // If a line starts with "Day X" (case-insensitive), style it as a heading
+      if (/^Day\\s?\\d+/i.test(line.trim())) {
+        return \`<h3 class="day-title">\${line.trim()}</h3>\`;
+      } else {
+        // Otherwise, just wrap it in a paragraph
+        return \`<p>\${line.trim()}</p>\`;
+      }
+    }).join("");
 
-    // ✅ Fix: Add Event Listener Inside .then()
+    // 3. Wrap it in a "card" container
+    document.getElementById("responseContainer").innerHTML = \`
+      <div class="itinerary-card">
+        \${finalHTML}
+        <button id="savePlanBtn" class="save-plan-btn">Save Plan</button>
+      </div>
+    \`;
+
+    // 4. Attach the Save Plan event
     document.getElementById("savePlanBtn").addEventListener("click", function() {
       let savedPlans = JSON.parse(localStorage.getItem("travelPlans")) || [];
       savedPlans.push({
@@ -58,13 +74,15 @@ document.getElementById("preferencesForm").addEventListener("submit", function (
   .catch(error => {
     console.error("❌ Error:", error);
     document.getElementById("responseContainer").innerHTML = `
-      <p style="color: red; font-weight: bold;">❌ Something went wrong. Please try again.</p>
+      <p style="color: red; font-weight: bold;">
+        ❌ Something went wrong. Please try again.
+      </p>
       <p>${error.message}</p>
     `;
   });
 });
 
-// ✅ Fix: Ensure View Saved Plans Button is Created Correctly
+// Create "View Saved Plans" button dynamically
 document.addEventListener("DOMContentLoaded", function () {
   const viewSavedPlansBtn = document.createElement("button");
   viewSavedPlansBtn.innerText = "📂 View Saved Plans";
