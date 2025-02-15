@@ -1,67 +1,90 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Travel Guide Planner</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
-</head>
-<body>
+/* 🌍 General Styles */
+body {
+    font-family: 'Inter', sans-serif;
+    background: #f8f9fa;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    overflow-y: auto;
+}
 
-    <div class="container">
-        <h1>Plan Your Perfect Trip</h1>
-        
-        <form id="preferencesForm" class="trip-form">
-            <label for="destination">Destination</label>
-            <input type="text" id="destination" placeholder="E.g., Paris, Tokyo, New York" required>
+/* 🌟 Container for form */
+.container {
+    width: 100%;
+    max-width: 700px; /* Increased container width for better responsiveness */
+    padding: 30px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-bottom: 20px;
+}
 
-            <label for="duration">Duration (days)</label>
-            <input type="number" id="duration" placeholder="E.g., 7" required>
+/* 📋 Labels and Input/Select Styling */
+label {
+    font-weight: 500;
+    display: block;
+    font-size: 14px;
+    text-align: left;
+    margin-top: 10px;
+    color: #444;
+}
 
-            <label for="accommodation">Accommodation Type</label>
-            <select id="accommodation">
-                <option value="Hotel">Hotel</option>
-                <option value="Airbnb">Airbnb</option>
-                <option value="Hostel">Hostel</option>
-                <option value="Resort">Resort</option>
-            </select>
+/* 🌟 Response Container for Travel Guide */
+.response-container {
+    width: 100%;
+    max-width: 700px; /* Make the container even larger */
+    padding: 30px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    margin-top: 20px;
+    max-height: 80vh;
+    overflow-y: auto;
+    display: none; /* Hidden initially */
+}
 
-            <label for="preferredActivities">Preferred Activities</label>
-            <select id="preferredActivities">
-                <option value="Sightseeing">Sightseeing</option>
-                <option value="Hiking">Hiking</option>
-                <option value="Beach Relaxation">Beach Relaxation</option>
-                <option value="Food Tasting">Food Tasting</option>
-                <option value="Adventure Sports">Adventure Sports</option>
-                <option value="Shopping">Shopping</option>
-            </select>
+/* 🌟 Button Styling */
+button {
+    width: 100%;
+    background: #2a9d8f;
+    color: white;
+    border: none;
+    padding: 14px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 15px;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background 0.3s;
+}
 
-            <label for="nightlife">Nightlife Preference</label>
-            <select id="nightlife">
-                <option value="Quiet Evenings">Quiet Evenings</option>
-                <option value="Bars and Pubs">Bars and Pubs</option>
-                <option value="Nightclubs">Nightclubs</option>
-                <option value="Cultural Night Events">Cultural Night Events</option>
-            </select>
+/* Hover Effect */
+button:hover {
+    background: #21867a;
+}
 
-            <button type="submit">Generate Travel Guide</button>
-        </form>
+/* 🌍 Responsive Design */
+@media screen and (max-width: 480px) {
+    .container,
+    .response-container {
+        width: 90%;
+    }
+}
 
-        <!-- Button: Go to My Saved Plans (Always Visible) -->
-        <div id="viewSavedPlansBtnContainer">
-            <button id="viewSavedPlansBtn">📂 Go to My Saved Plans</button>
-        </div>
+/* 🎯 Input Fields */
+input[type="text"],
+input[type="number"],
+select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size
 
-        <!-- Container for displaying the answer, initially hidden -->
-        <div id="responseContainer" class="response-container"></div>
-
-        <!-- Save My Plan Button (Initially Hidden) -->
-        <div id="savePlanBtnContainer">
-            <button id="savePlanBtn" style="display:none;">💾 Save My Plan</button>
-        </div>
-    </div>
-
-    <script src="script.js"></script>
-</body>
-</html>
