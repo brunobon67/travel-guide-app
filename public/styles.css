@@ -15,7 +15,7 @@ body {
 /* 🌟 Container for form */
 .container {
     width: 100%;
-    max-width: 600px; /* Increased container width */
+    max-width: 400px; /* Restored to original width */
     padding: 30px;
     background: white;
     border-radius: 12px;
@@ -37,7 +37,7 @@ label {
 /* 🌟 Response Container for Travel Guide */
 .response-container {
     width: 100%;
-    max-width: 600px; /* Ensuring it aligns with the form */
+    max-width: 400px; /* Matching the form width */
     padding: 30px;
     background: white;
     border-radius: 12px;
