@@ -5,33 +5,50 @@ body {
     color: #333;
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
+    align-items: flex-start;
+    flex-direction: column;
+    min-height: 100vh;
     margin: 0;
+    overflow-y: auto; /* Allow vertical scrolling */
 }
 
-/* 🌟 Container */
+/* 🌟 Container for form */
 .container {
     width: 100%;
-    max-width: 400px;
+    max-width: 600px; /* Increased container width for better responsiveness */
     padding: 30px;
     background: white;
     border-radius: 12px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
+    margin-bottom: 20px;
 }
 
-/* 📋 Labels */
+/* 📋 Labels and Input/Select Styling */
 label {
     font-weight: 500;
     display: block;
     font-size: 14px;
-    text-align: left;  /* Keep labels left-aligned */
+    text-align: left;
     margin-top: 10px;
     color: #444;
 }
 
-/* ✨ Buttons */
+/* 🌟 Response Container for Travel Guide */
+.response-container {
+    width: 100%;
+    max-width: 600px; /* Ensure it matches the form width */
+    padding: 30px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    margin-top: 20px;
+    max-height: 80vh; /* Limit height to ensure readability */
+    overflow-y: auto; /* Allow vertical scrolling if content is too long */
+}
+
+/* 🌟 Button Styling */
 button {
     width: 100%;
     background: #2a9d8f;
@@ -51,43 +68,23 @@ button:hover {
     background: #21867a;
 }
 
-/* 📂 Saved Plans Styling */
-.saved-plan {
-    border: 1px solid #ddd;
-    padding: 15px;
-    margin-top: 10px;
-    border-radius: 6px;
-    background: #f1f1f1;
-    text-align: left;
-}
-
-/* Responsive Design */
+/* 🌍 Responsive Design */
 @media screen and (max-width: 480px) {
-    .container {
+    .container,
+    .response-container {
         width: 90%;
     }
 }
 
-/* ─────────────────────────────────────────────────────
-   FIX: Left-align the form and ensure inputs/selects 
-   occupy full width under their labels
-   ───────────────────────────────────────────────────── */
-.trip-form {
-    text-align: left;     /* Force left alignment inside container */
-    margin: 0 auto;       /* Center the form block if needed */
-    width: 100%;          /* Use full container width */
-}
-
-.trip-form input[type="text"],
-.trip-form input[type="number"],
-.trip-form select {
-    display: block;
+/* 🎯 Input Fields */
+input[type="text"],
+input[type="number"],
+select {
     width: 100%;
-    box-sizing: border-box;
-    margin-top: 5px;      /* Small gap from label */
+    padding: 10px;
+    margin-top: 5px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    padding: 10px;
     font-size: 14px;
+    box-sizing: border-box;
 }
-
