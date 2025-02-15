@@ -5,35 +5,87 @@ body {
     color: #333;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     flex-direction: column;
-    height: 100vh;
+    min-height: 100vh; /* Ensure the body takes full height */
     margin: 0;
+    overflow-y: auto; /* Allow vertical scrolling */
 }
 
-/* 🌟 Container for form and response */
+/* 🌟 Container for form */
 .container {
     width: 100%;
-    max-width: 400px;
+    max-width: 600px; /* Increased container width */
     padding: 30px;
     background: white;
     border-radius: 12px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
+    margin-bottom: 20px;
 }
 
-/* New response container styling */
+/* 📋 Labels and Input/Select Styling */
+label {
+    font-weight: 500;
+    display: block;
+    font-size: 14px;
+    text-align: left;
+    margin-top: 10px;
+    color: #444;
+}
+
+/* 🌟 Response Container for Travel Guide */
 .response-container {
     width: 100%;
-    max-width: 400px;
+    max-width: 600px; /* Ensuring it aligns with the form */
     padding: 30px;
     background: white;
     border-radius: 12px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    text-align: left; /* Align text to the left inside the response container */
+    text-align: left;
     margin-top: 20px;
-    display: none; /* Initially hidden */
+    overflow-y: auto; /* Allow scrolling within this container */
+    height: auto;
+    max-height: 80vh; /* Limit max height to 80% of the viewport */
 }
 
-/* 🌟 The rest of your existing styles here (form, buttons, etc.) */
+/* 🌟 Button Styling */
+button {
+    width: 100%;
+    background: #2a9d8f;
+    color: white;
+    border: none;
+    padding: 14px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 15px;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background 0.3s;
+}
 
+/* Hover Effect */
+button:hover {
+    background: #21867a;
+}
+
+/* 🌍 Responsive Design */
+@media screen and (max-width: 480px) {
+    .container,
+    .response-container {
+        width: 90%;
+    }
+}
+
+/* 🎯 Input Fields */
+input[type="text"],
+input[type="number"],
+select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
