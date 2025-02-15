@@ -10,10 +10,10 @@ const getTravelGuide = require("./chatgpt");
 
 const app = express();
 
-// ✅ CORS Configuration to Allow Requests from Netlify
+// ✅ Correct CORS Configuration to Allow Requests from Netlify
 const allowedOrigins = [
-    "https://your-netlify-app.netlify.app",  // 🔹 Replace with your actual Netlify frontend URL
-    "http://localhost:3000" // ✅ Allow local development (optional)
+    "https://your-actual-netlify-url.netlify.app", // 🔹 Replace this with your actual Netlify frontend URL
+    "http://localhost:3000" // ✅ Allow local development
 ];
 
 app.use(cors({
