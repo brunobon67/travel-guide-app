@@ -14,7 +14,7 @@ document.getElementById("preferencesForm").addEventListener("submit", async func
     };
 
     try {
-        const response = await fetch("https://travel-guide-app-hdgg.onrender.com/get-travel-guide", { 
+        const response = await fetch("https://your-backend-url/get-travel-guide", { 
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ preferences: formData })
@@ -28,7 +28,11 @@ document.getElementById("preferencesForm").addEventListener("submit", async func
             const { done, value } = await reader.read();
             if (done) break;
             result += decoder.decode(value);
-            responseContainer.innerHTML = result;
+
+            // ✅ Properly format response while streaming
+            responseContainer.innerHTML = result
+                .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>") // Convert Markdown **bold** to <strong>
+                .replace(/\n/g, "<br>"); // Preserve line breaks
         }
 
         // ✅ Show Save Plan button when guide is generated
@@ -39,7 +43,7 @@ document.getElementById("preferencesForm").addEventListener("submit", async func
             let savedPlans = JSON.parse(localStorage.getItem("travelPlans")) || [];
             savedPlans.push({
                 destination: formData.destination,
-                plan: result,
+                plan: result.replace(/\n/g, "<br>"), // ✅ Preserve formatting when saving
                 date: new Date().toLocaleDateString()
             });
 
