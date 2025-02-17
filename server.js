@@ -9,6 +9,9 @@ const getTravelGuide = require("./chatgpt");
 
 const app = express();
 
+// ✅ In-memory cache (Consider using Redis for production)
+const cache = {};
+
 // ✅ CORS Configuration to allow Netlify frontend
 const allowedOrigins = [
   "https://travel-app-guide.netlify.app",  // ✅ Replace with your actual Netlify frontend URL
@@ -39,7 +42,7 @@ app.get("/app", (req, res) => {
   res.sendFile(path.join(__dirname, "index.html"));
 });
 
-// ✅ API Route to Generate Travel Guide
+// ✅ API Route to Generate Travel Guide with Caching
 app.post("/get-travel-guide", async (req, res) => {
   console.log("📩 Received Request:", req.body);
 
@@ -49,9 +52,23 @@ app.post("/get-travel-guide", async (req, res) => {
     return res.status(400).json({ error: "Please fill in all required fields." });
   }
 
+  // ✅ Generate a unique cache key for the request
+  const cacheKey = JSON.stringify(preferences);
+
+  // ✅ Check if response exists in cache
+  if (cache[cacheKey]) {
+    console.log("✅ Using cached response");
+    return res.json({ guide: cache[cacheKey] });
+  }
+
   try {
     const guide = await getTravelGuide(preferences);
-    res.json({ guide }); // ✅ Return itinerary as JSON
+    
+    // ✅ Store result in cache (expires in 1 hour)
+    cache[cacheKey] = guide;
+    setTimeout(() => delete cache[cacheKey], 3600000); // 1-hour expiration
+
+    res.json({ guide });
   } catch (error) {
     console.error("❌ OpenAI API Error:", error.message);
     res.status(500).json({ error: "Error generating itinerary. Please try again later." });
