@@ -1,5 +1,9 @@
-document.getElementById("preferencesForm").addEventListener("submit", function (event) {
+document.getElementById("preferencesForm").addEventListener("submit", async function (event) {
     event.preventDefault(); // Prevent page reload
+
+    const responseContainer = document.getElementById("responseContainer");
+    responseContainer.innerHTML = `<p style="color: #2a9d8f; font-weight: bold;">⏳ Generating your travel guide...</p>`;
+    responseContainer.style.display = "block";
 
     const formData = {
         destination: document.getElementById("destination").value,
@@ -9,65 +13,45 @@ document.getElementById("preferencesForm").addEventListener("submit", function (
         nightlife: document.getElementById("nightlife").value
     };
 
-    // Display loading message
-    document.getElementById("responseContainer").innerHTML = `
-        <p style="color: #2a9d8f; font-weight: bold;">
-            ⏳ Generating your travel guide... Please wait.
-        </p>
-    `;
-    document.getElementById("responseContainer").style.display = "block"; // Show response container
+    try {
+        const response = await fetch("https://your-backend-url/get-travel-guide", { 
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ preferences: formData })
+        });
 
-    // Send request to backend to generate travel guide
-    fetch("https://travel-guide-app-hdgg.onrender.com/get-travel-guide", { 
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ preferences: formData })
-    })
-    .then(response => response.json())
-    .then(data => {
-        // If there's an error in the response, display it
-        if (data.error) {
-            document.getElementById("responseContainer").innerHTML = `<p style="color: red;">❌ ${data.error}</p>`;
-            return;
+        const reader = response.body.getReader();
+        const decoder = new TextDecoder();
+        let result = "";
+
+        while (true) {
+            const { done, value } = await reader.read();
+            if (done) break;
+            result += decoder.decode(value);
+            responseContainer.innerHTML = result;
         }
 
-        // Display the structured travel guide in the response container
-        document.getElementById("responseContainer").innerHTML = `
-            <div class="itinerary-card">
-                <h3><strong>Itinerary for ${formData.destination}</strong></h3>
-                ${data.guide.replace(/[`$]/g, "").split('\n').map(line => {
-                    if (/^Day\s?\d+/i.test(line.trim())) {
-                        return `<h4><strong>${line.trim()}</strong></h4>`;
-                    } else {
-                        return `<p>${line.trim()}</p>`;
-                    }
-                }).join('')}
-            </div>
-        `;
-
-        // Show Save Plan button
+        // ✅ Show Save Plan button when guide is generated
         document.getElementById("savePlanBtn").style.display = "inline-block";
 
-        // Add event listener to "Save My Plan" button
+        // ✅ Save itinerary locally
         document.getElementById("savePlanBtn").addEventListener("click", function () {
             let savedPlans = JSON.parse(localStorage.getItem("travelPlans")) || [];
             savedPlans.push({
                 destination: formData.destination,
-                plan: data.guide,
+                plan: result,
                 date: new Date().toLocaleDateString()
             });
 
             localStorage.setItem("travelPlans", JSON.stringify(savedPlans));
             alert("✅ Travel plan saved successfully!");
         });
-    })
-    .catch(error => {
+
+    } catch (error) {
         console.error("❌ Error:", error);
-        document.getElementById("responseContainer").innerHTML = `
-            <p style="color: red; font-weight: bold;">
-                ❌ Something went wrong. Please try again.
-            </p>
+        responseContainer.innerHTML = `
+            <p style="color: red; font-weight: bold;">❌ Something went wrong. Please try again.</p>
             <p>${error.message}</p>
         `;
-    });
+    }
 });
