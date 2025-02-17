@@ -11,27 +11,37 @@ async function getTravelGuide(preferences, stream = false) {
     console.log("📝 Generating travel guide for:", preferences);
 
     const prompt = `
-    You are a travel assistant. Create a **detailed itinerary** for:
-    - Destination: ${preferences.destination}
-    - Duration: ${preferences.duration} days
-    - Accommodation: ${preferences.accommodation}
-    - Activities: ${preferences.preferredActivities}
-    - Nightlife: ${preferences.nightlife}
+    You are an expert travel assistant. Generate a **detailed travel itinerary** based on the following details:
+    - **Destination:** ${preferences.destination}
+    - **Duration:** ${preferences.duration} days
+    - **Accommodation:** ${preferences.accommodation}
+    - **Preferred Activities:** ${preferences.preferredActivities}
+    - **Nightlife Preferences:** ${preferences.nightlife}
 
-    🎯 **Format Requirements**:
-    - **Bold Day Titles** (e.g., "**Day 1: Arrival in Rome**").
-    - List activities per day, divided into:
-      - 🌞 **Morning:** 
-      - 🌆 **Afternoon:** 
-      - 🌙 **Evening:** 
-    - Include 📍 **Must-Visit Places**, 🍽️ **Food Recommendations**, and 🌟 **Hidden Gems**.
-    - If applicable, suggest a **day trip** from ${preferences.destination}.
+    🎯 **Formatting Rules**:
+    - **Use bold headings** for each day (e.g., "**Day 1: Exploring Paris**").
+    - Structure the itinerary into **clear sections**:
+      - 🌞 **Morning:**  
+      - 🌆 **Afternoon:**  
+      - 🌙 **Evening:**  
+      - 📍 **Must-Visit Places:**  
+      - 🍽️ **Food Recommendations:**  
+    - Keep responses **detailed and well-structured** with **line breaks between sections**.
+    - Use emojis to enhance readability.
 
-    Keep responses **detailed and well-structured**.
+    **Example Format:**
+    **Day 1: Arrival in Rome**  
+    🌞 **Morning:** Visit the Colosseum and Roman Forum.  
+    🌆 **Afternoon:** Walk through Piazza Venezia and Trevi Fountain.  
+    🌙 **Evening:** Dinner at Trastevere, explore nightlife.  
+    📍 **Must-Visit Places:** Colosseum, Trevi Fountain, Vatican City.  
+    🍽️ **Food Recommendations:** Try authentic pasta carbonara at Roscioli.  
+
+    Ensure that the response follows the **above structure exactly**.
     `;
 
     const response = await openai.chat.completions.create({
-      model: "gpt-3.5-turbo", // 🚀 Faster & Cheaper than GPT-4
+      model: "gpt-3.5-turbo",
       messages: [
         { role: "system", content: "You are a travel assistant providing structured travel guides." },
         { role: "user", content: prompt }
@@ -49,4 +59,3 @@ async function getTravelGuide(preferences, stream = false) {
 }
 
 module.exports = getTravelGuide;
-
