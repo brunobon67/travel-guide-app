@@ -6,45 +6,42 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY
 });
 
-async function getTravelGuide(preferences) {
+async function getTravelGuide(preferences, stream = false) {
   try {
     console.log("📝 Generating travel guide for:", preferences);
 
     const prompt = `
-    You are a travel expert. Create a **detailed itinerary** for a trip based on the following details:
+    You are a travel assistant. Create a **detailed itinerary** for:
     - Destination: ${preferences.destination}
     - Duration: ${preferences.duration} days
     - Accommodation: ${preferences.accommodation}
-    - Preferred Activities: ${preferences.preferredActivities}
-    - Nightlife Preferences: ${preferences.nightlife}
+    - Activities: ${preferences.preferredActivities}
+    - Nightlife: ${preferences.nightlife}
 
     🎯 **Format Requirements**:
-    - Use **bold titles** for each day (e.g., "**Day 1: Exploring Verona**").
-    - Provide detailed activities per day, including morning, afternoon, and evening plans.
-    - Mention **must-visit places**, hidden gems, and great local restaurants.
-    - Suggest **nearby cities** or day trips from ${preferences.destination}.
+    - **Bold Day Titles** (e.g., "**Day 1: Arrival in Rome**").
+    - List activities per day, divided into:
+      - 🌞 **Morning:** 
+      - 🌆 **Afternoon:** 
+      - 🌙 **Evening:** 
+    - Include 📍 **Must-Visit Places**, 🍽️ **Food Recommendations**, and 🌟 **Hidden Gems**.
+    - If applicable, suggest a **day trip** from ${preferences.destination}.
 
-    Please return the guide in a **well-structured format**, and use emojis to represent each section like:
-    - 🌞 **Morning:** 
-    - 🌆 **Afternoon:** 
-    - 🌙 **Evening:** 
-    - 📍 **Must-Visit:** 
-    - 🍽️ **Food Recommendations:** 
-
-    Make sure the text is well-formatted for easy reading.
+    Keep responses **detailed and well-structured**.
     `;
 
     const response = await openai.chat.completions.create({
-      model: "gpt-4",
+      model: "gpt-3.5-turbo", // 🚀 Faster & Cheaper than GPT-4
       messages: [
-        { role: "system", content: "You are a travel assistant providing detailed travel itineraries." },
+        { role: "system", content: "You are a travel assistant providing structured travel guides." },
         { role: "user", content: prompt }
       ],
       temperature: 0.7,
-      max_tokens: 1200,
+      max_tokens: 1200,  // ✅ Keeping full detail while optimizing speed
+      stream: stream  // ✅ Enable streaming for real-time responses
     });
 
-    return response.choices[0]?.message?.content.trim() || "No guide available.";
+    return response;
   } catch (error) {
     console.error("🚨 OpenAI API error:", error.response ? error.response.data : error.message);
     throw new Error("OpenAI API request failed.");
@@ -52,3 +49,4 @@ async function getTravelGuide(preferences) {
 }
 
 module.exports = getTravelGuide;
+
