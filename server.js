@@ -9,7 +9,7 @@ const getTravelGuide = require("./chatgpt");
 
 const app = express();
 
-// ✅ In-memory cache (Consider using Redis for production)
+// ✅ In-Memory Cache (Consider Redis for Production)
 const cache = {};
 
 // ✅ CORS Configuration to allow Netlify frontend
@@ -42,7 +42,7 @@ app.get("/app", (req, res) => {
   res.sendFile(path.join(__dirname, "index.html"));
 });
 
-// ✅ API Route to Generate Travel Guide with Caching
+// ✅ API Route to Generate Travel Guide (With Streaming & Caching)
 app.post("/get-travel-guide", async (req, res) => {
   console.log("📩 Received Request:", req.body);
 
@@ -62,13 +62,21 @@ app.post("/get-travel-guide", async (req, res) => {
   }
 
   try {
-    const guide = await getTravelGuide(preferences);
-    
-    // ✅ Store result in cache (expires in 1 hour)
-    cache[cacheKey] = guide;
-    setTimeout(() => delete cache[cacheKey], 3600000); // 1-hour expiration
+    res.setHeader("Content-Type", "text/event-stream");
+    res.setHeader("Cache-Control", "no-cache");
+    res.setHeader("Connection", "keep-alive");
 
-    res.json({ guide });
+    const response = await getTravelGuide(preferences, true); // Streaming enabled
+
+    for await (const chunk of response) {
+      res.write(chunk.choices[0].delta?.content || "");  // ✅ Send data progressively
+    }
+
+    // ✅ Store result in cache (expires in 1 hour)
+    cache[cacheKey] = response;
+    setTimeout(() => delete cache[cacheKey], 3600000); // Cache expires in 1 hour
+
+    res.end();
   } catch (error) {
     console.error("❌ OpenAI API Error:", error.message);
     res.status(500).json({ error: "Error generating itinerary. Please try again later." });
@@ -85,4 +93,5 @@ const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`✅ Server running on http://localhost:${PORT}`);
 });
+
 
