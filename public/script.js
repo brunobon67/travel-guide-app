@@ -14,7 +14,7 @@ document.getElementById("preferencesForm").addEventListener("submit", async func
     };
 
     try {
-        const response = await fetch("https://travel-guide-app-hdgg.onrender.com", { 
+        const response = await fetch("https://travel-guide-app-hdgg.onrender.com/get-travel-guide", { 
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ preferences: formData })
