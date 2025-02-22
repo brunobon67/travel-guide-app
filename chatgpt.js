@@ -15,7 +15,7 @@ async function getTravelGuide(preferences, stream = false) {
     - **Destination:** ${preferences.destination}
     - **Duration:** ${preferences.duration} days
     - **Accommodation:** ${preferences.accommodation}
-    - **Preferred Activities:** ${preferences.preferredActivities}
+    - **Preferred Activities:** ${preferences.preferredActivities}  <!-- Will include Relax, Cultural Events, City Tour -->
     - **Nightlife Preferences:** ${preferences.nightlife}
 
     🎯 **Formatting Rules**:
