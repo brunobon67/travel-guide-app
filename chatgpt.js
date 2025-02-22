@@ -24,23 +24,18 @@ async function getTravelGuide(preferences, stream = false) {
       - 🌞 **Morning:**  
       - 🌆 **Afternoon:**  
       - 🌙 **Evening:**  
-      - 📍 **Must-Visit Places:** Provide at least one link to a place or attraction to visit.
-      - 🍽️ **Food Recommendations:** Provide links to restaurants.
-      - 🏨 **Accommodation Suggestions:** Provide links to hotels or other accommodations based on the chosen accommodation type.
-      - 🎉 **Events and Activities**: Provide links to events or other activities based on the user's selected preferences.
-    - Provide **at least one link for each category** (hotel, restaurant, activity, event, etc.) that the user might be interested in.
+      - 📍 **Must-Visit Places:**  
+      - 🍽️ **Food Recommendations:**  
     - Keep responses **detailed and well-structured** with **line breaks between sections**.
     - Use emojis to enhance readability.
 
-    **Example Format**:
+    **Example Format:**
     **Day 1: Arrival in Rome**  
     🌞 **Morning:** Visit the Colosseum and Roman Forum.  
     🌆 **Afternoon:** Walk through Piazza Venezia and Trevi Fountain.  
     🌙 **Evening:** Dinner at Trastevere, explore nightlife.  
-    📍 **Must-Visit Places:** [Colosseum](https://www.coopculture.it/en/colosseo-e-shop.cfm)  
-    🍽️ **Food Recommendations:** [Roscioli - Pasta Carbonara](https://www.salumeriaroscioli.com/en/)  
-    🏨 **Accommodation Suggestions:** [Hotel Savoy](https://www.hotelsavoy.com/)  
-    🎉 **Events:** [Rome Opera House Events](https://www.operaroma.it/en)  
+    📍 **Must-Visit Places:** Colosseum, Trevi Fountain, Vatican City.  
+    🍽️ **Food Recommendations:** Try authentic pasta carbonara at Roscioli.  
 
     Ensure that the response follows the **above structure exactly**.
     `;
@@ -52,7 +47,7 @@ async function getTravelGuide(preferences, stream = false) {
         { role: "user", content: prompt }
       ],
       temperature: 0.7,
-      max_tokens: 1200,  // ✅ Keeping full detail while optimizing speed
+      max_tokens: 2500,  // ✅ Keeping full detail while optimizing speed
       stream: stream  // ✅ Enable streaming for real-time responses
     });
 
