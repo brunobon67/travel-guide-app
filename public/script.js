@@ -9,7 +9,7 @@ document.getElementById("preferencesForm").addEventListener("submit", async func
         destination: document.getElementById("destination").value,
         duration: document.getElementById("duration").value,
         accommodation: document.getElementById("accommodation").value,
-        preferredActivities: document.getElementById("preferredActivities").value,
+        preferredActivities: document.getElementById("preferredActivities").value,  // This includes Relax, Cultural Events, City Tour
         nightlife: document.getElementById("nightlife").value
     };
 
