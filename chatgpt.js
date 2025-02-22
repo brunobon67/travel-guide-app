@@ -70,3 +70,4 @@ async function getTravelGuide(preferences, stream = false) {
 }
 
 module.exports = getTravelGuide;
+
