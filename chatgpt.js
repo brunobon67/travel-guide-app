@@ -41,7 +41,7 @@ async function getTravelGuide(preferences, stream = false) {
     `;
 
     const response = await openai.chat.completions.create({
-      model: "gpt-3.5-turbo",
+      model: "gpt-4",  // ✅ Use GPT-4 model
       messages: [
         { role: "system", content: "You are a travel assistant providing structured travel guides." },
         { role: "user", content: prompt }
@@ -59,3 +59,4 @@ async function getTravelGuide(preferences, stream = false) {
 }
 
 module.exports = getTravelGuide;
+
