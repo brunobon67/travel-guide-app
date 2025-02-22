@@ -27,10 +27,9 @@ async function getTravelGuide(preferences, stream = false) {
         - 🌞 **Morning Activities** (e.g., 9:00 AM - Visit the Louvre Museum)
         - 🌆 **Afternoon Activities** (e.g., 1:00 PM - Lunch at Café de Flore)
         - 🌙 **Evening Activities** (e.g., 6:00 PM - Dinner at Le Meurice, 9:00 PM - Seine River Cruise)
-        - 📍 **Must-Visit Places** with detailed descriptions of what to see and when, with **clickable links** formatted as \`&lt;a href="URL"&gt;Link Name&lt;/a&gt;\`
-        - 🍽️ **Food Recommendations** with specific restaurant names and meal suggestions at appropriate times, and links to the restaurants formatted as \`&lt;a href="URL"&gt;Restaurant Name&lt;/a&gt;\`
-        - 🏨 **Accommodation Details** (e.g., check-in, check-out times) with links formatted as \`&lt;a href="URL"&gt;Hotel Name&lt;/a&gt;\`
-        - 🎉 **Events**: Include clickable links for events in the city formatted as \`&lt;a href="URL"&gt;Event Name&lt;/a&gt;\`
+        - 📍 **Must-Visit Places** with detailed descriptions of what to see and when
+        - 🍽️ **Food Recommendations** with specific restaurant names and meal suggestions at appropriate times
+        - 🏨 **Accommodation Details** (e.g., check-in, check-out times)
     - Keep responses **highly detailed** and **precise**, ensuring the times and locations are aligned logically throughout the day.
     - Ensure that the itinerary is **feasible** and takes into account **location proximity** and **travel time**.
 
@@ -38,28 +37,28 @@ async function getTravelGuide(preferences, stream = false) {
 
     **Day 1: Arrival in Paris**  
     🌞 **Morning:**  
-    - **9:00 AM** - Arrive at [Charles de Gaulle Airport](https://www.parisaeroport.fr/en/passengers)  
-    - **9:30 AM** - Take a taxi to [Hotel Le Meurice](https://www.dorchestercollection.com/en/paris/hotel-le-meurice/), check-in  
-    - **10:30 AM** - Visit the [Louvre Museum](https://www.louvre.fr/en) (spend 1.5 hours, see the Mona Lisa, Winged Victory, etc.)  
+    - **9:00 AM** - Arrive at Charles de Gaulle Airport  
+    - **9:30 AM** - Take a taxi to Hotel Le Meurice, check-in  
+    - **10:30 AM** - Visit the Louvre Museum (spend 1.5 hours, see the Mona Lisa, Winged Victory, etc.)  
 
     🌆 **Afternoon:**  
-    - **12:00 PM** - Lunch at [Café de Flore](https://www.cafedeflore.fr/en/), enjoy a classic French meal (1 hour)  
-    - **1:30 PM** - Walk to the [Tuileries Gardens](https://en.parisinfo.com/museum-monument/71347/Jardin-des-Tuileries) and stroll around (1 hour)  
-    - **2:30 PM** - Visit [Musée de l'Orangerie](https://www.musee-orangerie.fr/en) to see Monet’s Water Lilies (1 hour)
+    - **12:00 PM** - Lunch at Café de Flore, enjoy a classic French meal (1 hour)  
+    - **1:30 PM** - Walk to the Tuileries Gardens and stroll around (1 hour)  
+    - **2:30 PM** - Visit Musée de l'Orangerie to see Monet’s Water Lilies (1 hour)
 
     🌙 **Evening:**  
-    - **4:30 PM** - Head to [Montmartre](https://www.parisinfo.com/transport/70024/Montmartre) and explore the area  
-    - **6:00 PM** - Dinner at [Le Meurice Restaurant](https://www.dorchestercollection.com/en/paris/hotel-le-meurice/dining/) (fine dining)  
-    - **8:00 PM** - Take a [Seine River Cruise](https://www.bateauxparisiens.com/en) (1 hour)  
+    - **4:30 PM** - Head to Montmartre and explore the area  
+    - **6:00 PM** - Dinner at Le Meurice Restaurant (fine dining)  
+    - **8:00 PM** - Take a Seine River Cruise (1 hour)  
     - **9:30 PM** - Return to hotel, rest  
 
-    Ensure that the response follows the **above structure exactly** and provides **clickable links** in HTML format.
+    Ensure that the response follows the **above structure exactly**.
     `;
 
     const response = await openai.chat.completions.create({
       model: "gpt-4",  // ✅ Use GPT-4 model
       messages: [
-        { role: "system", content: "You are a travel assistant providing structured, hour-by-hour travel guides with clickable links." },
+        { role: "system", content: "You are a travel assistant providing structured, hour-by-hour travel guides." },
         { role: "user", content: prompt }
       ],
       temperature: 0.7,
@@ -75,3 +74,4 @@ async function getTravelGuide(preferences, stream = false) {
 }
 
 module.exports = getTravelGuide;
+
