@@ -27,10 +27,10 @@ async function getTravelGuide(preferences, stream = false) {
         - 🌞 **Morning Activities** (e.g., 9:00 AM - Visit the Louvre Museum)
         - 🌆 **Afternoon Activities** (e.g., 1:00 PM - Lunch at Café de Flore)
         - 🌙 **Evening Activities** (e.g., 6:00 PM - Dinner at Le Meurice, 9:00 PM - Seine River Cruise)
-        - 📍 **Must-Visit Places** with detailed descriptions of what to see and when, with **clickable links** formatted as `<a href="URL">Link Name</a>`
-        - 🍽️ **Food Recommendations** with specific restaurant names and meal suggestions at appropriate times, and links to the restaurants formatted as `<a href="URL">Restaurant Name</a>`
-        - 🏨 **Accommodation Details** (e.g., check-in, check-out times) with links formatted as `<a href="URL">Hotel Name</a>`
-        - 🎉 **Events**: Include clickable links for events in the city formatted as `<a href="URL">Event Name</a>`
+        - 📍 **Must-Visit Places** with detailed descriptions of what to see and when, with **clickable links** formatted as \`&lt;a href="URL"&gt;Link Name&lt;/a&gt;\`
+        - 🍽️ **Food Recommendations** with specific restaurant names and meal suggestions at appropriate times, and links to the restaurants formatted as \`&lt;a href="URL"&gt;Restaurant Name&lt;/a&gt;\`
+        - 🏨 **Accommodation Details** (e.g., check-in, check-out times) with links formatted as \`&lt;a href="URL"&gt;Hotel Name&lt;/a&gt;\`
+        - 🎉 **Events**: Include clickable links for events in the city formatted as \`&lt;a href="URL"&gt;Event Name&lt;/a&gt;\`
     - Keep responses **highly detailed** and **precise**, ensuring the times and locations are aligned logically throughout the day.
     - Ensure that the itinerary is **feasible** and takes into account **location proximity** and **travel time**.
 
@@ -75,4 +75,3 @@ async function getTravelGuide(preferences, stream = false) {
 }
 
 module.exports = getTravelGuide;
-
