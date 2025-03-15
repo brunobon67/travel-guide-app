@@ -62,7 +62,7 @@ async function getTravelGuide(preferences, stream = false) {
         { role: "user", content: prompt }
       ],
       temperature: 0.7,
-      max_tokens: 1500,  // Increased tokens to support detailed itineraries
+      max_tokens: 3000,  // Increased tokens to support detailed itineraries
       stream: stream  // ✅ Enable streaming for real-time responses
     });
 
