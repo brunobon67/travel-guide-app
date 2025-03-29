@@ -64,8 +64,16 @@
             <button id="savePlanBtn" style="display:none;">💾 Save My Plan</button>
         </div>
     </div>
+<script>
+  fetch("/session-status", { credentials: "include" })
+    .then(res => res.json())
+    .then(data => {
+      if (!data.loggedIn) {
+        window.location.href = "/login";
+      }
+    });
+</script>
 
-    <script src="script.js"></script>
 </body>
 </html>
 
