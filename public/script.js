@@ -14,11 +14,13 @@ document.getElementById("preferencesForm").addEventListener("submit", async func
     };
 
     try {
-        const response = await fetch("https://travel-guide-app-hdgg.onrender.com/get-travel-guide", { 
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ preferences: formData })
-        });
+       const response = await fetch("/get-travel-guide", { 
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ preferences: formData }),
+  credentials: "include"
+});
+
 
         const reader = response.body.getReader();
         const decoder = new TextDecoder();
