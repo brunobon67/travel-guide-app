@@ -78,6 +78,7 @@ button:hover {
 }
 
 /* 🎯 Input Fields */
+/* 🎯 Input Fields */
 input[type="text"],
 input[type="number"],
 select {
@@ -86,5 +87,10 @@ select {
     margin-top: 5px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    font-size
+    font-size: 14px;
+}
 
+/* Add this below ⬇️ */
+input[type="password"] {
+    margin-bottom: 10px;
+}
