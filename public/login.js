@@ -30,10 +30,16 @@ document.getElementById("authForm").addEventListener("submit", async (e) => {
     });
 
     const data = await res.json();
+    
+if (res.ok) {
+  if (isLogin) {
+    window.location.href = "/app";
+  } else {
+    window.location.href = "/login";
+  }
+}
 
-    if (res.ok) {
-      window.location.href = "/app";
-    } else {
+    else {
       document.getElementById("loginStatus").innerText = data.error || "Something went wrong.";
     }
   } catch (err) {
