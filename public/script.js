@@ -1,3 +1,19 @@
+fetch("/session-status", { credentials: "include" })
+  .then(res => res.json())
+  .then(data => {
+    if (!data.loggedIn) {
+      window.location.href = "/login";
+    } else {
+      const welcome = document.getElementById("welcomeMessage");
+      if (welcome) {
+        welcome.textContent = `Welcome, ${data.user.name}`;
+      }
+    }
+  });
+
+
+
+
 document.getElementById("preferencesForm").addEventListener("submit", async function (event) {
     event.preventDefault(); // Prevent page reload
 
