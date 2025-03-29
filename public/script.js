@@ -61,3 +61,12 @@ document.getElementById("preferencesForm").addEventListener("submit", async func
         `;
     }
 });
+
+document.getElementById("logoutButton").addEventListener("click", async () => {
+  await fetch("/logout", {
+    method: "POST",
+    credentials: "include"
+  });
+  window.location.href = "/login";
+});
+
