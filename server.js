@@ -21,10 +21,10 @@ let users = [
   }
 ];
 
-// CORS configuration for frontend
+// CORS config
 const allowedOrigins = [
-  "https://travel-app-guide.netlify.app", // Production frontend
-  "http://localhost:3000"                 // Local frontend
+  "https://travel-app-guide.netlify.app",
+  "http://localhost:3000"
 ];
 
 app.use(cors({
@@ -33,21 +33,22 @@ app.use(cors({
   credentials: true
 }));
 
-// Middleware
 app.use(helmet());
 app.use(morgan("dev"));
 app.use(bodyParser.json());
+
+// ✅ Serve static files
 app.use(express.static("public"));
 
-// Session config
+// ✅ Session middleware
 app.use(session({
   secret: process.env.SESSION_SECRET || "supersecret",
   resave: false,
   saveUninitialized: false,
-  cookie: { secure: false } // Set to true with HTTPS
+  cookie: { secure: false }
 }));
 
-// 🔐 Register route
+// 🔐 Register
 app.post("/register", async (req, res) => {
   const { name, email, password } = req.body;
   if (!email || !password || !name) {
@@ -66,7 +67,7 @@ app.post("/register", async (req, res) => {
   res.json({ message: "Registration successful" });
 });
 
-// 🔐 Login route
+// 🔐 Login
 app.post("/login", async (req, res) => {
   const { email, password } = req.body;
   const user = users.find(u => u.email === email);
@@ -78,7 +79,7 @@ app.post("/login", async (req, res) => {
   res.json({ message: "Login successful" });
 });
 
-// 🔓 Logout route
+// 🔓 Logout
 app.post("/logout", (req, res) => {
   req.session.destroy();
   res.json({ message: "Logged out" });
@@ -93,21 +94,25 @@ app.get("/session-status", (req, res) => {
   }
 });
 
-// 🏠 Landing page
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "landing.html"));
-});
-
-// 🔐 Login and main app pages
-app.get("/login", (req, res) => {
-  res.sendFile(path.join(__dirname, "login.html"));
-});
-
+// 🔐 Serve app (only if logged in)
 app.get("/app", (req, res) => {
-  res.sendFile(path.join(__dirname, "index.html"));
+  if (!req.session.user) {
+    return res.redirect("/login.html");
+  }
+  res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
-// 🌍 Protected travel guide generation
+// ✅ Serve register.html explicitly (to avoid CSP issues or misroutes)
+app.get("/register", (req, res) => {
+  res.redirect("/register.html");
+});
+
+// ✅ Serve login.html explicitly
+app.get("/login", (req, res) => {
+  res.redirect("/login.html");
+});
+
+// 🧠 Travel guide (protected)
 app.post("/get-travel-guide", async (req, res) => {
   if (!req.session.user) {
     return res.status(401).json({ error: "Unauthorized. Please log in first." });
