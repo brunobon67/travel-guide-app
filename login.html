@@ -1,46 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Login - Travel Guide App</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login / Register - Travel Guide App</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <div class="container">
-    <h1>🔐 Login to Your Account</h1>
-    <form id="loginForm">
+    <h1 id="formTitle">🔐 Login</h1>
+
+    <form id="authForm">
       <label for="email">Email</label>
-      <input type="text" id="email" required>
+      <input type="text" id="email" required />
 
       <label for="password">Password</label>
-      <input type="password" id="password" required>
+      <input type="password" id="password" required />
 
-      <button type="submit">Log In</button>
+      <div id="nameField" style="display:none;">
+        <label for="name">Name (for register)</label>
+        <input type="text" id="name" />
+      </div>
+
+      <button type="submit" id="submitButton">Log In</button>
     </form>
+
     <p id="loginStatus"></p>
+
+    <p>
+      <a href="#" id="toggleForm">Need to register?</a>
+    </p>
   </div>
 
   <script>
-    document.getElementById("loginForm").addEventListener("submit", async function (e) {
-      e.preventDefault();
+    let isLogin = true;
 
-      const res = await fetch("/login", {
+    document.getElementById("toggleForm").addEventListener("click", (e) => {
+      e.preventDefault();
+      isLogin = !isLogin;
+
+      document.getElementById("formTitle").innerText = isLogin ? "🔐 Login" : "🆕 Register";
+      document.getElementById("submitButton").innerText = isLogin ? "Log In" : "Register";
+      document.getElementById("toggleForm").innerText = isLogin ? "Need to register?" : "Already have an account?";
+      document.getElementById("nameField").style.display = isLogin ? "none" : "block";
+      document.getElementById("loginStatus").innerText = "";
+    });
+
+    document.getElementById("authForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const endpoint = isLogin ? "/login" : "/register";
+      const payload = {
+        email: document.getElementById("email").value,
+        password: document.getElementById("password").value
+      };
+      if (!isLogin) payload.name = document.getElementById("name").value;
+
+      const res = await fetch(endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
-        body: JSON.stringify({
-          email: document.getElementById("email").value,
-          password: document.getElementById("password").value
-        })
+        body: JSON.stringify(payload)
       });
 
+      const data = await res.json();
       if (res.ok) {
         window.location.href = "/app";
       } else {
-        const data = await res.json();
-        document.getElementById("loginStatus").innerText = data.error;
+        document.getElementById("loginStatus").innerText = data.error || "Something went wrong.";
       }
     });
   </script>
 </body>
 </html>
+
