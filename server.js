@@ -10,11 +10,21 @@ const bcrypt = require("bcrypt");
 const getTravelGuide = require("./chatgpt");
 
 const app = express();
-const cache = {};
 
+// In-memory cache and user store (for development only)
+const cache = {};
+let users = [
+  {
+    name: "Demo User",
+    email: "test@example.com",
+    passwordHash: "$2b$10$HD5R5GtVw8vWzQUgdgCGxO7jw1XEo71mFkfUP7eOXD9CnApWFXpEy" // password: 123456
+  }
+];
+
+// CORS configuration for frontend
 const allowedOrigins = [
-  "https://travel-app-guide.netlify.app",
-  "http://localhost:3000"
+  "https://travel-app-guide.netlify.app", // Production frontend
+  "http://localhost:3000"                 // Local frontend
 ];
 
 app.use(cors({
@@ -23,40 +33,40 @@ app.use(cors({
   credentials: true
 }));
 
+// Middleware
 app.use(helmet());
 app.use(morgan("dev"));
 app.use(bodyParser.json());
+app.use(express.static("public"));
 
+// Session config
 app.use(session({
   secret: process.env.SESSION_SECRET || "supersecret",
   resave: false,
   saveUninitialized: false,
-  cookie: { secure: false }
+  cookie: { secure: false } // Set to true with HTTPS
 }));
 
-app.use(express.static("public"));
-
-// 🔐 Hardcoded test user
-const users = [
-  {
-    email: "test@example.com",
-    passwordHash: "$2b$10$HD5R5GtVw8vWzQUgdgCGxO7jw1XEo71mFkfUP7eOXD9CnApWFXpEy" // password: 123456
+// 🔐 Register route
+app.post("/register", async (req, res) => {
+  const { name, email, password } = req.body;
+  if (!email || !password || !name) {
+    return res.status(400).json({ error: "All fields are required." });
   }
-];
 
-// Routes
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "landing.html"));
+  const existingUser = users.find(u => u.email === email);
+  if (existingUser) {
+    return res.status(409).json({ error: "User already exists." });
+  }
+
+  const passwordHash = await bcrypt.hash(password, 10);
+  users.push({ name, email, passwordHash });
+
+  req.session.user = { name, email };
+  res.json({ message: "Registration successful" });
 });
 
-app.get("/login", (req, res) => {
-  res.sendFile(path.join(__dirname, "login.html"));
-});
-
-app.get("/app", (req, res) => {
-  res.sendFile(path.join(__dirname, "index.html"));
-});
-
+// 🔐 Login route
 app.post("/login", async (req, res) => {
   const { email, password } = req.body;
   const user = users.find(u => u.email === email);
@@ -64,15 +74,17 @@ app.post("/login", async (req, res) => {
     return res.status(401).json({ error: "Invalid credentials" });
   }
 
-  req.session.user = { email: user.email };
+  req.session.user = { name: user.name, email: user.email };
   res.json({ message: "Login successful" });
 });
 
+// 🔓 Logout route
 app.post("/logout", (req, res) => {
   req.session.destroy();
   res.json({ message: "Logged out" });
 });
 
+// 🔍 Session status
 app.get("/session-status", (req, res) => {
   if (req.session.user) {
     res.json({ loggedIn: true, user: req.session.user });
@@ -81,6 +93,21 @@ app.get("/session-status", (req, res) => {
   }
 });
 
+// 🏠 Landing page
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "landing.html"));
+});
+
+// 🔐 Login and main app pages
+app.get("/login", (req, res) => {
+  res.sendFile(path.join(__dirname, "login.html"));
+});
+
+app.get("/app", (req, res) => {
+  res.sendFile(path.join(__dirname, "index.html"));
+});
+
+// 🌍 Protected travel guide generation
 app.post("/get-travel-guide", async (req, res) => {
   if (!req.session.user) {
     return res.status(401).json({ error: "Unauthorized. Please log in first." });
@@ -120,13 +147,13 @@ app.post("/get-travel-guide", async (req, res) => {
   }
 });
 
+// 404 fallback
 app.use((req, res) => {
   res.status(404).json({ error: "Route not found" });
 });
 
+// Start server
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`✅ Server running on http://localhost:${PORT}`);
 });
-
-
