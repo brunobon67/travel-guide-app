@@ -1,63 +1,98 @@
-require("dotenv").config(); // ✅ Load environment variables
+require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const path = require("path");
-const helmet = require("helmet"); // ✅ Security headers
-const morgan = require("morgan"); // ✅ Request logging
+const helmet = require("helmet");
+const morgan = require("morgan");
+const session = require("express-session");
+const bcrypt = require("bcrypt");
 const getTravelGuide = require("./chatgpt");
 
 const app = express();
-
-// ✅ In-Memory Cache (Consider Redis for Production)
 const cache = {};
 
-// ✅ CORS Configuration to allow Netlify frontend
 const allowedOrigins = [
-  "https://travel-app-guide.netlify.app",  // ✅ Replace with your actual Netlify frontend URL
-  "http://localhost:3000" // ✅ Allow local development
+  "https://travel-app-guide.netlify.app",
+  "http://localhost:3000"
 ];
 
 app.use(cors({
   origin: allowedOrigins,
   methods: ["GET", "POST"],
-  allowedHeaders: ["Content-Type"]
+  credentials: true
 }));
 
-// ✅ Security Middleware
 app.use(helmet());
 app.use(morgan("dev"));
 app.use(bodyParser.json());
 
-// ✅ Serve Static Files
+app.use(session({
+  secret: process.env.SESSION_SECRET || "supersecret",
+  resave: false,
+  saveUninitialized: false,
+  cookie: { secure: false }
+}));
+
 app.use(express.static("public"));
 
-// ✅ Landing Page Route
+// 🔐 Hardcoded test user
+const users = [
+  {
+    email: "test@example.com",
+    passwordHash: "$2b$10$HD5R5GtVw8vWzQUgdgCGxO7jw1XEo71mFkfUP7eOXD9CnApWFXpEy" // password: 123456
+  }
+];
+
+// Routes
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "landing.html"));
 });
 
-// ✅ Main App Page (Itinerary Form)
+app.get("/login", (req, res) => {
+  res.sendFile(path.join(__dirname, "login.html"));
+});
+
 app.get("/app", (req, res) => {
   res.sendFile(path.join(__dirname, "index.html"));
 });
 
-// ✅ API Route to Generate Travel Guide (With Streaming & Caching)
+app.post("/login", async (req, res) => {
+  const { email, password } = req.body;
+  const user = users.find(u => u.email === email);
+  if (!user || !(await bcrypt.compare(password, user.passwordHash))) {
+    return res.status(401).json({ error: "Invalid credentials" });
+  }
+
+  req.session.user = { email: user.email };
+  res.json({ message: "Login successful" });
+});
+
+app.post("/logout", (req, res) => {
+  req.session.destroy();
+  res.json({ message: "Logged out" });
+});
+
+app.get("/session-status", (req, res) => {
+  if (req.session.user) {
+    res.json({ loggedIn: true, user: req.session.user });
+  } else {
+    res.json({ loggedIn: false });
+  }
+});
+
 app.post("/get-travel-guide", async (req, res) => {
-  console.log("📩 Received Request:", req.body);
+  if (!req.session.user) {
+    return res.status(401).json({ error: "Unauthorized. Please log in first." });
+  }
 
   const { preferences } = req.body;
   if (!preferences || !preferences.destination || !preferences.duration || !preferences.accommodation) {
-    console.warn("⚠️ Missing Required Fields:", preferences);
     return res.status(400).json({ error: "Please fill in all required fields." });
   }
 
-  // ✅ Generate a unique cache key for the request
   const cacheKey = JSON.stringify(preferences);
-
-  // ✅ Check if response exists in cache
   if (cache[cacheKey]) {
-    console.log("✅ Using cached response");
     return res.json({ guide: cache[cacheKey] });
   }
 
@@ -66,15 +101,17 @@ app.post("/get-travel-guide", async (req, res) => {
     res.setHeader("Cache-Control", "no-cache");
     res.setHeader("Connection", "keep-alive");
 
-    const response = await getTravelGuide(preferences, true); // Streaming enabled
+    const response = await getTravelGuide(preferences, true);
 
+    let fullResponse = "";
     for await (const chunk of response) {
-      res.write(chunk.choices[0].delta?.content || "");  // ✅ Send data progressively
+      const content = chunk.choices[0].delta?.content || "";
+      res.write(content);
+      fullResponse += content;
     }
 
-    // ✅ Store result in cache (expires in 1 hour)
-    cache[cacheKey] = response;
-    setTimeout(() => delete cache[cacheKey], 3600000); // Cache expires in 1 hour
+    cache[cacheKey] = fullResponse;
+    setTimeout(() => delete cache[cacheKey], 3600000);
 
     res.end();
   } catch (error) {
@@ -83,12 +120,10 @@ app.post("/get-travel-guide", async (req, res) => {
   }
 });
 
-// ✅ Handle 404 Errors for Undefined Routes
-app.use((req, res, next) => {
+app.use((req, res) => {
   res.status(404).json({ error: "Route not found" });
 });
 
-// ✅ Dynamic Port for Deployment (Render, Vercel, Heroku)
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`✅ Server running on http://localhost:${PORT}`);
