@@ -130,5 +130,5 @@ app.get("/register", (req, res) => res.redirect("/register.html"));
 // 🌍 Travel guide
 app.post("/get-travel-guide", async (req, res) => {
   if (!req.session.user) {
-    return res.status(401).json({ error: "Unauthorized. Please log in first
+return res.status(401).json({ error: "Unauthorized. Please log in first" });
 
