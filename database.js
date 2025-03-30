@@ -1,10 +1,14 @@
+cconst fs = require("fs");
 const path = require("path");
 const Database = require("better-sqlite3");
 
-const isRender = process.env.RENDER === "true";
-const dbPath = isRender
-  ? "/data/users.db"                       // ✅ Render persistent path
-  : path.join(__dirname, "data/users.db"); // ✅ Local fallback
+const dbFolder = path.join(__dirname, "data");
+const dbPath = path.join(dbFolder, "users.db");
+
+// ✅ Make sure 'data/' folder exists
+if (!fs.existsSync(dbFolder)) {
+  fs.mkdirSync(dbFolder, { recursive: true });
+}
 
 const db = new Database(dbPath);
 
@@ -18,5 +22,6 @@ db.prepare(`
 `).run();
 
 module.exports = db;
+
 
 
