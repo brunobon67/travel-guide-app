@@ -1,49 +1,33 @@
-let isLogin = true;
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("authForm");
+  const status = document.getElementById("loginStatus");
 
-document.getElementById("toggleForm").addEventListener("click", (e) => {
-  e.preventDefault();
-  isLogin = !isLogin;
+  if (!form) {
+    console.error("Login form not found!");
+    return;
+  }
 
-  document.getElementById("formTitle").innerText = isLogin ? "🔐 Login" : "🆕 Register";
-  document.getElementById("submitButton").innerText = isLogin ? "Log In" : "Register";
-  document.getElementById("toggleForm").innerText = isLogin ? "Need to register?" : "Already have an account?";
-  document.getElementById("nameField").style.display = isLogin ? "none" : "block";
-  document.getElementById("loginStatus").innerText = "";
-});
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-document.getElementById("authForm").addEventListener("submit", async (e) => {
-  e.preventDefault();
-
-  const endpoint = isLogin ? "/login" : "/register";
-  const payload = {
-    email: document.getElementById("email").value,
-    password: document.getElementById("password").value
-  };
-  if (!isLogin) payload.name = document.getElementById("name").value;
-
-  try {
-    const res = await fetch(endpoint, {
+    const res = await fetch("/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       credentials: "include",
-      body: JSON.stringify(payload)
+      body: JSON.stringify({
+        email: document.getElementById("email").value,
+        password: document.getElementById("password").value
+      })
     });
 
     const data = await res.json();
-    
-if (res.ok) {
-  if (isLogin) {
-    window.location.href = "/app";
-  } else {
-    window.location.href = "/login";
-  }
-}
 
-    else {
-      document.getElementById("loginStatus").innerText = data.error || "Something went wrong.";
+    if (res.ok) {
+      window.location.href = "/app";
+    } else {
+      status.innerText = data.error || "Invalid credentials";
     }
-  } catch (err) {
-    document.getElementById("loginStatus").innerText = "Network error. Please try again.";
-  }
+  });
 });
+
 
