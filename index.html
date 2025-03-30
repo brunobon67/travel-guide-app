@@ -1,91 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Travel Guide Planner</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Travel Guide Planner</title>
+  <link rel="stylesheet" href="/styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet" />
 </head>
-
-    <button id="logoutButton">Logout</button>
-
 <body>
+  <button id="logoutButton">Logout</button>
 
-    <div class="container">
-        <h1>Plan Your Perfect Trip</h1>
-        
-        <form id="preferencesForm" class="trip-form">
-            <label for="destination">Destination</label>
-            <input type="text" id="destination" placeholder="E.g., Paris, Tokyo, New York" required>
+  <div class="container">
+    <h1>Plan Your Perfect Trip</h1>
+    
+    <form id="preferencesForm" class="trip-form">
+      <label for="destination">Destination</label>
+      <input type="text" id="destination" placeholder="E.g., Paris, Tokyo, New York" required />
 
-            <label for="duration">Duration (days)</label>
-            <input type="number" id="duration" placeholder="E.g., 7" required>
+      <label for="duration">Duration (days)</label>
+      <input type="number" id="duration" placeholder="E.g., 7" required />
 
-            <label for="accommodation">Accommodation Type</label>
-            <select id="accommodation">
-                <option value="Hotel">Hotel</option>
-                <option value="Airbnb">Airbnb</option>
-                <option value="Hostel">Hostel</option>
-                <option value="Resort">Resort</option>
-            </select>
+      <label for="accommodation">Accommodation Type</label>
+      <select id="accommodation">
+        <option value="Hotel">Hotel</option>
+        <option value="Airbnb">Airbnb</option>
+        <option value="Hostel">Hostel</option>
+        <option value="Resort">Resort</option>
+      </select>
 
-            <label for="preferredActivities">Preferred Activities</label>
-            <select id="preferredActivities">
-                <option value="Sightseeing">Sightseeing</option>
-                <option value="Hiking">Hiking</option>
-                <option value="Beach Relaxation">Beach Relaxation</option>
-                <option value="Food Tasting">Food Tasting</option>
-                <option value="Adventure Sports">Adventure Sports</option>
-                <option value="Shopping">Shopping</option>
-                <option value="Relax">Relax</option>  <!-- New Option -->
-                <option value="Cultural Events">Cultural Events</option>  <!-- New Option -->
-                <option value="City Tour">City Tour</option>  <!-- New Option -->
-            </select>
+      <label for="preferredActivities">Preferred Activities</label>
+      <select id="preferredActivities">
+        <option value="Sightseeing">Sightseeing</option>
+        <option value="Hiking">Hiking</option>
+        <option value="Beach Relaxation">Beach Relaxation</option>
+        <option value="Food Tasting">Food Tasting</option>
+        <option value="Adventure Sports">Adventure Sports</option>
+        <option value="Shopping">Shopping</option>
+        <option value="Relax">Relax</option>
+        <option value="Cultural Events">Cultural Events</option>
+        <option value="City Tour">City Tour</option>
+      </select>
 
-            <label for="nightlife">Nightlife Preference</label>
-            <select id="nightlife">
-                <option value="Quiet Evenings">Quiet Evenings</option>
-                <option value="Bars and Pubs">Bars and Pubs</option>
-                <option value="Nightclubs">Nightclubs</option>
-                <option value="Cultural Night Events">Cultural Night Events</option>
-            </select>
+      <label for="nightlife">Nightlife Preference</label>
+      <select id="nightlife">
+        <option value="Quiet Evenings">Quiet Evenings</option>
+        <option value="Bars and Pubs">Bars and Pubs</option>
+        <option value="Nightclubs">Nightclubs</option>
+        <option value="Cultural Night Events">Cultural Night Events</option>
+      </select>
 
-            <button type="submit">Generate Travel Guide</button>
-        </form>
+      <button type="submit">Generate Travel Guide</button>
+    </form>
 
-        <!-- Button: Go to My Saved Plans (Always Visible) -->
-        <div id="viewSavedPlansBtnContainer">
-            <button id="viewSavedPlansBtn" onclick="window.location.href='saved-plans.html'">📂 Go to My Saved Plans</button>
-        </div>
-
-        <!-- Container for displaying the answer, initially hidden -->
-        <div id="responseContainer" class="response-container"></div>
-
-        <!-- Save My Plan Button (Initially Hidden) -->
-        <div id="savePlanBtnContainer">
-            <button id="savePlanBtn" style="display:none;">💾 Save My Plan</button>
-        </div>
+    <div id="viewSavedPlansBtnContainer">
+      <button id="viewSavedPlansBtn" onclick="window.location.href='saved-plans.html'">
+        📂 Go to My Saved Plans
+      </button>
     </div>
-<script>
-  fetch("/session-status", { credentials: "include" })
-    .then(res => res.json())
-    .then(data => {
-      if (!data.loggedIn) {
-        window.location.href = "/login";
-      }
-    });
-</script>
-<script>
-  fetch("/session-status", { credentials: "include" })
-    .then(res => res.json())
-    .then(data => {
-      if (!data.loggedIn) {
-        window.location.href = "/login";
-      }
-    });
-</script>
 
+    <div id="responseContainer" class="response-container"></div>
+
+    <div id="savePlanBtnContainer">
+      <button id="savePlanBtn" style="display:none;">💾 Save My Plan</button>
+    </div>
+  </div>
+
+  <!-- ✅ External script (CSP safe) -->
+  <script src="/script.js"></script>
 </body>
 </html>
-
