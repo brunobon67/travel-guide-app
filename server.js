@@ -8,18 +8,10 @@ const morgan = require("morgan");
 const session = require("express-session");
 const bcrypt = require("bcrypt");
 const getTravelGuide = require("./chatgpt");
+const db = require("./database"); // ✅ SQLite DB
 
 const app = express();
-
-// In-memory cache and user store (temporary)
-const cache = {};
-let users = [
-  {
-    name: "Demo User",
-    email: "test@example.com",
-    passwordHash: "$2b$10$HD5R5GtVw8vWzQUgdgCGxO7jw1XEo71mFkfUP7eOXD9CnApWFXpEy" // password: 123456
-  }
-];
+const cache = {}; // Temporary cache for travel guides
 
 // CORS config
 const allowedOrigins = [
@@ -38,7 +30,6 @@ app.use(morgan("dev"));
 app.use(bodyParser.json());
 app.use(express.static("public"));
 
-// Session config
 app.use(session({
   secret: process.env.SESSION_SECRET || "supersecret",
   resave: false,
@@ -46,29 +37,28 @@ app.use(session({
   cookie: { secure: false }
 }));
 
-// 🔐 Register
+// 🔐 Register (uses SQLite)
 app.post("/register", async (req, res) => {
   const { name, email, password } = req.body;
   if (!email || !password || !name) {
     return res.status(400).json({ error: "All fields are required." });
   }
 
-  const existingUser = users.find(u => u.email === email);
+  const existingUser = db.prepare("SELECT * FROM users WHERE email = ?").get(email);
   if (existingUser) {
     return res.status(409).json({ error: "User already exists." });
   }
 
   const passwordHash = await bcrypt.hash(password, 10);
-  users.push({ name, email, passwordHash });
+  db.prepare("INSERT INTO users (name, email, passwordHash) VALUES (?, ?, ?)").run(name, email, passwordHash);
 
-  // Don't auto-login after register anymore
   res.json({ message: "Registration successful" });
 });
 
-// 🔐 Login
+// 🔐 Login (uses SQLite)
 app.post("/login", async (req, res) => {
   const { email, password } = req.body;
-  const user = users.find(u => u.email === email);
+  const user = db.prepare("SELECT * FROM users WHERE email = ?").get(email);
   if (!user || !(await bcrypt.compare(password, user.passwordHash))) {
     return res.status(401).json({ error: "Invalid credentials" });
   }
@@ -92,7 +82,7 @@ app.get("/session-status", (req, res) => {
   }
 });
 
-// 🔐 Root route — secure it
+// 🔐 Root route
 app.get("/", (req, res) => {
   if (!req.session.user) {
     return res.redirect("/login");
@@ -100,25 +90,19 @@ app.get("/", (req, res) => {
   res.redirect("/app");
 });
 
-// 🔐 App route — show main app only if logged in
+// 🔐 Protected app
 app.get("/app", (req, res) => {
   if (!req.session.user) {
     return res.redirect("/login");
   }
-  res.sendFile(path.join(__dirname, "index.html")); // ✅ correct location
+  res.sendFile(path.join(__dirname, "index.html"));
 });
 
+// Serve static pages
+app.get("/login", (req, res) => res.redirect("/login.html"));
+app.get("/register", (req, res) => res.redirect("/register.html"));
 
-// Serve login and register pages
-app.get("/login", (req, res) => {
-  res.redirect("/login.html");
-});
-
-app.get("/register", (req, res) => {
-  res.redirect("/register.html");
-});
-
-// 🌍 Travel guide generation (protected)
+// 🌍 Travel guide generation
 app.post("/get-travel-guide", async (req, res) => {
   if (!req.session.user) {
     return res.status(401).json({ error: "Unauthorized. Please log in first." });
@@ -158,7 +142,7 @@ app.post("/get-travel-guide", async (req, res) => {
   }
 });
 
-// 404 fallback
+// Fallback route
 app.use((req, res) => {
   res.status(404).json({ error: "Route not found" });
 });
