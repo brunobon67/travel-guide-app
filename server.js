@@ -25,6 +25,7 @@ app.use(cors({
   credentials: true
 }));
 
+// ✅ Updated CSP to allow Firebase scripts, styles, and inline styles
 app.use(
   helmet.contentSecurityPolicy({
     useDefaults: true,
@@ -34,13 +35,17 @@ app.use(
         "https://www.gstatic.com",
         "https://www.googleapis.com"
       ],
+      "style-src": [
+        "'self'",
+        "'unsafe-inline'",
+        "https://fonts.googleapis.com"
+      ],
       "connect-src": [
         "'self'",
         "https://www.googleapis.com",
         "https://firebase.googleapis.com"
       ],
-      "style-src": ["'self'", "https://fonts.googleapis.com"],
-      "font-src": ["'self'", "https://fonts.gstatic.com"],
+      "font-src": ["'self'", "https://fonts.gstatic.com"]
     }
   })
 );
