@@ -54,6 +54,18 @@
       color: red;
       text-align: center;
     }
+
+    a {
+      display: block;
+      text-align: center;
+      margin-top: 10px;
+      text-decoration: none;
+      color: #2a9d8f;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
@@ -67,46 +79,11 @@
       <button type="submit">Register</button>
     </form>
     <p id="status"></p>
-    <p style="text-align:center;"><a href="/login.html">Already have an account? Login</a></p>
+    <a href="/login.html">Already have an account? Login</a>
   </div>
 
-  <script>
-    document.getElementById("registerForm").addEventListener("submit", async function (e) {
-      e.preventDefault();
-
-      const password = document.getElementById("password").value;
-      const confirmPassword = document.getElementById("confirmPassword").value;
-      const status = document.getElementById("status");
-
-      if (password !== confirmPassword) {
-        status.textContent = "Passwords do not match.";
-        return;
-      }
-
-      const res = await fetch("/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        credentials: "include",
-        body: JSON.stringify({
-          name: document.getElementById("name").value,
-          email: document.getElementById("email").value,
-          password: password
-        })
-      });
-
-      const data = await res.json();
-      if (res.ok) {
-        window.location.href = "/login";
-      } else {
-        status.textContent = data.error || "Registration failed.";
-      }
-    });
-  </script>
-
+  <!-- ✅ Replaced inline script with external file to avoid CSP violation -->
   <script src="register.js"></script>
-</body>
-</html>
-
 </body>
 </html>
 
