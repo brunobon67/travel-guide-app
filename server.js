@@ -25,7 +25,7 @@ app.use(cors({
   credentials: true
 }));
 
-// ✅ Content Security Policy with Firebase Auth support
+// ✅ Content Security Policy
 app.use(
   helmet.contentSecurityPolicy({
     useDefaults: true,
@@ -59,7 +59,10 @@ app.use(session({
   secret: process.env.SESSION_SECRET || "supersecret",
   resave: false,
   saveUninitialized: false,
-  cookie: { secure: false }
+  cookie: {
+    secure: false, // ✅ Change to true + 'sameSite: none' if you're using HTTPS + cross-domain
+    httpOnly: true
+  }
 }));
 
 // 🔐 Register route (SQLite)
@@ -77,6 +80,7 @@ app.post("/register", async (req, res) => {
   const passwordHash = await bcrypt.hash(password, 10);
   db.prepare("INSERT INTO users (name, email, passwordHash) VALUES (?, ?, ?)").run(name, email, passwordHash);
 
+  console.log("✅ Registered new user:", email);
   res.json({ message: "Registration successful" });
 });
 
@@ -84,11 +88,21 @@ app.post("/register", async (req, res) => {
 app.post("/login", async (req, res) => {
   const { email, password } = req.body;
   const user = db.prepare("SELECT * FROM users WHERE email = ?").get(email);
-  if (!user || !(await bcrypt.compare(password, user.passwordHash))) {
+
+  if (!user) {
+    console.log("❌ Login failed: user not found:", email);
+    return res.status(401).json({ error: "Invalid credentials" });
+  }
+
+  const match = await bcrypt.compare(password, user.passwordHash);
+
+  if (!match) {
+    console.log("❌ Login failed: wrong password for:", email);
     return res.status(401).json({ error: "Invalid credentials" });
   }
 
   req.session.user = { name: user.name, email: user.email };
+  console.log("✅ Logged in user:", email);
   res.json({ message: "Login successful" });
 });
 
