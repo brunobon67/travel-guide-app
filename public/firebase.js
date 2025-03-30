@@ -2,16 +2,18 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import { getAuth } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 
-// ✅ Paste your Firebase config here
+// ✅ Your Firebase config
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_PROJECT.appspot.com",
-  messagingSenderId: "YOUR_SENDER_ID",
-  appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyBTU9waiz51hZcBM3SeV23sVkZZzDPn7XA",
+  authDomain: "travel-guide-11210.firebaseapp.com",
+  projectId: "travel-guide-11210",
+  storageBucket: "travel-guide-11210.appspot.com", // ❗️fixed .app → .app**spot**
+  messagingSenderId: "578059026982",
+  appId: "1:578059026982:web:f0b3082c9c2f5ea0069ce7",
+  measurementId: "G-6H7KKPNTQ5"
 };
 
+// ✅ Initialize Firebase App + Auth
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
