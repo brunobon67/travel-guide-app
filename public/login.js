@@ -1,20 +1,36 @@
-import { auth } from "./firebase.js";
-import {
-  signInWithEmailAndPassword,
-} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("login-form");
 
-document.getElementById("login-form").addEventListener("submit", async (e) => {
-  e.preventDefault();
+  if (!form) return;
 
-  const email = document.getElementById("email").value.trim();
-  const password = document.getElementById("password").value.trim();
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-  try {
-    await signInWithEmailAndPassword(auth, email, password);
-    window.location.href = "/index.html"; // Or your protected app page
-  } catch (err) {
-    alert("Login failed: " + err.message);
-  }
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
+
+    try {
+      const response = await fetch("/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        credentials: "include", // ✅ required for sessions
+        body: JSON.stringify({ email, password })
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        // ✅ Login success – redirect to app
+        window.location.href = "/app";
+      } else {
+        alert(data.error || "Login failed. Check your credentials.");
+      }
+    } catch (err) {
+      console.error("Login error:", err);
+      alert("Login error. Try again later.");
+    }
+  });
 });
-
 
