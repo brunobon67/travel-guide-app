@@ -25,7 +25,26 @@ app.use(cors({
   credentials: true
 }));
 
-app.use(helmet());
+app.use(
+  helmet.contentSecurityPolicy({
+    useDefaults: true,
+    directives: {
+      "script-src": [
+        "'self'",
+        "https://www.gstatic.com",
+        "https://www.googleapis.com"
+      ],
+      "connect-src": [
+        "'self'",
+        "https://www.googleapis.com",
+        "https://firebase.googleapis.com"
+      ],
+      "style-src": ["'self'", "https://fonts.googleapis.com"],
+      "font-src": ["'self'", "https://fonts.gstatic.com"],
+    }
+  })
+);
+
 app.use(morgan("dev"));
 app.use(bodyParser.json());
 app.use(express.static("public"));
