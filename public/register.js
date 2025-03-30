@@ -1,22 +1,33 @@
-document.getElementById("registerForm").addEventListener("submit", async function (e) {
-  e.preventDefault();
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("registerForm");
+  const status = document.getElementById("status");
 
-  const res = await fetch("/register", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    credentials: "include",
-    body: JSON.stringify({
-      name: document.getElementById("name").value,
-      email: document.getElementById("email").value,
-      password: document.getElementById("password").value
-    })
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    const confirmPassword = document.getElementById("confirmPassword").value;
+
+    if (password !== confirmPassword) {
+      status.textContent = "Passwords do not match.";
+      return;
+    }
+
+    const res = await fetch("/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+      body: JSON.stringify({ name, email, password })
+    });
+
+    const data = await res.json();
+
+    if (res.ok) {
+      window.location.href = "/login"; // ✅ Send to login after registration
+    } else {
+      status.textContent = data.error || "Registration failed.";
+    }
   });
-
-  const data = await res.json();
-
-  if (res.ok) {
-    window.location.href = "/app"; // Redirect to main app if success
-  } else {
-    document.getElementById("status").innerText = data.error || "Registration failed.";
-  }
 });
