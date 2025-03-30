@@ -11,7 +11,7 @@ const getTravelGuide = require("./chatgpt");
 
 const app = express();
 
-// In-memory cache and user store (for development only)
+// In-memory cache and user store (temporary)
 const cache = {};
 let users = [
   {
@@ -36,11 +36,9 @@ app.use(cors({
 app.use(helmet());
 app.use(morgan("dev"));
 app.use(bodyParser.json());
-
-// ✅ Serve static files
 app.use(express.static("public"));
 
-// ✅ Session middleware
+// Session config
 app.use(session({
   secret: process.env.SESSION_SECRET || "supersecret",
   resave: false,
@@ -63,7 +61,7 @@ app.post("/register", async (req, res) => {
   const passwordHash = await bcrypt.hash(password, 10);
   users.push({ name, email, passwordHash });
 
-  req.session.user = { name, email };
+  // Don't auto-login after register anymore
   res.json({ message: "Registration successful" });
 });
 
@@ -94,25 +92,32 @@ app.get("/session-status", (req, res) => {
   }
 });
 
-// 🔐 Serve app (only if logged in)
+// 🔐 Root route — secure it
+app.get("/", (req, res) => {
+  if (!req.session.user) {
+    return res.redirect("/login");
+  }
+  res.redirect("/app");
+});
+
+// 🔐 App route — show main app only if logged in
 app.get("/app", (req, res) => {
   if (!req.session.user) {
-    return res.redirect("/login.html");
+    return res.redirect("/login");
   }
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
-// ✅ Serve register.html explicitly (to avoid CSP issues or misroutes)
-app.get("/register", (req, res) => {
-  res.redirect("/register.html");
-});
-
-// ✅ Serve login.html explicitly
+// Serve login and register pages
 app.get("/login", (req, res) => {
   res.redirect("/login.html");
 });
 
-// 🧠 Travel guide (protected)
+app.get("/register", (req, res) => {
+  res.redirect("/register.html");
+});
+
+// 🌍 Travel guide generation (protected)
 app.post("/get-travel-guide", async (req, res) => {
   if (!req.session.user) {
     return res.status(401).json({ error: "Unauthorized. Please log in first." });
