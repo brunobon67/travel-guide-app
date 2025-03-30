@@ -105,7 +105,8 @@ app.get("/app", (req, res) => {
   if (!req.session.user) {
     return res.redirect("/login");
   }
-  res.sendFile(path.join(__dirname, "public", "index.html"));
+ res.sendFile(path.join(__dirname, "index.html"));
+
 });
 
 // Serve login and register pages
