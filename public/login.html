@@ -50,15 +50,21 @@
       cursor: pointer;
     }
 
-    #toggleForm {
-      text-align: center;
-      display: block;
-      margin-top: 10px;
-    }
-
     #loginStatus {
       color: red;
       text-align: center;
+    }
+
+    a {
+      display: block;
+      text-align: center;
+      margin-top: 10px;
+      text-decoration: none;
+      color: #2a9d8f;
+    }
+
+    a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
@@ -66,16 +72,12 @@
   <div class="auth-container">
     <h1>Your Travel Guide</h1>
     <form id="authForm">
-      <input type="text" id="email" placeholder="Email" required />
+      <input type="email" id="email" placeholder="Email" required />
       <input type="password" id="password" placeholder="Password" required />
-      <div id="nameField" style="display: none;">
-        <input type="text" id="name" placeholder="Full Name" />
-      </div>
       <button type="submit" id="submitButton">Log In</button>
     </form>
     <p id="loginStatus"></p>
-  <a href="/register.html">Need to register?</a>
-
+    <a href="/register.html">Need to register?</a>
   </div>
 
   <script src="login.js"></script>
