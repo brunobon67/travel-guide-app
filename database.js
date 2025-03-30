@@ -1,8 +1,9 @@
-// database.js
+const path = require("path");
 const Database = require("better-sqlite3");
-const db = new Database("users.db");
 
-// Create users table if it doesn't exist
+const dbPath = path.join("/data", "users.db"); // ✅ Persisted storage
+const db = new Database(dbPath);
+
 db.prepare(`
   CREATE TABLE IF NOT EXISTS users (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
