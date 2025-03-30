@@ -8,12 +8,12 @@ const morgan = require("morgan");
 const session = require("express-session");
 const bcrypt = require("bcrypt");
 const getTravelGuide = require("./chatgpt");
-const db = require("./database"); // ✅ SQLite DB
+const db = require("./database");
 
 const app = express();
-const cache = {}; // Temporary cache for travel guides
+const cache = {};
 
-// CORS config
+// CORS setup
 const allowedOrigins = [
   "https://travel-app-guide.netlify.app",
   "http://localhost:3000"
@@ -25,7 +25,7 @@ app.use(cors({
   credentials: true
 }));
 
-// ✅ Updated CSP to allow Firebase scripts, styles, and inline styles
+// ✅ Updated Content Security Policy with Firebase identity toolkit
 app.use(
   helmet.contentSecurityPolicy({
     useDefaults: true,
@@ -43,7 +43,8 @@ app.use(
       "connect-src": [
         "'self'",
         "https://www.googleapis.com",
-        "https://firebase.googleapis.com"
+        "https://firebase.googleapis.com",
+        "https://identitytoolkit.googleapis.com" // ✅ Added this
       ],
       "font-src": ["'self'", "https://fonts.gstatic.com"]
     }
@@ -61,7 +62,7 @@ app.use(session({
   cookie: { secure: false }
 }));
 
-// 🔐 Register (uses SQLite)
+// 🔐 Register route (legacy SQLite, can be removed if Firebase is used only)
 app.post("/register", async (req, res) => {
   const { name, email, password } = req.body;
   if (!email || !password || !name) {
@@ -79,7 +80,7 @@ app.post("/register", async (req, res) => {
   res.json({ message: "Registration successful" });
 });
 
-// 🔐 Login (uses SQLite)
+// 🔐 Login route (legacy SQLite, same here)
 app.post("/login", async (req, res) => {
   const { email, password } = req.body;
   const user = db.prepare("SELECT * FROM users WHERE email = ?").get(email);
@@ -97,7 +98,7 @@ app.post("/logout", (req, res) => {
   res.json({ message: "Logged out" });
 });
 
-// 🔍 Session status
+// Session status
 app.get("/session-status", (req, res) => {
   if (req.session.user) {
     res.json({ loggedIn: true, user: req.session.user });
@@ -106,7 +107,7 @@ app.get("/session-status", (req, res) => {
   }
 });
 
-// 🔐 Root route
+// Root
 app.get("/", (req, res) => {
   if (!req.session.user) {
     return res.redirect("/login");
@@ -114,7 +115,7 @@ app.get("/", (req, res) => {
   res.redirect("/app");
 });
 
-// 🔐 Protected app
+// 🔐 Protected route
 app.get("/app", (req, res) => {
   if (!req.session.user) {
     return res.redirect("/login");
@@ -122,57 +123,12 @@ app.get("/app", (req, res) => {
   res.sendFile(path.join(__dirname, "index.html"));
 });
 
-// Serve static pages
+// Serve login and register pages
 app.get("/login", (req, res) => res.redirect("/login.html"));
 app.get("/register", (req, res) => res.redirect("/register.html"));
 
-// 🌍 Travel guide generation
+// 🌍 Travel guide
 app.post("/get-travel-guide", async (req, res) => {
   if (!req.session.user) {
-    return res.status(401).json({ error: "Unauthorized. Please log in first." });
-  }
+    return res.status(401).json({ error: "Unauthorized. Please log in first
 
-  const { preferences } = req.body;
-  if (!preferences || !preferences.destination || !preferences.duration || !preferences.accommodation) {
-    return res.status(400).json({ error: "Please fill in all required fields." });
-  }
-
-  const cacheKey = JSON.stringify(preferences);
-  if (cache[cacheKey]) {
-    return res.json({ guide: cache[cacheKey] });
-  }
-
-  try {
-    res.setHeader("Content-Type", "text/event-stream");
-    res.setHeader("Cache-Control", "no-cache");
-    res.setHeader("Connection", "keep-alive");
-
-    const response = await getTravelGuide(preferences, true);
-
-    let fullResponse = "";
-    for await (const chunk of response) {
-      const content = chunk.choices[0].delta?.content || "";
-      res.write(content);
-      fullResponse += content;
-    }
-
-    cache[cacheKey] = fullResponse;
-    setTimeout(() => delete cache[cacheKey], 3600000);
-
-    res.end();
-  } catch (error) {
-    console.error("❌ OpenAI API Error:", error.message);
-    res.status(500).json({ error: "Error generating itinerary. Please try again later." });
-  }
-});
-
-// Fallback route
-app.use((req, res) => {
-  res.status(404).json({ error: "Route not found" });
-});
-
-// Start server
-const PORT = process.env.PORT || 3001;
-app.listen(PORT, () => {
-  console.log(`✅ Server running on http://localhost:${PORT}`);
-});
