@@ -1,14 +1,10 @@
-const fs = require("fs");
 const path = require("path");
 const Database = require("better-sqlite3");
 
-const dbFolder = path.join(__dirname, "data");
-const dbPath = path.join(dbFolder, "users.db");
-
-// Make sure ./data exists before creating the database
-if (!fs.existsSync(dbFolder)) {
-  fs.mkdirSync(dbFolder, { recursive: true });
-}
+// ✅ Use /data on Render to persist users.db
+const dbPath = process.env.RENDER === "true"
+  ? "/data/users.db"
+  : path.join(__dirname, "data", "users.db");
 
 const db = new Database(dbPath);
 
