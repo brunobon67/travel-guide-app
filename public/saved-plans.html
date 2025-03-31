@@ -1,46 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Saved Travel Plans</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <title>My Saved Travel Plans</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/styles.css" />
+  <style>
+    .plans-container {
+      max-width: 800px;
+      margin: 80px auto;
+      padding: 20px;
+    }
+
+    .plan-card {
+      background-color: #f9f9f9;
+      border-radius: 6px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      padding: 20px;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .plan-card h3 {
+      margin-top: 0;
+      font-size: 18px;
+    }
+
+    .plan-card small {
+      color: #888;
+      font-size: 12px;
+    }
+
+    .plan-card button {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background-color: #e74c3c;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+
+    .back-button {
+      display: block;
+      margin: 20px 0;
+      text-align: center;
+    }
+
+    .back-button a {
+      background-color: #3498db;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+
+    .back-button a:hover {
+      background-color: #2980b9;
+    }
+  </style>
 </head>
 <body>
-
-    <div class="container">
-        <h1>📂 Saved Travel Plans</h1>
-        <div id="savedPlansContainer"></div>
-        <button onclick="window.location.href='index.html'">⬅️ Back to Planner</button>
+  <div class="plans-container">
+    <h2>🧳 My Saved Travel Plans</h2>
+    <div id="plansList">Loading...</div>
+    <div class="back-button">
+      <a href="/app">← Back to App</a>
     </div>
+  </div>
 
-    <script>
-        function loadSavedPlans() {
-            let savedPlans = JSON.parse(localStorage.getItem("travelPlans")) || [];
-            const container = document.getElementById("savedPlansContainer");
-            container.innerHTML = savedPlans.length ? "" : "<p>No saved plans found.</p>";
-
-            savedPlans.forEach((plan, index) => {
-                const planDiv = document.createElement("div");
-                planDiv.classList.add("saved-plan");
-                planDiv.innerHTML = `
-                    <h3>${plan.destination} (Saved on ${plan.date})</h3>
-                    <p>${plan.plan.replace(/\n/g, "<br>")}</p>
-                    <button onclick="deletePlan(${index})">🗑️ Delete</button>
-                `;
-                container.appendChild(planDiv);
-            });
-        }
-
-        function deletePlan(index) {
-            let savedPlans = JSON.parse(localStorage.getItem("travelPlans"));
-            savedPlans.splice(index, 1);
-            localStorage.setItem("travelPlans", JSON.stringify(savedPlans));
-            loadSavedPlans();
-        }
-
-        document.addEventListener("DOMContentLoaded", loadSavedPlans);
-    </script>
-
+  <script type="module" src="/saved-plans.js"></script>
 </body>
 </html>
