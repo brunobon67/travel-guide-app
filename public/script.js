@@ -117,3 +117,39 @@ if (logoutBtn) {
     }
   });
 }
+
+import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+import { app } from "./firebase.js";
+
+const auth = getAuth(app);
+
+// Toggle dropdown
+document.getElementById("userMenuToggle")?.addEventListener("click", () => {
+  const dropdown = document.getElementById("userDropdown");
+  dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+});
+
+// Logout logic
+document.getElementById("logout-btn")?.addEventListener("click", async () => {
+  try {
+    await signOut(auth);
+    window.location.href = "/login";
+  } catch (error) {
+    console.error("Logout error", error);
+  }
+});
+
+// Optional: profile & plans handlers
+document.getElementById("profile-link")?.addEventListener("click", () => {
+  alert("🚧 Coming soon: Account Info page!");
+});
+
+document.getElementById("plans-link")?.addEventListener("click", () => {
+  alert("🚧 Coming soon: Saved Travel Plans!");
+});
+
+// Auth check (keep this!)
+onAuthStateChanged(auth, (user) => {
+  if (!user) window.location.href = "/login";
+});
+
