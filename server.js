@@ -5,10 +5,7 @@ const bodyParser = require("body-parser");
 const path = require("path");
 const helmet = require("helmet");
 const morgan = require("morgan");
-const session = require("express-session");
-const bcrypt = require("bcrypt");
 const getTravelGuide = require("./chatgpt");
-const db = require("./database");
 
 const app = express();
 const cache = {};
@@ -25,7 +22,7 @@ app.use(cors({
   credentials: true
 }));
 
-// ✅ Content Security Policy
+// ✅ Content Security Policy (for Firebase + fonts)
 app.use(
   helmet.contentSecurityPolicy({
     useDefaults: true,
@@ -55,98 +52,14 @@ app.use(morgan("dev"));
 app.use(bodyParser.json());
 app.use(express.static("public"));
 
-app.use(session({
-  secret: process.env.SESSION_SECRET || "supersecret",
-  resave: false,
-  saveUninitialized: false,
-  cookie: {
-    secure: false, // ✅ Change to true + 'sameSite: none' if you're using HTTPS + cross-domain
-    httpOnly: true
-  }
-}));
-
-// 🔐 Register route (SQLite)
-app.post("/register", async (req, res) => {
-  const { name, email, password } = req.body;
-  if (!email || !password || !name) {
-    return res.status(400).json({ error: "All fields are required." });
-  }
-
-  const existingUser = db.prepare("SELECT * FROM users WHERE email = ?").get(email);
-  if (existingUser) {
-    return res.status(409).json({ error: "User already exists." });
-  }
-
-  const passwordHash = await bcrypt.hash(password, 10);
-  db.prepare("INSERT INTO users (name, email, passwordHash) VALUES (?, ?, ?)").run(name, email, passwordHash);
-
-  console.log("✅ Registered new user:", email);
-  res.json({ message: "Registration successful" });
-});
-
-// 🔐 Login route
-app.post("/login", async (req, res) => {
-  const { email, password } = req.body;
-  const user = db.prepare("SELECT * FROM users WHERE email = ?").get(email);
-
-  if (!user) {
-    console.log("❌ Login failed: user not found:", email);
-    return res.status(401).json({ error: "Invalid credentials" });
-  }
-
-  const match = await bcrypt.compare(password, user.passwordHash);
-
-  if (!match) {
-    console.log("❌ Login failed: wrong password for:", email);
-    return res.status(401).json({ error: "Invalid credentials" });
-  }
-
-  req.session.user = { name: user.name, email: user.email };
-  console.log("✅ Logged in user:", email);
-  res.json({ message: "Login successful" });
-});
-
-// 🔓 Logout
-app.post("/logout", (req, res) => {
-  req.session.destroy();
-  res.json({ message: "Logged out" });
-});
-
-// Session status check
-app.get("/session-status", (req, res) => {
-  if (req.session.user) {
-    res.json({ loggedIn: true, user: req.session.user });
-  } else {
-    res.json({ loggedIn: false });
-  }
-});
-
-// Root path: redirect based on session
-app.get("/", (req, res) => {
-  if (!req.session.user) {
-    return res.redirect("/login");
-  }
-  res.redirect("/app");
-});
-
-// 🔐 Protected app page
-app.get("/app", (req, res) => {
-  if (!req.session.user) {
-    return res.redirect("/login");
-  }
-  res.sendFile(path.join(__dirname, "index.html"));
-});
-
-// Serve login and register pages
+// 📄 Serve public pages
+app.get("/", (req, res) => res.redirect("/login.html"));
+app.get("/app", (req, res) => res.sendFile(path.join(__dirname, "index.html")));
 app.get("/login", (req, res) => res.redirect("/login.html"));
 app.get("/register", (req, res) => res.redirect("/register.html"));
 
-// 🌍 Travel guide generator
+// 🌍 Travel guide generator — no session check (Firebase handles auth on frontend)
 app.post("/get-travel-guide", async (req, res) => {
-  if (!req.session.user) {
-    return res.status(401).json({ error: "Unauthorized. Please log in first" });
-  }
-
   const { preferences } = req.body;
   if (!preferences || !preferences.destination || !preferences.duration || !preferences.accommodation) {
     return res.status(400).json({ error: "Please fill in all required fields." });
