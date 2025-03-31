@@ -1,43 +1,36 @@
+import { auth, db } from "./firebase.js";
+import {
+  onAuthStateChanged,
+  signOut
+} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+import {
+  collection,
+  addDoc,
+  serverTimestamp
+} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-import { app } from "./firebase.js";
+let currentUser = null;
 
-const auth = getAuth(app);
-
+// ✅ Ensure the user is authenticated
 onAuthStateChanged(auth, (user) => {
-  if (!user) {
-    console.log("❌ Not authenticated. Redirecting to login...");
-    window.location.href = "/login";
-  } else {
+  if (user) {
+    currentUser = user;
     console.log("✅ Logged in as", user.email);
-    // Optionally display user's name/email on the page
+  } else {
+    console.log("❌ Not authenticated. Redirecting...");
+    window.location.href = "/login";
   }
 });
 
-
-// ✅ Session check
-fetch("/session-status", { credentials: "include" })
-  .then(res => res.json())
-  .then(data => {
-    if (!data.loggedIn) {
-      window.location.href = "/login";
-    } else {
-      const welcome = document.getElementById("welcomeMessage");
-      if (welcome) {
-        welcome.textContent = `Welcome, ${data.user.name}`;
-      }
-    }
-  });
-
-// ✅ Form submission handler
-document.getElementById("preferencesForm").addEventListener("submit", async function (event) {
+// ✅ Handle form submission and guide generation
+document.getElementById("preferencesForm")?.addEventListener("submit", async function (event) {
   event.preventDefault();
 
   const responseContainer = document.getElementById("responseContainer");
   responseContainer.innerHTML = `<p style="color: #2a9d8f; font-weight: bold;">⏳ Generating your travel guide...</p>`;
   responseContainer.style.display = "block";
 
-  const formData = {
+  const preferences = {
     destination: document.getElementById("destination").value,
     duration: document.getElementById("duration").value,
     accommodation: document.getElementById("accommodation").value,
@@ -50,7 +43,7 @@ document.getElementById("preferencesForm").addEventListener("submit", async func
       method: "POST",
       headers: { "Content-Type": "application/json" },
       credentials: "include",
-      body: JSON.stringify({ preferences: formData })
+      body: JSON.stringify({ preferences })
     });
 
     const reader = response.body.getReader();
@@ -66,19 +59,16 @@ document.getElementById("preferencesForm").addEventListener("submit", async func
         .replace(/\n/g, "<br>");
     }
 
-    document.getElementById("savePlanBtn").style.display = "inline-block";
-
-    document.getElementById("savePlanBtn").addEventListener("click", function () {
-      let savedPlans = JSON.parse(localStorage.getItem("travelPlans")) || [];
-      savedPlans.push({
-        destination: formData.destination,
-        plan: result.replace(/\n/g, "<br>"),
-        date: new Date().toLocaleDateString()
+    // ✅ Save plan to Firestore
+    if (currentUser && result.trim()) {
+      await addDoc(collection(db, "travelPlans"), {
+        uid: currentUser.uid,
+        createdAt: serverTimestamp(),
+        preferences,
+        guide: result
       });
-
-      localStorage.setItem("travelPlans", JSON.stringify(savedPlans));
-      alert("✅ Travel plan saved successfully!");
-    });
+      console.log("📥 Travel guide saved to Firestore");
+    }
 
   } catch (error) {
     console.error("❌ Error:", error);
@@ -89,47 +79,7 @@ document.getElementById("preferencesForm").addEventListener("submit", async func
   }
 });
 
-// ✅ Logout button
-const logoutButton = document.getElementById("logoutButton");
-if (logoutButton) {
-  logoutButton.addEventListener("click", async () => {
-    await fetch("/logout", {
-      method: "POST",
-      credentials: "include"
-    });
-    window.location.href = "/login";
-  });
-}
-
-import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-
-// 🔌 Logout button logic
-const logoutBtn = document.getElementById("logout-btn");
-
-if (logoutBtn) {
-  logoutBtn.addEventListener("click", async () => {
-    try {
-      await signOut(getAuth());
-      console.log("✅ Logged out");
-      window.location.href = "/login";
-    } catch (error) {
-      console.error("Logout failed:", error);
-    }
-  });
-}
-
-import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-import { app } from "./firebase.js";
-
-const auth = getAuth(app);
-
-// Toggle dropdown
-document.getElementById("userMenuToggle")?.addEventListener("click", () => {
-  const dropdown = document.getElementById("userDropdown");
-  dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
-});
-
-// Logout logic
+// ✅ Logout button (in dropdown)
 document.getElementById("logout-btn")?.addEventListener("click", async () => {
   try {
     await signOut(auth);
@@ -139,17 +89,18 @@ document.getElementById("logout-btn")?.addEventListener("click", async () => {
   }
 });
 
-// Optional: profile & plans handlers
+// ✅ Dropdown toggle logic
+document.getElementById("userMenuToggle")?.addEventListener("click", () => {
+  const dropdown = document.getElementById("userDropdown");
+  dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+});
+
+// ✅ Profile and plans links
 document.getElementById("profile-link")?.addEventListener("click", () => {
-  alert("🚧 Coming soon: Account Info page!");
+  window.location.href = "/profile.html";
 });
 
 document.getElementById("plans-link")?.addEventListener("click", () => {
-  alert("🚧 Coming soon: Saved Travel Plans!");
-});
-
-// Auth check (keep this!)
-onAuthStateChanged(auth, (user) => {
-  if (!user) window.location.href = "/login";
+  window.location.href = "/saved-plans.html";
 });
 
