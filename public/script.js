@@ -101,3 +101,19 @@ if (logoutButton) {
   });
 }
 
+import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+// 🔌 Logout button logic
+const logoutBtn = document.getElementById("logout-btn");
+
+if (logoutBtn) {
+  logoutBtn.addEventListener("click", async () => {
+    try {
+      await signOut(getAuth());
+      console.log("✅ Logged out");
+      window.location.href = "/login";
+    } catch (error) {
+      console.error("Logout failed:", error);
+    }
+  });
+}
