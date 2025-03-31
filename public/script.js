@@ -1,3 +1,20 @@
+
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+import { app } from "./firebase.js";
+
+const auth = getAuth(app);
+
+onAuthStateChanged(auth, (user) => {
+  if (!user) {
+    console.log("❌ Not authenticated. Redirecting to login...");
+    window.location.href = "/login";
+  } else {
+    console.log("✅ Logged in as", user.email);
+    // Optionally display user's name/email on the page
+  }
+});
+
+
 // ✅ Session check
 fetch("/session-status", { credentials: "include" })
   .then(res => res.json())
