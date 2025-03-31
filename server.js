@@ -1,28 +1,22 @@
-require("dotenv").config();
 const express = require("express");
-const cors = require("cors");
-const bodyParser = require("body-parser");
 const path = require("path");
 const helmet = require("helmet");
 const morgan = require("morgan");
-const getTravelGuide = require("./chatgpt");
+const dotenv = require("dotenv");
+
+dotenv.config();
 
 const app = express();
-const cache = {};
+const PORT = process.env.PORT || 3001;
 
-// CORS setup
-const allowedOrigins = [
-  "https://travel-app-guide.netlify.app",
-  "http://localhost:3000"
-];
+// ✅ Serve static files from public folder
+app.use(express.static(path.join(__dirname, "public")));
 
-app.use(cors({
-  origin: allowedOrigins,
-  methods: ["GET", "POST"],
-  credentials: true
-}));
+// ✅ Middleware
+app.use(express.json());
+app.use(morgan("dev"));
 
-// ✅ Content Security Policy (for Firebase + fonts)
+// ✅ Security headers including Firebase compatibility
 app.use(
   helmet.contentSecurityPolicy({
     useDefaults: true,
@@ -48,65 +42,31 @@ app.use(
   })
 );
 
-app.use(morgan("dev"));
-app.use(bodyParser.json());
-app.use(express.static("public"));
+// ✅ Route: login and register pages
+app.get("/login", (req, res) => res.sendFile(path.join(__dirname, "public", "login.html")));
+app.get("/register", (req, res) => res.sendFile(path.join(__dirname, "public", "register.html")));
 
-// 📄 Serve public pages
-app.get("/", (req, res) => res.redirect("/login.html"));
+// ✅ Route: main app (no session check — Firebase Auth handles auth)
 app.get("/app", (req, res) => {
-  if (!req.session?.user) {
-    return res.redirect("/login");
-  }
-  res.sendFile(path.join(__dirname, "public", "index.html")); // ✅ MUST point to public
+  res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
-app.get("/login", (req, res) => res.redirect("/login.html"));
-app.get("/register", (req, res) => res.redirect("/register.html"));
-
-// 🌍 Travel guide generator — no session check (Firebase handles auth on frontend)
-app.post("/get-travel-guide", async (req, res) => {
-  const { preferences } = req.body;
-  if (!preferences || !preferences.destination || !preferences.duration || !preferences.accommodation) {
-    return res.status(400).json({ error: "Please fill in all required fields." });
-  }
-
-  const cacheKey = JSON.stringify(preferences);
-  if (cache[cacheKey]) {
-    return res.json({ guide: cache[cacheKey] });
-  }
-
-  try {
-    res.setHeader("Content-Type", "text/event-stream");
-    res.setHeader("Cache-Control", "no-cache");
-    res.setHeader("Connection", "keep-alive");
-
-    const response = await getTravelGuide(preferences, true);
-
-    let fullResponse = "";
-    for await (const chunk of response) {
-      const content = chunk.choices[0].delta?.content || "";
-      res.write(content);
-      fullResponse += content;
-    }
-
-    cache[cacheKey] = fullResponse;
-    setTimeout(() => delete cache[cacheKey], 3600000);
-
-    res.end();
-  } catch (error) {
-    console.error("❌ OpenAI API Error:", error.message);
-    res.status(500).json({ error: "Error generating itinerary. Please try again later." });
-  }
+// ✅ Profile and Saved Plans (if needed)
+app.get("/profile", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "profile.html"));
 });
 
-// Catch-all 404
+app.get("/saved-plans", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "saved-plans.html"));
+});
+
+// ✅ Fallback 404
 app.use((req, res) => {
   res.status(404).json({ error: "Route not found" });
 });
 
-// Start the server
-const PORT = process.env.PORT || 3001;
+// ✅ Start server
 app.listen(PORT, () => {
   console.log(`✅ Server running on http://localhost:${PORT}`);
 });
+
