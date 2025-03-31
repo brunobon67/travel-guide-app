@@ -1,3 +1,8 @@
+import { auth } from "./firebase.js";
+import {
+  signInWithEmailAndPassword
+} from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("login-form");
 
@@ -10,27 +15,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const password = document.getElementById("password").value.trim();
 
     try {
-      const response = await fetch("/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        credentials: "include", // ✅ required for sessions
-        body: JSON.stringify({ email, password })
-      });
+      await signInWithEmailAndPassword(auth, email, password);
+      console.log("✅ Logged in!");
 
-      const data = await response.json();
-
-      if (response.ok) {
-        // ✅ Login success – redirect to app
-        window.location.href = "/app";
-      } else {
-        alert(data.error || "Login failed. Check your credentials.");
-      }
+      window.location.href = "/app";
     } catch (err) {
-      console.error("Login error:", err);
-      alert("Login error. Try again later.");
+      alert("❌ Login failed: " + err.message);
     }
   });
 });
+
 
