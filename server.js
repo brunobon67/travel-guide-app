@@ -54,7 +54,7 @@ app.use(express.static("public"));
 
 // 📄 Serve public pages
 app.get("/", (req, res) => res.redirect("/login.html"));
-app.get("/app", (req, res) => res.sendFile(path.join(__dirname, "index.html")));
+app.get("/app", (req, res) => res.sendFile(path.join(__dirname, "public", "index.html")));
 app.get("/login", (req, res) => res.redirect("/login.html"));
 app.get("/register", (req, res) => res.redirect("/register.html"));
 
