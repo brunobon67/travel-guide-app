@@ -55,15 +55,40 @@ document.getElementById("preferencesForm")?.addEventListener("submit", async fun
       if (done) break;
       result += decoder.decode(value);
      responseContainer.innerHTML = `
-  <div style="background: #f9f9f9; padding: 1rem; border-radius: 8px; font-size: 1rem; line-height: 1.6;">
+  <h2>Your Travel Guide</h2>
+  <div id="travel-guide-output" style="background: #f9f9f9; padding: 1rem; border-radius: 8px; font-size: 1rem; line-height: 1.6; margin-bottom: 1rem;">
     ${result
       .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
       .replace(/\n/g, "<br>")}
   </div>
+  <button id="saveGuideBtn" style="padding: 0.5rem 1rem; background: #2a9d8f; color: white; border: none; border-radius: 4px; cursor: pointer;">
+    💾 Save this guide
+  </button>
 `;
 
     }
 
+
+document.getElementById("saveGuideBtn")?.addEventListener("click", async () => {
+  try {
+    if (currentUser && result.trim()) {
+      await addDoc(collection(db, "travelPlans"), {
+        uid: currentUser.uid,
+        createdAt: serverTimestamp(),
+        preferences,
+        guide: result
+      });
+      alert("✅ Travel guide saved to your account!");
+    } else {
+      alert("⚠️ You must be logged in to save.");
+    }
+  } catch (err) {
+    console.error("Save error:", err);
+    alert("❌ Failed to save travel guide.");
+  }
+});
+
+    
     // ✅ Save plan to Firestore
     if (currentUser && result.trim()) {
       await addDoc(collection(db, "travelPlans"), {
