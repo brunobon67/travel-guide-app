@@ -78,7 +78,8 @@ app.post("/get-travel-guide", async (req, res) => {
   try {
     // Optional: if you want to stream (like SSE), you can extend this
     const response = await getTravelGuide(preferences);
-    res.json({ guide: response });
+res.json({ guide: response.choices[0].message.content });
+
   } catch (error) {
     console.error("❌ OpenAI API Error:", error.message);
     res.status(500).json({ error: "Error generating itinerary. Please try again later." });
