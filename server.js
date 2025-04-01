@@ -60,6 +60,33 @@ app.get("/saved-plans", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "saved-plans.html"));
 });
 
+const getTravelGuide = require("./chatgpt"); // Make sure you have this at the top
+
+// 🌍 Travel guide generator
+app.post("/get-travel-guide", async (req, res) => {
+  const { preferences } = req.body;
+
+  if (
+    !preferences ||
+    !preferences.destination ||
+    !preferences.duration ||
+    !preferences.accommodation
+  ) {
+    return res.status(400).json({ error: "Please fill in all required fields." });
+  }
+
+  try {
+    // Optional: if you want to stream (like SSE), you can extend this
+    const response = await getTravelGuide(preferences);
+    res.json({ guide: response });
+  } catch (error) {
+    console.error("❌ OpenAI API Error:", error.message);
+    res.status(500).json({ error: "Error generating itinerary. Please try again later." });
+  }
+});
+
+
+
 // ✅ Fallback 404
 app.use((req, res) => {
   res.status(404).json({ error: "Route not found" });
