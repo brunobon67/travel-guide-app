@@ -54,9 +54,14 @@ document.getElementById("preferencesForm")?.addEventListener("submit", async fun
       const { done, value } = await reader.read();
       if (done) break;
       result += decoder.decode(value);
-      responseContainer.innerHTML = result
-        .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
-        .replace(/\n/g, "<br>");
+     responseContainer.innerHTML = `
+  <div style="background: #f9f9f9; padding: 1rem; border-radius: 8px; font-size: 1rem; line-height: 1.6;">
+    ${result
+      .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
+      .replace(/\n/g, "<br>")}
+  </div>
+`;
+
     }
 
     // ✅ Save plan to Firestore
