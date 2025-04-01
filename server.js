@@ -31,12 +31,14 @@ app.use(
         "'unsafe-inline'",
         "https://fonts.googleapis.com"
       ],
-      "connect-src": [
-        "'self'",
-        "https://www.googleapis.com",
-        "https://firebase.googleapis.com",
-        "https://identitytoolkit.googleapis.com"
-      ],
+     "connect-src": [
+  "'self'",
+  "https://www.googleapis.com",
+  "https://firebase.googleapis.com",
+  "https://identitytoolkit.googleapis.com",
+  "https://firestore.googleapis.com" // ✅ ADD THIS LINE
+],
+
       "font-src": ["'self'", "https://fonts.gstatic.com"]
     }
   })
