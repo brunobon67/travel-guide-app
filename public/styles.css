@@ -192,3 +192,37 @@ input[type="password"] {
   margin: 6px 0;
 }
 
+
+.plan-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1.5em;
+  margin-bottom: 2em;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.plan-card p {
+  line-height: 1.6;
+  margin: 0.5em 0;
+}
+
+.guide-content {
+  margin-top: 1em;
+}
+
+.plan-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.delete-button {
+  background-color: #ff4d4f;
+  color: white;
+  padding: 0.4em 0.8em;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 1em;
+}
+
