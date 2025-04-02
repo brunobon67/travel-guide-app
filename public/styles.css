@@ -161,3 +161,34 @@ input[type="password"] {
   background-color: #f2f2f2;
 }
 
+/* ✨ Travel Plan Structure Formatting */
+.response-container h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #2a9d8f;
+}
+.response-container h2 {
+  font-size: 20px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #264653;
+}
+.response-container h3 {
+  font-size: 18px;
+  margin-top: 15px;
+  margin-bottom: 8px;
+  color: #1d3557;
+}
+.response-container ul {
+  padding-left: 20px;
+  margin-top: 10px;
+}
+.response-container li {
+  margin-bottom: 5px;
+  list-style: disc;
+}
+.response-container br {
+  display: block;
+  margin: 6px 0;
+}
+
