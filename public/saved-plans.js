@@ -41,18 +41,34 @@ onAuthStateChanged(auth, (user) => {
       const card = document.createElement("div");
       card.className = "plan-card";
 
-      const formattedGuide = formatGuide(plan.guide || "");
+      let guideText = "";
+
+      try {
+        const parsed = typeof plan.guide === "string" ? JSON.parse(plan.guide) : plan.guide;
+        guideText = parsed.guide || "No guide found.";
+      } catch (err) {
+        guideText = plan.guide || "No guide available.";
+      }
+
+      // Render as HTML like in script.js
+      const formattedGuide = guideText
+        .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
+        .replace(/\n{2,}/g, "</p><p>")
+        .replace(/\n/g, "<br>");
 
       card.innerHTML = `
         <div class="plan-header">
           <h3>${plan.destination || "Destination unknown"}</h3>
           <small>${plan.createdAt?.toDate().toLocaleString() || "Date unknown"}</small>
         </div>
-        <div class="plan-content">${formattedGuide}</div>
-        <button class="delete-btn" data-id="${id}">🗑 Delete</button>
+        <div class="guide-content">
+          <p>${formattedGuide}</p>
+        </div>
+        <button class="delete-button" data-id="${id}">🗑️ Delete</button>
       `;
 
-      card.querySelector("button").addEventListener("click", async () => {
+      // Delete logic
+      card.querySelector(".delete-button").addEventListener("click", async () => {
         if (confirm("Are you sure you want to delete this plan?")) {
           await deleteDoc(doc(db, "travelPlans", id));
         }
@@ -62,19 +78,3 @@ onAuthStateChanged(auth, (user) => {
     });
   });
 });
-
-// Helper function to format the guide string into structured HTML
-function formatGuide(guide) {
-  const sections = guide.split("\n\n").filter(s => s.trim() !== "");
-  return sections.map((section) => {
-    const [title, ...rest] = section.split("\n");
-    const content = rest.join("<br>");
-    return `
-      <div class="guide-section">
-        <h4>${title}</h4>
-        <p>${content}</p>
-      </div>
-    `;
-  }).join("");
-}
-
