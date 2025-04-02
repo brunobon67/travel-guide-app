@@ -11,7 +11,7 @@ import {
 
 let currentUser = null;
 
-// ✅ Ensure the user is authenticated
+// ✅ Auth check
 onAuthStateChanged(auth, (user) => {
   if (user) {
     currentUser = user;
@@ -22,8 +22,8 @@ onAuthStateChanged(auth, (user) => {
   }
 });
 
-// ✅ Handle form submission and guide generation
-document.getElementById("preferencesForm")?.addEventListener("submit", async function (event) {
+// ✅ Guide Generation
+document.getElementById("preferencesForm")?.addEventListener("submit", async (event) => {
   event.preventDefault();
 
   const responseContainer = document.getElementById("responseContainer");
@@ -54,51 +54,44 @@ document.getElementById("preferencesForm")?.addEventListener("submit", async fun
       const { done, value } = await reader.read();
       if (done) break;
       result += decoder.decode(value);
-     responseContainer.innerHTML = `
-  <h2>Your Travel Guide</h2>
-  <div id="travel-guide-output" style="background: #f9f9f9; padding: 1rem; border-radius: 8px; font-size: 1rem; line-height: 1.6; margin-bottom: 1rem;">
-    ${result
-      .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
-      .replace(/\n/g, "<br>")}
-  </div>
-  <button id="saveGuideBtn" style="padding: 0.5rem 1rem; background: #2a9d8f; color: white; border: none; border-radius: 4px; cursor: pointer;">
-    💾 Save this guide
-  </button>
-`;
-
+      responseContainer.innerHTML = `
+        <h2>Your Travel Guide</h2>
+        <div id="travel-guide-output" style="background: #f9f9f9; padding: 1rem; border-radius: 8px; font-size: 1rem; line-height: 1.6; margin-bottom: 1rem;">
+          ${result
+            .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
+            .replace(/\\n/g, "<br>")
+            .replace(/\n/g, "<br>")
+            .replace(/```/g, "")
+            .replace(/"{/g, "{")
+            .replace(/}"/g, "}")
+            .replace(/^"guide":/g, "")
+          }
+        </div>
+        <button id="saveGuideBtn" style="padding: 0.5rem 1rem; background: #2a9d8f; color: white; border: none; border-radius: 4px; cursor: pointer;">
+          💾 Save this guide
+        </button>
+      `;
     }
 
-
-document.getElementById("saveGuideBtn")?.addEventListener("click", async () => {
-  try {
-    if (currentUser && result.trim()) {
-      await addDoc(collection(db, "travelPlans"), {
-        uid: currentUser.uid,
-        createdAt: serverTimestamp(),
-        preferences,
-        guide: result
-      });
-      alert("✅ Travel guide saved to your account!");
-    } else {
-      alert("⚠️ You must be logged in to save.");
-    }
-  } catch (err) {
-    console.error("Save error:", err);
-    alert("❌ Failed to save travel guide.");
-  }
-});
-
-    
-    // ✅ Save plan to Firestore
-    if (currentUser && result.trim()) {
-      await addDoc(collection(db, "travelPlans"), {
-        uid: currentUser.uid,
-        createdAt: serverTimestamp(),
-        preferences,
-        guide: result
-      });
-      console.log("📥 Travel guide saved to Firestore");
-    }
+    // ✅ Save to Firestore on click
+    document.getElementById("saveGuideBtn")?.addEventListener("click", async () => {
+      try {
+        if (currentUser && result.trim()) {
+          await addDoc(collection(db, "travelPlans"), {
+            uid: currentUser.uid,
+            createdAt: serverTimestamp(),
+            preferences,
+            guide: result
+          });
+          alert("✅ Travel guide saved to your account!");
+        } else {
+          alert("⚠️ You must be logged in to save.");
+        }
+      } catch (err) {
+        console.error("Save error:", err);
+        alert("❌ Failed to save travel guide.");
+      }
+    });
 
   } catch (error) {
     console.error("❌ Error:", error);
@@ -109,7 +102,7 @@ document.getElementById("saveGuideBtn")?.addEventListener("click", async () => {
   }
 });
 
-// ✅ Logout button (in dropdown)
+// ✅ Logout
 document.getElementById("logout-btn")?.addEventListener("click", async () => {
   try {
     await signOut(auth);
@@ -119,17 +112,16 @@ document.getElementById("logout-btn")?.addEventListener("click", async () => {
   }
 });
 
-// ✅ Dropdown toggle logic
+// ✅ Dropdown
 document.getElementById("userMenuToggle")?.addEventListener("click", () => {
   const dropdown = document.getElementById("userDropdown");
   dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
 });
 
-// ✅ Profile and plans links
+// ✅ Navigation
 document.getElementById("profile-link")?.addEventListener("click", () => {
   window.location.href = "/profile.html";
 });
-
 document.getElementById("plans-link")?.addEventListener("click", () => {
   window.location.href = "/saved-plans.html";
 });
