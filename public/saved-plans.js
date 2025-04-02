@@ -41,14 +41,17 @@ onAuthStateChanged(auth, (user) => {
       const card = document.createElement("div");
       card.className = "plan-card";
 
+      const formattedGuide = formatGuide(plan.guide || "");
+
       card.innerHTML = `
-        <h3>${plan.destination || "Destination unknown"}</h3>
-        <small>${plan.createdAt?.toDate().toLocaleString() || "Date unknown"}</small>
-        <p>${plan.guide.slice(0, 200)}...</p>
-        <button data-id="${id}">Delete</button>
+        <div class="plan-header">
+          <h3>${plan.destination || "Destination unknown"}</h3>
+          <small>${plan.createdAt?.toDate().toLocaleString() || "Date unknown"}</small>
+        </div>
+        <div class="plan-content">${formattedGuide}</div>
+        <button class="delete-btn" data-id="${id}">🗑 Delete</button>
       `;
 
-      // Delete plan on click
       card.querySelector("button").addEventListener("click", async () => {
         if (confirm("Are you sure you want to delete this plan?")) {
           await deleteDoc(doc(db, "travelPlans", id));
@@ -59,3 +62,19 @@ onAuthStateChanged(auth, (user) => {
     });
   });
 });
+
+// Helper function to format the guide string into structured HTML
+function formatGuide(guide) {
+  const sections = guide.split("\n\n").filter(s => s.trim() !== "");
+  return sections.map((section) => {
+    const [title, ...rest] = section.split("\n");
+    const content = rest.join("<br>");
+    return `
+      <div class="guide-section">
+        <h4>${title}</h4>
+        <p>${content}</p>
+      </div>
+    `;
+  }).join("");
+}
+
