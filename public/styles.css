@@ -276,7 +276,62 @@ label {
 /* âœ… Stronger fix: ensure menu clears hamburger */
 @media (max-width: 768px) {
   .user-menu {
-    margin-top: 26px; /* more space below hamburger */
-    padding-top: 10px; /* inner space top */
+    margin-top: 24px; /* more space below hamburger */
+    padding-top: 8px; /* inner space top */
+  }
+}
+
+/* ðŸ“± Mobile form layout improvements */
+@media (max-width: 768px) {
+  .container {
+    margin: 100px auto 40px auto;
+    padding: 20px 16px;
+    box-sizing: border-box;
+    width: calc(100% - 32px);
+    max-width: 100%;
+    border-radius: 12px;
+  }
+
+  .trip-form {
+    width: 100%;
+  }
+
+  .trip-form label {
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin-bottom: 6px;
+    font-size: 15px;
+  }
+
+  .trip-form input,
+  .trip-form select,
+  .trip-form textarea {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+  }
+
+  .trip-form button {
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+    margin-top: 10px;
+  }
+
+  #savePlanBtn,
+  #viewSavedPlansBtn {
+    width: 100%;
+    font-size: 16px;
+    padding: 12px;
+    margin-top: 16px;
+  }
+
+  h1, h2 {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
   }
 }
