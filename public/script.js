@@ -47,6 +47,7 @@ document.getElementById("preferencesForm")?.addEventListener("submit", async (ev
       const { done, value } = await reader.read();
       if (done) break;
       result += decoder.decode(value);
+
       responseContainer.innerHTML = `
         <h2>Your Travel Guide</h2>
         <div id="travel-guide-output" style="background: #f9f9f9; padding: 1rem; border-radius: 8px; font-size: 1rem; line-height: 1.6; margin-bottom: 1rem;">
@@ -66,27 +67,7 @@ document.getElementById("preferencesForm")?.addEventListener("submit", async (ev
       `;
     }
 
-document.getElementById("saveGuideBtn")?.addEventListener("click", async () => {
-  try {
-    if (currentUser && result.trim()) {
-      await addDoc(collection(db, "travelPlans"), {
-        uid: currentUser.uid,
-        createdAt: serverTimestamp(),
-        preferences,
-        guide: result
-      });
-      alert("✅ Travel guide saved to your account!");
-    } else {
-      alert("⚠️ You must be logged in to save.");
-    }
-  } catch (err) {
-    console.error("Save error:", err);
-    alert("❌ Failed to save travel guide.");
-  }
-});
-
-    
-    // ✅ Save to Firestore on click
+    // ✅ Attach save logic after rendering
     document.getElementById("saveGuideBtn")?.addEventListener("click", async () => {
       try {
         if (currentUser && result.trim()) {
@@ -115,7 +96,7 @@ document.getElementById("saveGuideBtn")?.addEventListener("click", async () => {
   }
 });
 
-// ✅ Logout
+// ✅ Logout (non-inline)
 document.getElementById("logout-btn")?.addEventListener("click", async () => {
   try {
     await signOut(auth);
@@ -125,33 +106,10 @@ document.getElementById("logout-btn")?.addEventListener("click", async () => {
   }
 });
 
-// ✅ Dropdown
-document.getElementById("userMenuToggle")?.addEventListener("click", () => {
-  const dropdown = document.getElementById("userDropdown");
-  dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
-});
-
-// ✅ Navigation
-document.getElementById("profile-link")?.addEventListener("click", () => {
-  window.location.href = "/profile.html";
-});
-document.getElementById("plans-link")?.addEventListener("click", () => {
-  window.location.href = "/saved-plans.html";
-});
-
-// Toggle hamburger menu on mobile
+// ✅ Hamburger toggle
 document.getElementById("menuToggle")?.addEventListener("click", () => {
   const menu = document.getElementById("menu");
   menu.classList.toggle("visible");
 });
 
-// ✅ Make logout() global so it works with onclick
-window.logout = async function () {
-  try {
-    await signOut(auth);
-    window.location.href = "/login";
-  } catch (error) {
-    console.error("Logout failed:", error);
-  }
-};
 
