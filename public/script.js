@@ -125,3 +125,13 @@ document.getElementById("menuToggle")?.addEventListener("click", () => {
   menu.classList.toggle("visible");
 });
 
+// ✅ Make logout() global so it works with onclick
+window.logout = async function () {
+  try {
+    await signOut(auth);
+    window.location.href = "/login";
+  } catch (error) {
+    console.error("Logout failed:", error);
+  }
+};
+
