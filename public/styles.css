@@ -1,6 +1,6 @@
 /* 🌍 General Styles */
 body {
-    font-family: 'Roboto', sans-serif;  /* Nicer font */
+    font-family: 'Arial', sans-serif;  /* Restored the original font */
     background: #f8f9fa;
     color: #333;
     display: flex;
@@ -24,7 +24,7 @@ body {
     width: 100%;
     box-shadow: none;  /* No shadow */
     z-index: 1000;
-    font-family: 'Roboto', sans-serif; /* Use nicer font */
+    font-family: 'Arial', sans-serif; /* Restored original font */
 }
 
 .user-menu button,
@@ -140,6 +140,7 @@ input[type="password"] {
         margin-bottom: 10px;
     }
 }
+
 
 
 
