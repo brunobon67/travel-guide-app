@@ -165,92 +165,8 @@ label {
   display: none;
 }
 
-/* ðŸ“± FULL MOBILE OPTIMIZATION FIXED */
+/* ðŸ“± Improved Hamburger Dropdown Menu Styling */
 
-@media (max-width: 768px) {
-  html, body {
-    padding: 0;
-    margin: 0;
-    font-size: 16px;
-    width: 100%;
-    overflow-x: hidden;
-  }
-
-  .user-menu {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    width: 100%;
-    padding: 10px 0;
-    border-bottom: 1px solid #ddd;
-    text-align: center;
-  }
-
-  .user-menu a,
-  .user-menu button {
-    width: 100%;
-    padding: 14px 10px;
-    margin: 0;
-    font-size: 16px;
-    border-bottom: 1px solid #eee;
-    border-radius: 0;
-    background: transparent;
-    color: #333;
-    text-align: center;
-  }
-
-  .container {
-    width: 100%;
-    max-width: 100%;
-    padding: 20px;
-    margin-top: 120px;
-    box-sizing: border-box;
-  }
-
-  form, .trip-form {
-    width: 100%;
-  }
-
-  input, select, textarea {
-    width: 100%;
-    font-size: 16px;
-    padding: 12px;
-    margin-bottom: 16px;
-    box-sizing: border-box;
-  }
-
-  button {
-    width: 100%;
-    padding: 16px;
-    font-size: 16px;
-    min-height: 48px;
-  }
-
-  h1, h2 {
-    font-size: 22px;
-    text-align: center;
-    margin: 20px 0;
-  }
-
-  #savePlanBtn, #viewSavedPlansBtn {
-    width: 100%;
-    margin-top: 16px;
-    padding: 14px;
-    font-size: 16px;
-  }
-
-  .response-container {
-    padding: 20px;
-    box-sizing: border-box;
-  }
-}
-
-/* 🌐 Desktop default */
-.hamburger {
-  display: none;
-}
-
-/* 📱 Mobile Hamburger Menu */
 @media (max-width: 768px) {
   .hamburger {
     display: block;
@@ -258,11 +174,11 @@ label {
     font-size: 28px;
     padding: 10px 20px;
     border: none;
-    color: #333;
+    color: white;
     cursor: pointer;
     position: fixed;
-    top: 10px;
-    left: 10px;
+    top: 12px;
+    left: 12px;
     z-index: 1100;
   }
 
@@ -273,14 +189,19 @@ label {
   .user-menu {
     display: none;
     flex-direction: column;
-    background: white;
-    width: 100%;
+    align-items: center;
+    background: #ffffff;
+    width: 90%;
+    max-width: 320px;
     position: absolute;
     top: 60px;
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 1000;
-    border-top: 1px solid #ccc;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    padding: 10px 0;
   }
 
   .user-menu.visible {
@@ -289,8 +210,18 @@ label {
 
   .user-menu a,
   .user-menu .logout-btn {
-    padding: 14px;
+    width: 100%;
+    padding: 14px 0;
     text-align: center;
+    font-size: 16px;
     border-bottom: 1px solid #eee;
+    background: none;
+    color: #333;
+    font-weight: 500;
+  }
+
+  .user-menu a:last-child,
+  .user-menu .logout-btn:last-child {
+    border-bottom: none;
   }
 }
