@@ -165,21 +165,29 @@ label {
   display: none;
 }
 
-/* ðŸ“± Improved Hamburger Dropdown Menu Styling */
+/* âœ… Hide hamburger on desktop */
+.hamburger {
+  display: none;
+}
 
+/* âœ… Final Responsive Menu Fix */
 @media (max-width: 768px) {
+  body {
+    padding-top: 60px;
+    overflow-x: hidden;
+  }
+
   .hamburger {
     display: block;
-    background: none;
-    font-size: 28px;
-    padding: 10px 20px;
-    border: none;
-    color: white;
-    cursor: pointer;
     position: fixed;
     top: 12px;
     left: 12px;
-    z-index: 1100;
+    font-size: 26px;
+    background: none;
+    border: none;
+    z-index: 1001;
+    color: #2a9d8f;
+    cursor: pointer;
   }
 
   .user-menu-wrapper {
@@ -190,18 +198,18 @@ label {
     display: none;
     flex-direction: column;
     align-items: center;
-    background: #ffffff;
-    width: 90%;
-    max-width: 320px;
     position: absolute;
-    top: 60px;
+    top: 56px;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 1000;
-    border: 1px solid #ddd;
+    background: #fff;
+    width: 90%;
+    max-width: 320px;
     border-radius: 12px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    z-index: 1000;
     padding: 10px 0;
+    border: 1px solid #ddd;
   }
 
   .user-menu.visible {
@@ -211,17 +219,45 @@ label {
   .user-menu a,
   .user-menu .logout-btn {
     width: 100%;
-    padding: 14px 0;
     text-align: center;
+    padding: 14px 0;
     font-size: 16px;
+    font-weight: 500;
     border-bottom: 1px solid #eee;
     background: none;
     color: #333;
-    font-weight: 500;
   }
 
   .user-menu a:last-child,
   .user-menu .logout-btn:last-child {
     border-bottom: none;
+  }
+
+  .container {
+    margin-top: 100px;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  .trip-form {
+    width: 100%;
+  }
+
+  input, select, textarea {
+    font-size: 16px;
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 14px;
+  }
+
+  button {
+    font-size: 16px;
+    padding: 14px;
+    width: 100%;
+  }
+
+  h1, h2 {
+    font-size: 24px;
+    text-align: center;
   }
 }
