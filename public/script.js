@@ -66,6 +66,26 @@ document.getElementById("preferencesForm")?.addEventListener("submit", async (ev
       `;
     }
 
+document.getElementById("saveGuideBtn")?.addEventListener("click", async () => {
+  try {
+    if (currentUser && result.trim()) {
+      await addDoc(collection(db, "travelPlans"), {
+        uid: currentUser.uid,
+        createdAt: serverTimestamp(),
+        preferences,
+        guide: result
+      });
+      alert("✅ Travel guide saved to your account!");
+    } else {
+      alert("⚠️ You must be logged in to save.");
+    }
+  } catch (err) {
+    console.error("Save error:", err);
+    alert("❌ Failed to save travel guide.");
+  }
+});
+
+    
     // ✅ Save to Firestore on click
     document.getElementById("saveGuideBtn")?.addEventListener("click", async () => {
       try {
