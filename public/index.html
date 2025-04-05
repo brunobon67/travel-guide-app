@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Travel Guide Planner</title>
 
-  <!-- ✅ Font loading (allowed via CSP in server.js) -->
   <link rel="stylesheet" href="/styles.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet" />
 </head>
@@ -22,55 +21,57 @@
     </div>
   </div>
 
-  <div class="container">
-    <h1>Plan Your Perfect Trip</h1>
-    <form id="preferencesForm" class="trip-form">
-      <label for="destination">Destination</label>
-      <input type="text" id="destination" required />
+  <!-- 🌍 Main content below the menu -->
+  <div class="main-content">
+    <div class="trip-form-wrapper">
+      <h1>Plan Your Perfect Trip</h1>
+      <form id="preferencesForm" class="trip-form">
+        <label for="destination">Destination</label>
+        <input type="text" id="destination" required />
 
-      <label for="duration">Duration (days)</label>
-      <input type="number" id="duration" required />
+        <label for="duration">Duration (days)</label>
+        <input type="number" id="duration" required />
 
-      <label for="accommodation">Accommodation Type</label>
-      <select id="accommodation">
-        <option value="Hotel">Hotel</option>
-        <option value="Airbnb">Airbnb</option>
-        <option value="Hostel">Hostel</option>
-        <option value="Resort">Resort</option>
-      </select>
+        <label for="accommodation">Accommodation Type</label>
+        <select id="accommodation">
+          <option value="Hotel">Hotel</option>
+          <option value="Airbnb">Airbnb</option>
+          <option value="Hostel">Hostel</option>
+          <option value="Resort">Resort</option>
+        </select>
 
-      <label for="preferredActivities">Preferred Activities</label>
-      <select id="preferredActivities">
-        <option value="Sightseeing">Sightseeing</option>
-        <option value="Hiking">Hiking</option>
-        <option value="Beach Relaxation">Beach Relaxation</option>
-        <option value="Food Tasting">Food Tasting</option>
-        <option value="Adventure Sports">Adventure Sports</option>
-        <option value="Shopping">Shopping</option>
-        <option value="Relax">Relax</option>
-        <option value="Cultural Events">Cultural Events</option>
-        <option value="City Tour">City Tour</option>
-      </select>
+        <label for="preferredActivities">Preferred Activities</label>
+        <select id="preferredActivities">
+          <option value="Sightseeing">Sightseeing</option>
+          <option value="Hiking">Hiking</option>
+          <option value="Beach Relaxation">Beach Relaxation</option>
+          <option value="Food Tasting">Food Tasting</option>
+          <option value="Adventure Sports">Adventure Sports</option>
+          <option value="Shopping">Shopping</option>
+          <option value="Relax">Relax</option>
+          <option value="Cultural Events">Cultural Events</option>
+          <option value="City Tour">City Tour</option>
+        </select>
 
-      <label for="nightlife">Nightlife Preference</label>
-      <select id="nightlife">
-        <option value="Quiet Evenings">Quiet Evenings</option>
-        <option value="Bars and Pubs">Bars and Pubs</option>
-        <option value="Nightclubs">Nightclubs</option>
-        <option value="Cultural Night Events">Cultural Night Events</option>
-      </select>
+        <label for="nightlife">Nightlife Preference</label>
+        <select id="nightlife">
+          <option value="Quiet Evenings">Quiet Evenings</option>
+          <option value="Bars and Pubs">Bars and Pubs</option>
+          <option value="Nightclubs">Nightclubs</option>
+          <option value="Cultural Night Events">Cultural Night Events</option>
+        </select>
 
-      <button type="submit">Generate Travel Guide</button>
-    </form>
+        <button type="submit">Generate Travel Guide</button>
+      </form>
 
-    <div id="viewSavedPlansBtnContainer">
-      <button id="viewSavedPlansBtn">📂 Go to My Saved Plans</button>
+      <div id="viewSavedPlansBtnContainer">
+        <button id="viewSavedPlansBtn">📂 Go to My Saved Plans</button>
+      </div>
+
+      <div id="responseContainer" class="response-container"></div>
     </div>
-
-    <div id="responseContainer" class="response-container"></div>
   </div>
 
-  <!-- ✅ Scripts -->
   <script type="module" src="/firebase.js"></script>
   <script type="module" src="/avatar.js"></script>
   <script type="module" src="/script.js"></script>
