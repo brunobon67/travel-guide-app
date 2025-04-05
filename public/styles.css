@@ -339,40 +339,39 @@ label {
 
 /* ✅ AUTH FORM - FULL MOBILE OPTIMIZATION */
 .auth-page {
-  min-height: 100vh;
+  height: 100vh;
   margin: 0;
   padding: 0;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   background-color: #f8fafc;
 }
 
 .auth-container {
-  width: 100%;
-  max-width: 480px;
-  min-height: 90vh; /* ✅ make the box fill most of the screen */
-  padding: 2rem 1.5rem;
-  background-color: #ffffff;
-  border-radius: 16px;
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+  width: 100vw; /* ✅ full width */
+  height: 100vh; /* ✅ full height */
+  background: white;
+  padding: 2rem;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  box-sizing: border-box;
+  border-radius: 0; /* remove round corners on mobile */
+  box-shadow: none;
 }
 
 .auth-container h1 {
   text-align: center;
-  margin-bottom: 2rem;
   font-size: 28px;
   color: #2a9d8f;
+  margin-bottom: 2rem;
 }
 
 .auth-container input {
   padding: 16px;
   font-size: 16px;
-  margin-bottom: 18px;
+  margin-bottom: 16px;
   border-radius: 8px;
   border: 1px solid #ccc;
   width: 100%;
@@ -394,7 +393,6 @@ label {
 .auth-container a {
   margin-top: 1.5rem;
   text-align: center;
-  display: block;
   font-size: 15px;
   color: #2a9d8f;
   text-decoration: none;
@@ -404,14 +402,12 @@ label {
   text-decoration: underline;
 }
 
-@media (max-width: 480px) {
+@media (min-width: 768px) {
   .auth-container {
-    padding: 2rem 1.25rem;
-    min-height: 100vh;
-  }
-
-  .auth-container h1 {
-    font-size: 24px;
+    max-width: 420px;
+    height: auto;
+    margin: auto;
+    border-radius: 12px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
   }
 }
-
