@@ -1,4 +1,4 @@
-/* 🌍 General Styles */
+/* ðŸŒ General Styles */
 body {
   font-family: 'Inter', sans-serif;
   background: #f8f9fa;
@@ -13,7 +13,7 @@ body {
   text-align: center;
 }
 
-/* 🌟 User Menu Styling */
+/* ðŸŒŸ User Menu Styling */
 .user-menu {
   display: flex;
   justify-content: center;
@@ -29,7 +29,7 @@ body {
   z-index: 1000;
 }
 
-/* Menu items and logout button — SAME SIZE, SAME LOOK */
+/* Menu items and logout button â€” SAME SIZE, SAME LOOK */
 .user-menu a,
 .user-menu .logout-btn {
   background: transparent;
@@ -64,14 +64,14 @@ body {
   background-color: #f1f1f1;
 }
 
-/* 🧴 Avoid wrapping menu on desktop */
+/* ðŸ§¼ Avoid wrapping menu on desktop */
 @media (min-width: 769px) {
   .user-menu {
     flex-wrap: nowrap;
   }
 }
 
-/* 🌟 Mobile Responsiveness */
+/* ðŸŒŸ Mobile Responsiveness */
 @media (max-width: 768px) {
   .user-menu {
     flex-direction: column;
@@ -84,7 +84,7 @@ body {
   }
 }
 
-/* 🌟 Buttons (used in main form) */
+/* ðŸŒŸ Buttons (used in main form) */
 button {
   background: #2a9d8f;
   color: white;
@@ -108,7 +108,7 @@ button:hover {
   background: #21867a;
 }
 
-/* 🎯 Input Fields */
+/* ðŸŽ¯ Input Fields */
 input[type="text"],
 input[type="number"],
 select {
@@ -124,7 +124,7 @@ input[type="password"] {
   margin-bottom: 10px;
 }
 
-/* 🌟 Centered Container for Form */
+/* ðŸŒŸ Centered Container for Form */
 .container {
   width: 100%;
   max-width: 700px;
@@ -140,7 +140,7 @@ input[type="password"] {
   justify-content: center;
 }
 
-/* 📋 Labels */
+/* ðŸ“‹ Labels */
 label {
   font-weight: 500;
   display: block;
@@ -150,7 +150,7 @@ label {
   color: #444;
 }
 
-/* 🌟 Response Container for Travel Guide */
+/* ðŸŒŸ Response Container for Travel Guide */
 .response-container {
   width: 100%;
   max-width: 700px;
@@ -165,12 +165,12 @@ label {
   display: none;
 }
 
-/* ✅ Hide hamburger on desktop */
+/* âœ… Hide hamburger on desktop */
 .hamburger {
   display: none;
 }
 
-/* ✅ Final Responsive Menu Fix */
+/* âœ… Final Responsive Menu Fix */
 @media (max-width: 768px) {
   body {
     padding-top: 60px;
@@ -262,7 +262,7 @@ label {
   }
 }
 
-/* ✅ Fix: Prevent hamburger from overlapping first menu item */
+/* âœ… Fix: Prevent hamburger from overlapping first menu item */
 @media (max-width: 768px) {
   .hamburger {
     z-index: 1101; /* stay on top */
@@ -273,7 +273,7 @@ label {
   }
 }
 
-/* ✅ Stronger fix: ensure menu clears hamburger */
+/* âœ… Stronger fix: ensure menu clears hamburger */
 @media (max-width: 768px) {
   .user-menu {
     margin-top: 24px; /* more space below hamburger */
@@ -281,7 +281,7 @@ label {
   }
 }
 
-/* 📱 Mobile form layout improvements */
+/* ðŸ“± Mobile form layout improvements */
 @media (max-width: 768px) {
   .container {
     margin: 100px auto 40px auto;
@@ -297,11 +297,11 @@ label {
   }
 
   .trip-form label {
-    display:block;
-    text-align:left;
-    width:100%;
-    margin-bottom:6px;
-    font-size:15px;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin-bottom: 6px;
+    font-size: 15px;
   }
 
   .trip-form input,
@@ -336,6 +336,7 @@ label {
   }
 }
 
+
 /* ✅ AUTH FORM - FULL MOBILE OPTIMIZATION */
 /* General Styles for Authentication Pages */
 .auth-page {
@@ -350,5 +351,69 @@ label {
 .auth-container {
   width: 100%; /* Full width of the viewport */
   max-width: 480px; /* Maximum width of the form */
- 
+  background: white;
+  padding: 1.5rem; /* Padding inside the form */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.auth-container h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px; /* Slightly smaller font size for mobile */
+  color: #2a9d8f;
+}
+
+.auth-container input, .auth-container button {
+  height: 50px; /* Taller input fields and buttons */
+  margin-bottom: 16px;
+  font-size: 16px; /* Larger font size for readability */
+  border-radius: 8px;
+}
+
+.auth-container input {
+  padding: 0 15px; /* Horizontal padding for inputs */
+  border: 1px solid #ccc;
+}
+
+.auth-container button {
+  background-color: #2a9d8f;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.auth-container a {
+  display: block;
+  text-align: center;
+  margin-top: 15px;
+  color: #2a9d8f;
+  font-size: 15px; /* Readable font size */
+  text-decoration: none;
+}
+
+.auth-container a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive adjustments for devices wider than 480px */
+@media (min-width: 481px) {
+  .auth-page {
+    padding: 40px; /* More padding for larger screens */
+  }
+
+  .auth-container {
+    padding: 2rem; /* More internal padding */
+    border-radius: 12px; /* Rounded corners for aesthetics */
+  }
+
+  .auth-container h1 {
+    font-size: 28px; /* Larger font size for desktop */
+  }
+}
+
 
