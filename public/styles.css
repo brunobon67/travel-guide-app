@@ -137,25 +137,6 @@ label {
     display: none;
 }
 
-/* 🌟 Logout Button */
-.logout-btn {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    padding: 4px 8px; /* Further reduced padding */
-    font-size: 10px; /* Even smaller font size */
-    background-color: #e74c3c;
-    color: white;
-    border: none;
-    border-radius: 3px; /* Smaller border radius */
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    z-index: 1000;
-}
-
-.logout-button:hover {
-    background-color: #c0392b;
-}
 
 
 
