@@ -340,45 +340,42 @@ label {
 /* ✅ AUTH FORM - FULL MOBILE OPTIMIZATION */
 /* General Styles for Authentication Pages */
 .auth-page {
-  margin: 0;
-  padding: 0;
-  width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   background-color: #f8fafc;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  padding: 2rem 1rem;
+  box-sizing: border-box;
 }
 
 .auth-container {
-  width: 100vw;
-  height: 100vh;
-  padding: 2rem 1rem;
+  width: 100%;
+  max-width: 600px;
   background-color: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 
 .auth-container h1 {
-  font-size: 26px;
+  font-size: 24px;
+  margin-bottom: 1.5rem;
   color: #2a9d8f;
   text-align: center;
-  margin-bottom: 2rem;
 }
 
 .auth-container form {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  gap: 1.2rem;
+  gap: 1rem;
 }
 
 .auth-container input,
 .auth-container button {
   width: 100%;
-  padding: 16px;
+  padding: 14px;
   font-size: 16px;
   border-radius: 8px;
   border: 1px solid #ccc;
@@ -394,14 +391,12 @@ label {
 }
 
 .auth-container a {
-  display: block;
-  margin-top: 1rem;
   text-align: center;
+  margin-top: 1rem;
+  font-size: 14px;
   color: #2a9d8f;
   text-decoration: none;
-  font-size: 14px;
 }
-
 
 .auth-container a:hover {
   text-decoration: underline;
@@ -427,7 +422,7 @@ label {
   display: flex;
   flex-direction: column;
   padding: 0 1rem;
-  width: 200%;
+  width: 100%;
   box-sizing: border-box;
 }
 
