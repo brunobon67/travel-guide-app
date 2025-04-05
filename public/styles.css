@@ -15,7 +15,7 @@ body {
 /* 🌟 Container for form */
 .container {
     width: 100%;
-    max-width: 700px; /* Increased container width for better responsiveness */
+    max-width: 700px;
     padding: 30px;
     background: white;
     border-radius: 12px;
@@ -37,7 +37,7 @@ label {
 /* 🌟 Response Container for Travel Guide */
 .response-container {
     width: 100%;
-    max-width: 700px; /* Make the container even larger */
+    max-width: 700px;
     padding: 30px;
     background: white;
     border-radius: 12px;
@@ -46,7 +46,7 @@ label {
     margin-top: 20px;
     max-height: 80vh;
     overflow-y: auto;
-    display: none; /* Hidden initially */
+    display: none;
 }
 
 /* 🌟 Button Styling */
@@ -69,15 +69,6 @@ button:hover {
     background: #21867a;
 }
 
-/* 🌍 Responsive Design */
-@media screen and (max-width: 480px) {
-    .container,
-    .response-container {
-        width: 90%;
-    }
-}
-
-/* 🎯 Input Fields */
 /* 🎯 Input Fields */
 input[type="text"],
 input[type="number"],
@@ -90,139 +81,55 @@ select {
     font-size: 14px;
 }
 
-/* Add this below ⬇️ */
 input[type="password"] {
     margin-bottom: 10px;
 }
 
-
 .logout-button {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  padding: 10px 16px;
-  font-size: 14px;
-  background-color: #e74c3c;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  z-index: 1000;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 10px 16px;
+    font-size: 14px;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    z-index: 1000;
 }
 
 .logout-button:hover {
-  background-color: #c0392b;
+    background-color: #c0392b;
 }
 
 .user-menu {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  z-index: 1000;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+    background-color: #2a9d8f;
+    color: white;
+    border-radius: 5px;
+    margin-top: 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
 }
 
-.user-avatar {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  cursor: pointer;
-  border: 2px solid #ddd;
+.user-menu button,
+.user-menu a {
+    background: transparent;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
 }
 
-.dropdown-menu {
-  display: none;
-  position: absolute;
-  top: 50px;
-  right: 0;
-  background: #fff;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  border-radius: 6px;
-  overflow: hidden;
-  min-width: 160px;
+.user-menu button:hover,
+.user-menu a:hover {
+    background-color: #21867a;
 }
 
-.dropdown-menu a,
-.dropdown-menu button {
-  display: block;
-  width: 100%;
-  padding: 12px 16px;
-  text-align: left;
-  background: white;
-  border: none;
-  cursor: pointer;
-  font-size: 14px;
-  text-decoration: none;
-  color: #333;
-}
-
-.dropdown-menu a:hover,
-.dropdown-menu button:hover {
-  background-color: #f2f2f2;
-}
-
-/* ✨ Travel Plan Structure Formatting */
-.response-container h1 {
-  font-size: 24px;
-  margin-bottom: 10px;
-  color: #2a9d8f;
-}
-.response-container h2 {
-  font-size: 20px;
-  margin-top: 20px;
-  margin-bottom: 10px;
-  color: #264653;
-}
-.response-container h3 {
-  font-size: 18px;
-  margin-top: 15px;
-  margin-bottom: 8px;
-  color: #1d3557;
-}
-.response-container ul {
-  padding-left: 20px;
-  margin-top: 10px;
-}
-.response-container li {
-  margin-bottom: 5px;
-  list-style: disc;
-}
-.response-container br {
-  display: block;
-  margin: 6px 0;
-}
-
-
-.plan-card {
-  background: #fff;
-  border-radius: 8px;
-  padding: 1.5em;
-  margin-bottom: 2em;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
-.plan-card p {
-  line-height: 1.6;
-  margin: 0.5em 0;
-}
-
-.guide-content {
-  margin-top: 1em;
-}
-
-.plan-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.delete-button {
-  background-color: #ff4d4f;
-  color: white;
-  padding: 0.4em 0.8em;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  margin-top: 1em;
-}
 
