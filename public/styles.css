@@ -4,12 +4,13 @@ body {
     background: #f8f9fa; /* Light background for the page */
     color: #333;
     display: flex;
-    justify-content: center;
-    align-items: flex-start;  /* Aligning the content to the top */
+    justify-content: center;  /* Centers the page content */
+    align-items: flex-start;  /* Align content to the top */
     flex-direction: column;
     min-height: 100vh;
     margin: 0;
     overflow-y: auto;
+    text-align: center;  /* Centering text content */
 }
 
 /* 🌟 User Menu Styling */
@@ -151,4 +152,5 @@ label {
 .logout-button:hover {
     background-color: #c0392b;
 }
+
 
