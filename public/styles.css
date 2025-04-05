@@ -422,4 +422,24 @@ label {
   }
 }
 
+.auth-container form {
+  display: flex;
+  flex-direction: column;
+  padding: 0 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.auth-container input,
+.auth-container button {
+  display: block;
+  width: 100%;
+  margin: 0 0 16px 0;
+  padding: 14px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
 
