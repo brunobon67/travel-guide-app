@@ -14,7 +14,6 @@ async function getTravelGuide(preferences, stream = false) {
     You are an expert travel assistant. Generate a **very detailed travel itinerary** based on the following details:
     - **Destination:** ${preferences.destination}
     - **Duration:** ${preferences.duration} days
-    - **Accommodation:** ${preferences.accommodation}
     - **Preferred Activities:** ${preferences.preferredActivities}  
     - **Nightlife Preferences:** ${preferences.nightlife}
 
