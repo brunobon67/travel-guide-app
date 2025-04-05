@@ -138,14 +138,13 @@ label {
 }
 
 /* 🌟 Logout Button Styling */
-.logout-btn {
-    font-size: 12px;
-    padding: 0px 0px;
-    background-color: transparent;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    cursor: pointer;
+/* Adjusting the size of the logout button */
+.user-menu .logout-btn {
+    padding: 12px 20px;  /* Same as other buttons */
+    font-size: 14px;      /* Same font size as other buttons */
+    margin: 0 15px;       /* Same margin for consistency */
 }
+
 
 .logout-btn:hover {
     background-color: #f1f1f1;
