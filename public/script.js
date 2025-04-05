@@ -110,6 +110,10 @@ document.getElementById("logout-btn")?.addEventListener("click", async () => {
 document.getElementById("menuToggle")?.addEventListener("click", () => {
   const menu = document.getElementById("menu");
   menu.classList.toggle("visible");
+
+  // Toggle body class for margin push-down effect
+  document.body.classList.toggle("menu-open");
 });
+
 
 
