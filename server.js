@@ -43,6 +43,17 @@ app.use(
     }
   })
 );
+app.use((req, res, next) => {
+  res.setHeader("Content-Security-Policy",
+    "default-src 'self'; " +
+    "script-src 'self' 'unsafe-inline' https://www.gstatic.com https://www.googleapis.com https://www.gstatic.com/firebasejs; " +
+    "connect-src 'self' https://securetoken.googleapis.com https://firestore.googleapis.com https://identitytoolkit.googleapis.com https://firebase.googleapis.com; " +
+    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
+    "font-src 'self' https://fonts.gstatic.com;"
+  );
+  next();
+});
+
 
 // ✅ Route: login and register pages
 app.get("/login", (req, res) => res.sendFile(path.join(__dirname, "public", "login.html")));
