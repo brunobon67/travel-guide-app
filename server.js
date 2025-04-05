@@ -60,7 +60,7 @@ app.post("/get-travel-guide", async (req, res) => {
     !preferences ||
     !preferences.destination ||
     !preferences.duration ||
-  ) {
+   {
     return res.status(400).json({ error: "Please fill in all required fields." });
   }
 
