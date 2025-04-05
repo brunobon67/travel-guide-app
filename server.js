@@ -7,75 +7,52 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 3001;
-
-// ✅ Serve static files from public folder
-app.use(express.static(path.join(__dirname, "public")));
+const PORT = process.env.PORT || 3000;
 
 // ✅ Middleware
+app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
 app.use(morgan("dev"));
 
-// ✅ Security headers including Firebase compatibility
+// ✅ CSP: allow Firebase + Google Fonts
 app.use(
   helmet.contentSecurityPolicy({
     useDefaults: true,
     directives: {
+      "default-src": ["'self'"],
       "script-src": [
         "'self'",
         "https://www.gstatic.com",
-        "https://www.googleapis.com"
+        "https://www.googleapis.com",
+        "https://www.gstatic.com/firebasejs",
+        "https://apis.google.com"
+      ],
+      "connect-src": [
+        "'self'",
+        "https://securetoken.googleapis.com",
+        "https://identitytoolkit.googleapis.com",
+        "https://firebase.googleapis.com",
+        "https://firestore.googleapis.com"
       ],
       "style-src": [
         "'self'",
         "'unsafe-inline'",
         "https://fonts.googleapis.com"
       ],
-     "connect-src": [
-  "'self'",
-  "https://www.googleapis.com",
-  "https://firebase.googleapis.com",
-  "https://identitytoolkit.googleapis.com",
-  "https://firestore.googleapis.com" // ✅ ADD THIS LINE
-],
-
       "font-src": ["'self'", "https://fonts.gstatic.com"]
     }
   })
 );
-app.use((req, res, next) => {
-  res.setHeader("Content-Security-Policy",
-    "default-src 'self'; " +
-    "script-src 'self' 'unsafe-inline' https://www.gstatic.com https://www.googleapis.com https://www.gstatic.com/firebasejs; " +
-    "connect-src 'self' https://securetoken.googleapis.com https://firestore.googleapis.com https://identitytoolkit.googleapis.com https://firebase.googleapis.com; " +
-    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
-    "font-src 'self' https://fonts.gstatic.com;"
-  );
-  next();
-});
 
-
-// ✅ Route: login and register pages
+// ✅ Routes
 app.get("/login", (req, res) => res.sendFile(path.join(__dirname, "public", "login.html")));
 app.get("/register", (req, res) => res.sendFile(path.join(__dirname, "public", "register.html")));
+app.get("/app", (req, res) => res.sendFile(path.join(__dirname, "public", "index.html")));
+app.get("/profile", (req, res) => res.sendFile(path.join(__dirname, "public", "profile.html")));
+app.get("/saved-plans", (req, res) => res.sendFile(path.join(__dirname, "public", "saved-plans.html")));
 
-// ✅ Route: main app (no session check — Firebase Auth handles auth)
-app.get("/app", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
-});
+const getTravelGuide = require("./chatgpt");
 
-// ✅ Profile and Saved Plans (if needed)
-app.get("/profile", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "profile.html"));
-});
-
-app.get("/saved-plans", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "saved-plans.html"));
-});
-
-const getTravelGuide = require("./chatgpt"); // Make sure you have this at the top
-
-// 🌍 Travel guide generator
 app.post("/get-travel-guide", async (req, res) => {
   const { preferences } = req.body;
 
@@ -89,25 +66,19 @@ app.post("/get-travel-guide", async (req, res) => {
   }
 
   try {
-    // Optional: if you want to stream (like SSE), you can extend this
     const response = await getTravelGuide(preferences);
-res.json({ guide: response.choices[0].message.content });
-
+    res.json({ guide: response.choices[0].message.content });
   } catch (error) {
     console.error("❌ OpenAI API Error:", error.message);
     res.status(500).json({ error: "Error generating itinerary. Please try again later." });
   }
 });
 
-
-
-// ✅ Fallback 404
+// ✅ Fallback
 app.use((req, res) => {
   res.status(404).json({ error: "Route not found" });
 });
 
-// ✅ Start server
-const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`✅ Server running on port ${PORT}`);
 });
