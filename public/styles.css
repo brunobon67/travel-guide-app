@@ -140,7 +140,7 @@ label {
 /* 🌟 Logout Button Styling */
 .logout-btn {
     font-size: 12px;
-    padding: 8px 12px;
+    padding: 0px 0px;
     background-color: transparent;
     border: 1px solid #ccc;
     border-radius: 5px;
