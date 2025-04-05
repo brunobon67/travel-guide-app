@@ -129,7 +129,7 @@ input[type="password"] {
     padding: 12px 20px;
     cursor: pointer;
     font-size: 14px;
-    margin: 0 10px; /* Added spacing between menu items */
+    margin: 0 15px; /* Added spacing between menu items */
     transition: background-color 0.3s ease;
 }
 
@@ -151,7 +151,6 @@ input[type="password"] {
         margin-bottom: 10px;
     }
 }
-
 
 
 
