@@ -119,3 +119,9 @@ document.getElementById("plans-link")?.addEventListener("click", () => {
   window.location.href = "/saved-plans.html";
 });
 
+// Toggle hamburger menu on mobile
+document.getElementById("menuToggle")?.addEventListener("click", () => {
+  const menu = document.getElementById("menu");
+  menu.classList.toggle("visible");
+});
+
