@@ -35,7 +35,7 @@
   document.getElementById("contact-form").addEventListener("submit", function(e) {
     e.preventDefault();
 
-    emailjs.sendForm("YOUR_SERVICE_ID_HERE", "template_mzbzxzi", this)
+    emailjs.sendForm("service_muyt2eo", "template_mzbzxzi", this)
       .then(() => {
         document.getElementById("formStatus").textContent = "✅ Message sent successfully!";
         this.reset();
