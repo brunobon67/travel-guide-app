@@ -340,59 +340,63 @@ label {
 /* ✅ AUTH FORM - FULL MOBILE OPTIMIZATION */
 .auth-page {
   min-height: 100vh;
+  margin: 0;
+  padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem 1rem;
   background-color: #f8fafc;
 }
 
 .auth-container {
-  background: white;
   width: 100%;
-  max-width: 420px;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+  max-width: 480px;
+  min-height: 90vh; /* ✅ make the box fill most of the screen */
+  padding: 2rem 1.5rem;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
   display: flex;
   flex-direction: column;
-  align-items: stretch;
+  justify-content: center;
   box-sizing: border-box;
 }
 
 .auth-container h1 {
   text-align: center;
-  margin-bottom: 1.5rem;
-  font-size: 26px;
+  margin-bottom: 2rem;
+  font-size: 28px;
   color: #2a9d8f;
 }
 
 .auth-container input {
-  width: 100%;
-  padding: 14px;
-  margin-bottom: 1rem;
+  padding: 16px;
+  font-size: 16px;
+  margin-bottom: 18px;
   border-radius: 8px;
   border: 1px solid #ccc;
-  font-size: 16px;
+  width: 100%;
   box-sizing: border-box;
 }
 
 .auth-container button {
-  padding: 14px;
+  padding: 16px;
   background-color: #2a9d8f;
   color: white;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: bold;
   border: none;
   border-radius: 8px;
   cursor: pointer;
+  width: 100%;
 }
 
 .auth-container a {
-  margin-top: 12px;
+  margin-top: 1.5rem;
   text-align: center;
-  color: #2a9d8f;
+  display: block;
   font-size: 15px;
+  color: #2a9d8f;
   text-decoration: none;
 }
 
@@ -402,12 +406,12 @@ label {
 
 @media (max-width: 480px) {
   .auth-container {
-    padding: 1.5rem;
-    max-width: 95%;
+    padding: 2rem 1.25rem;
+    min-height: 100vh;
   }
 
   .auth-container h1 {
-    font-size: 22px;
+    font-size: 24px;
   }
 }
 
