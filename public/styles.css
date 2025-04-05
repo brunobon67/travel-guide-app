@@ -150,6 +150,21 @@ label {
     background-color: #f1f1f1;
 }
 
+/* 🧭 Keep menu items in one line */
+.user-menu a,
+.user-menu button {
+  white-space: nowrap;
+  padding: 10px 16px; /* Reduced padding to save space */
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+/* 🧼 Avoid wrapping menu on desktop */
+@media (min-width: 769px) {
+  .user-menu {
+    flex-wrap: nowrap;
+  }
+}
 
 
 
