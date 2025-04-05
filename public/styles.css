@@ -272,3 +272,11 @@ label {
     margin-top: 12px; /* space between button and dropdown */
   }
 }
+
+/* âœ… Stronger fix: ensure menu clears hamburger */
+@media (max-width: 768px) {
+  .user-menu {
+    margin-top: 24px; /* more space below hamburger */
+    padding-top: 8px; /* inner space top */
+  }
+}
