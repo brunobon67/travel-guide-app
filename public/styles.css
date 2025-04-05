@@ -1,6 +1,6 @@
 /* 🌍 General Styles */
 body {
-    font-family: 'Arial', sans-serif;  /* Restored the original font */
+    font-family: 'Inter', sans-serif;
     background: #f8f9fa;
     color: #333;
     display: flex;
@@ -12,62 +12,7 @@ body {
     overflow-y: auto;
 }
 
-/* 🌟 Menu Layout - Top Center */
-.user-menu {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: transparent;  /* Removed background */
-    padding: 10px 0;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    box-shadow: none;  /* No shadow */
-    z-index: 1000;
-    font-family: 'Arial', sans-serif; /* Restored original font */
-}
-
-.user-menu button,
-.user-menu a {
-    color: #333;
-    border: none;
-    padding: 12px 20px;
-    cursor: pointer;
-    font-size: 16px;
-    margin: 0 20px; /* Spacing between menu items */
-    text-decoration: none; /* Remove underline */
-    font-weight: 500;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.user-menu button:hover,
-.user-menu a:hover {
-    background-color: #f1f1f1;  /* Hover effect */
-    color: #2a9d8f; /* Change text color on hover */
-    border-radius: 5px;
-}
-
-/* 🌟 Logout Button Style */
-.logout-button {
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    padding: 10px 16px;
-    font-size: 14px;
-    background-color: #e74c3c;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    z-index: 1000;
-}
-
-.logout-button:hover {
-    background-color: #c0392b;
-}
-
-/* 🌍 General Container */
+/* 🌟 Container for form */
 .container {
     width: 100%;
     max-width: 700px;
@@ -76,6 +21,17 @@ body {
     border-radius: 12px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
+    margin-bottom: 20px;
+}
+
+/* 📋 Labels and Input/Select Styling */
+label {
+    font-weight: 500;
+    display: block;
+    font-size: 14px;
+    text-align: left;
+    margin-top: 10px;
+    color: #444;
 }
 
 /* 🌟 Response Container for Travel Guide */
@@ -90,6 +46,7 @@ body {
     margin-top: 20px;
     max-height: 80vh;
     overflow-y: auto;
+    display: none;
 }
 
 /* 🌟 Button Styling */
@@ -128,6 +85,60 @@ input[type="password"] {
     margin-bottom: 10px;
 }
 
+/* 🌟 Logout Button */
+.logout-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 10px 16px;
+    font-size: 14px;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    z-index: 1000;
+}
+
+.logout-button:hover {
+    background-color: #c0392b;
+}
+
+/* 💬 User Menu: Horizontal, Centered, White Background */
+.user-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;  /* Changed from green to white */
+    color: #333;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.user-menu button,
+.user-menu a {
+    background: transparent;
+    color: #333;
+    border: none;
+    padding: 12px 20px;
+    cursor: pointer;
+    font-size: 14px;
+    margin: 0 10px; /* Added spacing between menu items */
+    transition: background-color 0.3s ease;
+}
+
+.user-menu button:hover,
+.user-menu a:hover {
+    background-color: #f1f1f1; /* Hover effect */
+    border-radius: 5px;
+}
+
 /* 🌟 Mobile Responsiveness */
 @media (max-width: 768px) {
     .user-menu {
@@ -140,6 +151,7 @@ input[type="password"] {
         margin-bottom: 10px;
     }
 }
+
 
 
 
