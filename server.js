@@ -26,6 +26,8 @@ app.use(
         "https://www.googleapis.com",
         "https://www.gstatic.com/firebasejs",
         "https://apis.google.com"
+        "https://unpkg.com" // ✅ Add this line
+
       ],
       "connect-src": [
         "'self'",
