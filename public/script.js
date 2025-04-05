@@ -26,7 +26,7 @@ document.getElementById("preferencesForm")?.addEventListener("submit", async (ev
   const preferences = {
     destination: document.getElementById("destination").value,
     duration: document.getElementById("duration").value,
-    accommodation: document.getElementById("accommodation").value,
+   
     preferredActivities: document.getElementById("preferredActivities").value,
     nightlife: document.getElementById("nightlife").value
   };
