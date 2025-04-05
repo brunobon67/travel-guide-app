@@ -56,13 +56,16 @@ const getTravelGuide = require("./chatgpt");
 app.post("/get-travel-guide", async (req, res) => {
   const { preferences } = req.body;
 
-  if (
-    !preferences ||
-    !preferences.destination ||
-    !preferences.duration ||
-   {
-    return res.status(400).json({ error: "Please fill in all required fields." });
-  }
+if (
+  !preferences ||
+  !preferences.destination ||
+  !preferences.duration ||
+  !preferences.preferredActivities ||
+  !preferences.nightlife
+) {
+  return res.status(400).json({ error: "Please fill in all required fields." });
+}
+
 
   try {
     const response = await getTravelGuide(preferences);
