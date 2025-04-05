@@ -342,8 +342,8 @@ label {
 .auth-page {
   margin: 0;
   padding: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 200vw;
+  height: 200vh;
   background-color: #f8fafc;
   display: flex;
   justify-content: center;
@@ -351,8 +351,8 @@ label {
 }
 
 .auth-container {
-  width: 100vw;
-  height: 100vh;
+  width: 200vw;
+  height: 200vh;
   padding: 2rem 1rem;
   background-color: white;
   box-sizing: border-box;
