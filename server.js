@@ -16,6 +16,7 @@ app.use(morgan("dev"));
 
 // ✅ CSP: allow Firebase + Google Fonts
 app.use(
+app.use(
   helmet.contentSecurityPolicy({
     useDefaults: true,
     directives: {
@@ -25,9 +26,8 @@ app.use(
         "https://www.gstatic.com",
         "https://www.googleapis.com",
         "https://www.gstatic.com/firebasejs",
-        "https://apis.google.com"
-        "https://unpkg.com" // ✅ Add this line
-
+        "https://apis.google.com",
+        "https://unpkg.com" // ✅ allows Lucide icons
       ],
       "connect-src": [
         "'self'",
@@ -41,10 +41,16 @@ app.use(
         "'unsafe-inline'",
         "https://fonts.googleapis.com"
       ],
-      "font-src": ["'self'", "https://fonts.gstatic.com"]
+      "font-src": ["'self'", "https://fonts.gstatic.com"],
+      "frame-src": [
+        "'self'",
+        "https://*.firebaseapp.com",
+        "https://*.firebaseio.com"
+      ] // ✅ allows Firebase auth popups/iframes
     }
   })
 );
+
 
 // ✅ Routes
 app.get("/login", (req, res) => res.sendFile(path.join(__dirname, "public", "login.html")));
