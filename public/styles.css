@@ -341,24 +341,28 @@ label {
 /* General Styles for Authentication Pages */
 .auth-page {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: stretch;
   justify-content: center;
-  min-height: 100vh;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
   background-color: #f8fafc;
-  padding: 20px; /* Padding around the edges of the viewport */
 }
 
 .auth-container {
-  width: 100%; /* Full width of the viewport */
-  max-width: 480px; /* Maximum width of the form */
-  background: white;
-  padding: 1.5rem; /* Padding inside the form */
-  box-sizing: border-box;
+  flex: 1;
+  width: 100vw;
+  height: 100vh;
+  padding: 2rem 1.25rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  background-color: white;
+  border-radius: 0;
+  box-shadow: none;
+  box-sizing: border-box;
 }
 
 .auth-container h1 {
