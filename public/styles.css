@@ -1,15 +1,98 @@
 /* 🌍 General Styles */
 body {
     font-family: 'Inter', sans-serif;
-    background: #f8f9fa;
+    background: #f8f9fa; /* Light background for the page */
     color: #333;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;  /* Aligning the content to the top */
     flex-direction: column;
     min-height: 100vh;
     margin: 0;
     overflow-y: auto;
+}
+
+/* 🌟 User Menu Styling */
+.user-menu {
+    display: flex;
+    justify-content: center;  /* Ensures menu items are centered horizontally */
+    align-items: center;
+    background-color: transparent;  /* Menu background matches page */
+    color: #333;
+    padding: 20px 0; /* Padding to keep it spaced well from the top */
+    border-bottom: 1px solid #ddd; /* A subtle border to separate menu from content */
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.user-menu button,
+.user-menu a {
+    background: transparent;
+    color: #333;
+    border: none;
+    padding: 12px 20px;
+    cursor: pointer;
+    font-size: 14px;
+    margin: 0 15px;  /* Adds spacing between menu items */
+    transition: background-color 0.3s ease;
+    text-decoration: none;  /* Removes underline */
+}
+
+.user-menu button:hover,
+.user-menu a:hover {
+    background-color: #f1f1f1;  /* Light hover effect */
+    border-radius: 5px;
+}
+
+/* 🌟 Button Styling */
+button {
+    width: 100%;
+    background: #2a9d8f;
+    color: white;
+    border: none;
+    padding: 14px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 15px;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #21867a;
+}
+
+/* 🎯 Input Fields */
+input[type="text"],
+input[type="number"],
+select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+input[type="password"] {
+    margin-bottom: 10px;
+}
+
+/* 🌟 Mobile Responsiveness */
+@media (max-width: 768px) {
+    .user-menu {
+        flex-direction: column;
+        padding: 15px 0;  /* Adjusted for mobile view */
+    }
+
+    .user-menu button,
+    .user-menu a {
+        margin-bottom: 10px;  /* Adds space between menu items on small screens */
+    }
 }
 
 /* 🌟 Container for form */
@@ -21,7 +104,7 @@ body {
     border-radius: 12px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
-    margin-bottom: 20px;
+    margin-top: 60px; /* Adjusted to give space below the top menu */
 }
 
 /* 📋 Labels and Input/Select Styling */
@@ -49,42 +132,6 @@ label {
     display: none;
 }
 
-/* 🌟 Button Styling */
-button {
-    width: 100%;
-    background: #2a9d8f;
-    color: white;
-    border: none;
-    padding: 14px;
-    font-size: 1rem;
-    cursor: pointer;
-    margin-top: 15px;
-    border-radius: 6px;
-    font-weight: bold;
-    transition: background 0.3s;
-}
-
-/* Hover Effect */
-button:hover {
-    background: #21867a;
-}
-
-/* 🎯 Input Fields */
-input[type="text"],
-input[type="number"],
-select {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 14px;
-}
-
-input[type="password"] {
-    margin-bottom: 10px;
-}
-
 /* 🌟 Logout Button */
 .logout-button {
     position: absolute;
@@ -104,55 +151,4 @@ input[type="password"] {
 .logout-button:hover {
     background-color: #c0392b;
 }
-
-/* 💬 User Menu: Horizontal, Centered, White Background */
-.user-menu {
-    display: flex;
-    justify-content: center;  /* Ensures menu items are centered */
-    align-items: center;
-    background-color: white;  /* Changed from green to white */
-    color: #333;
-    padding: 10px;
-    border-radius: 5px;
-    margin-top: 20px;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.user-menu button,
-.user-menu a {
-    background: transparent;
-    color: #333;
-    border: none;
-    padding: 12px 20px;
-    cursor: pointer;
-    font-size: 14px;
-    margin: 0 15px;  /* Adds spacing between menu items */
-    transition: background-color 0.3s ease;
-    text-decoration: none;  /* Removes underline */
-}
-
-.user-menu button:hover,
-.user-menu a:hover {
-    background-color: #f1f1f1;  /* Hover effect */
-    border-radius: 5px;
-}
-
-/* 🌟 Mobile Responsiveness */
-@media (max-width: 768px) {
-    .user-menu {
-        flex-direction: column;
-        padding: 15px;
-    }
-
-    .user-menu button,
-    .user-menu a {
-        margin-bottom: 10px;
-    }
-}
-
-
 
