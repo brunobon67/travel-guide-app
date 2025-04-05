@@ -261,3 +261,14 @@ label {
     text-align: center;
   }
 }
+
+/* âœ… Fix: Prevent hamburger from overlapping first menu item */
+@media (max-width: 768px) {
+  .hamburger {
+    z-index: 1101; /* stay on top */
+  }
+
+  .user-menu {
+    margin-top: 12px; /* space between button and dropdown */
+  }
+}
