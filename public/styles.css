@@ -338,63 +338,61 @@ label {
 
 
 /* ✅ AUTH FORM - FULL MOBILE OPTIMIZATION */
+/* General Styles for Authentication Pages */
 .auth-page {
-  height: 100vh;
-  margin: 0;
-  padding: 0;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  min-height: 100vh;
   background-color: #f8fafc;
+  padding: 20px; /* Padding around the edges of the viewport */
 }
 
 .auth-container {
-  width: 100vw; /* ✅ full width */
-  height: 100vh; /* ✅ full height */
+  width: 100%; /* Full width of the viewport */
+  max-width: 480px; /* Maximum width of the form */
   background: white;
-  padding: 2rem;
+  padding: 1.5rem; /* Padding inside the form */
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-radius: 0; /* remove round corners on mobile */
-  box-shadow: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 .auth-container h1 {
   text-align: center;
-  font-size: 28px;
+  margin-bottom: 20px;
+  font-size: 24px; /* Slightly smaller font size for mobile */
   color: #2a9d8f;
-  margin-bottom: 2rem;
+}
+
+.auth-container input, .auth-container button {
+  height: 50px; /* Taller input fields and buttons */
+  margin-bottom: 16px;
+  font-size: 16px; /* Larger font size for readability */
+  border-radius: 8px;
 }
 
 .auth-container input {
-  padding: 16px;
-  font-size: 16px;
-  margin-bottom: 16px;
-  border-radius: 8px;
+  padding: 0 15px; /* Horizontal padding for inputs */
   border: 1px solid #ccc;
-  width: 100%;
-  box-sizing: border-box;
 }
 
 .auth-container button {
-  padding: 16px;
   background-color: #2a9d8f;
   color: white;
-  font-size: 16px;
-  font-weight: bold;
   border: none;
-  border-radius: 8px;
   cursor: pointer;
-  width: 100%;
 }
 
 .auth-container a {
-  margin-top: 1.5rem;
+  display: block;
   text-align: center;
-  font-size: 15px;
+  margin-top: 15px;
   color: #2a9d8f;
+  font-size: 15px; /* Readable font size */
   text-decoration: none;
 }
 
@@ -402,12 +400,18 @@ label {
   text-decoration: underline;
 }
 
-@media (min-width: 768px) {
+/* Responsive adjustments for devices wider than 480px */
+@media (min-width: 481px) {
+  .auth-page {
+    padding: 40px; /* More padding for larger screens */
+  }
+
   .auth-container {
-    max-width: 420px;
-    height: auto;
-    margin: auto;
-    border-radius: 12px;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+    padding: 2rem; /* More internal padding */
+    border-radius: 12px; /* Rounded corners for aesthetics */
+  }
+
+  .auth-container h1 {
+    font-size: 28px; /* Larger font size for desktop */
   }
 }
