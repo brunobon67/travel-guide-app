@@ -111,9 +111,12 @@ document.getElementById("menuToggle")?.addEventListener("click", () => {
   const menu = document.getElementById("menu");
   menu.classList.toggle("visible");
 
-  // Toggle body class for margin push-down effect
-  document.body.classList.toggle("menu-open");
+  // Only apply push-down effect on mobile
+  if (window.innerWidth <= 768) {
+    document.body.classList.toggle("menu-open");
+  }
 });
+
 
 
 
