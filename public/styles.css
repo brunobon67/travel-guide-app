@@ -34,10 +34,10 @@ body {
     background: transparent;
     color: #333;
     border: none;
-    padding: 4px 5px;
+    padding: 12px 20px;
     cursor: pointer;
     font-size: 14px;
-    margin: 0 0px;  /* Adds spacing between menu items */
+    margin: 0 15px;  /* Adds spacing between menu items */
     transition: background-color 0.3s ease;
     text-decoration: none;  /* Removes underline */
 }
@@ -50,7 +50,7 @@ body {
 
 /* 🌟 Button Styling */
 button {
-    width: 30%;
+    width: 100%;
     background: #2a9d8f;
     color: white;
     border: none;
@@ -142,8 +142,8 @@ label {
     position: absolute;
     top: 20px;
     right: 20px;
-    padding: 10px 16px;
-    font-size: 14px;
+    padding: 6px 12px; /* Reduced padding */
+    font-size: 12px; /* Smaller font size */
     background-color: #e74c3c;
     color: white;
     border: none;
