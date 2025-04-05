@@ -340,67 +340,68 @@ label {
 /* ✅ AUTH FORM - FULL MOBILE OPTIMIZATION */
 /* General Styles for Authentication Pages */
 .auth-page {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  justify-content: center;
-  width: 100vw;
-  height: 100vh;
   margin: 0;
   padding: 0;
+  width: 100vw;
+  height: 100vh;
   background-color: #f8fafc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .auth-container {
-  flex: 1;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
-  padding: 0;
-  margin: 0;
+  padding: 2rem 1rem;
+  background-color: white;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: white;
-  border-radius: 0;
-  box-shadow: none;
-  box-sizing: border-box;
 }
-
 
 .auth-container h1 {
-  text-align: center;
-  margin-bottom: 20px;
-  font-size: 24px; /* Slightly smaller font size for mobile */
+  font-size: 26px;
   color: #2a9d8f;
+  text-align: center;
+  margin-bottom: 2rem;
 }
 
-.auth-container input, .auth-container button {
-  height: 50px; /* Taller input fields and buttons */
-  margin-bottom: 16px;
-  font-size: 16px; /* Larger font size for readability */
+.auth-container form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 1.2rem;
+}
+
+.auth-container input,
+.auth-container button {
+  width: 100%;
+  padding: 16px;
+  font-size: 16px;
   border-radius: 8px;
-}
-
-.auth-container input {
-  padding: 0 15px; /* Horizontal padding for inputs */
   border: 1px solid #ccc;
+  box-sizing: border-box;
 }
 
 .auth-container button {
   background-color: #2a9d8f;
   color: white;
+  font-weight: bold;
   border: none;
   cursor: pointer;
 }
 
 .auth-container a {
   display: block;
+  margin-top: 1rem;
   text-align: center;
-  margin-top: 15px;
   color: #2a9d8f;
-  font-size: 15px; /* Readable font size */
   text-decoration: none;
+  font-size: 14px;
 }
+
 
 .auth-container a:hover {
   text-decoration: underline;
