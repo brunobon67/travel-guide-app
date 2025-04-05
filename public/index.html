@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
 
-  <meta http-equiv="Content-Security-Policy" content="
+<meta http-equiv="Content-Security-Policy" content="
   default-src 'self';
   script-src 'self' https://www.gstatic.com https://www.googleapis.com https://www.gstatic.com/firebasejs;
   connect-src 'self' https://securetoken.googleapis.com https://firestore.googleapis.com https://identitytoolkit.googleapis.com;
-  style-src 'self' 'unsafe-inline';
-  font-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com;
+  style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+  font-src 'self' https://fonts.gstatic.com;
 ">
+
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
