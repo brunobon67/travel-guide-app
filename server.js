@@ -49,7 +49,7 @@ app.use(
       ] // ✅ allows Firebase auth popups/iframes
     }
   })
-);
+)
 
 
 // ✅ Routes
