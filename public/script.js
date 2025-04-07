@@ -26,7 +26,6 @@ document.getElementById("preferencesForm")?.addEventListener("submit", async (ev
   const preferences = {
     destination: document.getElementById("destination").value,
     duration: document.getElementById("duration").value,
-   
     preferredActivities: document.getElementById("preferredActivities").value,
     nightlife: document.getElementById("nightlife").value
   };
@@ -47,35 +46,44 @@ document.getElementById("preferencesForm")?.addEventListener("submit", async (ev
       const { done, value } = await reader.read();
       if (done) break;
       result += decoder.decode(value);
-
-      responseContainer.innerHTML = `
-        <h2>Your Travel Guide</h2>
-        <div id="travel-guide-output" style="background: #f9f9f9; padding: 1rem; border-radius: 8px; font-size: 1rem; line-height: 1.6; margin-bottom: 1rem;">
-          ${result
-            .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
-            .replace(/\\n/g, "<br>")
-            .replace(/\n/g, "<br>")
-            .replace(/```/g, "")
-            .replace(/"{/g, "{")
-            .replace(/}"/g, "}")
-            .replace(/^"guide":/g, "")
-          }
-        </div>
-        <button id="saveGuideBtn" style="padding: 0.5rem 1rem; background: #2a9d8f; color: white; border: none; border-radius: 4px; cursor: pointer;">
-          💾 Save this guide
-        </button>
-      `;
     }
+
+    // ✅ Try to parse the result to extract the guide
+    let guideContent = result;
+    try {
+      const parsed = JSON.parse(result);
+      if (parsed.guide) {
+        guideContent = parsed.guide;
+      }
+    } catch (e) {
+      // Fallback to raw string if parsing fails
+      console.warn("Guide result is not valid JSON:", e);
+    }
+
+    responseContainer.innerHTML = `
+      <h2>Your Travel Guide</h2>
+      <div id="travel-guide-output" style="background: #f9f9f9; padding: 1rem; border-radius: 8px; font-size: 1rem; line-height: 1.6; margin-bottom: 1rem;">
+        ${guideContent
+          .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
+          .replace(/\\n/g, "<br>")
+          .replace(/\n/g, "<br>")
+          .replace(/```/g, "")
+        }
+      </div>
+      <button id="saveGuideBtn" style="padding: 0.5rem 1rem; background: #2a9d8f; color: white; border: none; border-radius: 4px; cursor: pointer;">
+        💾 Save this guide
+      </button>
+    `;
 
     // ✅ Attach save logic after rendering
     document.getElementById("saveGuideBtn")?.addEventListener("click", async () => {
       try {
-        if (currentUser && result.trim()) {
+        if (currentUser && guideContent.trim()) {
           await addDoc(collection(db, "travelPlans"), {
             uid: currentUser.uid,
             createdAt: serverTimestamp(),
             preferences,
-            guide: result
+            guide: guideContent
           });
           alert("✅ Travel guide saved to your account!");
         } else {
@@ -116,6 +124,7 @@ document.getElementById("menuToggle")?.addEventListener("click", () => {
     document.body.classList.toggle("menu-open");
   }
 });
+
 
 
 
