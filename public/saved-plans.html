@@ -8,11 +8,12 @@
 </head>
 <body>
 
-  <!-- 🔝 Header with hamburger menu -->
+  <!-- ✅ Header with Hamburger -->
   <header class="header">
     <div class="logo">✈️ Travel Guide</div>
     <div id="menuToggle" class="hamburger">☰</div>
     <div id="menu" class="user-menu">
+      <a href="/app" class="menu-item">🏠 Home</a>
       <a href="/saved-plans" class="menu-item">📂 My Saved Plans</a>
       <a href="/profile" class="menu-item">👤 My Profile</a>
       <a href="/contact-us" class="menu-item">✉️ Contact Us</a>
@@ -20,7 +21,7 @@
     </div>
   </header>
 
-  <!-- 📋 Saved Plans -->
+  <!-- ✅ Main Content -->
   <div class="plans-container main-content">
     <h2>🧳 My Saved Travel Plans</h2>
     <div id="plansList" class="saved-plans-container">
@@ -31,27 +32,27 @@
     </div>
   </div>
 
-  <!-- 📦 Load plans from Firestore -->
+  <!-- ✅ Load saved plans from Firestore -->
   <script type="module" src="/saved-plans.js"></script>
 
-  <!-- ✅ Menu toggle + logout -->
+  <!-- ✅ Hamburger toggle + logout -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const menuToggle = document.getElementById("menuToggle");
       const menu = document.getElementById("menu");
-      const logoutBtn = document.getElementById("logout-btn");
 
       if (menuToggle && menu) {
         menuToggle.addEventListener("click", () => {
           menu.classList.toggle("visible");
 
-          // Optional: push down content on mobile
+          // Optional: push content down on mobile
           if (window.innerWidth <= 768) {
             document.body.classList.toggle("menu-open");
           }
         });
       }
 
+      const logoutBtn = document.getElementById("logout-btn");
       if (logoutBtn) {
         logoutBtn.addEventListener("click", async () => {
           const { auth } = await import("./firebase.js");
@@ -65,4 +66,5 @@
 
 </body>
 </html>
+
 
