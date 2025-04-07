@@ -365,3 +365,45 @@ body {
   text-decoration: none;
 }
 
+.profile-container {
+  max-width: 600px;
+  margin: 100px auto 40px auto;
+  padding: 1rem;
+  text-align: center;
+}
+
+.profile-card {
+  background-color: #f9f9f9;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  margin-top: 1rem;
+  font-size: 1rem;
+  text-align: left;
+}
+
+.profile-card p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.profile-buttons {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.primary-btn {
+  background-color: #2a9d8f;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.primary-btn:hover {
+  background-color: #21867a;
+}
