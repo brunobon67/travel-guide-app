@@ -30,6 +30,58 @@ body {
   color: #333;
 }
 
+.saved-plan {
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.saved-plan:hover {
+  box-shadow: 0 6px 14px rgba(0,0,0,0.1);
+}
+
+.plan-button {
+  all: unset;
+  display: block;
+  width: 100%;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2a9d8f;
+  cursor: pointer;
+  margin-bottom: 0.75rem;
+}
+
+.delete-button-inline {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 50%;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.delete-button-inline:hover {
+  background-color: #c0392b;
+}
+
+.guide-preview {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #333;
+  padding-top: 0.5rem;
+  border-top: 1px solid #eee;
+  white-space: normal;
+}
+
 
 .user-menu {
   display: flex;
