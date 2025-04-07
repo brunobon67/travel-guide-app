@@ -50,6 +50,16 @@
       });
     });
   </script>
+
+  <script>
+  document.getElementById("menuToggle")?.addEventListener("click", () => {
+    const menu = document.getElementById("menu");
+    if (menu) {
+      menu.classList.toggle("visible");
+    }
+  });
+</script>
+
 </body>
 </html>
 
