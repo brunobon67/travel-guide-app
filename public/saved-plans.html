@@ -7,22 +7,48 @@
   <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
+
+  <header class="header">
+    <div class="logo">✈️ Travel Guide</div>
+    <div id="menuToggle" class="hamburger">☰</div>
+    <div id="menu" class="user-menu">
+      <a href="/saved-plans" class="menu-item">📂 My Saved Plans</a>
+      <a href="/profile" class="menu-item">👤 My Profile</a>
+      <a href="/contact-us" class="menu-item">✉️ Contact Us</a>
+      <button id="logout-btn" class="logout-btn menu-item">🚪 Logout</button>
+    </div>
+  </header>
+
   <div class="plans-container">
     <h2>🧳 My Saved Travel Plans</h2>
-
-    <!-- 👇 All plans will be inserted here -->
     <div id="plansList" class="saved-plans-container">
       <p>Loading...</p>
     </div>
-
-    <!-- 👇 Go back to the main app -->
     <div class="back-button" style="margin-top: 2rem; text-align: center;">
       <a href="/app" style="color: #2a9d8f; text-decoration: none; font-weight: bold;">← Back to App</a>
     </div>
   </div>
 
-  <!-- ✅ Load logic for rendering saved plans -->
   <script type="module" src="/saved-plans.js"></script>
+  <script>
+    document.getElementById("menuToggle")?.addEventListener("click", () => {
+      const menu = document.getElementById("menu");
+      menu.classList.toggle("visible");
+
+      if (window.innerWidth <= 768) {
+        document.body.classList.toggle("menu-open");
+      }
+    });
+
+    document.getElementById("logout-btn")?.addEventListener("click", async () => {
+      import("./firebase.js").then(({ auth }) => {
+        import("https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js").then(({ signOut }) => {
+          signOut(auth).then(() => window.location.href = "/login");
+        });
+      });
+    });
+  </script>
 </body>
+
 </html>
 
