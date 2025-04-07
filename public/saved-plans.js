@@ -38,43 +38,41 @@ onAuthStateChanged(auth, (user) => {
       const plan = docSnap.data();
       const id = docSnap.id;
 
-      const card = document.createElement("div");
-      card.className = "plan-card";
+      const destination = plan.preferences?.destination || "Unknown place";
+      const duration = plan.preferences?.duration || "?";
 
-      let guideText = "";
+      const wrapper = document.createElement("div");
+      wrapper.className = "saved-plan";
 
-      try {
-        const parsed = typeof plan.guide === "string" ? JSON.parse(plan.guide) : plan.guide;
-        guideText = parsed.guide || "No guide found.";
-      } catch (err) {
-        guideText = plan.guide || "No guide available.";
-      }
+      const button = document.createElement("button");
+      button.className = "plan-button";
+      button.innerText = `📍 ${destination} — ${duration} days`;
 
-      // Render as HTML like in script.js
-      const formattedGuide = guideText
-        .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
-        .replace(/\n{2,}/g, "</p><p>")
-        .replace(/\n/g, "<br>");
+      // 👇 Create hidden guide content
+      const guideText = document.createElement("div");
+      guideText.className = "guide-preview";
+      guideText.innerHTML = (plan.guide || "").replace(/\n/g, "<br>");
+      guideText.style.display = "none";
 
-      card.innerHTML = `
-        <div class="plan-header">
-          <h3>${plan.destination || "Destination unknown"}</h3>
-          <small>${plan.createdAt?.toDate().toLocaleString() || "Date unknown"}</small>
-        </div>
-        <div class="guide-content">
-          <p>${formattedGuide}</p>
-        </div>
-        <button class="delete-button" data-id="${id}">🗑️ Delete</button>
-      `;
+      button.addEventListener("click", () => {
+        guideText.style.display = guideText.style.display === "none" ? "block" : "none";
+      });
 
-      // Delete logic
-      card.querySelector(".delete-button").addEventListener("click", async () => {
+      const deleteBtn = document.createElement("button");
+      deleteBtn.className = "delete-button-inline";
+      deleteBtn.innerText = "🗑️";
+
+      deleteBtn.addEventListener("click", async (e) => {
+        e.stopPropagation();
         if (confirm("Are you sure you want to delete this plan?")) {
           await deleteDoc(doc(db, "travelPlans", id));
         }
       });
 
-      plansList.appendChild(card);
+      wrapper.appendChild(button);
+      wrapper.appendChild(deleteBtn);
+      wrapper.appendChild(guideText);
+      plansList.appendChild(wrapper);
     });
   });
 });
