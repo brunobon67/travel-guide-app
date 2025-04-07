@@ -157,6 +157,20 @@ body {
   gap: 1rem;
 }
 
+
+.guide-preview {
+  margin-top: 10px;
+  padding: 1rem;
+  background-color: #fdfdfd;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 15px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  color: #333;
+}
+
+
 .trip-form label {
   text-align: left;
   font-size: 14px;
