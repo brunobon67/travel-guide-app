@@ -5,100 +5,24 @@
   <title>My Saved Travel Plans</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="/styles.css" />
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f4f8fb;
-      margin: 0;
-      padding: 0;
-    }
-
-    .plans-container {
-      max-width: 900px;
-      margin: 60px auto;
-      padding: 30px;
-      background-color: #fff;
-      border-radius: 10px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-    }
-
-    .plans-container h2 {
-      font-size: 26px;
-      margin-bottom: 20px;
-      text-align: center;
-      color: #2c3e50;
-    }
-
-    .plan-card {
-      background-color: #f9f9f9;
-      border-radius: 8px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
-      padding: 20px;
-      margin-bottom: 20px;
-      position: relative;
-    }
-
-    .plan-card h3 {
-      margin-top: 0;
-      font-size: 20px;
-      color: #333;
-    }
-
-    .plan-card p {
-      font-size: 15px;
-      line-height: 1.6;
-      white-space: pre-wrap;
-      color: #444;
-    }
-
-    .plan-card small {
-      color: #888;
-      font-size: 12px;
-    }
-
-    .plan-card button {
-      position: absolute;
-      top: 16px;
-      right: 16px;
-      background-color: #e74c3c;
-      color: white;
-      border: none;
-      padding: 6px 12px;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 12px;
-    }
-
-    .back-button {
-      display: block;
-      margin: 30px 0 0;
-      text-align: center;
-    }
-
-    .back-button a {
-      background-color: #3498db;
-      color: white;
-      padding: 12px 24px;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: background-color 0.3s ease;
-    }
-
-    .back-button a:hover {
-      background-color: #2980b9;
-    }
-  </style>
 </head>
 <body>
   <div class="plans-container">
     <h2>🧳 My Saved Travel Plans</h2>
-    <div id="plansList">Loading...</div>
-    <div class="back-button">
-      <a href="/app">← Back to App</a>
+
+    <!-- 👇 All plans will be inserted here -->
+    <div id="plansList" class="saved-plans-container">
+      <p>Loading...</p>
+    </div>
+
+    <!-- 👇 Go back to the main app -->
+    <div class="back-button" style="margin-top: 2rem; text-align: center;">
+      <a href="/app" style="color: #2a9d8f; text-decoration: none; font-weight: bold;">← Back to App</a>
     </div>
   </div>
 
+  <!-- ✅ Load logic for rendering saved plans -->
   <script type="module" src="/saved-plans.js"></script>
 </body>
 </html>
+
