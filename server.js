@@ -14,8 +14,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
 app.use(morgan("dev"));
 
-// ✅ CSP: allow Firebase + Google Fonts
-app.use(
+// ✅ Fix: Correct CSP header
 app.use(
   helmet.contentSecurityPolicy({
     useDefaults: true,
@@ -27,7 +26,7 @@ app.use(
         "https://www.googleapis.com",
         "https://www.gstatic.com/firebasejs",
         "https://apis.google.com",
-        "https://unpkg.com" // ✅ allows Lucide icons
+        "https://unpkg.com"
       ],
       "connect-src": [
         "'self'",
@@ -46,11 +45,10 @@ app.use(
         "'self'",
         "https://*.firebaseapp.com",
         "https://*.firebaseio.com"
-      ] // ✅ allows Firebase auth popups/iframes
+      ]
     }
   })
-)
-
+);
 
 // ✅ Routes
 app.get("/login", (req, res) => res.sendFile(path.join(__dirname, "public", "login.html")));
@@ -64,16 +62,15 @@ const getTravelGuide = require("./chatgpt");
 app.post("/get-travel-guide", async (req, res) => {
   const { preferences } = req.body;
 
-if (
-  !preferences ||
-  !preferences.destination ||
-  !preferences.duration ||
-  !preferences.preferredActivities ||
-  !preferences.nightlife
-) {
-  return res.status(400).json({ error: "Please fill in all required fields." });
-}
-
+  if (
+    !preferences ||
+    !preferences.destination ||
+    !preferences.duration ||
+    !preferences.preferredActivities ||
+    !preferences.nightlife
+  ) {
+    return res.status(400).json({ error: "Please fill in all required fields." });
+  }
 
   try {
     const response = await getTravelGuide(preferences);
@@ -84,7 +81,7 @@ if (
   }
 });
 
-// ✅ Fallback
+// ✅ Fallback 404 route
 app.use((req, res) => {
   res.status(404).json({ error: "Route not found" });
 });
