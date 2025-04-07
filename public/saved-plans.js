@@ -55,8 +55,27 @@ onAuthStateChanged(auth, (user) => {
       guideText.style.display = "none";
 
       button.addEventListener("click", () => {
-        guideText.style.display = guideText.style.display === "none" ? "block" : "none";
-      });
+   let guideString = "";
+
+// If guide is a stringified JSON, parse it
+try {
+  const parsed = typeof plan.guide === "string" ? JSON.parse(plan.guide) : plan.guide;
+  guideString = parsed.guide || parsed;
+} catch {
+  guideString = plan.guide || "No guide found.";
+}
+
+// Format it nicely
+guideText.innerHTML = guideString
+  .replace(/\\n/g, "<br>")               // double slashes
+  .replace(/\n/g, "<br>")                // actual newlines
+  .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>") // markdown bold
+  .replace(/```/g, "")                   // strip triple backticks
+  .replace(/"guide":/, "");              // just in case
+
+guideText.className = "guide-preview";
+guideText.style.display = "none";
+
 
       const deleteBtn = document.createElement("button");
       deleteBtn.className = "delete-button-inline";
