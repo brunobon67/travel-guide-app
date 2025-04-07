@@ -154,6 +154,48 @@ body {
     cursor: pointer;
   }
 
+
+.hamburger {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+    font-size: 1.8rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: #2a9d8f;
+    padding: 0.5rem;
+    z-index: 999;
+  }
+
+  .user-menu {
+    display: none;
+    flex-direction: column;
+    background: white;
+    position: absolute;
+    top: 60px;
+    left: 5%;
+    width: 90%;
+    max-width: 320px;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    padding: 1rem;
+    z-index: 998;
+  }
+
+  .user-menu.visible {
+    display: flex;
+  }
+
+  body.menu-open .main-content {
+    margin-top: 200px;
+  }
+}
+
+  
   .user-menu {
     display: none;
     flex-direction: column;
