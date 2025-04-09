@@ -11,7 +11,6 @@ onAuthStateChanged(auth, (user) => {
   } else {
     document.getElementById("displayName").textContent = user.displayName || "N/A";
     document.getElementById("email").textContent = user.email;
-    document.getElementById("uid").textContent = user.uid;
   }
 });
 
