@@ -41,6 +41,11 @@ body {
   transform: translateY(-2px);
 }
 
+.saved-plans-container h2 {
+  margin-top: 100px;
+}
+
+
 .plan-button {
   all: unset;
   display: block;
