@@ -457,18 +457,10 @@ body {
 
 
 @media (max-width: 768px) {
-  .hamburger {
-    display: block;
-    position: fixed;
-    top: 16px;
-    left: 16px;
-    font-size: 26px;
-    background: none;
-    border: none;
-    color: #2a9d8f;
-    z-index: 1100;
-    cursor: pointer;
+  body.menu-open .plans-container {
+    margin-top: 300px; /* bump it slightly */
   }
+}
 
   .user-menu {
     display: none;
