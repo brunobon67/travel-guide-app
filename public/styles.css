@@ -489,4 +489,9 @@ body {
     margin-top: 240px;
   }
 }
+@media (max-width: 768px) {
+  h2.saved-plans-title {
+    margin-top: 100px;
+  }
+}
 
