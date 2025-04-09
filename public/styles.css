@@ -500,4 +500,22 @@ body {
   }
 }
 
+@media (min-width: 769px) {
+  .user-menu {
+    display: flex !important;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: static;
+    width: 100%;
+    background: white;
+    padding: 20px 0;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .hamburger {
+    display: none !important;
+  }
+}
+
 
