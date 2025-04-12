@@ -1,7 +1,5 @@
-// /contact-us.js
-import emailjs from "https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js";
+// ✅ No import statement needed
 
-// Initialize EmailJS
 emailjs.init("k-pLBkzSztIp6MenN");
 
 const form = document.getElementById("contact-form");
