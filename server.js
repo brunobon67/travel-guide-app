@@ -30,17 +30,7 @@ app.use(
         "https://www.gstatic.com/firebasejs",
         "https://apis.google.com",
         "https://unpkg.com",
-        "https://cdn.jsdelivr.net" // ✅ ADD THIS
-
-      ],
-      "connect-src": [
-        "'self'",
-        "https://securetoken.googleapis.com",
-        "https://identitytoolkit.googleapis.com",
-        "https://firebase.googleapis.com",
-        "https://firestore.googleapis.com"
-         "https://api.emailjs.com"
-
+        "https://cdn.jsdelivr.net"
       ],
       "style-src": [
         "'self'",
@@ -48,6 +38,14 @@ app.use(
         "https://fonts.googleapis.com"
       ],
       "font-src": ["'self'", "https://fonts.gstatic.com"],
+      "connect-src": [
+        "'self'",
+        "https://securetoken.googleapis.com",
+        "https://identitytoolkit.googleapis.com",
+        "https://firebase.googleapis.com",
+        "https://firestore.googleapis.com",
+        "https://api.emailjs.com" // ✅ THIS is the one you are missing!
+      ],
       "frame-src": [
         "'self'",
         "https://*.firebaseapp.com",
@@ -56,7 +54,6 @@ app.use(
     }
   })
 );
-
 
 // ✅ Routes
 app.get("/login", (req, res) => res.sendFile(path.join(__dirname, "public", "login.html")));
