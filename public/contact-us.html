@@ -1,17 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<body>
-  
-<h2>Contact Us</h2>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us</title>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 2rem;
+      text-align: center;
+    }
 
-<iframe 
-  src= "https://travelapp.odoo.com/contactus"
-  width="100%" 
-  height="700" 
-  style="border: none; border-radius: 12px; overflow: hidden;">
-  Your browser does not support iframes.
-</iframe>
+    h2 {
+      color: #2a9d8f;
+      margin-bottom: 2rem;
+    }
+
+    iframe {
+      width: 100%;
+      height: 700px;
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Contact Us</h2>
+
+  <iframe 
+    src="https://travelapp.odoo.com/contactus"
+    loading="lazy"
+    title="Contact Form"
+    allowfullscreen>
+    Your browser does not support iframes.
+  </iframe>
 
 </body>
 </html>
+
 
