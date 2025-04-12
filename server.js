@@ -9,11 +9,7 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use((req, res, next) => {
-res.setHeader("Content-Security-Policy",
-    "default-src 'self'; script-src 'self' https://www.gstatic.com https://www.googleapis.com https://www.gstatic.com/firebasejs https://apis.google.com https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://identitytoolkit.googleapis.com https://firebase.googleapis.com https://firestore.googleapis.com; frame-src 'self' https://*.firebaseapp.com");
-  next();
-});
+
 
 
 // ✅ Middleware
@@ -33,7 +29,8 @@ app.use(
         "https://www.googleapis.com",
         "https://www.gstatic.com/firebasejs",
         "https://apis.google.com",
-        "https://unpkg.com"
+        "https://unpkg.com",
+        "https://cdn.jsdelivr.net" // ✅ ADD THIS
       ],
       "connect-src": [
         "'self'",
@@ -56,6 +53,7 @@ app.use(
     }
   })
 );
+
 
 // ✅ Routes
 app.get("/login", (req, res) => res.sendFile(path.join(__dirname, "public", "login.html")));
