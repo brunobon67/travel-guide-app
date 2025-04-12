@@ -8,6 +8,8 @@ document.addEventListener("DOMContentLoaded", () => {
       <a href="/index.html" class="menu-link" id="menu-home">Home</a>
       <a href="/saved-plans" class="menu-link" id="menu-saved">My saved plans</a>
       <a href="/profile" class="menu-link" id="menu-profile">My profile</a>
+        <a href="/contact-us.html" class="menu-link" id="menu-contact">Contact</a>
+
       <button id="logout-btn" class="logout-btn">Logout</button>
     </div>
   `;
