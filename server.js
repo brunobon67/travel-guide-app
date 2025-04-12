@@ -10,11 +10,15 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use((req, res, next) => {
-  res.setHeader(
-    "Content-Security-Policy",
-    "default-src 'self'; script-src 'self' https://cdn.jsdelivr.net https://www.gstatic.com https://www.googleapis.com https://www.gstatic.com/firebasejs https://apis.google.com https://unpkg.com 'unsafe-inline';"
-  );
-  next();
+res.setHeader("Content-Security-Policy", `
+  default-src 'self';
+  script-src 'self' https://www.gstatic.com https://www.googleapis.com https://www.gstatic.com/firebasejs https://apis.google.com https://unpkg.com;
+  style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+  font-src 'self' https://fonts.gstatic.com;
+  connect-src 'self' https://identitytoolkit.googleapis.com https://firebase.googleapis.com https://firestore.googleapis.com;
+  frame-src 'self' https://*.firebaseapp.com;
+`.trim());
+
 });
 
 
