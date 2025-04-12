@@ -1,26 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const menuToggle = document.getElementById("menuToggle");
-  const menu = document.getElementById("menu");
-
-  if (menuToggle && menu) {
-    menuToggle.addEventListener("click", () => {
-      menu.classList.toggle("visible");
-
-      if (window.innerWidth <= 768) {
-        document.body.classList.toggle("menu-open");
-      }
-    });
-  }
-
-  const logoutBtn = document.getElementById("logout-btn");
-  if (logoutBtn) {
-    logoutBtn.addEventListener("click", async () => {
-      const { auth } = await import("./firebase.js");
-      const { signOut } = await import("https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js");
-      await signOut(auth);
-      window.location.href = "/login";
-
-      document.addEventListener("DOMContentLoaded", () => {
   const wrapper = document.getElementById("user-menu-wrapper");
   if (!wrapper) return;
 
@@ -34,22 +12,33 @@ document.addEventListener("DOMContentLoaded", () => {
     </div>
   `;
 
-  // Toggle logic
-  document.getElementById("menuToggle")?.addEventListener("click", () => {
-    document.getElementById("menu")?.classList.toggle("visible");
-    document.body.classList.toggle("menu-open");
-  });
+  // Toggle hamburger
+  const menuToggle = document.getElementById("menuToggle");
+  const menu = document.getElementById("menu");
 
-  // Highlight current page
+  if (menuToggle && menu) {
+    menuToggle.addEventListener("click", () => {
+      menu.classList.toggle("visible");
+      if (window.innerWidth <= 768) {
+        document.body.classList.toggle("menu-open");
+      }
+    });
+  }
+
+  // Highlight active menu item
   const path = window.location.pathname;
   if (path.includes("/app")) document.getElementById("menu-home")?.classList.add("active");
   if (path.includes("/saved-plans")) document.getElementById("menu-saved")?.classList.add("active");
   if (path.includes("/profile")) document.getElementById("menu-profile")?.classList.add("active");
-});
 
-
-
-      
+  // Handle logout
+  const logoutBtn = document.getElementById("logout-btn");
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", async () => {
+      const { auth } = await import("/firebase.js");
+      const { signOut } = await import("https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js");
+      await signOut(auth);
+      window.location.href = "/login";
     });
   }
 });
