@@ -37,33 +37,8 @@
 
   <!-- 🔌 Scripts -->
   <script type="module" src="/profile.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const menuToggle = document.getElementById("menuToggle");
-      const menu = document.getElementById("menu");
-      if (menuToggle && menu) {
-        menuToggle.addEventListener("click", () => {
-          menu.classList.toggle("visible");
-          if (window.innerWidth <= 768) {
-            document.body.classList.toggle("menu-open");
-          }
-        });
-      }
-    });
-  </script>
 
-  <script>
-  const hamburger = document.querySelector('.hamburger');
-  const userMenu = document.querySelector('.user-menu');
-
-  if (hamburger && userMenu) {
-    hamburger.addEventListener('click', () => {
-      userMenu.classList.toggle('visible');
-      document.body.classList.toggle('menu-open');
-    });
-  }
-</script>
-  <script src="/scripts/menu.js" defer></script>
+  <script src="/menu.js" defer></script>
 
 
 </body>
