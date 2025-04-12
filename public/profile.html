@@ -49,6 +49,19 @@
       }
     });
   </script>
+
+  <script>
+  const hamburger = document.querySelector('.hamburger');
+  const userMenu = document.querySelector('.user-menu');
+
+  if (hamburger && userMenu) {
+    hamburger.addEventListener('click', () => {
+      userMenu.classList.toggle('visible');
+      document.body.classList.toggle('menu-open');
+    });
+  }
+</script>
+
 </body>
 </html>
 
