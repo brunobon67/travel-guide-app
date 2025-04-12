@@ -24,14 +24,20 @@
   <!-- 📬 Contact Form -->
   <div class="contact-wrapper">
     <h2>Contact Us</h2>
-    <form id="contact-form">
-      <input type="text" name="from_name" placeholder="Your Name" required />
-      <input type="email" name="from_email" placeholder="Your Email" required />
-      <textarea name="message" rows="6" placeholder="Your Message..." required></textarea>
-      <button type="submit">Send Message</button>
-      <div class="message" id="form-message"></div>
-    </form>
-    <a href="javascript:history.back()" class="back-button">← Back</a>
+   <form id="contact-form" class="contact-form">
+    <label for="from_name">Name</label>
+    <input type="text" name="from_name" id="from_name" placeholder="Your Name" required />
+
+    <label for="from_email">Email</label>
+    <input type="email" name="from_email" id="from_email" placeholder="Your Email" required />
+
+    <label for="message">Message</label>
+    <textarea name="message" id="message" rows="6" placeholder="Your Message..." required></textarea>
+
+    <button type="submit">Send Message</button>
+    <div class="message" id="form-message"></div>
+  </form>
+  <a href="javascript:history.back()" class="back-button">← Back</a>
   </div>
 
   <!-- 📦 EmailJS + Menu Logic -->
