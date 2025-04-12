@@ -30,8 +30,8 @@ app.use(
         "https://www.gstatic.com/firebasejs",
         "https://apis.google.com",
         "https://unpkg.com",
-        "https://cdn.jsdelivr.net" // ✅ ADD THIS
-        "https://api.emailjs.com",
+        "https://cdn.jsdelivr.net", // ✅ ADD THIS
+        "https://api.emailjs.com"
 
       ],
       "connect-src": [
