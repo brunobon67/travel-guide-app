@@ -1,28 +1,43 @@
-import { auth } from "/firebase.js"; // ✅ reuses your existing setup
-import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Profile</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
 
-// DOM Elements
-const userNameSpan = document.getElementById("userName");
-const userEmailSpan = document.getElementById("userEmail");
-const logoutButtons = document.querySelectorAll(".logout-btn");
+  <!-- 🍔 Hamburger Button -->
+  <button class="hamburger" id="menuToggle">☰</button>
 
-// Auth State Handling
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    userNameSpan.textContent = user.displayName || "Anonymous";
-    userEmailSpan.textContent = user.email || "N/A";
-  } else {
-    window.location.href = "/login.html";
-  }
-});
+  <!-- 👤 User Menu -->
+  <div class="user-menu" id="menu">
+    <a href="/app">Home</a>
+    <a href="/profile">Profile</a>
+    <a href="/saved-plans">Saved Plans</a>
+    <a href="/contact-us">Contact</a>
+    <button class="logout-btn">Logout</button>
+  </div>
 
-// Logout
-logoutButtons.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    signOut(auth).then(() => {
-      window.location.href = "/login.html";
-    }).catch((error) => {
-      console.error("Logout error:", error);
-    });
-  });
-});
+  <!-- 📇 Profile Section -->
+  <div class="profile-container">
+    <h2>My Profile</h2>
+    <div class="profile-card">
+      <p><strong>Name:</strong> <span id="userName">Loading...</span></p>
+      <p><strong>Email:</strong> <span id="userEmail">Loading...</span></p>
+    </div>
+    <div class="profile-buttons">
+      <button class="primary-btn logout-btn">Logout</button>
+    </div>
+    <a href="javascript:history.back()" class="back-button">← Back</a>
+  </div>
+
+  <!-- 👤 Profile Logic -->
+  <script type="module" src="/scripts/profile.js"></script>
+
+  <!-- ✅ Hamburger Toggle Logic -->
+  <script src="/menu.js" defer></script>
+</body>
+</html>
+
