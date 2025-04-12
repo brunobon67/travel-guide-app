@@ -4,12 +4,13 @@ import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/fi
 
 // ✅ Replace these values with your actual Firebase project config
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY_HERE",
-  authDomain: "your-project-id.firebaseapp.com",
-  projectId: "your-project-id",
-  storageBucket: "your-project-id.appspot.com",
-  messagingSenderId: "YOUR_MSG_SENDER_ID",
-  appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyBTU9waiz51hZcBM3SeV23sVkZZzDPn7XA
+",
+  authDomain: "travel-guide-11210.firebaseapp.com",
+  projectId: "travel-guide-11210",
+  storageBucket: "travel-guide-11210.firebasestorage.app",
+  messagingSenderId: "578059026982",
+  appId: "1:578059026982:web:f0b3082c9c2f5ea0069ce7"
 };
 
 // ✅ Initialize Firebase App
