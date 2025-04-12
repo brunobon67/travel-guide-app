@@ -37,6 +37,6 @@
   <script type="module" src="/scripts/profile.js"></script>
 
   <!-- ✅ Hamburger Toggle Logic -->
-  <script src="/scripts/menu.js" defer></script>
+  <script src="/menu.js" defer></script>
 </body>
 </html>
