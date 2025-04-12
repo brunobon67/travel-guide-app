@@ -30,8 +30,7 @@ app.use(
         "https://www.gstatic.com/firebasejs",
         "https://apis.google.com",
         "https://unpkg.com",
-        "https://cdn.jsdelivr.net", // ✅ ADD THIS
-        "https://api.emailjs.com"
+        "https://cdn.jsdelivr.net" // ✅ ADD THIS
 
       ],
       "connect-src": [
@@ -40,6 +39,8 @@ app.use(
         "https://identitytoolkit.googleapis.com",
         "https://firebase.googleapis.com",
         "https://firestore.googleapis.com"
+         "https://api.emailjs.com"
+
       ],
       "style-src": [
         "'self'",
