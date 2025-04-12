@@ -5,196 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Contact Us</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #f8fafc;
-      margin: 0;
-      padding: 0;
-    }
-
-    .user-menu-wrapper {
-      width: 100%;
-    }
-.back-button {
-  display: block;
-  margin-top: 1.5rem;
-  text-align: center;
-  background-color: #e0f7f4;
-  color: #2a9d8f;
-  text-decoration: none;
-  font-weight: 600;
-  padding: 10px 20px;
-  border-radius: 8px;
-  width: fit-content;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.back-button:hover {
-  background-color: #cdeee9;
-}
-
-    .user-menu {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: white;
-      color: #333;
-      padding: 20px 0;
-      border-bottom: 1px solid #ddd;
-      width: 100%;
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 1000;
-    }
-
-    .user-menu a,
-    .user-menu .logout-btn {
-      background: transparent;
-      color: #333;
-      border: none;
-      padding: 8px 14px;
-      font-size: 14px;
-      margin: 0 8px;
-      cursor: pointer;
-      text-decoration: none;
-      white-space: nowrap;
-      height: 36px;
-      line-height: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 100px;
-      max-width: 140px;
-      border-radius: 5px;
-      transition: background-color 0.3s ease;
-      box-sizing: border-box;
-    }
-
-    .user-menu a:hover,
-    .user-menu .logout-btn:hover {
-      background-color: #f1f1f1;
-    }
-
-    .hamburger {
-      display: none;
-    }
-
-    .contact-wrapper {
-      background: #fff;
-      max-width: 600px;
-      width: 90%;
-      margin: 140px auto 40px auto;
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-    }
-
-
-    
-    h2 {
-      text-align: center;
-      color: #2a9d8f;
-      margin-bottom: 2rem;
-      font-size: 1.8rem;
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    input, textarea {
-      padding: 14px;
-      font-size: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      box-sizing: border-box;
-      resize: none;
-    }
-
-    button {
-      background-color: #2a9d8f;
-      color: white;
-      font-weight: 600;
-      padding: 14px;
-      font-size: 1rem;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-
-    button:hover {
-      background-color: #21867a;
-    }
-
-    .message {
-      margin-top: 1rem;
-      text-align: center;
-      font-size: 0.95rem;
-    }
-
-    @media (max-width: 768px) {
-      .hamburger {
-        display: block;
-        position: fixed;
-        top: 12px;
-        left: 12px;
-        font-size: 26px;
-        background: none;
-        border: none;
-        z-index: 1101;
-        color: #2a9d8f;
-        cursor: pointer;
-      }
-
-      .user-menu {
-        display: none;
-        flex-direction: column;
-        background: white;
-        position: absolute;
-        top: 60px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 90%;
-        max-width: 320px;
-        border-radius: 12px;
-        padding: 1rem;
-        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
-        z-index: 1000;
-      }
-
-      .user-menu.visible {
-        display: flex !important;
-      }
-
-      body.menu-open .contact-wrapper {
-        margin-top: 240px;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
 
-<button class="hamburger" id="menuToggle">☰</button>
+  <!-- 🍔 Hamburger Button -->
+  <button class="hamburger" id="menuToggle">☰</button>
 
-  <div class="user-menu-wrapper">
-<div class="user-menu" id="menu">
-      <a href="/app">Home</a>
-      <a href="/profile">Profile</a>
-      <a href="/saved-plans">Saved Plans</a>
-      <a href="/contact-us">Contact</a>
-      <button class="logout-btn">Logout</button>
-    </div>
+  <!-- 👤 User Menu -->
+  <div class="user-menu" id="menu">
+    <a href="/app">Home</a>
+    <a href="/profile">Profile</a>
+    <a href="/saved-plans">Saved Plans</a>
+    <a href="/contact-us">Contact</a>
+    <button class="logout-btn">Logout</button>
   </div>
 
+  <!-- 📬 Contact Form -->
   <div class="contact-wrapper">
     <h2>Contact Us</h2>
-
     <form id="contact-form">
       <input type="text" name="from_name" placeholder="Your Name" required />
       <input type="email" name="from_email" placeholder="Your Email" required />
@@ -202,54 +31,40 @@
       <button type="submit">Send Message</button>
       <div class="message" id="form-message"></div>
     </form>
-
-
     <a href="javascript:history.back()" class="back-button">← Back</a>
-
   </div>
 
- <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-<script>
-  (function () {
-    emailjs.init("k-pLBkzSztIp6MenN");
-  })();
+  <!-- 📦 EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script>
+    (function () {
+      emailjs.init("k-pLBkzSztIp6MenN");
+    })();
 
-  const form = document.getElementById("contact-form");
-  const messageEl = document.getElementById("form-message");
+    const form = document.getElementById("contact-form");
+    const messageEl = document.getElementById("form-message");
 
-  form.addEventListener("submit", function (event) {
-    event.preventDefault();
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      messageEl.textContent = "Sending...";
+      messageEl.style.color = "#555";
 
-    messageEl.textContent = "Sending...";
-    messageEl.style.color = "#555";
-
-    emailjs.sendForm("service_muyt2eo", "template_mzbzxzi", this)
-      .then(() => {
-        messageEl.textContent = "✅ Message sent successfully!";
-        messageEl.style.color = "#2a9d8f";
-        form.reset();
-      })
-      .catch((error) => {
-        messageEl.textContent = "❌ Failed to send message. Please try again.";
-        messageEl.style.color = "#e74c3c";
-        console.error("EmailJS error:", error);
-      });
-  });
-
-  // ✅ Hamburger toggle logic (FIXED)
-  const hamburger = document.querySelector('.hamburger');
-  const userMenu = document.querySelector('.user-menu');
-
-  if (hamburger && userMenu) {
-    hamburger.addEventListener('click', () => {
-      userMenu.classList.toggle('visible');
-      document.body.classList.toggle('menu-open');
+      emailjs.sendForm("service_muyt2eo", "template_mzbzxzi", this)
+        .then(() => {
+          messageEl.textContent = "✅ Message sent successfully!";
+          messageEl.style.color = "#2a9d8f";
+          form.reset();
+        })
+        .catch((error) => {
+          messageEl.textContent = "❌ Failed to send message. Please try again.";
+          messageEl.style.color = "#e74c3c";
+          console.error("EmailJS error:", error);
+        });
     });
-  }
-</script>
-<script src="/scripts/menu.js" defer></script>
+  </script>
 
-
+  <!-- ✅ Hamburger Toggle Logic -->
+  <script src="/scripts/menu.js" defer></script>
 </body>
 </html>
 
