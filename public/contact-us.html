@@ -237,19 +237,17 @@
   });
 
     // 🍔 Hamburger toggle logic
-    const hamburger = document.querySelector('.hamburger');
-    const userMenu = document.querySelector('.user-menu');
+ <script>
+  const hamburger = document.querySelector('.hamburger');
+  const userMenu = document.querySelector('.user-menu');
 
+  if (hamburger && userMenu) {
     hamburger.addEventListener('click', () => {
       userMenu.classList.toggle('visible');
       document.body.classList.toggle('menu-open');
     });
-
-    // Dummy logout for UI
-    document.querySelector('.logout-btn').addEventListener('click', () => {
-      alert('Logging out...');
-    });
-  </script>
+  }
+</script>
 
 </body>
 </html>
