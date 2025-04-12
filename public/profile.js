@@ -4,8 +4,7 @@ import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/fi
 
 // ✅ Replace these values with your actual Firebase project config
 const firebaseConfig = {
-  apiKey: "AIzaSyBTU9waiz51hZcBM3SeV23sVkZZzDPn7XA
-",
+  apiKey: "AIzaSyBTU9waiz51hZcBM3SeV23sVkZZzDPn7XA",
   authDomain: "travel-guide-11210.firebaseapp.com",
   projectId: "travel-guide-11210",
   storageBucket: "travel-guide-11210.firebasestorage.app",
