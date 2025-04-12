@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
   wrapper.innerHTML = `
     <button class="hamburger" id="menuToggle" aria-label="Toggle Menu">&#9776;</button>
     <div class="user-menu" id="menu">
-      <a href="/app" class="menu-link" id="menu-home">Home</a>
+      <a href="/index.html" class="menu-link" id="menu-home">Home</a>
       <a href="/saved-plans" class="menu-link" id="menu-saved">My saved plans</a>
       <a href="/profile" class="menu-link" id="menu-profile">My profile</a>
       <button id="logout-btn" class="logout-btn">Logout</button>
