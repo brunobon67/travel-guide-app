@@ -9,6 +9,15 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+app.use((req, res, next) => {
+  res.setHeader(
+    "Content-Security-Policy",
+    "default-src 'self'; script-src 'self' https://cdn.jsdelivr.net https://www.gstatic.com https://www.googleapis.com https://www.gstatic.com/firebasejs https://apis.google.com https://unpkg.com 'unsafe-inline';"
+  );
+  next();
+});
+
+
 // ✅ Middleware
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
