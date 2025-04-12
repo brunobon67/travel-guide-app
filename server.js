@@ -56,6 +56,11 @@ app.get("/register", (req, res) => res.sendFile(path.join(__dirname, "public", "
 app.get("/app", (req, res) => res.sendFile(path.join(__dirname, "public", "index.html")));
 app.get("/profile", (req, res) => res.sendFile(path.join(__dirname, "public", "profile.html")));
 app.get("/saved-plans", (req, res) => res.sendFile(path.join(__dirname, "public", "saved-plans.html")));
+app.get("/contact-us", (req, res) =>
+  res.sendFile(path.join(__dirname, "public", "contact-us.html"))
+);
+
+
 
 const getTravelGuide = require("./chatgpt");
 
