@@ -497,16 +497,7 @@ body {
 }
 
 
-.contact-container {
-  max-width: 600px;
-  margin: 120px auto 40px auto;
-  padding: 2rem;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
-  box-sizing: border-box;
-  text-align: left;
-}
+
 
 .contact-container h2 {
   text-align: center;
