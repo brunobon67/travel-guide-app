@@ -515,6 +515,27 @@ body {
   margin-bottom: 1.5rem;
 }
 
+/* 📩 Contact Page Styles */
+.contact-container {
+  max-width: 600px;
+  width: 90%;
+  margin: 160px auto 60px auto; /* increased top margin */
+  padding: 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;
+  text-align: left;
+  transition: margin-top 0.3s ease;
+}
+
+.contact-container h2 {
+  text-align: center;
+  color: #2a9d8f;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+}
+
 .contact-form {
   display: flex;
   flex-direction: column;
@@ -560,6 +581,8 @@ body {
   margin-top: 0.5rem;
   font-size: 14px;
   font-weight: 500;
+  text-align: center;
+  color: #2a9d8f;
 }
 
 .back-button {
@@ -570,4 +593,12 @@ body {
   color: #2a9d8f;
   text-decoration: none;
 }
+
+/* Push down when menu is open on mobile */
+@media (max-width: 768px) {
+  body.menu-open .contact-container {
+    margin-top: 240px;
+  }
+}
+
 
