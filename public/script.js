@@ -20,43 +20,58 @@ document.getElementById("preferencesForm")?.addEventListener("submit", async (ev
   event.preventDefault();
 
   const responseContainer = document.getElementById("responseContainer");
+  if (!responseContainer) return;
+
   responseContainer.innerHTML = `<p style="color: #2a9d8f; font-weight: bold;">⏳ Generating your travel guide...</p>`;
   responseContainer.style.display = "block";
 
   const preferences = {
-    destination: document.getElementById("destination").value,
-    duration: document.getElementById("duration").value,
-    preferredActivities: document.getElementById("preferredActivities").value,
-    nightlife: document.getElementById("nightlife").value
+    destination: document.getElementById("destination")?.value,
+    duration: document.getElementById("duration")?.value,
+    preferredActivities: document.getElementById("preferredActivities")?.value,
+    nightlife: document.getElementById("nightlife")?.value
   };
 
   try {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 15000); // ⏰ 15s timeout
+
     const response = await fetch("/get-travel-guide", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       credentials: "include",
+      signal: controller.signal,
       body: JSON.stringify({ preferences })
     });
+
+    clearTimeout(timeoutId);
 
     const reader = response.body.getReader();
     const decoder = new TextDecoder();
     let result = "";
 
-    while (true) {
-      const { done, value } = await reader.read();
-      if (done) break;
-      result += decoder.decode(value);
+    try {
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        result += decoder.decode(value);
+      }
+    } catch (readerError) {
+      console.error("Stream reading error:", readerError);
+      responseContainer.innerHTML = `
+        <p style="color: red; font-weight: bold;">❌ Error while reading the response stream.</p>
+        <p>${readerError.message}</p>
+      `;
+      return;
     }
 
-    // ✅ Try to parse the result to extract the guide
+    console.log("🔍 Raw result:", result);
+
     let guideContent = result;
     try {
       const parsed = JSON.parse(result);
-      if (parsed.guide) {
-        guideContent = parsed.guide;
-      }
+      if (parsed.guide) guideContent = parsed.guide;
     } catch (e) {
-      // Fallback to raw string if parsing fails
       console.warn("Guide result is not valid JSON:", e);
     }
 
@@ -75,7 +90,6 @@ document.getElementById("preferencesForm")?.addEventListener("submit", async (ev
       </button>
     `;
 
-    // ✅ Attach save logic after rendering
     document.getElementById("saveGuideBtn")?.addEventListener("click", async () => {
       try {
         if (currentUser && guideContent.trim()) {
@@ -96,7 +110,7 @@ document.getElementById("preferencesForm")?.addEventListener("submit", async (ev
     });
 
   } catch (error) {
-    console.error("❌ Error:", error);
+    console.error("❌ Error during fetch:", error);
     responseContainer.innerHTML = `
       <p style="color: red; font-weight: bold;">❌ Something went wrong. Please try again.</p>
       <p>${error.message}</p>
@@ -104,27 +118,27 @@ document.getElementById("preferencesForm")?.addEventListener("submit", async (ev
   }
 });
 
-// ✅ Logout (non-inline)
+// ✅ Logout (resilient)
 document.getElementById("logout-btn")?.addEventListener("click", async () => {
   try {
     await signOut(auth);
     window.location.href = "/login";
   } catch (error) {
     console.error("Logout error", error);
+    alert("Logout failed. Please try again.");
   }
 });
 
 // ✅ Hamburger toggle
 document.getElementById("menuToggle")?.addEventListener("click", () => {
   const menu = document.getElementById("menu");
-  menu.classList.toggle("visible");
-
-  // Only apply push-down effect on mobile
-  if (window.innerWidth <= 768) {
-    document.body.classList.toggle("menu-open");
+  if (menu) {
+    menu.classList.toggle("visible");
+    if (window.innerWidth <= 768) {
+      document.body.classList.toggle("menu-open");
+    }
   }
 });
-
 
 
 
