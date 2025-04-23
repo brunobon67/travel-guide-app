@@ -18,16 +18,16 @@
                 <label for="city">Select City in Italy:</label>
                 <select id="city" name="city" required>
                     <option value="">--Choose a city--</option>
-                    <option value="rome">Rome</option>
-                    <option value="milan">Milan</option>
-                    <option value="venice">Venice</option>
-                    <option value="florence">Florence</option>
-                    <option value="naples">Naples</option>
-                    <option value="bologna">Bologna</option>
-                    <option value="turin">Turin</option>
-                    <option value="genoa">Genoa</option>
-                    <option value="verona">Verona</option>
-                    <option value="palermo">Palermo</option>
+                    <option>Rome</option>
+                    <option>Milan</option>
+                    <option>Venice</option>
+                    <option>Florence</option>
+                    <option>Naples</option>
+                    <option>Bologna</option>
+                    <option>Turin</option>
+                    <option>Genoa</option>
+                    <option>Verona</option>
+                    <option>Palermo</option>
                 </select>
             </div>
 
@@ -37,8 +37,16 @@
             </div>
 
             <div class="form-group">
-                <label for="interests">Your Interests:</label>
-                <input type="text" id="interests" name="interests" placeholder="e.g., art, food, beaches" required>
+                <label for="interests">Preferred Activity:</label>
+                <select id="interests" name="interests" required>
+                    <option value="">--Choose an activity--</option>
+                    <option>Art & Museums</option>
+                    <option>Historical Sites</option>
+                    <option>Food & Wine</option>
+                    <option>Beaches</option>
+                    <option>Shopping</option>
+                    <option>Nature & Hiking</option>
+                </select>
             </div>
 
             <button type="submit">Generate Itinerary</button>
@@ -49,15 +57,23 @@
     <script>
         document.getElementById('travel-form').addEventListener('submit', function (e) {
             e.preventDefault();
+
             const city = document.getElementById('city').value;
             const duration = document.getElementById('duration').value;
             const interests = document.getElementById('interests').value;
 
-            const result = `<h2>Your ${duration}-day trip to ${city.charAt(0).toUpperCase() + city.slice(1)}</h2>
-                            <p>We’ll tailor your trip around your interest in <strong>${interests}</strong>.</p>`;
+            if (!city || !duration || !interests) {
+                document.getElementById('results').innerHTML = "<p style='color: red;'>Please fill in all fields.</p>";
+                return;
+            }
+
+            const result = `
+                <h2>Your ${duration}-day trip to ${city}</h2>
+                <p>Focus on: <strong>${interests}</strong>.</p>
+                <p>We are crafting the perfect Italian itinerary for you. 🇮🇹</p>
+            `;
             document.getElementById('results').innerHTML = result;
         });
     </script>
 </body>
 </html>
-
