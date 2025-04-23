@@ -1,23 +1,47 @@
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(to bottom, #fefcea, #f1da36); /* Sun yellow */
+/* Reset & Basics */
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-.container {
-    max-width: 600px;
-    margin: 40px auto;
-    padding: 30px;
-    background-color: #ffffffcc;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-    border-radius: 12px;
-    backdrop-filter: blur(8px);
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: white;
+    color: #333;
+    padding: 0;
+    margin: 0;
 }
 
+/* Navbar */
+.navbar {
+    background: linear-gradient(to right, #008C45, #F4F5F0, #CD212A); /* Green, White, Red */
+    padding: 15px;
+    text-align: center;
+    color: white;
+}
+
+.navbar h2 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+/* Container & Centering */
+.container {
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #fff;
+    border: 2px solid #CD212A;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Headings */
 h1 {
     text-align: center;
-    color: #0066cc; /* Sky blue */
+    margin-bottom: 25px;
+    color: #008C45;
 }
 
 .form-group {
@@ -27,8 +51,8 @@ h1 {
 label {
     display: block;
     margin-bottom: 6px;
-    color: #444;
     font-weight: bold;
+    color: #CD212A;
 }
 
 input[type="text"],
@@ -42,7 +66,7 @@ select {
 }
 
 button {
-    background-color: #0066cc; /* Sky blue */
+    background-color: #008C45;
     color: white;
     padding: 12px 20px;
     border: none;
@@ -53,13 +77,31 @@ button {
 }
 
 button:hover {
-    background-color: #004999;
+    background-color: #006837;
 }
 
+/* Results Box */
 #results {
     margin-top: 30px;
-    background-color: #e3f2fd;
+    background-color: #f9f9f9;
     padding: 20px;
-    border-left: 5px solid #0066cc;
+    border-left: 5px solid #CD212A;
     border-radius: 8px;
+    color: #333;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 600px) {
+    .container {
+        margin: 20px;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+
+    .navbar h2 {
+        font-size: 1.2em;
+    }
 }
