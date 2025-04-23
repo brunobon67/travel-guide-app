@@ -20,8 +20,22 @@
     <div class="trip-form-wrapper">
       <h1>Plan Your Perfect Trip</h1>
       <form id="preferencesForm" class="trip-form">
-        <label for="destination">Destination</label>
-        <input type="text" id="destination" required />
+        
+<label for="destination">Choose an Italian Destination</label>
+<select id="destination" required>
+  <option value="">-- Select a city --</option>
+  <option value="Rome">Rome</option>
+  <option value="Florence">Florence</option>
+  <option value="Venice">Venice</option>
+  <option value="Milan">Milan</option>
+  <option value="Naples">Naples</option>
+  <option value="Bologna">Bologna</option>
+  <option value="Turin">Turin</option>
+  <option value="Palermo">Palermo</option>
+  <option value="Verona">Verona</option>
+  <option value="Cinque Terre">Cinque Terre</option>
+</select>
+
 
         <label for="duration">Duration (days)</label>
         <input type="number" id="duration" required />
@@ -68,4 +82,3 @@
 
 </body>
 </html>
-
