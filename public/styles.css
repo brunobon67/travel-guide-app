@@ -1,582 +1,65 @@
-/* 🌍 General Styles */
-
 body {
-  background: #fdf6e3;
-  color: #333;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to bottom, #fefcea, #f1da36); /* Sun yellow */
+    margin: 0;
+    padding: 0;
 }
 
-
-/* 🌟 User Menu Styling */
-.user-menu-wrapper {
-  width: 100%;
-}
-
-.saved-plans-container {
-  max-width: 700px;
-  margin: 100px auto 40px auto;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem; /* Increased gap between cards */
-}
-
-.saved-plan {
-  background: #f8fcfc;
-  border: 1px solid #cceae7;
-  border-radius: 12px; /* Changed from pill to soft rectangle */
-  padding: 1.5rem;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-  position: relative;
-  transition: transform 0.2s ease;
-}
-
-.saved-plan:hover {
-  transform: translateY(-2px);
-}
-
-.plan-button {
-  all: unset;
-  display: block;
-  width: 100%;
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: #2a9d8f;
-  cursor: pointer;
-  margin-bottom: 1rem;
-  line-height: 1.4;
-}
-
-.delete-button-inline {
-  position: absolute;
-  top: 12px;
-  right: 14px;
-  background-color: #e74c3c;
-  color: white;
-  border: none;
-  padding: 4px 6px;
-  border-radius: 50%;
-  font-size: 12px; /* smaller size */
-  cursor: pointer;
-  line-height: 1;
-}
-
-.delete-button-inline:hover {
-  background-color: #c0392b;
-}
-
-
-.delete-button-inline:hover {
-  background-color: #c0392b;
-}
-
-.guide-preview {
-  font-size: 1rem;
-  line-height: 1.6;
-  color: #333;
-  padding-top: 1rem;
-  border-top: 1px solid #eee;
-  white-space: normal;
-}
-
-
-.user-menu {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: white;
-  color: #333;
-  padding: 20px 0;
-  border-bottom: 1px solid #ddd;
-  width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1000;
-  transition: all 0.3s ease;
-}
-
-.user-menu a,
-.user-menu .logout-btn {
-  background: transparent;
-  color: #333;
-  border: none;
-  padding: 8px 14px;
-  font-size: 14px;
-  margin: 0 8px;
-  cursor: pointer;
-  text-decoration: none;
-  white-space: nowrap;
-  height: 36px;
-  line-height: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 100px;
-  max-width: 140px;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-  box-sizing: border-box;
-}
-
-.user-menu .logout-btn {
-  width: auto !important;
-}
-
-.user-menu a:hover,
-.user-menu .logout-btn:hover {
-  background-color: #f1f1f1;
-}
-
-/* 🍔 Hamburger hidden by default */
-.hamburger {
-  display: none;
-}
-
-/* 📱 MOBILE VIEW */
-@media (max-width: 768px) {
-  .hamburger {
-    display: block;
-    position: fixed;
-    top: 12px;
-    left: 12px;
-    font-size: 26px;
-    background: none;
-    border: none;
-    z-index: 1100;
-    color: #2a9d8f;
-    cursor: pointer;
-  }
-
-
-.hamburger {
-  display: none;
-}
-
-@media (max-width: 768px) {
-  .hamburger {
-    display: block;
-    font-size: 1.8rem;
-    cursor: pointer;
-    background: none;
-    border: none;
-    color: #2a9d8f;
-    padding: 0.5rem;
-    z-index: 999;
-  }
-
-  .user-menu {
-    display: none;
-    flex-direction: column;
-    background: white;
-    position: absolute;
-    top: 60px;
-    left: 5%;
-    width: 90%;
-    max-width: 320px;
-    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+.container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #ffffffcc;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
     border-radius: 12px;
-    padding: 1rem;
-    z-index: 998;
-  }
-
-  .user-menu.visible {
-    display: flex;
-  }
-
-  body.menu-open .main-content {
-    margin-top: 200px;
-  }
+    backdrop-filter: blur(8px);
 }
 
-  
-  .user-menu {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    position: absolute;
-    top: 56px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #fff;
-    width: 90%;
-    max-width: 320px;
-    border-radius: 12px;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-    z-index: 1000;
-    padding: 10px 0;
-    border: 1px solid #ddd;
-  }
-
-  .user-menu.visible {
-    display: flex;
-  }
-
-  .user-menu a,
-  .user-menu .logout-btn {
-    width: 100%;
+h1 {
     text-align: center;
-    padding: 14px 0;
-    font-size: 16px;
-    font-weight: 500;
-    border-bottom: 1px solid #eee;
-    background: none;
-    color: #333;
-  }
-
-  .user-menu a:last-child,
-  .user-menu .logout-btn:last-child {
-    border-bottom: none;
-  }
-
-  /* 💥 Pushes content down when menu is visible */
-  body.menu-open .main-content {
-    margin-top: 240px;
-  }
+    color: #0066cc; /* Sky blue */
 }
 
-/* 💡 Default margin reset for form wrapper */
-.main-content {
-  transition: margin-top 0.3s ease;
-  margin-top: 0;
+.form-group {
+    margin-bottom: 20px;
 }
 
-/* 🧾 Trip Form Container (like login/register) */
-
-.trip-form-wrapper {
-  background: #ffffff;
-  border: 2px solid #fdd835;
-}
-
-
-/* Trip Form Inputs */
-.trip-form {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-
-.guide-preview {
-  margin-top: 10px;
-  padding: 1rem;
-  background-color: #fdfdfd;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  font-size: 15px;
-  line-height: 1.6;
-  white-space: pre-wrap;
-  color: #333;
-}
-
-
-.trip-form label {
-  text-align: left;
-  font-size: 14px;
-  font-weight: 500;
-  color: #444;
-  margin-bottom: 0.25rem;
-}
-
-.trip-form input,
-.trip-form select,
-.trip-form textarea {
-  width: 100%;
-  padding: 14px;
-  font-size: 15px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  box-sizing: border-box;
-}
-
-
-.trip-form button {
-  background-color: #4fc3f7;
-  color: white;
-}
-
-
-
-.trip-form button:hover {
-  background-color: #0288d1;
-}
-
-
-#viewSavedPlansBtn {
-  margin-top: 1.5rem;
-  background-color: #2a9d8f;
-  color: white;
-  font-size: 15px;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 600;
-}
-
-.response-container {
-  width: 100%;
-  max-width: 700px;
-  padding: 30px;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  text-align: left;
-  margin-top: 20px;
-  max-height: 80vh;
-  overflow-y: auto;
-}
-
-/* 🔐 Login/Register Auth Pages */
-.auth-page {
-  min-height: 100vh;
-  background-color: #f8fafc;
-  display: flex;
-  justify-content: center;
-  align-items: center; /* ✅ center vertically */
-  padding: 2rem 1rem;
-  box-sizing: border-box;
-}
-
-
-.auth-container {
-  width: 100%;
-  max-width: 600px;
-  background-color: white;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  box-sizing: border-box;
-}
-
-.auth-container h1 {
-  font-size: 24px;
-  margin-bottom: 1.5rem;
-  color: #2a9d8f;
-  text-align: center;
-}
-
-.auth-container form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  padding: 0 1rem;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.auth-container input,
-.auth-container button {
-  display: block;
-  width: 100%;
-  margin-bottom: 16px;
-  padding: 14px;
-  font-size: 16px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-}
-
-.auth-container button {
-  background-color: #2a9d8f;
-  color: white;
-  font-weight: bold;
-  border: none;
-  cursor: pointer;
-}
-
-.auth-container a {
-  text-align: center;
-  margin-top: 1rem;
-  font-size: 14px;
-  color: #2a9d8f;
-  text-decoration: none;
-}
-
-.profile-container {
-  max-width: 600px;
-  margin: 100px auto 40px auto;
-  padding: 1rem;
-  text-align: center;
-}
-
-.profile-card {
-  background-color: #f9f9f9;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  margin-top: 1rem;
-  font-size: 1rem;
-  text-align: left;
-}
-
-.profile-card p {
-  margin-bottom: 1rem;
-  line-height: 1.6;
-}
-
-.profile-buttons {
-  margin-top: 2rem;
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-}
-
-.primary-btn {
-  background-color: #2a9d8f;
-  color: white;
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-.primary-btn:hover {
-  background-color: #21867a;
-}
-
-
-@media (max-width: 768px) {
-  .hamburger {
+label {
     display: block;
-    position: fixed;
-    top: 16px;
-    left: 16px;
-    font-size: 26px;
-    background: none;
+    margin-bottom: 6px;
+    color: #444;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+button {
+    background-color: #0066cc; /* Sky blue */
+    color: white;
+    padding: 12px 20px;
     border: none;
-    color: #2a9d8f;
-    z-index: 1100;
+    border-radius: 8px;
+    font-size: 16px;
     cursor: pointer;
-  }
-
-  .user-menu {
-    display: none;
-    flex-direction: column;
-    background-color: white;
-    position: absolute;
-    top: 60px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90%;
-    max-width: 320px;
-    border-radius: 12px;
-    padding: 1rem;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-    z-index: 1000;
-  }
-
-  .user-menu.visible {
-    display: flex !important;
-  }
-
-  body.menu-open .main-content {
-    margin-top: 240px;
-  }
-}
-@media (max-width: 768px) {
-  h2.saved-plans-title {
-    margin-top: 100px;
-  }
+    width: 100%;
 }
 
-
-
-
-.contact-container h2 {
-  text-align: center;
-  color: #2a9d8f;
-  font-size: 1.8rem;
-  margin-bottom: 1.5rem;
+button:hover {
+    background-color: #004999;
 }
 
-/* 📩 Contact Page Styles */
-.contact-container {
-  max-width: 600px;
-  width: 90%;
-  margin: 160px auto 60px auto; /* increased top margin */
-  padding: 2rem;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
-  box-sizing: border-box;
-  text-align: left;
-  transition: margin-top 0.3s ease;
+#results {
+    margin-top: 30px;
+    background-color: #e3f2fd;
+    padding: 20px;
+    border-left: 5px solid #0066cc;
+    border-radius: 8px;
 }
-
-.contact-container h2 {
-  text-align: center;
-  color: #2a9d8f;
-  font-size: 1.8rem;
-  margin-bottom: 1.5rem;
-}
-
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.contact-form label {
-  font-weight: 500;
-  font-size: 14px;
-  color: #333;
-}
-
-.contact-form input,
-.contact-form textarea {
-  width: 100%;
-  padding: 14px;
-  font-size: 15px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  box-sizing: border-box;
-}
-
-.contact-form textarea {
-  resize: vertical;
-}
-
-.contact-form button {
-  background-color: #2a9d8f;
-  color: white;
-  border: none;
-  padding: 14px;
-  font-size: 16px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.contact-form button:hover {
-  background-color: #21867a;
-}
-
-#form-message {
-  margin-top: 0.5rem;
-  font-size: 14px;
-  font-weight: 500;
-  text-align: center;
-  color: #2a9d8f;
-}
-
-.back-button {
-  display: inline-block;
-  margin-top: 1.5rem;
-  text-align: center;
-  font-size: 15px;
-  color: #2a9d8f;
-  text-decoration: none;
-}
-
-/* Push down when menu is open on mobile */
-@media (max-width: 768px) {
-  body.menu-open .contact-container {
-    margin-top: 240px;
-  }
-}
-
-
-
-
