@@ -1,17 +1,10 @@
 /* 🌍 General Styles */
+
 body {
-  font-family: 'Inter', sans-serif;
-  background: #f8f9fa;
+  background: #fdf6e3;
   color: #333;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  min-height: 100vh;
-  margin: 0;
-  overflow-y: auto;
-  text-align: center;
 }
+
 
 /* 🌟 User Menu Styling */
 .user-menu-wrapper {
@@ -248,16 +241,12 @@ body {
 }
 
 /* 🧾 Trip Form Container (like login/register) */
+
 .trip-form-wrapper {
-  width: 100%;
-  max-width: 600px;
-  background: white;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  box-sizing: border-box;
-  margin: 100px auto 40px auto;
+  background: #ffffff;
+  border: 2px solid #fdd835;
 }
+
 
 /* Trip Form Inputs */
 .trip-form {
@@ -300,22 +289,18 @@ body {
   box-sizing: border-box;
 }
 
+
 .trip-form button {
-  width: 100%;
-  padding: 14px;
-  font-size: 16px;
-  font-weight: bold;
-  background-color: #2a9d8f;
+  background-color: #4fc3f7;
   color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  margin-top: 10px;
 }
 
+
+
 .trip-form button:hover {
-  background-color: #21867a;
+  background-color: #0288d1;
 }
+
 
 #viewSavedPlansBtn {
   margin-top: 1.5rem;
@@ -591,5 +576,7 @@ body {
     margin-top: 240px;
   }
 }
+
+
 
 
