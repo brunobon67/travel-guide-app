@@ -15,7 +15,7 @@ app.use(express.static(path.join(__dirname, ".")));
 
 // Routes
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "index (28).html"));
+  res.sendFile(path.join(__dirname, "index.html"));
 });
 
 // Generate Itinerary route
