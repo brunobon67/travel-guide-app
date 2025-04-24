@@ -1,38 +1,25 @@
-const express = require("express");
-const router = express.Router();
-const { OpenAI } = require("openai");
+const { Configuration, OpenAIApi } = require("openai");
 
-const openai = new OpenAI({
+const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
-router.post("/generate-itinerary", async (req, res) => {
-  const { city, duration, season, travelType, activity } = req.body;
+const openai = new OpenAIApi(configuration);
 
-  if (!city || !duration || !season || !travelType || !activity) {
-    return res.status(400).json({ error: "All fields are required." });
-  }
+async function getTravelGuide(preferences) {
+  const { destination, duration, preferredActivities, notes } = preferences;
 
-  try {
-    const prompt = `
-Create a ${duration}-day travel itinerary for a trip to ${city}, Italy.
-The season is ${season} and the traveler prefers a ${travelType} experience focused on ${activity}.
-Make sure to include a day-by-day breakdown with descriptions.
-`;
+  const prompt = `Create a detailed travel itinerary for a trip to ${destination} lasting ${duration} days.
+  Include activities like ${preferredActivities}. Additional notes: ${notes}`;
 
-    const chatCompletion = await openai.chat.completions.create({
-      model: "gpt-4",
-      messages: [{ role: "user", content: prompt }],
-      temperature: 0.7,
-    });
+  const response = await openai.createChatCompletion({
+    model: "gpt-3.5-turbo",
+    messages: [{ role: "user", content: prompt }],
+  });
 
-    const itinerary = chatCompletion.choices[0].message.content;
-    res.json({ itinerary });
-  } catch (error) {
-    console.error("Error generating itinerary:", error);
-    res.status(500).json({ error: "Failed to generate itinerary." });
-  }
-});
+  return response.data;
+}
 
-module.exports = router;
+module.exports = getTravelGuide;
+
 
