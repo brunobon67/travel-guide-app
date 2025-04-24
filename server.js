@@ -100,3 +100,6 @@ app.listen(PORT, () => {
   console.log(`✅ Server running on port ${PORT}`);
 });
 
+const generateItineraryRoute = require("./generate-itinerary");
+app.use("/api/generate-itinerary", generateItineraryRoute);
+
