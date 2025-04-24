@@ -1,14 +1,14 @@
 body {
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background-color: white;
+  font-family: 'Poppins', sans-serif;
+  background-color: #ffffff;
   color: #333;
 }
 
 header {
-  background-color: #008000; /* green */
-  color: white;
-  padding: 15px;
+  background: linear-gradient(90deg, green, white, red);
+  padding: 12px 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
 .navbar {
@@ -18,8 +18,8 @@ header {
 }
 
 .logo {
-  font-size: 1.5em;
-  font-weight: bold;
+  font-size: 1.5rem;
+  font-weight: 600;
 }
 
 .hamburger {
@@ -29,18 +29,20 @@ header {
 
 nav ul {
   list-style: none;
-  padding: 0;
-  margin: 10px 0 0;
+  padding: 10px 20px;
+  margin: 0;
+  background-color: #f0f0f0;
+  text-align: right;
 }
 
 nav ul li {
-  padding: 10px 0;
+  padding: 8px 0;
 }
 
 nav ul li a {
-  color: white;
   text-decoration: none;
-  font-weight: bold;
+  color: #333;
+  font-weight: 500;
 }
 
 .hidden {
@@ -48,50 +50,62 @@ nav ul li a {
 }
 
 .form-container {
-  max-width: 600px;
+  max-width: 650px;
   margin: 40px auto;
-  padding: 20px;
-  border: 2px solid #008000;
-  border-radius: 8px;
-  background-color: #f9f9f9;
+  padding: 30px;
+  border: 1px solid #ddd;
+  background-color: #fefefe;
+  border-radius: 12px;
 }
 
-.form-container h1 {
+h1 {
   text-align: center;
   color: #008000;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
+  font-family: 'Lora', serif;
 }
 
 form label {
-  margin-top: 15px;
-  font-weight: bold;
+  font-weight: 600;
+  margin-top: 10px;
 }
 
 form input, form select, form button {
   padding: 10px;
-  margin-top: 5px;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  border-radius: 6px;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  font-size: 1rem;
+  font-family: inherit;
 }
 
 form button {
-  background-color: #ff0000; /* red */
+  background-color: #ff0000;
   color: white;
-  font-weight: bold;
-  margin-top: 20px;
-  cursor: pointer;
   border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+form button:hover {
+  background-color: #cc0000;
+}
+
+#loading {
+  margin-top: 20px;
+  font-style: italic;
+  color: #555;
 }
 
 #itineraryResult {
-  margin-top: 30px;
-  background-color: #ffffff;
-  padding: 20px;
+  margin-top: 25px;
+  background-color: #fff;
   border-left: 6px solid #008000;
-  border-radius: 6px;
+  padding: 20px;
+  border-radius: 8px;
+  font-family: 'Lora', serif;
+  line-height: 1.6;
   white-space: pre-wrap;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
 }
