@@ -2,70 +2,42 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Travel Guide Planner</title>
-
+  <title>Travel Guide Italy</title>
   <link rel="stylesheet" href="/styles.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet" />
-</head>
-
-<body>
-
-<div id="user-menu-wrapper"></div>
-
-  </div>
-
-  <!-- 🌍 Main content below the menu -->
-  <div class="main-content">
-    <div class="trip-form-wrapper">
-      <h1>Plan Your Perfect Trip</h1>
-      <form id="preferencesForm" class="trip-form">
-        <label for="destination">Destination</label>
-        <input type="text" id="destination" required />
-
-        <label for="duration">Duration (days)</label>
-        <input type="number" id="duration" required />
-
-
-        <label for="preferredActivities">Preferred Activities</label>
-        <select id="preferredActivities">
-          <option value="Sightseeing">Sightseeing</option>
-          <option value="Hiking">Hiking</option>
-          <option value="Beach Relaxation">Beach Relaxation</option>
-          <option value="Food Tasting">Food Tasting</option>
-          <option value="Adventure Sports">Adventure Sports</option>
-          <option value="Shopping">Shopping</option>
-          <option value="Relax">Relax</option>
-          <option value="Cultural Events">Cultural Events</option>
-          <option value="City Tour">City Tour</option>
-        </select>
-
-        <label for="nightlife">Nightlife Preference</label>
-     <select id="nightlife">
-  <option>No nightlife</option>
-  <option>Quiet bars</option>
-  <option>Trendy cocktail spots</option>
-  <option>Live music & local shows</option>
-  <option>Clubs & party scene</option>
-</select>
-        </select>
-
-        <button type="submit">Generate Travel Guide</button>
-      </form>
-
-
-
-      <div id="responseContainer" class="response-container"></div>
-    </div>
-  </div>
-
-  <script type="module" src="/firebase.js"></script>
-  <script type="module" src="/avatar.js"></script>
-  <script type="module" src="/script.js"></script>
-  <script src="https://unpkg.com/lucide@latest"></script>
   <script src="/menu.js" defer></script>
+  <script src="/script.js" defer></script>
+</head>
+<body>
+  <header>
+    <div class="menu-wrapper">
+      <button id="menuToggle" class="hamburger">☰</button>
+      <nav id="menu" class="user-menu">
+        <a href="/saved-plans">My Saved Plans</a>
+        <a href="/profile">My Profile</a>
+        <a href="/contact-us">Contact</a>
+        <button class="logout-btn" id="logout-btn">Logout</button>
+      </nav>
+    </div>
+  </header>
 
-
+  <main>
+    <form id="travel-form">
+      <label>Destination</label>
+      <input type="text" id="destination" required />
+      <label>Duration (days)</label>
+      <input type="number" id="duration" required />
+      <label>Preferred Activity</label>
+      <select id="activity">
+        <option>Culture</option>
+        <option>Beach</option>
+        <option>Hiking</option>
+        <option>Shopping</option>
+      </select>
+      <label>Notes</label>
+      <textarea id="notes"></textarea>
+      <button type="submit">Generate Travel Guide</button>
+    </form>
+    <div id="itinerary-result"></div>
+  </main>
 </body>
 </html>
-
