@@ -1,11 +1,9 @@
-const { Configuration, OpenAIApi } = require("openai");
+const OpenAI = require("openai");
 require("dotenv").config();
 
-const configuration = new Configuration({
-  apiKey: process.env.OPENAI_API_KEY,
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY
 });
-
-const openai = new OpenAIApi(configuration);
 
 async function getTravelGuide(preferences) {
   const prompt = `
@@ -16,13 +14,13 @@ Other preferences: ${preferences.nightlife}.
 Make it informative, engaging, and structured by days.
 `;
 
-  const completion = await openai.createChatCompletion({
+  const completion = await openai.chat.completions.create({
     model: "gpt-3.5-turbo",
     messages: [{ role: "user", content: prompt }],
-    temperature: 0.7,
+    temperature: 0.7
   });
 
-  return completion.data;
+  return completion;
 }
 
 module.exports = getTravelGuide;
