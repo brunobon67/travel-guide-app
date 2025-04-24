@@ -1,107 +1,129 @@
-/* Reset & Basics */
+/* General Reset */
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: white;
-    color: #333;
-    padding: 0;
-    margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #ffffff;
+  color: #333;
+  padding: 1rem;
 }
 
-/* Navbar */
-.navbar {
-    background: linear-gradient(to right, #008C45, #F4F5F0, #CD212A); /* Green, White, Red */
-    padding: 15px;
-    text-align: center;
-    color: white;
+/* Hamburger Menu */
+.hamburger {
+  font-size: 1.8rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #008000; /* green */
+  margin-bottom: 1rem;
 }
 
-.navbar h2 {
-    margin: 0;
-    font-size: 1.5em;
+/* User Navigation Menu */
+.user-menu {
+  display: none;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
 }
 
-/* Container & Centering */
-.container {
-    max-width: 500px;
-    margin: 40px auto;
-    padding: 30px;
-    background-color: #fff;
-    border: 2px solid #CD212A;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+.user-menu.visible {
+  display: flex;
 }
 
-/* Headings */
-h1 {
-    text-align: center;
-    margin-bottom: 25px;
-    color: #008C45;
+.user-menu a,
+.logout-btn {
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #ff0000; /* red */
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  text-align: center;
 }
 
-.form-group {
-    margin-bottom: 20px;
+.logout-btn {
+  border: none;
+  cursor: pointer;
 }
 
-label {
-    display: block;
-    margin-bottom: 6px;
-    font-weight: bold;
-    color: #CD212A;
+/* Main Content */
+.main-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
-input[type="text"],
-input[type="number"],
-select {
-    width: 100%;
-    padding: 10px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    font-size: 16px;
+/* Trip Form Section */
+.trip-form-wrapper {
+  max-width: 500px;
+  width: 100%;
+  padding: 2rem;
+  background-color: #f8f8f8;
+  border: 2px solid #008000;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 128, 0, 0.1);
 }
 
-button {
-    background-color: #008C45;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    cursor: pointer;
-    width: 100%;
+.trip-form-wrapper h1 {
+  color: #ff0000;
+  text-align: center;
+  margin-bottom: 1.5rem;
 }
 
-button:hover {
-    background-color: #006837;
+/* Form Elements */
+.trip-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  margin-top: 1rem;
+  color: #008000;
+  font-weight: bold;
 }
 
-/* Results Box */
-#results {
-    margin-top: 30px;
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-left: 5px solid #CD212A;
-    border-radius: 8px;
-    color: #333;
+.trip-form input,
+.trip-form select,
+.trip-form textarea {
+  width: 100%;
+  padding: 0.6rem;
+  margin-top: 0.3rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
-/* Mobile Responsiveness */
+.trip-form button {
+  width: 100%;
+  background-color: #ff0000;
+  color: white;
+  border: none;
+  padding: 0.8rem;
+  margin-top: 1.5rem;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.trip-form button:hover {
+  background-color: #cc0000;
+}
+
+/* Output Preview */
+.guide-preview {
+  margin-top: 2rem;
+  background-color: #fff;
+  border: 1px solid #008000;
+  padding: 1rem;
+  border-radius: 5px;
+  white-space: pre-wrap;
+  color: #333;
+}
+
+/* Mobile Friendly */
 @media (max-width: 600px) {
-    .container {
-        margin: 20px;
-        padding: 20px;
-    }
-
-    h1 {
-        font-size: 1.5em;
-    }
-
-    .navbar h2 {
-        font-size: 1.2em;
-    }
+  .trip-form-wrapper {
+    padding: 1rem;
+  }
 }
