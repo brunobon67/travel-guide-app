@@ -20,6 +20,27 @@ async function getTravelGuide(preferences) {
   return response.data;
 }
 
+
+async function getItineraryFromGPT(preferences) {
+  try {
+    const res = await fetch("/get-travel-guide", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ preferences })
+    });
+
+    const data = await res.json();
+    if (data.error) throw new Error(data.error);
+    return data.guide;
+  } catch (err) {
+    console.error("ChatGPT Error:", err);
+    throw err;
+  }
+}
+
+
 module.exports = getTravelGuide;
 
 
