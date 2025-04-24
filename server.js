@@ -9,13 +9,16 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Middleware
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "public"))); // Updated to serve from /public
 
+// Routes
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
+  res.sendFile(path.join(__dirname, "public", "index.html")); // Serve from public
 });
 
+// Generate Itinerary route
 app.post("/generate-itinerary", async (req, res) => {
   const { city, duration, season, travelType, activity } = req.body;
 
@@ -23,23 +26,24 @@ app.post("/generate-itinerary", async (req, res) => {
     destination: city,
     duration,
     preferredActivities: activity,
-    nightlife: `Season: ${season}, Travel Type: ${travelType}`
+    notes: `Season: ${season}, Travel type: ${travelType}`
   };
 
   try {
-    const gptResponse = await getTravelGuide(preferences);
-    const itinerary = gptResponse.choices[0]?.message?.content || "No itinerary returned.";
+    const itinerary = await getTravelGuide(preferences);
     res.json({ itinerary });
   } catch (error) {
-    console.error("GPT Error:", error);
+    console.error("GPT error:", error);
     res.status(500).json({ error: "Failed to generate itinerary." });
   }
 });
 
+// Fallback for 404
 app.use((req, res) => {
   res.status(404).send("Page not found.");
 });
 
+// Start the server
 app.listen(PORT, () => {
-  console.log(`✅ Server is running at http://localhost:${PORT}`);
+  console.log(`Server is running on http://localhost:${PORT}`);
 });
