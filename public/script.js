@@ -1,32 +1,38 @@
-document.getElementById("travel-form").addEventListener("submit", async (e) => {
-  e.preventDefault();
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("travel-form");
+  const resultDiv = document.getElementById("itineraryResult");
+  const loading = document.getElementById("loading");
 
-  const city = document.getElementById("destination").value;
-  const duration = document.getElementById("duration").value;
-  const activity = document.getElementById("activity").value;
-  const notes = document.getElementById("notes").value;
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-  try {
-    const response = await fetch("/generate-itinerary", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        city,
-        duration,
-        season: "spring", // you can customize this
-        travelType: notes,
-        activity
-      }),
-    });
+    const destination = document.getElementById("destination").value;
+    const duration = document.getElementById("duration").value;
+    const activity = document.getElementById("activity").value;
+    const notes = document.getElementById("notes").value;
 
-    const data = await response.json();
-    const outputDiv = document.getElementById("itineraryResult");
-    outputDiv.innerHTML = response.ok
-      ? `<pre>${data.itinerary}</pre>`
-      : `<p>Error: ${data.error}</p>`;
-  } catch (err) {
-    console.error("ChatGPT Error:", err);
-    document.getElementById("itineraryResult").innerHTML = "<p>Something went wrong. Please try again.</p>";
-  }
+    const prompt = `Create a travel itinerary for a ${duration}-day trip to ${destination}, focusing on ${activity}. Notes: ${notes}`;
+
+    resultDiv.innerHTML = "";
+    loading.classList.remove("hidden");
+
+    try {
+      const response = await fetch("/generate-itinerary", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ prompt }),
+      });
+
+      const data = await response.json();
+      loading.classList.add("hidden");
+
+      resultDiv.innerHTML = data.itinerary;
+    } catch (err) {
+      loading.classList.add("hidden");
+      resultDiv.innerHTML = "Something went wrong while generating your itinerary. Please try again.";
+      console.error("ChatGPT Error:", err);
+    }
+  });
 });
-
