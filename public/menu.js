@@ -6,10 +6,9 @@ document.addEventListener("DOMContentLoaded", () => {
     <button class="hamburger" id="menuToggle" aria-label="Toggle Menu">&#9776;</button>
     <div class="user-menu" id="menu">
       <a href="/index.html" class="menu-link" id="menu-home">Home</a>
-      <a href="/saved-plans" class="menu-link" id="menu-saved">My saved plans</a>
-      <a href="/profile" class="menu-link" id="menu-profile">My profile</a>
-        <a href="/contact-us.html" class="menu-link" id="menu-contact">Contact</a>
-
+      <a href="/saved-plans.html" class="menu-link" id="menu-saved">My saved plans</a>
+      <a href="/profile.html" class="menu-link" id="menu-profile">My profile</a>
+      <a href="/contact-us.html" class="menu-link" id="menu-contact">Contact</a>
       <button id="logout-btn" class="logout-btn">Logout</button>
     </div>
   `;
@@ -29,9 +28,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Highlight active menu item
   const path = window.location.pathname;
-  if (path.includes("/app")) document.getElementById("menu-home")?.classList.add("active");
-  if (path.includes("/saved-plans")) document.getElementById("menu-saved")?.classList.add("active");
-  if (path.includes("/profile")) document.getElementById("menu-profile")?.classList.add("active");
+  if (path.includes("index")) document.getElementById("menu-home")?.classList.add("active");
+  if (path.includes("saved-plans")) document.getElementById("menu-saved")?.classList.add("active");
+  if (path.includes("profile")) document.getElementById("menu-profile")?.classList.add("active");
 
   // Handle logout
   const logoutBtn = document.getElementById("logout-btn");
@@ -44,3 +43,4 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
