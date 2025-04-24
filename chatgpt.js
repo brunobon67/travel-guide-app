@@ -1,13 +1,11 @@
-const { OpenAIApi, Configuration } = require("openai");
+const { OpenAI } = require("openai");
 
-const configuration = new Configuration({
-  apiKey: process.env.OPENAI_API_KEY,
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY
 });
 
-const openai = new OpenAIApi(configuration);
-
 async function getChatGPTResponse(prompt) {
-  const response = await openai.createChatCompletion({
+  const response = await openai.chat.completions.create({
     model: "gpt-3.5-turbo",
     messages: [
       {
@@ -18,7 +16,7 @@ async function getChatGPTResponse(prompt) {
     temperature: 0.7
   });
 
-  return response.data.choices[0].message.content.trim();
+  return response.choices[0].message.content.trim();
 }
 
 module.exports = { getChatGPTResponse };
