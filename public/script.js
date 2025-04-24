@@ -28,3 +28,14 @@ document.getElementById("tripForm").addEventListener("submit", async function (e
     output.innerText = "Failed to generate itinerary. Please try again later.";
   }
 });
+
+
+fetch('/api/generate-itinerary', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ prompt: yourPrompt })
+})
+.then(res => res.json())
+.then(data => {
+  // Display result
+});
