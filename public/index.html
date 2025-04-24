@@ -13,7 +13,7 @@
     <a href="index.html">Home</a>
     <a href="saved-plans.html">Saved Plans</a>
     <a href="profile.html">My profile</a>
-    <a href="contact-us">Contact</a>
+    <a href="contact-us.html">Contact</a>
     <button class="logout-btn" onclick="logout()">Logout</button>
   </nav>
 
@@ -59,37 +59,8 @@
     </section>
   </main>
 
-  <script>
-    function toggleMenu() {
-      const menu = document.getElementById("userMenu");
-      menu.classList.toggle("visible");
-      document.body.classList.toggle("menu-open");
-    }
-
-    function logout() {
-      alert("Logging out...");
-      // Implement your logout logic here
-    }
-
-    document.getElementById("tripForm").addEventListener("submit", function (e) {
-      e.preventDefault();
-      const city = document.getElementById("city").value;
-      const duration = document.getElementById("duration").value;
-      const activity = document.getElementById("activity").value;
-      const notes = document.getElementById("notes").value;
-
-      if (!city || !duration) {
-        alert("Please fill out required fields.");
-        return;
-      }
-
-      const message = `Here’s your ${duration}-day itinerary for ${city}, Italy, focused on ${activity || 'your interests'}.\n\n${notes ? 'Notes: ' + notes : ''}`;
-      document.getElementById("guideOutput").innerText = message;
-    });
-  </script>
-
   <script src="menu.js"></script>
-<script src="script.js"></script>
-  
+  <script src="script.js"></script>
+  <script src="chatgpt.js"></script>
 </body>
 </html>
