@@ -1,13 +1,8 @@
-
-
 const OpenAI = require("openai");
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY
 });
-
-
-const openai = new OpenAIApi(configuration);
 
 async function getItinerary({ destination, duration, activity, notes }) {
   const prompt = `
@@ -19,11 +14,14 @@ Generate a travel itinerary for a trip to ${destination} in Italy.
 - Preferred activity: ${activity}
 - Notes: ${notes || "No additional notes"}
 
-The response should be realistic and suitable for a ${duration}-day trip. 
-Don't suggest placeholder names or say "undefined". Give real examples of places to visit, eat, and stay. 
-Use a friendly tone. 
-Format it clearly, day by day.
-  `;
+Make sure the itinerary is actually suitable for a ${duration}-day trip. Be specific. 
+Avoid generic or undefined words. Use proper names of places, food, etc.
+
+Format:
+Day 1: ...
+Day 2: ...
+(etc. depending on duration)
+`;
 
   const chatCompletion = await openai.chat.completions.create({
     model: "gpt-3.5-turbo",
@@ -32,6 +30,5 @@ Format it clearly, day by day.
 
   return chatCompletion.choices[0].message.content.trim();
 }
-
 
 module.exports = { getItinerary };
