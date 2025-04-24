@@ -2,7 +2,7 @@ const express = require("express");
 const path = require("path");
 const bodyParser = require("body-parser");
 const dotenv = require("dotenv");
-const getTravelGuide = require("./chatgpt");
+const { getItinerary } = require("./chatgpt"); // ✅ Fixed import
 
 dotenv.config();
 
@@ -11,11 +11,11 @@ const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, "public"))); // Updated to serve from /public
+app.use(express.static(path.join(__dirname, "public"))); // ✅ Serve from public folder
 
 // Routes
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html")); // Serve from public
+  res.sendFile(path.join(__dirname, "public", "index.html")); // ✅ Serve public/index.html
 });
 
 // Generate Itinerary route
@@ -25,12 +25,12 @@ app.post("/generate-itinerary", async (req, res) => {
   const preferences = {
     destination: city,
     duration,
-    preferredActivities: activity,
+    activity,
     notes: `Season: ${season}, Travel type: ${travelType}`
   };
 
   try {
-    const itinerary = await getTravelGuide(preferences);
+    const itinerary = await getItinerary(preferences); // ✅ Correct call
     res.json({ itinerary });
   } catch (error) {
     console.error("GPT error:", error);
