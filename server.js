@@ -2,7 +2,7 @@ const express = require("express");
 const path = require("path");
 const bodyParser = require("body-parser");
 const dotenv = require("dotenv");
-const getTravelGuide = require("./chatgpt (13).js");
+const getTravelGuide = require("./chatgpt.js");
 
 dotenv.config();
 
