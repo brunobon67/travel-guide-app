@@ -1,42 +1,33 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("travel-form");
-  const output = document.getElementById("output");
+document.getElementById("travel-form").addEventListener("submit", async (e) => {
+  e.preventDefault();
 
-  if (form) {
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
+  const destination = document.getElementById("destination").value;
+  const duration = document.getElementById("duration").value;
+  const preferredActivities = document.getElementById("activity").value;
+  const notes = document.getElementById("notes").value;
 
-      const city = document.getElementById("destination").value;
-      const duration = document.getElementById("duration").value;
-      const season = document.getElementById("season").value;
-      const travelType = document.getElementById("travel-type").value;
-      const activity = document.getElementById("activity").value;
+  const preferences = {
+    destination,
+    duration,
+    preferredActivities,
+    nightlife: notes
+  };
 
-      if (!city || !duration || !season || !travelType || !activity) {
-        output.innerHTML = "<p style='color:red'>Please fill in all fields.</p>";
-        return;
-      }
-
-      try {
-        const response = await fetch("/api/generate-itinerary", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ city, duration, season, travelType, activity }),
-        });
-
-        const data = await response.json();
-
-        if (data.itinerary) {
-          output.innerHTML = `<pre>${data.itinerary}</pre>`;
-        } else {
-          output.innerHTML = `<p style="color:red">${data.error || "Failed to generate itinerary."}</p>`;
-        }
-      } catch (err) {
-        console.error("ChatGPT Error:", err);
-        output.innerHTML = "<p style='color:red'>An error occurred while generating the itinerary.</p>";
-      }
+  try {
+    const response = await fetch("/get-travel-guide", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ preferences })
     });
+
+    const data = await response.json();
+
+    const outputDiv = document.getElementById("itinerary-result");
+    outputDiv.innerHTML = response.ok ? `<pre>${data.guide}</pre>` : `<p>Error: ${data.error}</p>`;
+  } catch (err) {
+    console.error("ChatGPT Error:", err);
+    document.getElementById("itinerary-result").innerHTML = "<p>Something went wrong. Please try again.</p>";
   }
 });
