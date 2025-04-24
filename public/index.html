@@ -2,42 +2,59 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Travel Guide Italy</title>
-  <link rel="stylesheet" href="/styles.css" />
-  <script src="/menu.js" defer></script>
-  <script src="/script.js" defer></script>
+  <link rel="stylesheet" href="styles.css"/>
+  <script defer src="menu.js"></script>
+  <script defer src="script.js"></script>
 </head>
 <body>
   <header>
-    <div class="menu-wrapper">
-      <button id="menuToggle" class="hamburger">☰</button>
-      <nav id="menu" class="user-menu">
-        <a href="/saved-plans">My Saved Plans</a>
-        <a href="/profile">My Profile</a>
-        <a href="/contact-us">Contact</a>
-        <button class="logout-btn" id="logout-btn">Logout</button>
-      </nav>
-    </div>
+    <nav class="navbar">
+      <div class="logo">Travel Guide Italy</div>
+      <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="saved-plans.html">My Saved Plans</a></li>
+        <li><a href="profile.html">My Profile</a></li>
+        <li><a href="contact-us.html">Contact</a></li>
+        <li><a href="#" onclick="logout()">Logout</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <main>
-    <form id="travel-form">
-      <label>Destination</label>
-      <input type="text" id="destination" required />
-      <label>Duration (days)</label>
-      <input type="number" id="duration" required />
-      <label>Preferred Activity</label>
-      <select id="activity">
-        <option>Culture</option>
-        <option>Beach</option>
-        <option>Hiking</option>
-        <option>Shopping</option>
+  <main class="main-container">
+    <form id="itineraryForm">
+      <h2>Plan Your Trip to Italy</h2>
+      <label for="destination">Destination:</label>
+      <select id="destination" required>
+        <option value="">Select a city</option>
+        <option value="Rome">Rome</option>
+        <option value="Florence">Florence</option>
+        <option value="Venice">Venice</option>
+        <option value="Milan">Milan</option>
+        <option value="Naples">Naples</option>
+        <!-- Add more cities as needed -->
       </select>
-      <label>Notes</label>
-      <textarea id="notes"></textarea>
+
+      <label for="duration">Duration (in days):</label>
+      <input type="number" id="duration" required min="1" max="30"/>
+
+      <label for="preferredActivities">Preferred Activity:</label>
+      <select id="preferredActivities">
+        <option value="Museums">Museums</option>
+        <option value="Food">Food & Wine</option>
+        <option value="Beach">Beach</option>
+        <option value="Nature">Nature</option>
+        <option value="Nightlife">Nightlife</option>
+      </select>
+
+      <label for="nightlife">Other preferences or notes:</label>
+      <textarea id="nightlife" rows="3"></textarea>
+
       <button type="submit">Generate Travel Guide</button>
     </form>
-    <div id="itinerary-result"></div>
+
+    <div id="itineraryResult"></div>
   </main>
 </body>
 </html>
