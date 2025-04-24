@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("travel-form");
-  const resultDiv = document.getElementById("itineraryResult");
+  const resultBox = document.getElementById("itineraryResult");
   const loading = document.getElementById("loading");
 
   form.addEventListener("submit", async (e) => {
@@ -11,28 +11,36 @@ document.addEventListener("DOMContentLoaded", () => {
     const activity = document.getElementById("activity").value;
     const notes = document.getElementById("notes").value;
 
-    const prompt = `Create a travel itinerary for a ${duration}-day trip to ${destination}, focusing on ${activity}. Notes: ${notes}`;
+    if (!destination || !duration || !activity) {
+      alert("Please fill out all required fields.");
+      return;
+    }
 
-    resultDiv.innerHTML = "";
+    // Show loading
     loading.classList.remove("hidden");
+    resultBox.innerHTML = "";
 
     try {
       const response = await fetch("/generate-itinerary", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "application/json"
         },
-        body: JSON.stringify({ prompt }),
+        body: JSON.stringify({
+          destination,
+          duration,
+          activity,
+          notes
+        })
       });
 
       const data = await response.json();
       loading.classList.add("hidden");
-
-      resultDiv.innerHTML = data.itinerary;
-    } catch (err) {
+      resultBox.innerHTML = `<pre>${data.itinerary}</pre>`;
+    } catch (error) {
       loading.classList.add("hidden");
-      resultDiv.innerHTML = "Something went wrong while generating your itinerary. Please try again.";
-      console.error("ChatGPT Error:", err);
+      resultBox.innerHTML = "Something went wrong. Please try again later.";
+      console.error("ChatGPT Error:", error);
     }
   });
 });
