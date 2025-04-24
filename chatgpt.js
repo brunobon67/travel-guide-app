@@ -10,7 +10,7 @@ async function getTravelGuide(preferences) {
 Generate a detailed travel itinerary for a trip to ${preferences.destination} in Italy.
 Duration: ${preferences.duration} days.
 Preferred activities: ${preferences.preferredActivities}.
-Other preferences: ${preferences.nightlife}.
+Other preferences: ${preferences.notes}.
 Make it informative, engaging, and structured by days.
 `;
 
@@ -20,7 +20,8 @@ Make it informative, engaging, and structured by days.
     temperature: 0.7
   });
 
-  return completion;
+  // Return only the content
+  return completion.choices[0].message.content.trim();
 }
 
 module.exports = getTravelGuide;
