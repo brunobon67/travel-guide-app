@@ -13,19 +13,20 @@ document.getElementById("travel-form").addEventListener("submit", async (e) => {
       body: JSON.stringify({
         city,
         duration,
-        season: "spring", // default value
+        season: "spring", // you can customize this
         travelType: notes,
         activity
       }),
     });
 
     const data = await response.json();
-    const outputDiv = document.getElementById("itinerary-result");
+    const outputDiv = document.getElementById("itineraryResult");
     outputDiv.innerHTML = response.ok
       ? `<pre>${data.itinerary}</pre>`
       : `<p>Error: ${data.error}</p>`;
   } catch (err) {
     console.error("ChatGPT Error:", err);
-    document.getElementById("itinerary-result").innerHTML = "<p>Something went wrong. Please try again.</p>";
+    document.getElementById("itineraryResult").innerHTML = "<p>Something went wrong. Please try again.</p>";
   }
 });
+
