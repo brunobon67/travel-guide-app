@@ -1,8 +1,11 @@
-const { Configuration, OpenAIApi } = require("openai");
 
-const configuration = new Configuration({
-  apiKey: process.env.OPENAI_API_KEY,
+
+const OpenAI = require("openai");
+
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY
 });
+
 
 const openai = new OpenAIApi(configuration);
 
@@ -22,12 +25,13 @@ Use a friendly tone.
 Format it clearly, day by day.
   `;
 
-  const response = await openai.createChatCompletion({
+  const chatCompletion = await openai.chat.completions.create({
     model: "gpt-3.5-turbo",
-    messages: [{ role: "user", content: prompt }],
+    messages: [{ role: "user", content: prompt }]
   });
 
-  return response.data.choices[0].message.content.trim();
+  return chatCompletion.choices[0].message.content.trim();
 }
+
 
 module.exports = { getItinerary };
