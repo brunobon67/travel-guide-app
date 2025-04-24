@@ -1,79 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Travel Guide - Italy Only</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Italy Travel Planner</title>
+  <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
-    <nav class="navbar">
-        <h2>🇮🇹 Italy Travel Guide</h2>
-    </nav>
 
-    <div class="container">
-        <h1>Plan Your Italian Journey</h1>
-        <form id="travel-form">
-            <div class="form-group">
-                <label for="city">Select City in Italy:</label>
-                <select id="city" name="city" required>
-                    <option value="">--Choose a city--</option>
-                    <option>Rome</option>
-                    <option>Milan</option>
-                    <option>Venice</option>
-                    <option>Florence</option>
-                    <option>Naples</option>
-                    <option>Bologna</option>
-                    <option>Turin</option>
-                    <option>Genoa</option>
-                    <option>Verona</option>
-                    <option>Palermo</option>
-                </select>
-            </div>
+  <button class="hamburger" onclick="toggleMenu()">☰</button>
+  <nav class="user-menu" id="userMenu">
+    <a href="index.html">Home</a>
+    <a href="saved.html">Saved Plans</a>
+    <a href="about.html">About</a>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </nav>
 
-            <div class="form-group">
-                <label for="duration">Trip Duration (days):</label>
-                <input type="number" id="duration" name="duration" min="1" required>
-            </div>
+  <main class="main-content">
+    <section class="trip-form-wrapper">
+      <h1>Plan Your Italian Trip 🇮🇹</h1>
+      <form class="trip-form" id="tripForm">
+        <label for="city">Choose a City</label>
+        <select id="city" required>
+          <option value="">Select city</option>
+          <option value="Rome">Rome</option>
+          <option value="Florence">Florence</option>
+          <option value="Venice">Venice</option>
+          <option value="Milan">Milan</option>
+          <option value="Naples">Naples</option>
+          <option value="Turin">Turin</option>
+          <option value="Palermo">Palermo</option>
+          <option value="Genoa">Genoa</option>
+          <option value="Bologna">Bologna</option>
+          <option value="Verona">Verona</option>
+        </select>
 
-            <div class="form-group">
-                <label for="interests">Preferred Activity:</label>
-                <select id="interests" name="interests" required>
-                    <option value="">--Choose an activity--</option>
-                    <option>Art & Museums</option>
-                    <option>Historical Sites</option>
-                    <option>Food & Wine</option>
-                    <option>Beaches</option>
-                    <option>Shopping</option>
-                    <option>Nature & Hiking</option>
-                </select>
-            </div>
+        <label for="duration">Trip Duration (days)</label>
+        <input type="number" id="duration" placeholder="e.g., 3" required/>
 
-            <button type="submit">Generate Itinerary</button>
-        </form>
-        <div id="results"></div>
-    </div>
+        <label for="activity">Preferred Activity</label>
+        <select id="activity">
+          <option value="">Select activity</option>
+          <option value="Culture">Culture</option>
+          <option value="Food">Food</option>
+          <option value="Nature">Nature</option>
+          <option value="Adventure">Adventure</option>
+          <option value="Shopping">Shopping</option>
+        </select>
 
-    <script>
-        document.getElementById('travel-form').addEventListener('submit', function (e) {
-            e.preventDefault();
+        <label for="notes">Additional Notes</label>
+        <textarea id="notes" rows="3" placeholder="Anything specific you want to include?"></textarea>
 
-            const city = document.getElementById('city').value;
-            const duration = document.getElementById('duration').value;
-            const interests = document.getElementById('interests').value;
+        <button type="submit">Generate Itinerary</button>
+      </form>
 
-            if (!city || !duration || !interests) {
-                document.getElementById('results').innerHTML = "<p style='color: red;'>Please fill in all fields.</p>";
-                return;
-            }
+      <div id="guideOutput" class="guide-preview"></div>
+    </section>
+  </main>
 
-            const result = `
-                <h2>Your ${duration}-day trip to ${city}</h2>
-                <p>Focus on: <strong>${interests}</strong>.</p>
-                <p>We are crafting the perfect Italian itinerary for you. 🇮🇹</p>
-            `;
-            document.getElementById('results').innerHTML = result;
-        });
-    </script>
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById("userMenu");
+      menu.classList.toggle("visible");
+      document.body.classList.toggle("menu-open");
+    }
+
+    function logout() {
+      alert("Logging out...");
+      // Implement your logout logic here
+    }
+
+    document.getElementById("tripForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const city = document.getElementById("city").value;
+      const duration = document.getElementById("duration").value;
+      const activity = document.getElementById("activity").value;
+      const notes = document.getElementById("notes").value;
+
+      if (!city || !duration) {
+        alert("Please fill out required fields.");
+        return;
+      }
+
+      const message = `Here’s your ${duration}-day itinerary for ${city}, Italy, focused on ${activity || 'your interests'}.\n\n${notes ? 'Notes: ' + notes : ''}`;
+      document.getElementById("guideOutput").innerText = message;
+    });
+  </script>
 </body>
 </html>
