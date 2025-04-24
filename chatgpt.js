@@ -1,27 +1,33 @@
-const OpenAI = require("openai");
-require("dotenv").config();
+const { Configuration, OpenAIApi } = require("openai");
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY
+const configuration = new Configuration({
+  apiKey: process.env.OPENAI_API_KEY,
 });
 
-async function getTravelGuide(preferences) {
-  const prompt = `
-Generate a detailed travel itinerary for a trip to ${preferences.destination} in Italy.
-Duration: ${preferences.duration} days.
-Preferred activities: ${preferences.preferredActivities}.
-Other preferences: ${preferences.notes}.
-Make it informative, engaging, and structured by days.
-`;
+const openai = new OpenAIApi(configuration);
 
-  const completion = await openai.chat.completions.create({
+async function getItinerary({ destination, duration, activity, notes }) {
+  const prompt = `
+You are a travel assistant specialized in Italian destinations.
+
+Generate a travel itinerary for a trip to ${destination} in Italy.
+
+- Duration: ${duration} day(s)
+- Preferred activity: ${activity}
+- Notes: ${notes || "No additional notes"}
+
+The response should be realistic and suitable for a ${duration}-day trip. 
+Don't suggest placeholder names or say "undefined". Give real examples of places to visit, eat, and stay. 
+Use a friendly tone. 
+Format it clearly, day by day.
+  `;
+
+  const response = await openai.createChatCompletion({
     model: "gpt-3.5-turbo",
     messages: [{ role: "user", content: prompt }],
-    temperature: 0.7
   });
 
-  // Return only the content
-  return completion.choices[0].message.content.trim();
+  return response.data.choices[0].message.content.trim();
 }
 
-module.exports = getTravelGuide;
+module.exports = { getItinerary };
