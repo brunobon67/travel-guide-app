@@ -3,61 +3,61 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Travel Guide Italy</title>
-  <link rel="stylesheet" href="styles.css"/>
-  <script defer src="menu.js"></script>
+  <title>Travel Guide App</title>
+  <link rel="stylesheet" href="styles.css" />
   <script defer src="script.js"></script>
+  <script defer src="menu.js"></script>
 </head>
 <body>
   <header>
-    <nav class="navbar">
-      <div class="logo">Travel Guide Italy</div>
-      <div class="menu-toggle" id="menu-toggle">&#9776;</div>
-      <ul class="nav-links" id="nav-links">
-        <li><a href="saved-plans.html">My Saved Plans</a></li>
-        <li><a href="profile.html">My Profile</a></li>
-        <li><a href="contact-us.html">Contact</a></li>
-        <li><a href="#" onclick="logout()">Logout</a></li>
-      </ul>
-    </nav>
+    <div class="navbar">
+      <div class="logo">Travel Italy 🇮🇹</div>
+      <div class="hamburger" id="hamburger">&#9776;</div>
+      <nav id="menu" class="hidden">
+        <ul>
+          <li><a href="saved-plans.html">My Saved Plans</a></li>
+          <li><a href="profile.html">My Profile</a></li>
+          <li><a href="contact-us.html">Contact</a></li>
+          <li><a href="#" id="logout">Logout</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <main class="main-container">
-    <form id="travel-form">
-      <h2>Plan Your Trip to Italy</h2>
-      <label for="destination">Destination:</label>
-      <select id="destination" required>
-        <option value="">Select a city</option>
-        <option value="Rome">Rome</option>
-        <option value="Florence">Florence</option>
-        <option value="Venice">Venice</option>
-        <option value="Milan">Milan</option>
-        <option value="Naples">Naples</option>
-        <!-- Add more cities as needed -->
-      </select>
+  <main>
+    <section class="form-container">
+      <h1>Plan your Italian adventure</h1>
+      <form id="travel-form">
+        <label for="destination">Choose a destination:</label>
+        <select id="destination" required>
+          <option value="">--Select a city--</option>
+          <option value="Rome">Rome</option>
+          <option value="Florence">Florence</option>
+          <option value="Venice">Venice</option>
+          <option value="Milan">Milan</option>
+          <option value="Naples">Naples</option>
+        </select>
 
-      <label for="duration">Duration (in days):</label>
-      <input type="number" id="duration" required min="1" max="30"/>
+        <label for="duration">Trip duration (days):</label>
+        <input type="number" id="duration" min="1" required />
 
-      <label for="preferredActivities">Preferred Activity:</label>
-      <select id="activity">
-        <option value="Museums">Museums</option>
-        <option value="Food">Food & Wine</option>
-        <option value="Beach">Beach</option>
-        <option value="Nature">Nature</option>
-        <option value="Nightlife">Nightlife</option>
-      </select>
+        <label for="activity">Preferred activity:</label>
+        <select id="activity" required>
+          <option value="sightseeing">Sightseeing</option>
+          <option value="food">Food & Wine</option>
+          <option value="nature">Nature</option>
+          <option value="culture">Culture & Museums</option>
+          <option value="shopping">Shopping</option>
+        </select>
 
-      <label for="nightlife">Other preferences or notes:</label>
-      <textarea id="notes" rows="3"></textarea>
+        <label for="notes">Notes or travel style:</label>
+        <input type="text" id="notes" placeholder="e.g. budget traveler, romantic trip..." />
 
-      <button type="submit">Generate Travel Guide</button>
-    </form>
+        <button type="submit">Generate Travel Itinerary</button>
+      </form>
 
-    <div id="itineraryResult"></div>
+      <div id="itineraryResult"></div>
+    </section>
   </main>
- 
-
-
 </body>
 </html>
