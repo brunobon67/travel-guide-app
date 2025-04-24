@@ -1,26 +1,42 @@
-document.getElementById("tripForm").addEventListener("submit", async function (e) {
-  e.preventDefault();
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("travel-form");
+  const output = document.getElementById("output");
 
-  const city = document.getElementById("city").value;
-  const duration = document.getElementById("duration").value;
-  const activity = document.getElementById("activity").value;
-  const notes = document.getElementById("notes").value;
+  if (form) {
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
 
-  if (!city || !duration) {
-    alert("Please fill out required fields.");
-    return;
-  }
+      const city = document.getElementById("destination").value;
+      const duration = document.getElementById("duration").value;
+      const season = document.getElementById("season").value;
+      const travelType = document.getElementById("travel-type").value;
+      const activity = document.getElementById("activity").value;
 
-  const prompt = `Create a detailed ${duration}-day travel itinerary for ${city}, Italy. Focus on ${activity || 'general tourist'} activities. ${notes ? 'User notes: ' + notes : ''}`;
+      if (!city || !duration || !season || !travelType || !activity) {
+        output.innerHTML = "<p style='color:red'>Please fill in all fields.</p>";
+        return;
+      }
 
-  const guideOutput = document.getElementById("guideOutput");
-  guideOutput.innerHTML = "<p>Generating itinerary... ⏳</p>";
+      try {
+        const response = await fetch("/api/generate-itinerary", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ city, duration, season, travelType, activity }),
+        });
 
-  try {
-    const response = await getItineraryFromGPT(prompt);
-    guideOutput.innerHTML = `<pre>${response}</pre>`;
-  } catch (error) {
-    guideOutput.innerHTML = "<p>Error generating itinerary. Please try again.</p>";
-    console.error("ChatGPT Error:", error);
+        const data = await response.json();
+
+        if (data.itinerary) {
+          output.innerHTML = `<pre>${data.itinerary}</pre>`;
+        } else {
+          output.innerHTML = `<p style="color:red">${data.error || "Failed to generate itinerary."}</p>`;
+        }
+      } catch (err) {
+        console.error("ChatGPT Error:", err);
+        output.innerHTML = "<p style='color:red'>An error occurred while generating the itinerary.</p>";
+      }
+    });
   }
 });
