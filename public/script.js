@@ -1,41 +1,32 @@
-document.getElementById("tripForm").addEventListener("submit", async function (e) {
+document.getElementById("travel-form").addEventListener("submit", async function (e) {
   e.preventDefault();
 
-  const city = document.getElementById("city").value;
+  const destination = document.getElementById("destination").value;
   const duration = document.getElementById("duration").value;
-  const activity = document.getElementById("activity").value;
+  const activities = document.getElementById("activity").value;
   const notes = document.getElementById("notes").value;
 
-  if (!city || !duration) {
-    alert("Please fill out all required fields.");
-    return;
-  }
-
-  const preferences = {
-    destination: city,
-    duration: duration,
-    preferredActivities: activity,
-    nightlife: notes
-  };
-
-  const output = document.getElementById("guideOutput");
-  output.innerHTML = "Generating itinerary...";
+  const prompt = `Generate a detailed travel itinerary for a trip to ${destination} for ${duration} days. Preferred activities include: ${activities}. Additional notes: ${notes}`;
 
   try {
-    const guide = await getItineraryFromGPT(preferences);
-    output.innerText = guide;
+    const response = await fetch("/api/generate-itinerary", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ prompt })
+    });
+
+    const data = await response.json();
+
+    if (data.itinerary) {
+      document.getElementById("itinerary-result").innerText = data.itinerary;
+    } else {
+      document.getElementById("itinerary-result").innerText = "No itinerary received.";
+    }
+
   } catch (error) {
-    output.innerText = "Failed to generate itinerary. Please try again later.";
+    console.error("ChatGPT Error:", error);
+    document.getElementById("itinerary-result").innerText = "An error occurred. Please try again.";
   }
-});
-
-
-fetch('/api/generate-itinerary', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({ prompt: yourPrompt })
-})
-.then(res => res.json())
-.then(data => {
-  // Display result
 });
