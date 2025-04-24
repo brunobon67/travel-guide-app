@@ -1,31 +1,28 @@
 document.getElementById("travel-form").addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  const destination = document.getElementById("destination").value;
+  const city = document.getElementById("destination").value;
   const duration = document.getElementById("duration").value;
-  const preferredActivities = document.getElementById("activity").value;
+  const activity = document.getElementById("activity").value;
   const notes = document.getElementById("notes").value;
 
-  const preferences = {
-    destination,
-    duration,
-    preferredActivities,
-    nightlife: notes
-  };
+  // You can hardcode season and travelType or let the user select them
+  const season = "spring"; // Or pull from a dropdown
+  const travelType = notes || "relaxed"; // For now use notes as type
 
   try {
-    const response = await fetch("/get-travel-guide", {
+    const response = await fetch("/generate-itinerary", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify({ preferences })
+      body: JSON.stringify({ city, duration, season, travelType, activity }),
     });
 
     const data = await response.json();
 
     const outputDiv = document.getElementById("itinerary-result");
-    outputDiv.innerHTML = response.ok ? `<pre>${data.guide}</pre>` : `<p>Error: ${data.error}</p>`;
+    outputDiv.innerHTML = response.ok ? `<pre>${data.itinerary}</pre>` : `<p>Error: ${data.error}</p>`;
   } catch (err) {
     console.error("ChatGPT Error:", err);
     document.getElementById("itinerary-result").innerHTML = "<p>Something went wrong. Please try again.</p>";
