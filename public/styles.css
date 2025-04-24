@@ -1,37 +1,105 @@
 body {
-  font-family: Arial, sans-serif;
   margin: 0;
-  background: white;
+  font-family: Arial, sans-serif;
+  background-color: white;
   color: #333;
 }
 
-.hamburger {
-  background: none;
-  border: none;
-  font-size: 2rem;
+header {
+  background: linear-gradient(to right, green, white, red);
+  padding: 15px;
 }
 
-.user-menu {
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+.menu-toggle {
+  font-size: 24px;
   display: none;
-  background: #eee;
-  padding: 10px;
-}
-
-.user-menu.visible {
-  display: block;
-}
-
-button {
-  background: green;
-  color: white;
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 5px;
   cursor: pointer;
 }
 
-main {
-  max-width: 600px;
-  margin: 2rem auto;
-  padding: 1rem;
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+.nav-links li a:hover {
+  color: green;
+}
+
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 10px;
+  min-height: 80vh;
+}
+
+form {
+  background: #f9f9f9;
+  padding: 30px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+form label {
+  display: block;
+  margin-top: 10px;
+}
+
+form input,
+form select,
+form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+form button {
+  margin-top: 20px;
+  width: 100%;
+  background-color: green;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: darkgreen;
+}
+
+#itineraryResult {
+  margin-top: 30px;
+  padding: 20px;
+  border-top: 2px solid green;
 }
