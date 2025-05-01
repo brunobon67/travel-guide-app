@@ -1,56 +1,63 @@
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("travel-form");
-  const resultBox = document.getElementById("itineraryResult");
+  const output = document.getElementById("itinerary");
   const loading = document.getElementById("loading");
-  const saveBtn = document.getElementById("saveBtn");
-
-  let currentItinerary = "";
+  const saveBtn = document.getElementById("save-btn");
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
+    const userInput = document.getElementById("userInput").value.trim();
 
-    const region = document.getElementById("region").value;
-    const duration = document.getElementById("duration").value;
-    const travelPreferences = document.getElementById("travelPreferences").value;
+    if (!userInput) return;
 
-    if (!region || !duration) {
-      alert("Please fill out all required fields.");
-      return;
-    }
-
-    loading.classList.remove("hidden");
-    resultBox.innerHTML = "";
-    saveBtn.classList.add("hidden");
+    output.innerHTML = "";
+    loading.style.display = "block";
+    saveBtn.style.display = "none";
 
     try {
       const response = await fetch("/generate-itinerary", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ region, duration, travelPreferences })
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ userInput }),
       });
 
       const data = await response.json();
-      currentItinerary = data.itinerary;
+      loading.style.display = "none";
 
-      loading.classList.add("hidden");
-      resultBox.innerHTML = `<pre>${currentItinerary}</pre>`;
-      saveBtn.classList.remove("hidden");
+      if (data.itinerary) {
+        output.innerHTML = formatItinerary(data.itinerary);
+        saveBtn.style.display = "inline-block";
+      } else {
+        output.innerHTML = "Sorry, something went wrong.";
+      }
     } catch (error) {
-      loading.classList.add("hidden");
-      resultBox.innerHTML = "Something went wrong. Please try again later.";
-      console.error("ChatGPT Error:", error);
+      loading.style.display = "none";
+      output.innerHTML = "Error: " + error.message;
     }
   });
 
-  saveBtn.addEventListener("click", () => {
-    if (currentItinerary) {
-      const savedPlans = JSON.parse(localStorage.getItem("savedPlans") || "[]");
-      savedPlans.push({
-        date: new Date().toLocaleString(),
-        itinerary: currentItinerary
-      });
-      localStorage.setItem("savedPlans", JSON.stringify(savedPlans));
-      alert("Travel guide saved successfully!");
+  window.saveItinerary = function () {
+    const itinerary = output.innerText;
+    if (itinerary) {
+      localStorage.setItem("savedItinerary", itinerary);
+      alert("Travel guide saved! 🗺️ You can view it in 'My Saved Plans'.");
     }
-  });
+  };
 });
+
+function formatItinerary(text) {
+  const paragraphs = text.split(/\n{2,}/).map(p => `<p>${p.replace(/\n/g, "<br>")}</p>`);
+  return paragraphs.join("");
+}
+
+function toggleMenu() {
+  const menu = document.getElementById("menu");
+  menu.classList.toggle("hidden");
+}
+
+function logout() {
+  alert("You have been logged out.");
+  // Add real logout logic here if needed
+}
