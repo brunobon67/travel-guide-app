@@ -9,12 +9,11 @@ document.addEventListener("DOMContentLoaded", () => {
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    const destination = document.getElementById("destination").value;
+    const region = document.getElementById("region").value;
     const duration = document.getElementById("duration").value;
-    const activity = document.getElementById("activity").value;
-    const notes = document.getElementById("notes").value;
+    const travelPreferences = document.getElementById("travelPreferences").value;
 
-    if (!destination || !duration || !activity) {
+    if (!region || !duration) {
       alert("Please fill out all required fields.");
       return;
     }
@@ -26,10 +25,8 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       const response = await fetch("/generate-itinerary", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ destination, duration, activity, notes })
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ region, duration, travelPreferences })
       });
 
       const data = await response.json();
