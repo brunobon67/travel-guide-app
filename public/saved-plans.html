@@ -2,31 +2,30 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="/styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Saved Plans</title>
+  <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
+  <header>
+    <div class="hamburger">&#9776;</div>
+    <nav class="nav-menu">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="saved-plans.html">My Saved Plans</a></li>
+        <li><a href="profile.html">My Profile</a></li>
+        <li><a href="contact-us.html">Contact</a></li>
+        <li><a href="logout.html">Logout</a></li>
+      </ul>
+    </nav>
+    <h1>🗺️ My Saved Travel Guides</h1>
+  </header>
 
-  <!-- ✅ Header with Hamburger -->
-<div id="user-menu-wrapper"></div>
+  <main>
+    <div id="savedPlansContainer"></div>
+  </main>
 
-
-  <!-- ✅ Main Content -->
-  <div class="plans-container main-content">
-<h2 class="saved-plans-title">My Saved Travel Plans</h2>
-    <div id="plansList" class="saved-plans-container">
-      <p>Loading...</p>
-    </div>
-    <div class="back-button" style="margin-top: 2rem; text-align: center;">
-      <a href="/app" style="color: #2a9d8f; text-decoration: none; font-weight: bold;">← Back to App</a>
-    </div>
-  </div>
-
-  <!-- ✅ Scripts -->
-  <script type="module" src="/saved-plans.js"></script>
-  <script src="/menu.js"></script>
-
+  <script src="menu.js"></script>
+  <script src="saved-plans.js"></script>
 </body>
 </html>
-
-
