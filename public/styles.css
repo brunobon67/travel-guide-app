@@ -9,85 +9,64 @@ body {
 header {
   background-color: #fff;
   padding: 15px 25px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
-  z-index: 1001;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
-.logo {
-  font-size: 20px;
-  font-weight: bold;
-  color: #007a33;
-}
-
+/* Hamburger */
 .hamburger {
   font-size: 26px;
   cursor: pointer;
   background: none;
   border: none;
   color: #e60000;
-  z-index: 1002;
 }
 
-/* Navigation Menu */
-nav {
-  position: absolute;
-  top: 60px;
-  right: 20px;
+/* Navigation Menu - now static in flow */
+#menu {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.4s ease;
   background-color: white;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
   border-radius: 6px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-  width: 200px;
-  z-index: 1001;
 }
 
-nav ul {
+#menu.expanded {
+  max-height: 500px; /* enough space for list */
+}
+
+#menu ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-nav ul li {
+#menu ul li {
   border-bottom: 1px solid #eee;
 }
 
-nav ul li:last-child {
+#menu ul li:last-child {
   border-bottom: none;
 }
 
-nav ul li a {
+#menu ul li a {
+  display: block;
+  padding: 12px 16px;
   text-decoration: none;
   color: #333;
   font-weight: 500;
-  display: block;
-  padding: 12px 16px;
-}
-
-.hidden {
-  display: none;
 }
 
 /* Form Container */
 .form-container {
   max-width: 600px;
-  margin: 50px auto;
+  margin: 30px auto;
   background: #fff;
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 8px 25px rgba(0,0,0,0.07);
 }
 
-h1 {
-  text-align: center;
-  color: #007a33;
-  margin-bottom: 20px;
-  font-size: 24px;
-}
-
-/* Form Layout */
 form {
   display: flex;
   flex-direction: column;
@@ -103,35 +82,32 @@ textarea {
   min-height: 120px;
 }
 
-/* Generate Button */
-form button {
+/* Buttons */
+form button, #saveButton {
   padding: 14px;
   font-size: 1rem;
   font-weight: bold;
-  background-color: #e60000;
-  color: white;
   border: none;
   border-radius: 6px;
   cursor: pointer;
   transition: background 0.3s ease;
+  width: 100%;
+}
+
+form button {
+  background-color: #e60000;
+  color: white;
 }
 
 form button:hover {
   background-color: #cc0000;
 }
 
-/* Save Button */
 #saveButton {
   display: none;
   margin: 20px auto 0;
   background-color: #007a33;
-  border: none;
   color: white;
-  padding: 12px 20px;
-  font-size: 1rem;
-  font-weight: bold;
-  border-radius: 6px;
-  cursor: pointer;
   text-align: center;
 }
 
@@ -139,72 +115,18 @@ form button:hover {
   background-color: #005f28;
 }
 
-/* Loading Text */
-#loading {
-  text-align: center;
-  font-style: italic;
-  color: #777;
-  margin-top: 10px;
-}
+/* Responsive */
+@media (max-width: 600px) {
+  .form-container {
+    margin: 20px 10px;
+    padding: 20px;
+  }
 
-/* ChatGPT Answer Styling */
-#itineraryResult {
-  max-width: 700px;
-  margin: 30px auto 10px;
-  padding: 25px 30px;
-  background: #fff;
-  border-left: 6px solid #007a33;
-  border-radius: 10px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
-  white-space: pre-wrap;
-  line-height: 1.6;
-  font-size: 1rem;
-  font-family: 'Georgia', serif;
-}
+  .hamburger {
+    font-size: 24px;
+  }
 
-
-/* Default menu state */
-#menu {
-  display: none;
-  position: absolute;
-  top: 60px;
-  right: 25px;
-  background-color: white;
-  border-radius: 6px;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-  width: 200px;
-  z-index: 1001;
-}
-
-/* When menu is visible */
-#menu.visible {
-  display: block;
-}
-
-/* Optional: hamburger alignment if needed */
-.hamburger {
-  position: relative;
-  z-index: 1002;
-}
-
-
-.menu-wrapper {
-  position: relative;
-  display: inline-block;
-}
-
-#menu {
-  display: none;
-  position: absolute;
-  top: 40px; /* Drop below hamburger */
-  left: 0;   /* Align with hamburger */
-  background-color: white;
-  border-radius: 6px;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-  width: 180px;
-  z-index: 1001;
-}
-
-#menu.visible {
-  display: block;
+  #menu ul li a {
+    padding: 12px;
+  }
 }
