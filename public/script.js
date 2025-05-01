@@ -1,63 +1,47 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("travel-form");
-  const output = document.getElementById("itinerary");
-  const loading = document.getElementById("loading");
-  const saveBtn = document.getElementById("save-btn");
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('trip-form');
+  const userInput = document.getElementById('user-input');
+  const responseContainer = document.getElementById('chatgpt-response');
+  const loadingMessage = document.getElementById('loading-message');
+  const saveButton = document.getElementById('save-button');
 
-  form.addEventListener("submit", async (e) => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const userInput = document.getElementById("userInput").value.trim();
+    const inputText = userInput.value.trim();
+    if (!inputText) return;
 
-    if (!userInput) return;
-
-    output.innerHTML = "";
-    loading.style.display = "block";
-    saveBtn.style.display = "none";
+    loadingMessage.textContent = "⏳ We are generating your travel guide...";
+    responseContainer.innerHTML = "";
+    saveButton.style.display = "none";
 
     try {
-      const response = await fetch("/generate-itinerary", {
-        method: "POST",
+      const res = await fetch('/generate-itinerary', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ userInput }),
+        body: JSON.stringify({ prompt: inputText })
       });
 
-      const data = await response.json();
-      loading.style.display = "none";
+      const data = await res.json();
+      loadingMessage.textContent = "";
+      responseContainer.innerHTML = `<div>${data.itinerary.replace(/\n/g, '<br>')}</div>`;
+      saveButton.style.display = "inline-block";
 
-      if (data.itinerary) {
-        output.innerHTML = formatItinerary(data.itinerary);
-        saveBtn.style.display = "inline-block";
-      } else {
-        output.innerHTML = "Sorry, something went wrong.";
-      }
+      // Save latest itinerary
+      saveButton.onclick = () => {
+        const savedPlans = JSON.parse(localStorage.getItem('savedPlans')) || [];
+        savedPlans.push({
+          date: new Date().toLocaleString(),
+          itinerary: data.itinerary
+        });
+        localStorage.setItem('savedPlans', JSON.stringify(savedPlans));
+        alert('Travel guide saved!');
+      };
+
     } catch (error) {
-      loading.style.display = "none";
-      output.innerHTML = "Error: " + error.message;
+      console.error('ChatGPT Error:', error);
+      loadingMessage.textContent = "⚠️ Failed to generate itinerary. Please try again.";
     }
   });
-
-  window.saveItinerary = function () {
-    const itinerary = output.innerText;
-    if (itinerary) {
-      localStorage.setItem("savedItinerary", itinerary);
-      alert("Travel guide saved! 🗺️ You can view it in 'My Saved Plans'.");
-    }
-  };
 });
-
-function formatItinerary(text) {
-  const paragraphs = text.split(/\n{2,}/).map(p => `<p>${p.replace(/\n/g, "<br>")}</p>`);
-  return paragraphs.join("");
-}
-
-function toggleMenu() {
-  const menu = document.getElementById("menu");
-  menu.classList.toggle("hidden");
-}
-
-function logout() {
-  alert("You have been logged out.");
-  // Add real logout logic here if needed
-}
