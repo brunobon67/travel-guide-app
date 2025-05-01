@@ -7,42 +7,38 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header class="header">
-    <div class="logo">🇮🇹 Travel Guide Italy</div>
-    <div class="hamburger" onclick="toggleMenu()">☰</div>
-    <nav id="menu" class="menu hidden">
-      <ul>
-        <li><a href="saved-plans.html">My Saved Plans</a></li>
-        <li><a href="profile.html">My Profile</a></li>
-        <li><a href="contact-us.html">Contact</a></li>
-        <li><a href="#" onclick="logout()">Logout</a></li>
-      </ul>
-    </nav>
+
+  <header>
+    <div class="menu-icon" id="menu-toggle">&#9776;</div>
+    <h1><span style="color:#006400;">IT</span> Travel Guide Italy</h1>
   </header>
 
- <main class="main-content">
-  <h1>Plan Your Trip to Italy 🇮🇹</h1>
-  <form id="travel-form" class="form-card">
-    <label for="userInput" class="form-label">Describe your ideal Italian holiday:</label>
-    <textarea 
-      id="userInput" 
-      name="userInput" 
-      class="form-textarea"
-      rows="6"
-      placeholder="e.g. I'd like a 3-day trip exploring historic cities in Tuscany with great food. Or: A romantic weekend in Venice, or a family beach holiday in Sicily..."
-      required
-    ></textarea>
-    <button type="submit" class="submit-btn">🇮🇹 Generate Travel Guide</button>
-  </form>
+  <nav id="menu">
+    <a href="saved-plans.html">My Saved Plans</a>
+    <a href="profile.html">My Profile</a>
+    <a href="contact-us.html">Contact</a>
+    <a href="logout.html">Logout</a>
+  </nav>
 
-  <div id="loading" class="loading" style="display: none;">⏳ Generating your travel guide...</div>
+  <div class="main">
+    <h2>Plan Your Trip to Italy <span style="color:#006400;">IT</span></h2>
 
-  <div id="itinerary" class="itinerary-output styled-box"></div>
+    <form id="trip-form">
+      <label for="user-input">Describe your ideal Italian holiday:</label>
+      <textarea
+        id="user-input"
+        placeholder="E.g. I want to explore Rome and the Vatican for 3 days and enjoy local cuisine...&#10;I'd love to visit the Amalfi Coast and relax at the beach...&#10;A short 2-day cultural trip in Florence..."
+        required
+      ></textarea>
+      <button type="submit">🇮🇹 Generate Travel Guide</button>
+    </form>
 
-  <button id="save-btn" style="display: none;" class="save-btn">💾 Save My Travel Guide</button>
-</main>
-
+    <div id="loading-message"></div>
+    <div id="chatgpt-response"></div>
+    <button id="save-button" style="display:none;">💾 Save My Travel Guide</button>
+  </div>
 
   <script src="script.js"></script>
+  <script src="menu.js"></script>
 </body>
 </html>
