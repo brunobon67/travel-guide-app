@@ -9,27 +9,18 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Middleware
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, "public")));
 
-// Routes
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
 app.post("/generate-itinerary", async (req, res) => {
-  const { region, duration, userPreferences } = req.body;
-
-  const preferences = {
-    destination: region,
-    duration,
-    activity: userPreferences,
-    notes: `User is interested in: ${userPreferences}`
-  };
+  const { userInput } = req.body;
 
   try {
-    const itinerary = await getItinerary(preferences);
+    const itinerary = await getItinerary(userInput);
     res.json({ itinerary });
   } catch (error) {
     console.error("GPT error:", error);
