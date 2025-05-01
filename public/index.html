@@ -9,16 +9,19 @@
 <body>
 
   <header>
-    <div class="menu-icon" id="menu-toggle">&#9776;</div>
-    <h1>🇮🇹 Travel Guide Italy</h1>
+    <div class="navbar">
+      <div class="hamburger" id="hamburger">&#9776;</div>
+      <div class="logo">🇮🇹 Travel Italy</div>
+    </div>
+    <nav id="menu" class="hidden">
+      <ul>
+        <li><a href="saved-plans.html">My Saved Plans</a></li>
+        <li><a href="profile.html">My Profile</a></li>
+        <li><a href="contact-us.html">Contact</a></li>
+        <li><a href="#" id="logout">Logout</a></li>
+      </ul>
+    </nav>
   </header>
-
-  <nav id="menu">
-    <a href="saved-plans.html">My Saved Plans</a>
-    <a href="profile.html">My Profile</a>
-    <a href="contact-us.html">Contact</a>
-    <a href="logout.html">Logout</a>
-  </nav>
 
   <main class="form-container">
     <h2>Plan Your Trip in Italy</h2>
