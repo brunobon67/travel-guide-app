@@ -1,14 +1,15 @@
 body {
   margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background-color: #ffffff;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f7f7f7;
   color: #333;
 }
 
+/* Header Styles */
 header {
   background: white;
-  padding: 12px 20px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  padding: 15px 25px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -17,28 +18,29 @@ header {
 .navbar {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  gap: 20px;
+  justify-content: space-between;
 }
 
 .logo {
   font-size: 1.5rem;
-  font-weight: 600;
+  font-weight: bold;
+  color: #008000;
 }
 
 .hamburger {
-  font-size: 28px;
+  font-size: 24px;
   cursor: pointer;
+  color: #ff0000;
 }
 
 nav ul {
   list-style: none;
-  padding: 10px 20px;
-  margin: 0;
+  padding: 0;
+  margin: 10px 0 0;
 }
 
 nav ul li {
-  padding: 6px 0;
+  margin: 8px 0;
 }
 
 nav ul li a {
@@ -53,40 +55,34 @@ nav ul li a {
 
 /* Form Container */
 .form-container {
-  max-width: 600px;
-  margin: 40px auto;
+  max-width: 500px;
+  margin: 50px auto 30px;
   padding: 30px;
-  border: 1px solid #ddd;
-  background-color: #fefefe;
+  background-color: #ffffff;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
 }
 
 h1 {
   text-align: center;
-  color: #008000;
-  font-family: 'Lora', serif;
+  color: #006400;
+  font-size: 1.8rem;
+  margin-bottom: 25px;
 }
 
 /* Form Styling */
 form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 18px;
 }
 
-form label {
-  font-weight: 600;
-}
-
-form input, form textarea, form select, form button {
-  padding: 12px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
+form input, form textarea, form select {
+  padding: 12px 14px;
   font-size: 1rem;
-  font-family: inherit;
-  width: 100%;
-  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #fdfdfd;
 }
 
 form textarea {
@@ -94,11 +90,13 @@ form textarea {
   min-height: 100px;
 }
 
-/* Generate Button */
 form button {
-  background-color: #ff0000;
+  padding: 12px;
+  font-size: 1rem;
+  background-color: #e60000;
   color: white;
   border: none;
+  border-radius: 6px;
   font-weight: bold;
   cursor: pointer;
   transition: 0.3s;
@@ -110,16 +108,17 @@ form button:hover {
 
 /* Save Button */
 #saveButton {
+  display: none;
+  margin-top: 15px;
   background-color: #008000;
-  color: white;
-  font-weight: bold;
-  margin-top: 20px;
-  padding: 12px;
-  border-radius: 6px;
   border: none;
-  cursor: pointer;
+  color: white;
+  padding: 12px;
   font-size: 1rem;
-  display: none; /* Hidden initially */
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: center;
 }
 
 #saveButton:hover {
@@ -128,22 +127,24 @@ form button:hover {
 
 /* Loading Text */
 #loading {
-  margin-top: 20px;
-  font-style: italic;
-  color: #555;
   text-align: center;
+  font-style: italic;
+  margin-top: 10px;
+  color: #555;
 }
 
-/* Itinerary Output */
+/* ChatGPT Answer Styling */
 #itineraryResult {
-  margin-top: 25px;
+  margin: 30px auto;
+  max-width: 700px;
   background-color: #fff;
-  border-left: 6px solid #008000;
-  padding: 20px;
-  border-radius: 8px;
-  font-family: 'Lora', serif;
-  line-height: 1.6;
+  padding: 25px 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   white-space: pre-wrap;
-  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  line-height: 1.7;
   font-size: 1rem;
+  font-family: 'Georgia', serif;
+  color: #333;
+  border-left: 6px solid #008000;
 }
