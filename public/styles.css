@@ -13,6 +13,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
 }
 
 .logo {
@@ -27,27 +28,40 @@ header {
   color: #ff0000;
 }
 
+/* Navigation Menu */
+nav {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  z-index: 1000;
+}
+
 nav ul {
   list-style: none;
-  margin-top: 10px;
-  padding: 0;
+  margin: 0;
+  padding: 10px 0;
 }
 
 nav ul li {
-  margin: 5px 0;
+  padding: 10px 20px;
+  border-bottom: 1px solid #eee;
 }
 
 nav ul li a {
   text-decoration: none;
   color: #333;
   font-weight: 500;
+  display: block;
 }
 
 .hidden {
   display: none;
 }
 
-/* Form */
+/* Form Container */
 .form-container {
   max-width: 600px;
   margin: 40px auto;
@@ -64,6 +78,7 @@ h1 {
   font-size: 24px;
 }
 
+/* Form Layout */
 form {
   display: flex;
   flex-direction: column;
