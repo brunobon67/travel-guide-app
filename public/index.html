@@ -10,7 +10,7 @@
 
   <header>
     <div class="menu-icon" id="menu-toggle">&#9776;</div>
-    <h1><span style="color:#006400;">IT</span> Travel Guide Italy</h1>
+    <h1>🇮🇹 Travel Guide Italy</h1>
   </header>
 
   <nav id="menu">
@@ -20,23 +20,19 @@
     <a href="logout.html">Logout</a>
   </nav>
 
-  <div class="main">
-    <h2>Plan Your Trip to Italy <span style="color:#006400;">IT</span></h2>
+  <main class="form-container">
+    <h2>Plan Your Trip in Italy</h2>
 
     <form id="trip-form">
-      <label for="user-input">Describe your ideal Italian holiday:</label>
-      <textarea
-        id="user-input"
-        placeholder="E.g. I want to explore Rome and the Vatican for 3 days and enjoy local cuisine...&#10;I'd love to visit the Amalfi Coast and relax at the beach...&#10;A short 2-day cultural trip in Florence..."
-        required
-      ></textarea>
+      <label for="user-input">Describe your ideal Italian trip:</label>
+      <textarea id="user-input" placeholder="E.g. A 3-day cultural trip in Florence, food tasting in Bologna, and beach time in Amalfi..." required></textarea>
       <button type="submit">🇮🇹 Generate Travel Guide</button>
     </form>
 
     <div id="loading-message"></div>
-    <div id="chatgpt-response"></div>
-    <button id="save-button" style="display:none;">💾 Save My Travel Guide</button>
-  </div>
+    <div id="chatgpt-response" class="response-box"></div>
+    <button id="save-button" style="display: none;">💾 Save My Travel Guide</button>
+  </main>
 
   <script src="script.js"></script>
   <script src="menu.js"></script>
