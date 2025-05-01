@@ -161,3 +161,28 @@ form button:hover {
   font-size: 1rem;
   font-family: 'Georgia', serif;
 }
+
+
+/* Default menu state */
+#menu {
+  display: none;
+  position: absolute;
+  top: 60px;
+  right: 25px;
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  width: 200px;
+  z-index: 1001;
+}
+
+/* When menu is visible */
+#menu.visible {
+  display: block;
+}
+
+/* Optional: hamburger alignment if needed */
+.hamburger {
+  position: relative;
+  z-index: 1002;
+}
