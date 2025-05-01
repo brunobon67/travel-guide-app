@@ -51,6 +51,7 @@ nav ul li a {
   display: none;
 }
 
+/* Form Container */
 .form-container {
   max-width: 600px;
   margin: 40px auto;
@@ -58,6 +59,7 @@ nav ul li a {
   border: 1px solid #ddd;
   background-color: #fefefe;
   border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
 h1 {
@@ -66,24 +68,33 @@ h1 {
   font-family: 'Lora', serif;
 }
 
+/* Form Styling */
 form {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 15px;
 }
 
 form label {
   font-weight: 600;
 }
 
-form input, form select, form button {
-  padding: 10px;
+form input, form textarea, form select, form button {
+  padding: 12px;
   border-radius: 6px;
   border: 1px solid #ccc;
   font-size: 1rem;
   font-family: inherit;
+  width: 100%;
+  box-sizing: border-box;
 }
 
+form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* Generate Button */
 form button {
   background-color: #ff0000;
   color: white;
@@ -97,6 +108,25 @@ form button:hover {
   background-color: #cc0000;
 }
 
+/* Save Button */
+#saveButton {
+  background-color: #008000;
+  color: white;
+  font-weight: bold;
+  margin-top: 20px;
+  padding: 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  display: none; /* Hidden initially */
+}
+
+#saveButton:hover {
+  background-color: #006400;
+}
+
+/* Loading Text */
 #loading {
   margin-top: 20px;
   font-style: italic;
@@ -104,6 +134,7 @@ form button:hover {
   text-align: center;
 }
 
+/* Itinerary Output */
 #itineraryResult {
   margin-top: 25px;
   background-color: #fff;
@@ -114,4 +145,5 @@ form button:hover {
   line-height: 1.6;
   white-space: pre-wrap;
   box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  font-size: 1rem;
 }
