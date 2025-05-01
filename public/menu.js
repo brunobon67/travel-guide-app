@@ -3,19 +3,23 @@ document.addEventListener("DOMContentLoaded", () => {
   const menu = document.getElementById("menu");
 
   if (menu) {
-    menu.classList.remove("visible");
+    menu.classList.remove("expanded");
   }
 
   if (hamburger) {
-    hamburger.addEventListener("click", (e) => {
-      e.stopPropagation();
-      menu.classList.toggle("visible");
+    hamburger.addEventListener("click", () => {
+      menu.classList.toggle("expanded");
     });
   }
 
   document.addEventListener("click", (e) => {
-    if (menu && menu.classList.contains("visible") && !hamburger.contains(e.target) && !menu.contains(e.target)) {
-      menu.classList.remove("visible");
+    if (
+      menu &&
+      menu.classList.contains("expanded") &&
+      !hamburger.contains(e.target) &&
+      !menu.contains(e.target)
+    ) {
+      menu.classList.remove("expanded");
     }
   });
 
@@ -23,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (logout) {
     logout.addEventListener("click", () => {
       alert("Logged out!");
-      // Add your logout logic here
+      // Add logout logic here
     });
   }
 });
