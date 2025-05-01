@@ -2,22 +2,20 @@ document.addEventListener("DOMContentLoaded", () => {
   const hamburger = document.getElementById("hamburger");
   const menu = document.getElementById("menu");
 
-  // Hide menu initially
   if (menu) {
-    menu.classList.add("hidden");
+    menu.classList.remove("visible");
   }
 
   if (hamburger) {
     hamburger.addEventListener("click", (e) => {
-      e.stopPropagation(); // Prevent click propagation
-      menu.classList.toggle("hidden");
+      e.stopPropagation();
+      menu.classList.toggle("visible");
     });
   }
 
-  // Optional: Close menu when clicking outside
   document.addEventListener("click", (e) => {
-    if (menu && !menu.classList.contains("hidden") && !hamburger.contains(e.target) && !menu.contains(e.target)) {
-      menu.classList.add("hidden");
+    if (menu && menu.classList.contains("visible") && !hamburger.contains(e.target) && !menu.contains(e.target)) {
+      menu.classList.remove("visible");
     }
   });
 
