@@ -20,25 +20,28 @@
     </nav>
   </header>
 
-  <main class="main-content">
-    <h1>Plan Your Trip to Italy 🇮🇹</h1>
-    <form id="travel-form">
-      <label for="userInput">Describe your ideal Italian holiday:</label>
-      <textarea 
-        id="userInput" 
-        name="userInput" 
-        rows="5" 
-        placeholder="e.g. I'd like a 3-day trip exploring historic cities in Tuscany with great food. Or: A romantic weekend in Venice, or a family beach holiday in Sicily..."
-        required
-      ></textarea>
-      <button type="submit">Generate Travel Guide</button>
-    </form>
+ <main class="main-content">
+  <h1>Plan Your Trip to Italy 🇮🇹</h1>
+  <form id="travel-form" class="form-card">
+    <label for="userInput" class="form-label">Describe your ideal Italian holiday:</label>
+    <textarea 
+      id="userInput" 
+      name="userInput" 
+      class="form-textarea"
+      rows="6"
+      placeholder="e.g. I'd like a 3-day trip exploring historic cities in Tuscany with great food. Or: A romantic weekend in Venice, or a family beach holiday in Sicily..."
+      required
+    ></textarea>
+    <button type="submit" class="submit-btn">🇮🇹 Generate Travel Guide</button>
+  </form>
 
-    <div id="loading" class="loading" style="display: none;">⏳ Generating your travel guide...</div>
+  <div id="loading" class="loading" style="display: none;">⏳ Generating your travel guide...</div>
 
-    <div id="itinerary" class="itinerary-output"></div>
-    <button id="save-btn" style="display: none;" onclick="saveItinerary()">💾 Save My Travel Guide</button>
-  </main>
+  <div id="itinerary" class="itinerary-output styled-box"></div>
+
+  <button id="save-btn" style="display: none;" class="save-btn">💾 Save My Travel Guide</button>
+</main>
+
 
   <script src="script.js"></script>
 </body>
