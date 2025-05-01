@@ -2,7 +2,7 @@ const express = require("express");
 const path = require("path");
 const bodyParser = require("body-parser");
 const dotenv = require("dotenv");
-const { getItinerary } = require("./chatgpt"); // ✅ Fixed import
+const { getItinerary } = require("./chatgpt");
 
 dotenv.config();
 
@@ -11,26 +11,25 @@ const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, "public"))); // ✅ Serve from public folder
+app.use(express.static(path.join(__dirname, "public")));
 
 // Routes
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html")); // ✅ Serve public/index.html
+  res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
-// Generate Itinerary route
 app.post("/generate-itinerary", async (req, res) => {
-  const { city, duration, season, travelType, activity } = req.body;
+  const { region, duration, userPreferences } = req.body;
 
   const preferences = {
-    destination: city,
+    destination: region,
     duration,
-    activity,
-    notes: `Season: ${season}, Travel type: ${travelType}`
+    activity: userPreferences,
+    notes: `User is interested in: ${userPreferences}`
   };
 
   try {
-    const itinerary = await getItinerary(preferences); // ✅ Correct call
+    const itinerary = await getItinerary(preferences);
     res.json({ itinerary });
   } catch (error) {
     console.error("GPT error:", error);
@@ -38,12 +37,10 @@ app.post("/generate-itinerary", async (req, res) => {
   }
 });
 
-// Fallback for 404
 app.use((req, res) => {
   res.status(404).send("Page not found.");
 });
 
-// Start the server
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
