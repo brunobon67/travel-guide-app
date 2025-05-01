@@ -2,22 +2,30 @@ document.addEventListener("DOMContentLoaded", () => {
   const hamburger = document.getElementById("hamburger");
   const menu = document.getElementById("menu");
 
-  // Ensure menu is hidden by default on load
+  // Hide menu initially
   if (menu) {
     menu.classList.add("hidden");
   }
 
   if (hamburger) {
-    hamburger.addEventListener("click", () => {
+    hamburger.addEventListener("click", (e) => {
+      e.stopPropagation(); // Prevent click propagation
       menu.classList.toggle("hidden");
     });
   }
+
+  // Optional: Close menu when clicking outside
+  document.addEventListener("click", (e) => {
+    if (menu && !menu.classList.contains("hidden") && !hamburger.contains(e.target) && !menu.contains(e.target)) {
+      menu.classList.add("hidden");
+    }
+  });
 
   const logout = document.getElementById("logout");
   if (logout) {
     logout.addEventListener("click", () => {
       alert("Logged out!");
-      // Replace with actual logout logic if needed
+      // Add your logout logic here
     });
   }
 });
