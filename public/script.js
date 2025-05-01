@@ -10,38 +10,32 @@ document.addEventListener('DOMContentLoaded', () => {
     const inputText = userInput.value.trim();
     if (!inputText) return;
 
-    loadingMessage.textContent = "⏳ We are generating your travel guide...";
+    loadingMessage.textContent = "⏳ Generating your travel guide...";
     responseContainer.innerHTML = "";
     saveButton.style.display = "none";
 
     try {
       const res = await fetch('/generate-itinerary', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ prompt: inputText })
       });
 
       const data = await res.json();
       loadingMessage.textContent = "";
-      responseContainer.innerHTML = `<div>${data.itinerary.replace(/\n/g, '<br>')}</div>`;
+      responseContainer.innerHTML = `<div class="itinerary-text">${data.itinerary.replace(/\n/g, '<br>')}</div>`;
       saveButton.style.display = "inline-block";
 
-      // Save latest itinerary
       saveButton.onclick = () => {
-        const savedPlans = JSON.parse(localStorage.getItem('savedPlans')) || [];
-        savedPlans.push({
-          date: new Date().toLocaleString(),
-          itinerary: data.itinerary
-        });
-        localStorage.setItem('savedPlans', JSON.stringify(savedPlans));
+        const saved = JSON.parse(localStorage.getItem('savedPlans')) || [];
+        saved.push({ date: new Date().toLocaleString(), itinerary: data.itinerary });
+        localStorage.setItem('savedPlans', JSON.stringify(saved));
         alert('Travel guide saved!');
       };
 
-    } catch (error) {
-      console.error('ChatGPT Error:', error);
-      loadingMessage.textContent = "⚠️ Failed to generate itinerary. Please try again.";
+    } catch (err) {
+      console.error('ChatGPT Error:', err);
+      loadingMessage.textContent = "⚠️ Error generating itinerary. Please try again.";
     }
   });
 });
