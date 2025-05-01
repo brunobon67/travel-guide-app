@@ -6,21 +6,25 @@ const openai = new OpenAI({
 
 async function getItinerary({ destination, duration, activity, notes }) {
   const prompt = `
-You are a travel assistant specialized in Italian destinations.
+You are a travel assistant specialized in Italian tourism.
 
-Generate a travel itinerary for a trip to ${destination} in Italy.
+Generate a detailed and well-formatted ${duration}-day travel itinerary for a trip in the Italian region of ${destination}.
 
-- Duration: ${duration} day(s)
-- Preferred activity: ${activity}
-- Notes: ${notes || "No additional notes"}
+The user has indicated the following travel interests and preferences:
+- ${activity}
 
-Make sure the itinerary is actually suitable for a ${duration}-day trip. Be specific. 
-Avoid generic or undefined words. Use proper names of places, food, etc.
+Guidelines:
+- Tailor the itinerary for exactly ${duration} day(s)
+- Mention real cities, villages, landmarks, museums, and local dishes
+- Avoid using placeholders like "undefined"
+- Structure the response clearly with headings for each day
 
-Format:
+Example format:
 Day 1: ...
 Day 2: ...
-(etc. depending on duration)
+(continue until day ${duration})
+
+Be precise, engaging, and avoid repetition.
 `;
 
   const chatCompletion = await openai.chat.completions.create({
