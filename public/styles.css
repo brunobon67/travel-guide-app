@@ -452,7 +452,7 @@ main {
 
 }
 .login-body {
-  background-image: url('https://images.unsplash.com/photo-1519677100203-a0e668c92439');
+  background-image: url('https://media.istockphoto.com/id/2178246820/it/foto/faraglioni-sulla-costa-dellisola-di-capri-italia.jpg?s=1024x1024&w=is&k=20&c=2U8XBDpEnQxBx-F5UABvWSg6sGnfKoYn8iZXfDA4vvg=');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -517,3 +517,68 @@ main {
   text-decoration: none;
 }
 
+.register-body {
+  background-image: url('https://media.istockphoto.com/id/1326099058/it/foto/veduta-della-citt%C3%A0-del-vaticano.jpg?s=1024x1024&w=is&k=20&c=ScdPgQGJDtC9f4rHnR_65RL3muKAa8gioBWXyt9dNkQ=');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+.register-container {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+}
+
+.register-container h1 {
+  margin-bottom: 1.5rem;
+  font-size: 1.6rem;
+}
+
+#register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+#register-form input {
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+#register-form button {
+  padding: 0.75rem;
+  background-color: red;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#register-form button:hover {
+  background-color: darkred;
+}
+
+.back-button {
+  margin-top: 1.5rem;
+  font-size: 0.95rem;
+}
+
+.back-button a {
+  color: #333;
+  text-decoration: none;
+}
