@@ -388,7 +388,7 @@ form input:focus {
 }
 
 body {
-  background-image: url('https://cdn.pixabay.com/photo/2024/07/12/08/05/venice-8889871_1280.jpg');
+  background-image: url('https://images.unsplash.com/photo-1523365154888-8a758819b722?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -452,7 +452,7 @@ main {
 
 }
 .login-body {
-  background-image: url('https://media.istockphoto.com/id/2178246820/it/foto/faraglioni-sulla-costa-dellisola-di-capri-italia.jpg?s=1024x1024&w=is&k=20&c=2U8XBDpEnQxBx-F5UABvWSg6sGnfKoYn8iZXfDA4vvg=');
+  background-image: url('https://images.unsplash.com/photo-1584545154972-168059abce3d?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -518,7 +518,7 @@ main {
 }
 
 .register-body {
-  background-image: url('https://media.istockphoto.com/id/1326099058/it/foto/veduta-della-citt%C3%A0-del-vaticano.jpg?s=1024x1024&w=is&k=20&c=ScdPgQGJDtC9f4rHnR_65RL3muKAa8gioBWXyt9dNkQ=');
+  background-image: url('https://images.unsplash.com/photo-1632851853187-dae5c83372dc?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
