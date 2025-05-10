@@ -18,12 +18,19 @@ document.addEventListener('DOMContentLoaded', () => {
       const res = await fetch('/generate-itinerary', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ prompt: inputText })
+        body: JSON.stringify({ userInput: inputText })  // ✅ fixed key name
       });
 
       const data = await res.json();
+
       loadingMessage.textContent = "";
-      responseContainer.innerHTML = `<div class="itinerary-text">${data.itinerary.replace(/\n/g, '<br>')}</div>`;
+
+      if (!data.itinerary) {
+        throw new Error("No itinerary returned from server.");
+      }
+
+      const formattedResponse = data.itinerary.replace(/\n/g, '<br>');
+      responseContainer.innerHTML = `<div class="itinerary-text">${formattedResponse}</div>`;
       saveButton.style.display = "inline-block";
 
       saveButton.onclick = () => {
