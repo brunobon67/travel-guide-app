@@ -12,10 +12,14 @@ document.addEventListener("DOMContentLoaded", () => {
     planDiv.classList.add("plan");
 
     planDiv.innerHTML = `
-      <h3>Plan #${index + 1} - Saved on ${plan.date}</h3>
+      <h3>📍 Plan #${index + 1} - Saved on ${plan.date}</h3>
       <pre>${plan.itinerary}</pre>
-      <hr />
     `;
+
+    planDiv.addEventListener('click', () => {
+      const itinerary = planDiv.querySelector('pre');
+      itinerary.style.display = itinerary.style.display === 'block' ? 'none' : 'block';
+    });
 
     container.appendChild(planDiv);
   });
