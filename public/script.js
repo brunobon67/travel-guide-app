@@ -1,4 +1,11 @@
-import { auth } from "./firebase.js";
+import { auth, onAuthStateChanged } from "./firebase.js";
+
+onAuthStateChanged(auth, (user) => {
+  if (!user) {
+    window.location.href = "/login.html";
+  }
+});
+
 
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('trip-form');
