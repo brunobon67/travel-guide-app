@@ -377,4 +377,23 @@ form input:focus {
   outline: none;
 }
 
+body {
+  background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+
+main {
+  background-color: rgba(255, 255, 255, 0.88);
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 800px;
+  margin: auto;
+  margin-top: 60px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
 
