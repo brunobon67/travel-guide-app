@@ -1,29 +1,44 @@
-// generate-itinerary.js
-const express = require("express");
-const router = express.Router();
-const getTravelGuide = require("./chatgpt");
+const OpenAI = require("openai");
 
-router.post("/", async (req, res) => {
-  const { city, duration, activity, notes } = req.body;
-
-  if (!city || !duration || !activity) {
-    return res.status(400).json({ error: "Missing fields." });
-  }
-
-  const preferences = {
-    destination: city,
-    duration,
-    preferredActivities: activity,
-    nightlife: notes || "None",
-  };
-
-  try {
-    const itinerary = await getTravelGuide(preferences);
-    res.json({ itinerary });
-  } catch (error) {
-    console.error("API Error:", error);
-    res.status(500).json({ error: "Failed to generate itinerary." });
-  }
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY
 });
 
-module.exports = router;
+async function getItinerary(userInput) {
+  const prompt = `
+You are a travel expert helping someone plan a trip in Italy.
+
+Here is their request:
+"${userInput}"
+
+Based on this input:
+- Identify the destination city (or cities)
+- Determine how many days they’re staying
+- Understand any activity preferences they mention (e.g., museums, food, beaches)
+
+Then, generate a detailed day-by-day travel guide with:
+- Specific suggestions for each day
+- Real Italian landmarks, food, hidden gems
+- Great pacing (not too rushed)
+- Unique local experiences
+- A vivid, engaging tone (like a personal travel expert)
+
+Format the output with headings like:
+
+Day 1: [Title]  
+Morning: ...  
+Afternoon: ...  
+Evening: ...
+
+Respond in a helpful, human voice.
+`;
+
+  const chatCompletion = await openai.chat.completions.create({
+    model: "gpt-3.5-turbo",
+    messages: [{ role: "user", content: prompt }]
+  });
+
+  return chatCompletion.choices[0].message.content.trim();
+}
+
+module.exports = getItinerary;
