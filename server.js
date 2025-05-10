@@ -20,7 +20,7 @@ app.post("/generate-itinerary", async (req, res) => {
   const { userInput } = req.body;
 
   try {
-    const { prompt } = req.body;
+   
     const itinerary = await getItinerary(userInput);
     res.json({ itinerary });
   } catch (error) {
