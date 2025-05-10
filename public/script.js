@@ -1,3 +1,5 @@
+import { auth } from "./firebase.js";
+
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('trip-form');
   const userInput = document.getElementById('user-input');
@@ -18,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const res = await fetch('/generate-itinerary', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ userInput: inputText })  // ✅ fixed key name
+        body: JSON.stringify({ userInput: inputText })
       });
 
       const data = await res.json();
@@ -34,10 +36,17 @@ document.addEventListener('DOMContentLoaded', () => {
       saveButton.style.display = "inline-block";
 
       saveButton.onclick = () => {
-        const saved = JSON.parse(localStorage.getItem('savedPlans')) || [];
+        const user = auth.currentUser;
+        if (!user) {
+          alert("You must be logged in to save travel plans.");
+          return;
+        }
+
+        const savedKey = `savedPlans_${user.uid}`;
+        const saved = JSON.parse(localStorage.getItem(savedKey)) || [];
         saved.push({ date: new Date().toLocaleString(), itinerary: data.itinerary });
-        localStorage.setItem('savedPlans', JSON.stringify(saved));
-        alert('Travel guide saved!');
+        localStorage.setItem(savedKey, JSON.stringify(saved));
+        alert('✅ Travel guide saved!');
       };
 
     } catch (err) {
