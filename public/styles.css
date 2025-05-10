@@ -194,3 +194,69 @@ form button:hover {
   padding-top: 10px;
   border-top: 1px solid #eee;
 }
+
+
+/* Profile Container Styling */
+.profile-container {
+  max-width: 650px;
+  margin: 50px auto;
+  padding: 40px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.profile-container h2 {
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 1.8rem;
+}
+
+.profile-card {
+  background: #f8f9fa;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.profile-card p {
+  font-size: 1rem;
+  margin: 10px 0;
+  color: #555;
+}
+
+.profile-card strong {
+  color: #333;
+}
+
+.logout-btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #e60000;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.logout-btn:hover {
+  background-color: #cc0000;
+  transform: translateY(-2px);
+}
+
+.back-button {
+  margin-top: 30px;
+}
+
+.back-button a {
+  color: #2a9d8f;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.back-button a:hover {
+  color: #237a6e;
+}
