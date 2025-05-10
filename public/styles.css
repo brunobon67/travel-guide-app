@@ -45,6 +45,16 @@ header {
   max-height: 500px; /* Enough space to show menu items */
 }
 
+.hero-title {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #fff;
+  text-shadow: 1px 1px 6px rgba(0,0,0,0.6);
+  margin-top: 40px;
+}
+
+
+
 #menu ul {
   list-style: none;
   padding: 0;
