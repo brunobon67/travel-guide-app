@@ -4,31 +4,41 @@
   <meta charset="UTF-8" />
   <title>My Profile</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="/styles.css" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-<div id="user-menu-wrapper"></div>
 
-  <!-- 🔝 Top Bar -->
-
-
-  <!-- 📄 Profile Content -->
-  <div class="profile-container main-content">
-    <h2>👤 My Profile</h2>
-    <div class="profile-card">
-      <p><strong>Display Name:</strong> <span id="userName">Loading...</span></p>
-      <p><strong>Email:</strong> <span id="userEmail">Loading...</span></p>
+  <header>
+    <div class="navbar">
+      <div class="hamburger" id="hamburger">&#9776;</div>
     </div>
+    <nav id="menu" class="collapsed">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="saved-plans.html">My Saved Plans</a></li>
+        <li><a href="profile.html">My Profile</a></li>
+        <li><a href="contact-us.html">Contact</a></li>
+        <li><a href="#" id="logout">Logout</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <div class="back-button" style="margin-top: 2rem; text-align: center;">
-      <a href="/index.html" style="color: #2a9d8f; text-decoration: none; font-weight: bold;">← Back to App</a>
+  <main>
+    <div class="profile-container">
+      <h2>👤 My Profile</h2>
+      <div class="profile-card">
+        <p><strong>Display Name:</strong> <span id="userName">Loading...</span></p>
+        <p><strong>Email:</strong> <span id="userEmail">Loading...</span></p>
+        <button class="logout-btn">Logout 🔓</button>
+      </div>
+      <div class="back-button">
+        <a href="index.html">← Back to App</a>
+      </div>
     </div>
-  </div>
+  </main>
 
-  <!-- 🔌 Scripts -->
-  <script type="module" src="/profile.js"></script>
-  <script src="/menu.js" defer></script>
+  <script src="menu.js"></script>
+  <script type="module" src="profile.js"></script>
 
 </body>
 </html>
-
