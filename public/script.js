@@ -32,7 +32,12 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       const formattedResponse = data.itinerary.replace(/\n/g, '<br>');
-      responseContainer.innerHTML = `<div class="itinerary-text">${formattedResponse}</div>`;
+responseContainer.innerHTML = `
+  <div class="itinerary-box">
+    ${formattedResponse}
+  </div>
+`;
+
       saveButton.style.display = "inline-block";
 
       saveButton.onclick = () => {
