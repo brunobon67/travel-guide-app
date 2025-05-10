@@ -430,3 +430,23 @@ main {
 .itinerary-box br {
   line-height: 2;
 }
+
+.hero {
+  text-align: center;
+  margin-top: 50px;
+  color: #fff;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+}
+
+.hero-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  font-weight: 300;
+  margin-bottom: 2rem;
+}
+
