@@ -4,39 +4,50 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Contact Us</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/styles.css" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-<div id="user-menu-wrapper"></div>
 
+  <header>
+    <div class="navbar">
+      <div class="hamburger" id="hamburger">&#9776;</div>
+    </div>
+    <nav id="menu" class="collapsed">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="saved-plans.html">My Saved Plans</a></li>
+        <li><a href="profile.html">My Profile</a></li>
+        <li><a href="contact-us.html">Contact</a></li>
+        <li><a href="#" id="logout">Logout</a></li>
+      </ul>
+    </nav>
+  </header>
 
+  <main>
+    <div class="contact-container form-container">
+      <h2>📬 Contact Us</h2>
+      <form id="contact-form">
+        <label for="from_name">Name</label>
+        <input type="text" name="from_name" id="from_name" placeholder="Your Name" required />
 
-  
-  <!-- 📬 Contact Form -->
-<div class="contact-container main-content">
-    <h2>Contact Us</h2>
-   <form id="contact-form" class="contact-form">
-    <label for="from_name">Name</label>
-    <input type="text" name="from_name" id="from_name" placeholder="Your Name" required />
+        <label for="from_email">Email</label>
+        <input type="email" name="from_email" id="from_email" placeholder="Your Email" required />
 
-    <label for="from_email">Email</label>
-    <input type="email" name="from_email" id="from_email" placeholder="Your Email" required />
+        <label for="message">Message</label>
+        <textarea name="message" id="message" rows="6" placeholder="Your Message..." required></textarea>
 
-    <label for="message">Message</label>
-    <textarea name="message" id="message" rows="6" placeholder="Your Message..." required></textarea>
+        <button type="submit">Send Message</button>
+        <div class="form-message" id="form-message"></div>
+      </form>
+      <div class="back-button">
+        <a href="index.html">← Back to Home</a>
+      </div>
+    </div>
+  </main>
 
-    <button type="submit">Send Message</button>
-    <div class="message" id="form-message"></div>
-  </form>
-  <a href="javascript:history.back()" class="back-button">← Back</a>
-  </div>
-
-  <!-- 📦 EmailJS + Menu Logic -->
+  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-  <script src="/contact-us.js" type="module"></script>
-  <script src="/menu.js" defer></script>
+  <script type="module" src="contact-us.js"></script>
+  <script src="menu.js" defer></script>
 </body>
 </html>
-
-
