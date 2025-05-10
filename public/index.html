@@ -22,22 +22,22 @@
   </nav>
 </header>
 
+<main class="form-container">
+  <h2>Plan Your Trip in Italy 🇮🇹</h2>
 
-  <main class="form-container">
-    <h2>Plan Your Trip in Italy</h2>
+  <form id="trip-form">
+    <label for="user-input">Describe your ideal Italian trip:</label>
+    <textarea id="user-input" placeholder="E.g., A 3-day cultural trip in Florence, food tasting in Bologna, and beach time in Amalfi..." required></textarea>
+    <button type="submit">Generate Travel Guide ✈️</button>
+  </form>
 
-    <form id="trip-form">
-      <label for="user-input">Describe your ideal Italian trip:</label>
-      <textarea id="user-input" placeholder="E.g. A 3-day cultural trip in Florence, food tasting in Bologna, and beach time in Amalfi..." required></textarea>
-      <button type="submit">🇮🇹 Generate Travel Guide</button>
-    </form>
+  <div id="loading-message"></div>
+  <div id="chatgpt-response" class="response-box"></div>
+  <button id="save-button" style="display: none;">Save My Travel Guide 💾</button>
+</main>
 
-    <div id="loading-message"></div>
-    <div id="chatgpt-response" class="response-box"></div>
-    <button id="save-button" style="display: none;">💾 Save My Travel Guide</button>
-  </main>
-
-  <script src="script.js"></script>
-  <script src="menu.js"></script>
+<script src="script.js"></script>
+<script src="menu.js"></script>
 </body>
 </html>
+
