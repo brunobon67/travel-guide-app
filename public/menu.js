@@ -1,10 +1,9 @@
+import { auth } from "/firebase.js";
+import { signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
 document.addEventListener("DOMContentLoaded", () => {
   const hamburger = document.getElementById("hamburger");
   const menu = document.getElementById("menu");
-
-  if (menu) {
-    menu.classList.remove("expanded");
-  }
 
   if (hamburger) {
     hamburger.addEventListener("click", () => {
@@ -23,11 +22,20 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  const logout = document.getElementById("logout");
-  if (logout) {
-    logout.addEventListener("click", () => {
-      alert("Logged out!");
-      // Add logout logic here
+  // ✅ Shared logout logic for all pages
+  const logoutLink = document.getElementById("logout");
+  if (logoutLink) {
+    logoutLink.addEventListener("click", (e) => {
+      e.preventDefault(); // prevent <a href="#"> from jumping to top
+      signOut(auth)
+        .then(() => {
+          alert("You have been logged out.");
+          window.location.href = "/login.html";
+        })
+        .catch((error) => {
+          console.error("Logout error:", error);
+          alert("Failed to log out. Please try again.");
+        });
     });
   }
 });
