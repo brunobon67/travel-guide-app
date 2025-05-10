@@ -451,7 +451,6 @@ main {
     font-weight: bold;
 
 }
-
 .login-body {
   background-image: url('https://images.unsplash.com/photo-1519677100203-a0e668c92439');
   background-size: cover;
@@ -506,5 +505,15 @@ main {
 
 #login-form button:hover {
   background-color: darkred;
+}
+
+.back-button {
+  margin-top: 1.5rem;
+  font-size: 0.95rem;
+}
+
+.back-button a {
+  color: #333;
+  text-decoration: none;
 }
 
