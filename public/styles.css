@@ -12,37 +12,57 @@ header {
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
-/* Hamburger */
+/* Navbar and Hamburger Menu */
+.navbar {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+}
+
 .hamburger {
-  font-size: 26px;
+  font-size: 28px;
   cursor: pointer;
   background: none;
   border: none;
   color: #e60000;
+  transition: transform 0.3s ease;
 }
 
-/* Navigation Menu - now static in flow */
+.hamburger:hover {
+  transform: scale(1.1);
+}
+
+/* Dropdown Navigation Menu */
 #menu {
+  position: absolute;
+  top: 60px;
+  right: 25px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
   overflow: hidden;
-  max-height: 0;
-  transition: max-height 0.4s ease;
-  background-color: white;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-  border-radius: 6px;
+  transform: translateY(-15px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+  z-index: 1000;
+  min-width: 200px;
 }
 
 #menu.expanded {
-  max-height: 500px;
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
 }
 
 #menu ul {
   list-style: none;
-  margin: 0;
   padding: 0;
+  margin: 0;
 }
 
 #menu ul li {
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #f0f0f0;
 }
 
 #menu ul li:last-child {
@@ -51,13 +71,19 @@ header {
 
 #menu ul li a {
   display: block;
-  padding: 12px 16px;
+  padding: 14px 20px;
+  color: #444;
   text-decoration: none;
-  color: #333;
-  font-weight: 500;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Improved Form Container */
+#menu ul li a:hover {
+  background-color: #e60000;
+  color: white;
+}
+
+/* Form Container Styling */
 .form-container {
   max-width: 650px;
   margin: 40px auto;
@@ -139,5 +165,9 @@ form button:hover {
   form button, form textarea {
     padding: 14px;
   }
-}
 
+  #menu {
+    right: 15px;
+    left: 15px;
+  }
+}
