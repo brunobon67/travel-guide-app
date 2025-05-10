@@ -1,44 +1,29 @@
-const OpenAI = require("openai");
-
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY
-});
-
 async function getItinerary(userInput) {
-  const prompt = `
-You are a travel expert helping someone plan a trip in Italy.
+  const messages = [
+    {
+      role: "system",
+      content: `
+You are a professional Italian travel guide planner...
 
-Here is their request:
-"${userInput}"
+(be sure your full system prompt is here)
+`
+    },
+    {
+      role: "user",
+      content: userInput
+    }
+  ];
 
-Based on this input:
-- Identify the destination city (or cities)
-- Determine how many days they’re staying
-- Understand any activity preferences they mention (e.g., museums, food, beaches)
+  try {
+    const response = await openai.chat.completions.create({
+      model: "gpt-3.5-turbo",
+      messages,
+    });
 
-Then, generate a detailed day-by-day travel guide with:
-- Specific suggestions for each day
-- Real Italian landmarks, food, hidden gems
-- Great pacing (not too rushed)
-- Unique local experiences
-- A vivid, engaging tone (like a personal travel expert)
+    return response.choices[0].message.content.trim();
 
-Format the output with headings like:
-
-Day 1: [Title]  
-Morning: ...  
-Afternoon: ...  
-Evening: ...
-
-Respond in a helpful, human voice.
-`;
-
-  const chatCompletion = await openai.chat.completions.create({
-    model: "gpt-3.5-turbo",
-    messages: [{ role: "user", content: prompt }]
-  });
-
-  return chatCompletion.choices[0].message.content.trim();
+  } catch (err) {
+    console.error("OpenAI Error:", err.response?.data || err.message || err);
+    throw err;
+  }
 }
-
-module.exports = getItinerary;
