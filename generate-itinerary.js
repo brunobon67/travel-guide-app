@@ -1,29 +1,29 @@
-async function getItinerary(userInput) {
-  const messages = [
-    {
-      role: "system",
-      content: `
-You are a professional Italian travel guide planner...
+/ generate-itinerary.js
+const express = require("express");
+const router = express.Router();
+const getTravelGuide = require("./chatgpt");
 
-(be sure your full system prompt is here)
-`
-    },
-    {
-      role: "user",
-      content: userInput
-    }
-  ];
+router.post("/", async (req, res) => {
+  const { city, duration, activity, notes } = req.body;
+
+  if (!city || !duration || !activity) {
+    return res.status(400).json({ error: "Missing fields." });
+  }
+
+  const preferences = {
+    destination: city,
+    duration,
+    preferredActivities: activity,
+    nightlife: notes || "None",
+  };
 
   try {
-    const response = await openai.chat.completions.create({
-      model: "gpt-3.5-turbo",
-      messages,
-    });
-
-    return response.choices[0].message.content.trim();
-
-  } catch (err) {
-    console.error("OpenAI Error:", err.response?.data || err.message || err);
-    throw err;
+    const itinerary = await getTravelGuide(preferences);
+    res.json({ itinerary });
+  } catch (error) {
+    console.error("API Error:", error);
+    res.status(500).json({ error: "Failed to generate itinerary." });
   }
-}
+});
+
+module.exports = router;
