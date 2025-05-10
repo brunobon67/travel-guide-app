@@ -4,6 +4,9 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
+console.log("OPENAI_API_KEY:", process.env.OPENAI_API_KEY);  // ← debug only
+
+
 async function getItinerary(userInput) {
   const messages = [
     {
@@ -33,12 +36,19 @@ Be specific, helpful, and engaging. Recommend real sights, food spots, hidden ge
     }
   ];
 
+ try {
   const response = await openai.chat.completions.create({
     model: "gpt-3.5-turbo",
     messages,
   });
 
   return response.choices[0].message.content.trim();
+
+} catch (err) {
+  console.error("OpenAI Error:", err.response?.data || err.message || err);
+  throw err; // re-throw so server responds with 500
+}
+
 }
 
 module.exports = getItinerary;
