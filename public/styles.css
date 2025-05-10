@@ -157,3 +157,40 @@ form button:hover {
     padding: 14px;
   }
 }
+
+
+#savedPlansContainer {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 10px;
+}
+
+.plan {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+  padding: 15px 20px;
+  margin-bottom: 15px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.plan:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.plan h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #e60000;
+}
+
+.plan pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  margin-top: 10px;
+  display: none; /* hidden initially, shown on click */
+  padding-top: 10px;
+  border-top: 1px solid #eee;
+}
