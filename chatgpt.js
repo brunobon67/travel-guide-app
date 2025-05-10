@@ -51,4 +51,4 @@ Be specific, helpful, and engaging. Recommend real sights, food spots, hidden ge
 
 }
 
-const { getItinerary } = require("./chatgpt");
+module.exports = getItinerary;
