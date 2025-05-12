@@ -2,11 +2,12 @@ import { auth, onAuthStateChanged } from "./firebase.js";
 
 onAuthStateChanged(auth, (user) => {
   if (!user) {
-    window.location.href = "/login.html";
+    document.getElementById("login-popup").style.display = "flex";
   } else {
     document.getElementById("app").style.display = "block";
   }
 });
+
 
 
 
