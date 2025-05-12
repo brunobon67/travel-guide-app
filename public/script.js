@@ -11,6 +11,7 @@ onAuthStateChanged(auth, (user) => {
 
 
 
+
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('trip-form');
   const userInput = document.getElementById('user-input');
