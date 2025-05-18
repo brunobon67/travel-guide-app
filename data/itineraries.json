@@ -1,0 +1,32 @@
+{
+  "florence-3": {
+    "city": "Florence",
+    "days": 3,
+    "tags": ["art", "romantic", "culture"],
+    "itinerary": "Day 1: Visit the Uffizi Gallery in the morning, admire Botticelli and da Vinci. Afternoon stroll across Ponte Vecchio and explore the artisan shops. Enjoy a sunset from Piazzale Michelangelo.\n\nDay 2: Start with the Florence Cathedral (Duomo) and climb the dome for panoramic views. Visit the Baptistery and Giotto’s Bell Tower. Afternoon visit to Accademia Gallery to see Michelangelo’s David.\n\nDay 3: Take a food tour through local markets like Mercato Centrale, followed by a walk through the Boboli Gardens and Pitti Palace."
+  },
+  "venice-3": {
+    "city": "Venice",
+    "days": 3,
+    "tags": ["romantic", "historic", "islands"],
+    "itinerary": "Day 1: Begin in Piazza San Marco — visit St. Mark’s Basilica and the Doge’s Palace. Enjoy a gondola ride through the canals. Have dinner by the Grand Canal.\n\nDay 2: Explore the Rialto Market, then take a boat to Murano and see glass-blowing demonstrations. Visit Burano for colorful houses and lace-making traditions.\n\nDay 3: Visit Peggy Guggenheim Collection for modern art, relax in Giardini della Biennale, and get lost in quiet alleys for a true Venetian experience."
+  },
+  "milan-3": {
+    "city": "Milan",
+    "days": 3,
+    "tags": ["fashion", "art", "modern"],
+    "itinerary": "Day 1: Visit the iconic Duomo di Milano and climb to the rooftop. Explore the Galleria Vittorio Emanuele II and have lunch in Brera. Afternoon visit to Sforza Castle.\n\nDay 2: See The Last Supper (book in advance), then head to Navigli for canal-side cafes. Spend the evening shopping in Corso Buenos Aires or Quadrilatero della Moda.\n\nDay 3: Relax in Parco Sempione, visit the Triennale design museum, and take a tram ride to experience Milanese daily life."
+  },
+  "rome-3": {
+    "city": "Rome",
+    "days": 3,
+    "tags": ["history", "architecture", "food"],
+    "itinerary": "Day 1: Start at the Colosseum and Roman Forum. Walk to the Pantheon and toss a coin in the Trevi Fountain. Enjoy dinner in Trastevere.\n\nDay 2: Visit Vatican Museums, the Sistine Chapel, and St. Peter’s Basilica. Afternoon walk along Castel Sant’Angelo and Via Cola di Rienzo.\n\nDay 3: Explore Villa Borghese and Galleria Borghese. Visit Piazza Navona, Campo de’ Fiori, and sample Roman street food."
+  },
+  "naples-3": {
+    "city": "Naples",
+    "days": 3,
+    "tags": ["food", "ancient ruins", "authentic"],
+    "itinerary": "Day 1: Walk Spaccanapoli, visit Naples Cathedral, and explore the Underground Naples. Eat authentic Neapolitan pizza at Sorbillo or Da Michele.\n\nDay 2: Day trip to Pompeii and Mount Vesuvius. Return to Naples for seafood dinner at Borgo Marinari.\n\nDay 3: Visit the Royal Palace and Galleria Umberto I. Enjoy views from Castel dell'Ovo and finish with a sfogliatella in Piazza del Plebiscito."
+  }
+}
