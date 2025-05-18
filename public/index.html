@@ -53,11 +53,26 @@
 </section>
 <main class="form-container">
 
-  <form id="trip-form">
-    <label for="user-input">Describe your ideal Italian trip:</label>
-    <textarea id="user-input" placeholder="E.g., A 3-day cultural trip in Florence, food tasting in Bologna, and beach time in Amalfi..." required></textarea>
-    <button type="submit">Generate Travel Guide ✈️</button>
-  </form>
+<form id="trip-form">
+  <label for="destination">Destination:</label>
+  <select id="destination" name="destination" required>
+    <option value="">-- Select a city --</option>
+    <option value="milan">Milan</option>
+    <option value="rome">Rome</option>
+    <option value="venice">Venice</option>
+    <option value="florence">Florence</option>
+    <option value="napoli">Napoli</option>
+    <option value="bologna">Bologna</option>
+  </select>
+
+  <label for="days">Days:</label>
+  <input type="number" id="days" name="days" placeholder="Enter number of days (e.g. 3)" min="1" max="21" required />
+
+  <label for="user-input">Describe your ideal Italian trip:</label>
+  <textarea id="user-input" placeholder="E.g., a relaxing food tour in Bologna with cultural visits and wine tasting..." required></textarea>
+
+  <button type="submit">Generate Travel Guide ✈️</button>
+</form>
 
   <div id="loading-message"></div>
   <div id="chatgpt-response" class="response-box"></div>
