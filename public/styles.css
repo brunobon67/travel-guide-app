@@ -1,26 +1,32 @@
 /* === Header & Menu Layout === */
+/* HEADER AND NAVIGATION */
 header {
   background-color: #fff;
-  padding: 15px 25px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  padding: 12px 24px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 10;
 }
 
+
+
 .navbar {
-  display: flex;
-  align-items: center;
+  position: absolute;
+  left: 20px;
+  top: 12px;
 }
 
 .hamburger {
-  font-size: 28px;
+  font-size: 26px;
   cursor: pointer;
-  background: none;
   border: none;
+  background: transparent;
   color: #e60000;
-  transition: transform 0.3s ease;
 }
+
 
 .hamburger:hover {
   transform: scale(1.1);
