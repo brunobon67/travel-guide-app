@@ -1,3 +1,72 @@
+/* === Header & Menu Layout === */
+header {
+  background-color: #fff;
+  padding: 15px 25px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+}
+
+.hamburger {
+  font-size: 28px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: #e60000;
+  transition: transform 0.3s ease;
+}
+
+.hamburger:hover {
+  transform: scale(1.1);
+}
+
+#menu {
+  overflow: hidden;
+  max-height: 0;
+  background-color: #ffffff;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  border-radius: 0 0 8px 8px;
+  transition: max-height 0.4s ease;
+}
+
+#menu.expanded {
+  max-height: 500px;
+}
+
+#menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#menu ul li {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+#menu ul li:last-child {
+  border-bottom: none;
+}
+
+#menu ul li a {
+  display: block;
+  padding: 14px 20px;
+  color: #444;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#menu ul li a:hover {
+  background-color: #e60000;
+  color: white;
+}
+
 /* === Modern & Clean Form Layout === */
 .form-container {
   max-width: 650px;
