@@ -2,85 +2,38 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Travel Guide Italy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Accento Italiano – Travel Planner</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-KMRMSJCFTZ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<body>
+  <div id="app">
+    <main>
+      <div class="form-container">
+        <h2>🇮🇹 Plan Your Trip to Italy</h2>
+        <form id="trip-form">
+          <label for="city">Choose your destination:</label>
+          <select id="city" required>
+            <option value="">-- Select a city --</option>
+            <option value="florence">Florence</option>
+            <option value="venice">Venice</option>
+            <option value="milan">Milan</option>
+            <option value="rome">Rome</option>
+            <option value="naples">Naples</option>
+          </select>
 
-  gtag('config', 'G-KMRMSJCFTZ');
-</script>
-<div id="login-popup" class="popup-overlay" style="display: none;">
-  <div class="popup-content">
-    <h2>🔒 Welcome in Accento Italiano</h2>
-    <p>
-      Plan your trip to Italy in just a few seconds.<br/>
-      Enter your destination and the number of days, and let the app generate a detailed itinerary for you
-    </p>
-    <p><strong>Sign in to start your journey.</strong></p>
-    <a href="login.html" class="popup-button">Sign in</a>
+          <label for="days">How many days?</label>
+          <input type="number" id="days" placeholder="e.g. 3" min="1" max="14" required />
+
+          <button type="submit">Generate Travel Guide ✈️</button>
+        </form>
+
+        <p id="loading-message"></p>
+        <div id="chatgpt-response"></div>
+        <button id="save-button" style="display: none;">💾 Save Travel Guide</button>
+      </div>
+    </main>
   </div>
-</div>
-
-  
-  <body>
-
-
-<div id="app">
-
-<header>
-  <div class="navbar">
-    <div class="hamburger" id="hamburger">&#9776;</div>
-  </div>
-  <nav id="menu" class="collapsed">
-    <ul>
-      <li><a href="saved-plans.html">My Saved Plans</a></li>
-      <li><a href="profile.html">My Profile</a></li>
-      <li><a href="contact-us.html">Contact</a></li>
-      <li><a href="#" id="logout">Logout</a></li>
-    </ul>
-  </nav>
-</header>
-<section class="hero">
-  <h1 class="hero-title">Plan Your Dream Trip to Italy</h1>
-  <p class="hero-subtitle">
-    Get a custom travel guide in seconds — just type where you want to go and what you love.
-  </p>
-</section>
-<main>
-  <div class="form-container">
-    <h2>Plan Your Italian Trip 🇮🇹</h2>
-    <form id="trip-form">
-      <label for="city">Choose a destination:</label>
-      <select id="city" required>
-        <option value="">-- Select a city --</option>
-        <option value="florence">Florence</option>
-        <option value="venice">Venice</option>
-        <option value="milan">Milan</option>
-        <option value="rome">Rome</option>
-        <option value="naples">Naples</option>
-      </select>
-
-      <label for="days">How many days?</label>
-      <input type="number" id="days" placeholder="e.g., 3" min="1" max="14" required />
-
-      <button type="submit">Generate Travel Guide ✈️</button>
-    </form>
-
-    <p id="loading-message"></p>
-    <div id="chatgpt-response"></div>
-    <button id="save-button" style="display: none;">Save Guide 💾</button>
-  </div>
-</main>
-
-<script type="module" src="script.js"></script>
-<script type="module" src="menu.js"></script>
-  </div>
+  <script type="module" src="script.js"></script>
 </body>
 </html>
-
