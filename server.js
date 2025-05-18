@@ -1,38 +1,27 @@
-const express = require("express");
-const path = require("path");
-const bodyParser = require("body-parser");
-const dotenv = require("dotenv");
-const getItinerary = require("./chatgpt");
-
-dotenv.config();
-
-const app = express();
-const PORT = process.env.PORT || 3000;
-
-app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, "public")));
-
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
-});
+const fs = require('fs');
+const itineraries = JSON.parse(fs.readFileSync('itineraries.json', 'utf-8'));
 
 app.post("/generate-itinerary", async (req, res) => {
-  const { userInput } = req.body;
+  const { city, days } = req.body;
+
+  if (!city || !days) {
+    return res.status(400).json({ error: "Missing city or days." });
+  }
+
+  const key = `${city.toLowerCase()}-${days}`;
+  const existing = itineraries[key];
+
+  if (existing) {
+    return res.json({ itinerary: existing.itinerary });
+  }
 
   try {
-   
-    const itinerary = await getItinerary(userInput);
+    const prompt = `Plan a ${days}-day trip to ${city}`;
+    const itinerary = await getItinerary(prompt);
     res.json({ itinerary });
-  } catch (error) {
-    console.error("GPT error:", error);
+  } catch (err) {
+    console.error("GPT error:", err);
     res.status(500).json({ error: "Failed to generate itinerary." });
   }
 });
 
-app.use((req, res) => {
-  res.status(404).send("Page not found.");
-});
-
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
-});
