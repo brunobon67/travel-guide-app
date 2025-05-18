@@ -688,25 +688,4 @@ form button {
   margin-top: 10px;
 }
 
-/* Force-remove background from form container */
-.form-container {
-  background: transparent !important;
-  box-shadow: none !important;
-  border: none !important;
-}
 
-/* Optional: also strip background from any nested form elements */
-.form-container * {
-  background: transparent !important;
-}
-
-/* Enhance input field layout */
-form input,
-form select {
-  background: rgba(255, 255, 255, 0.85) !important;
-  border-radius: 10px;
-  padding: 14px;
-  border: 1px solid #ccc;
-  font-size: 1rem;
-  box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
-}
