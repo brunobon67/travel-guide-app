@@ -1,3 +1,4 @@
+import { auth } from "/firebase.js";
 const form = document.getElementById('trip-form');
 const cityInput = document.getElementById('destination');
 const daysInput = document.getElementById('days');
