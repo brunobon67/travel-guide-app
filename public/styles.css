@@ -201,14 +201,14 @@ form button:hover {
 .hero-title {
   font-size: 2.6rem;
   font-weight: 800;
-  color: #ffffff;
+  color: #222222;  /* <-- cambia da #ffffff */
   margin-bottom: 10px;
 }
 
 .hero-subtitle {
   font-size: 1.2rem;
   font-weight: 400;
-  color: #f1f1f1;
+  color: #555555;  /* <-- cambia da #f1f1f1 */
   max-width: 700px;
   margin: 0 auto;
 }
