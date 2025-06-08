@@ -1,5 +1,5 @@
 const form = document.getElementById('trip-form');
-const cityInput = document.getElementById('city');
+const cityInput = document.getElementById('destination');
 const daysInput = document.getElementById('days');
 const responseContainer = document.getElementById('chatgpt-response');
 const loadingMessage = document.getElementById('loading-message');
