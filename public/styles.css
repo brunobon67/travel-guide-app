@@ -213,3 +213,34 @@ form button:hover {
   margin: 0 auto;
 }
 
+
+.itinerary-box {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 2rem auto;
+  font-size: 1rem;
+  color: #333;
+}
+
+.itinerary-box h2 {
+  font-size: 1.4rem;
+  margin-top: 1.5rem;
+  color: #444;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 0.3rem;
+}
+
+.itinerary-box h3 {
+  font-size: 1.1rem;
+  margin-top: 1rem;
+  color: #666;
+}
+
+.itinerary-box p {
+  margin: 0.4rem 0;
+}
+
