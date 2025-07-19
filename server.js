@@ -9,13 +9,9 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static('public'));
 
-let itineraries = {};
-try {
-  itineraries = JSON.parse(fs.readFileSync('itineraries.json', 'utf-8'));
-  console.log("✅ Loaded itineraries.json");
-} catch (err) {
-  console.warn("⚠️ Warning: itineraries.json not found. Fallback to ChatGPT only.");
-}
+const itineraries = require('./itineraries.js');
+console.log("✅ Loaded itineraries.js");
+
 
 app.post("/generate-itinerary", async (req, res) => {
   const { city, days, tripType } = req.body;
