@@ -1,17 +1,13 @@
-import { auth } from "/firebase.js";
-const form = document.getElementById('trip-form');
-const cityInput = document.getElementById('destination');
-const daysInput = document.getElementById('days');
-const responseContainer = document.getElementById('chatgpt-response');
-const loadingMessage = document.getElementById('loading-message');
-const saveButton = document.getElementById('save-button');
+const tripTypeInput = document.getElementById('tripType'); // <-- ADD THIS
 
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
+
   const city = cityInput.value.trim().toLowerCase();
   const days = parseInt(daysInput.value.trim());
+  const tripType = tripTypeInput.value.trim().toLowerCase(); // <-- ADD THIS
 
-  if (!city || isNaN(days)) return;
+  if (!city || isNaN(days) || !tripType) return;
 
   loadingMessage.textContent = "⏳ Generating your travel guide...";
   responseContainer.innerHTML = "";
@@ -21,7 +17,7 @@ form.addEventListener('submit', async (e) => {
     const res = await fetch('/generate-itinerary', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ city, days })
+      body: JSON.stringify({ city, days, tripType }) // <-- UPDATED
     });
 
     const data = await res.json();
@@ -47,3 +43,4 @@ form.addEventListener('submit', async (e) => {
     loadingMessage.textContent = "⚠️ Error generating itinerary.";
   }
 });
+
