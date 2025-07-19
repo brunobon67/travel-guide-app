@@ -1,188 +1,70 @@
+
 module.exports = {
-  "rome": {
+  rome: {
     "3": {
-      "relax": {
-        "itinerary": "Day 1:\n- Morning: Visit the gardens of Villa Borghese\n- Afternoon: Relaxing lunch in Trastevere\n- Evening: Sunset view from Gianicolo Hill\n\nDay 2:\n- Morning: Stroll through the Orange Garden and Aventine Hill\n- Afternoon: Spa treatment at QC Terme Roma\n- Evening: Quiet dinner at a local enoteca\n\nDay 3:\n- Morning: Walk around Vatican Gardens (if open)\n- Afternoon: Enjoy gelato at Piazza Navona\n- Evening: Rooftop aperitivo with city views"
-      },
-      "food": {
-        "itinerary": "Day 1:\n- Morning: Espresso and cornetto at a local bar\n- Afternoon: Street food tour in Trastevere\n- Evening: Pasta tasting menu in Testaccio\n\nDay 2:\n- Morning: Campo de’ Fiori food market\n- Afternoon: Pizza-making workshop\n- Evening: Wine pairing dinner near the Pantheon\n\nDay 3:\n- Morning: Gelato crawl (San Crispino, Fatamorgana, Giolitti)\n- Afternoon: Aperitivo crawl in Monti\n- Evening: Dinner at a Michelin-starred restaurant"
-      },
-      "culture": {
-        "itinerary": "Day 1: Ancient Rome & Classical Foundations
+      culture: {
+        itinerary: `🏛️ Day 1: Ancient Rome & Classical Foundations
 Focus: Ancient Roman history, archaeology, and architecture
 
 🕘 Morning
 8:00 AM – Breakfast at Pasticceria Regoli
-
-A traditional Roman pastry shop. Try the maritozzo (cream-filled bun) and a cappuccino.
-
-9:00 AM – Colosseum (with guided tour)
-
-Explore the amphitheater’s history, from gladiators to emperors. Book a tour with underground access for cultural depth.
-
-11:00 AM – Roman Forum & Palatine Hill
-
-Walk through ruins of temples, basilicas, and the political heart of the ancient empire.
-
-Palatine Hill gives views of the Forum and Circus Maximus.
+9:30 AM – Visit the Colosseum (book skip-the-line ticket)
+11:30 AM – Explore the Roman Forum
 
 🍝 Lunch
-1:30 PM – Osteria da Fortunata (near Campo de' Fiori)
+1:00 PM – Traditional Roman lunch at Taverna dei Fori Imperiali
 
-Fresh handmade pasta. Try cacio e pepe or amatriciana.
+🖼️ Afternoon
+2:30 PM – Capitoline Museums and views from the Capitoline Hill
+4:30 PM – Walk through Piazza Venezia and Via dei Fori Imperiali
 
-🕓 Afternoon
-3:00 PM – Capitoline Hill & Capitoline Museums
+🌇 Evening
+6:00 PM – Aperitivo at Terrazza Caffarelli
+8:00 PM – Dinner with view at Aroma (overlooking Colosseum)
 
-Designed by Michelangelo; home to ancient art like the Capitoline Wolf and Marcus Aurelius statue.
+🎭 Optional
+9:30 PM – Evening performance at Teatro dell’Opera di Roma
 
-5:00 PM – Piazza Venezia & Monument to Vittorio Emanuele II
+---
 
-Climb to the top terrace for panoramic views (optional glass elevator).
-
-🍷 Evening
-7:30 PM – Aperitivo at Il Goccetto (Via dei Banchi Vecchi)
-
-A wine bar with hundreds of Italian labels.
-
-8:30 PM – Dinner at Ristorante Aroma (Michelin-starred, overlooking the Colosseum)
-
-Gourmet Roman cuisine with a view. Reserve early.
-
-Day 2: Renaissance & Baroque Rome
-Focus: High art, Vatican treasures, churches, and urban splendor
+🏛️ Day 2: Vatican & Renaissance Treasures
+Focus: Religious art, Renaissance architecture, and Baroque beauty
 
 🕘 Morning
-7:30 AM – Early Vatican Museums & Sistine Chapel (skip-the-line access)
-
-Marvel at Michelangelo's ceiling and Last Judgment.
-
-Don't miss Raphael Rooms and the Gallery of Maps.
-
-10:30 AM – St. Peter’s Basilica
-
-Climb the dome, admire Bernini’s Baldacchino and Michelangelo’s Pietà.
-
-Explore the grottoes and the tomb of St. Peter.
+8:00 AM – Early entry to Vatican Museums & Sistine Chapel
+11:00 AM – St. Peter’s Basilica + climb the dome
 
 🍝 Lunch
-1:00 PM – Trattoria Sora Lella (on Tiber Island)
+1:00 PM – Light lunch at La Zanzara in Prati
 
-Family-run, traditional Roman Jewish cuisine.
+🏰 Afternoon
+2:30 PM – Visit Castel Sant’Angelo
+4:00 PM – Walk the Passetto di Borgo to Piazza Navona
 
-🕓 Afternoon
-2:30 PM – Castel Sant’Angelo
+🌇 Evening
+6:00 PM – Sunset walk along the Tiber River
+8:00 PM – Dinner in Campo de’ Fiori (try Armando al Pantheon)
 
-Mausoleum, fortress, and papal refuge. Great views of the Tiber and Vatican.
+---
 
-4:00 PM – Walk through Piazza Navona
-
-Admire Bernini’s Fountain of the Four Rivers and Baroque palaces.
-
-4:45 PM – Visit the Church of San Luigi dei Francesi
-
-See three Caravaggio masterpieces in situ.
-
-5:30 PM – Pantheon
-
-Ancient Roman temple, now a church. Marvel at the oculus and tomb of Raphael.
-
-🍷 Evening
-7:00 PM – Aperitivo at Salotto 42 (overlooking the Hadrian Temple)
-
-Stylish literary bar with Roman vibe.
-
-8:30 PM – Dinner at Armando al Pantheon
-
-Classic Roman trattoria with cultural authenticity.
-
-Day 3: Hidden Gems, Local Culture & Trastevere
-Focus: Local life, medieval streets, Roman traditions, lesser-known cultural sites
+🏛️ Day 3: Baroque Rome & Hidden Gems
+Focus: Artistic landmarks and off-the-beaten-path spots
 
 🕘 Morning
-8:00 AM – Breakfast at Bar del Cappuccino (Via Arenula)
+9:00 AM – Pantheon and coffee at Tazza d’Oro
+10:30 AM – Trevi Fountain and Spanish Steps
 
-9:00 AM – Galleria Borghese (by reservation only)
+🍕 Lunch
+12:30 PM – Pizza tasting at Pizzeria da Baffetto
 
-Intimate museum with Bernini, Caravaggio, Canova, and Raphael.
+🖼️ Afternoon
+2:00 PM – Borghese Gallery and Villa Borghese gardens
+4:30 PM – Explore Monti district (craft shops + local art)
 
-11:30 AM – Villa Borghese Gardens
-
-Stroll or rent a bike. Visit the Pincian Terrace for a view of Piazza del Popolo.
-
-🍝 Lunch
-1:00 PM – Picnic lunch in the gardens (pick up food at Roscioli deli earlier in the morning)
-
-Enjoy prosciutto, cheeses, bread, and wine like a Roman.
-
-🕓 Afternoon
-2:30 PM – Jewish Ghetto walking tour
-
-Explore the Portico of Octavia, Teatro di Marcello, and the Synagogue of Rome.
-
-Learn about Rome’s Jewish history and cuisine.
-
-4:30 PM – Cross the Tiber to Trastevere
-
-Visit Basilica di Santa Maria in Trastevere, one of the oldest churches in Rome.
-
-Stroll cobbled lanes, see daily life, artisans, and street art.
-
-🍷 Evening
-6:30 PM – Aperitivo at Freni e Frizioni (Trastevere)
-
-Hip, lively bar in a former mechanic’s shop.
-
-8:00 PM – Dinner at Da Enzo al 29
-
-Family-run gem. Don’t miss the carbonara and artichokes (seasonal).
-
-🌙 Optional Night Walk
-10:00 PM – Night walk through illuminated Rome
-
-Route: Ponte Sisto → Piazza Farnese → Campo de’ Fiori → Piazza Navona → Pantheon → Trevi Fountain (toss a coin!) → Spanish Steps.
-
-Rome glows at night — it’s magical and serene."
-      }
-    },
-    "5": {
-      "romantic": {
-        "itinerary": "Day 1: Sunset at Pincian Terrace and dinner in Trastevere\nDay 2: Vatican morning tour and boat ride on the Tiber\nDay 3: Hidden alleys in Monti and rooftop lunch\nDay 4: Day trip to Tivoli (Villa d’Este gardens)\nDay 5: Couples spa and farewell dinner with view of the Colosseum"
-      },
-      "culture": {
-        "itinerary": "Day 1: Ancient Rome (Colosseum, Forum, Palatine)\nDay 2: Vatican City (Museums, St. Peter’s, Dome climb)\nDay 3: Historic center (Pantheon, Trevi Fountain, Navona)\nDay 4: Jewish Ghetto, Trastevere churches, Janiculum views\nDay 5: Capitoline Museums and Borghese Gallery"
-      }
-    }
-  },
-  "venice": {
-    "3": {
-      "relax": {
-        "itinerary": "Day 1:\n- Morning: Stroll along Zattere promenade\n- Afternoon: Visit quiet islands like Giudecca\n- Evening: Dinner with a lagoon view\n\nDay 2:\n- Morning: Spa at Hilton Molino Stucky\n- Afternoon: Gondola ride through lesser-known canals\n- Evening: Classical concert at La Fenice\n\nDay 3:\n- Morning: Brunch and book browsing at Acqua Alta bookstore\n- Afternoon: Sit by canalside cafés\n- Evening: Farewell cicchetti (Venetian tapas) experience"
-      },
-      "food": {
-        "itinerary": "Day 1: Rialto Market tour and seafood lunch\nDay 2: Bacari crawl (Cicchetti and wine bars)\nDay 3: Cooking class with fresh lagoon ingredients"
-      },
-      "culture": {
-        "itinerary": "Day 1: Doge’s Palace, St. Mark’s Basilica, Campanile\nDay 2: Murano (glass) and Burano (lace + color)\nDay 3: Peggy Guggenheim Collection and Gallerie dell’Accademia"
-      }
-    }
-  },
-  "florence": {
-    "3": {
-      "relax": {
-        "itinerary": "Day 1: Morning coffee in Piazza Santo Spirito, spa afternoon at Asmana Wellness\nDay 2: Visit Boboli Gardens and lounge in Oltrarno cafés\nDay 3: Day trip to countryside vineyard with tasting"
-      },
-      "food": {
-        "itinerary": "Day 1: Mercato Centrale tour + street eats\nDay 2: Pasta-making class and gelato tasting\nDay 3: Tuscan wine tour in Chianti region"
-      },
-      "culture": {
-        "itinerary": "Day 1: Florence Duomo and Baptistery\nDay 2: Uffizi Gallery + Ponte Vecchio walk\nDay 3: Accademia Gallery (Michelangelo), Santa Croce"
-      }
-    },
-    "5": {
-      "romantic": {
-        "itinerary": "Day 1: Sunset at Piazzale Michelangelo\nDay 2: Row boat on Arno and candlelit dinner\nDay 3: Tuscan wine tasting together\nDay 4: Artisan shopping in Oltrarno\nDay 5: Rooftop brunch with Duomo views"
+🌇 Evening
+6:00 PM – Aperitivo in Monti (Blackmarket Hall)
+8:00 PM – Final dinner at Trattoria Monti or rooftop at Hotel Forum`
       }
     }
   }
-};
+}
