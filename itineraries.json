@@ -1,32 +1,54 @@
 {
-  "florence-3": {
-    "city": "Florence",
-    "days": 3,
-    "tags": ["art", "romantic", "culture"],
-    "itinerary": "Day 1: Visit the Uffizi Gallery in the morning, admire Botticelli and da Vinci. Afternoon stroll across Ponte Vecchio and explore the artisan shops. Enjoy a sunset from Piazzale Michelangelo.\n\nDay 2: Start with the Florence Cathedral (Duomo) and climb the dome for panoramic views. Visit the Baptistery and Giotto’s Bell Tower. Afternoon visit to Accademia Gallery to see Michelangelo’s David.\n\nDay 3: Take a food tour through local markets like Mercato Centrale, followed by a walk through the Boboli Gardens and Pitti Palace."
+  "rome": {
+    "3": {
+      "relax": {
+        "itinerary": "Day 1:\n- Morning: Visit the gardens of Villa Borghese\n- Afternoon: Relaxing lunch in Trastevere\n- Evening: Sunset view from Gianicolo Hill\n\nDay 2:\n- Morning: Stroll through the Orange Garden and Aventine Hill\n- Afternoon: Spa treatment at QC Terme Roma\n- Evening: Quiet dinner at a local enoteca\n\nDay 3:\n- Morning: Walk around Vatican Gardens (if open)\n- Afternoon: Enjoy gelato at Piazza Navona\n- Evening: Rooftop aperitivo with city views"
+      },
+      "food": {
+        "itinerary": "Day 1:\n- Morning: Espresso and cornetto at a local bar\n- Afternoon: Street food tour in Trastevere\n- Evening: Pasta tasting menu in Testaccio\n\nDay 2:\n- Morning: Campo de’ Fiori food market\n- Afternoon: Pizza-making workshop\n- Evening: Wine pairing dinner near the Pantheon\n\nDay 3:\n- Morning: Gelato crawl (San Crispino, Fatamorgana, Giolitti)\n- Afternoon: Aperitivo crawl in Monti\n- Evening: Dinner at a Michelin-starred restaurant"
+      },
+      "culture": {
+        "itinerary": "Day 1:\n- Colosseum, Roman Forum, Palatine Hill\n- Capitoline Museums and Piazza Venezia\n\nDay 2:\n- Vatican Museums, Sistine Chapel, St. Peter’s Basilica\n- Castel Sant’Angelo walk and Tiber views\n\nDay 3:\n- Pantheon, Trevi Fountain, Spanish Steps\n- Borghese Gallery and gardens"
+      }
+    },
+    "5": {
+      "romantic": {
+        "itinerary": "Day 1: Sunset at Pincian Terrace and dinner in Trastevere\nDay 2: Vatican morning tour and boat ride on the Tiber\nDay 3: Hidden alleys in Monti and rooftop lunch\nDay 4: Day trip to Tivoli (Villa d’Este gardens)\nDay 5: Couples spa and farewell dinner with view of the Colosseum"
+      },
+      "culture": {
+        "itinerary": "Day 1: Ancient Rome (Colosseum, Forum, Palatine)\nDay 2: Vatican City (Museums, St. Peter’s, Dome climb)\nDay 3: Historic center (Pantheon, Trevi Fountain, Navona)\nDay 4: Jewish Ghetto, Trastevere churches, Janiculum views\nDay 5: Capitoline Museums and Borghese Gallery"
+      }
+    }
   },
-  "venice-3": {
-    "city": "Venice",
-    "days": 3,
-    "tags": ["romantic", "historic", "islands"],
-    "itinerary": "Day 1: Begin in Piazza San Marco — visit St. Mark’s Basilica and the Doge’s Palace. Enjoy a gondola ride through the canals. Have dinner by the Grand Canal.\n\nDay 2: Explore the Rialto Market, then take a boat to Murano and see glass-blowing demonstrations. Visit Burano for colorful houses and lace-making traditions.\n\nDay 3: Visit Peggy Guggenheim Collection for modern art, relax in Giardini della Biennale, and get lost in quiet alleys for a true Venetian experience."
+  "venice": {
+    "3": {
+      "relax": {
+        "itinerary": "Day 1:\n- Morning: Stroll along Zattere promenade\n- Afternoon: Visit quiet islands like Giudecca\n- Evening: Dinner with a lagoon view\n\nDay 2:\n- Morning: Spa at Hilton Molino Stucky\n- Afternoon: Gondola ride through lesser-known canals\n- Evening: Classical concert at La Fenice\n\nDay 3:\n- Morning: Brunch and book browsing at Acqua Alta bookstore\n- Afternoon: Sit by canalside cafés\n- Evening: Farewell cicchetti (Venetian tapas) experience"
+      },
+      "food": {
+        "itinerary": "Day 1: Rialto Market tour and seafood lunch\nDay 2: Bacari crawl (Cicchetti and wine bars)\nDay 3: Cooking class with fresh lagoon ingredients"
+      },
+      "culture": {
+        "itinerary": "Day 1: Doge’s Palace, St. Mark’s Basilica, Campanile\nDay 2: Murano (glass) and Burano (lace + color)\nDay 3: Peggy Guggenheim Collection and Gallerie dell’Accademia"
+      }
+    }
   },
-  "milan-3": {
-    "city": "Milan",
-    "days": 3,
-    "tags": ["fashion", "art", "modern"],
-    "itinerary": "Day 1: Visit the iconic Duomo di Milano and climb to the rooftop. Explore the Galleria Vittorio Emanuele II and have lunch in Brera. Afternoon visit to Sforza Castle.\n\nDay 2: See The Last Supper (book in advance), then head to Navigli for canal-side cafes. Spend the evening shopping in Corso Buenos Aires or Quadrilatero della Moda.\n\nDay 3: Relax in Parco Sempione, visit the Triennale design museum, and take a tram ride to experience Milanese daily life."
-  },
-  "rome-3": {
-    "city": "Rome",
-    "days": 3,
-    "tags": ["history", "architecture", "food"],
-    "itinerary": "Day 1: Start at the Colosseum and Roman Forum. Walk to the Pantheon and toss a coin in the Trevi Fountain. Enjoy dinner in Trastevere.\n\nDay 2: Visit Vatican Museums, the Sistine Chapel, and St. Peter’s Basilica. Afternoon walk along Castel Sant’Angelo and Via Cola di Rienzo.\n\nDay 3: Explore Villa Borghese and Galleria Borghese. Visit Piazza Navona, Campo de’ Fiori, and sample Roman street food."
-  },
-  "naples-3": {
-    "city": "Naples",
-    "days": 3,
-    "tags": ["food", "ancient ruins", "authentic"],
-    "itinerary": "Day 1: Walk Spaccanapoli, visit Naples Cathedral, and explore the Underground Naples. Eat authentic Neapolitan pizza at Sorbillo or Da Michele.\n\nDay 2: Day trip to Pompeii and Mount Vesuvius. Return to Naples for seafood dinner at Borgo Marinari.\n\nDay 3: Visit the Royal Palace and Galleria Umberto I. Enjoy views from Castel dell'Ovo and finish with a sfogliatella in Piazza del Plebiscito."
+  "florence": {
+    "3": {
+      "relax": {
+        "itinerary": "Day 1: Morning coffee in Piazza Santo Spirito, spa afternoon at Asmana Wellness\nDay 2: Visit Boboli Gardens and lounge in Oltrarno cafés\nDay 3: Day trip to countryside vineyard with tasting"
+      },
+      "food": {
+        "itinerary": "Day 1: Mercato Centrale tour + street eats\nDay 2: Pasta-making class and gelato tasting\nDay 3: Tuscan wine tour in Chianti region"
+      },
+      "culture": {
+        "itinerary": "Day 1: Florence Duomo and Baptistery\nDay 2: Uffizi Gallery + Ponte Vecchio walk\nDay 3: Accademia Gallery (Michelangelo), Santa Croce"
+      }
+    },
+    "5": {
+      "romantic": {
+        "itinerary": "Day 1: Sunset at Piazzale Michelangelo\nDay 2: Row boat on Arno and candlelit dinner\nDay 3: Tuscan wine tasting together\nDay 4: Artisan shopping in Oltrarno\nDay 5: Rooftop brunch with Duomo views"
+      }
+    }
   }
 }
