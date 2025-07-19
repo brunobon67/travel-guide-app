@@ -33,8 +33,28 @@ form.addEventListener('submit', async (e) => {
 
     if (!data.itinerary) throw new Error("No itinerary returned.");
 
-    const formatted = data.itinerary.replace(/\n/g, "<br>");
-    responseContainer.innerHTML = `<div class="itinerary-box">${formatted}</div>`;
+const formatted = formatItineraryToHTML(data.itinerary);
+responseContainer.innerHTML = `<div class="itinerary-box">${formatted}</div>`;
+
+function formatItineraryToHTML(text) {
+  const lines = text.split("\n");
+  let html = "";
+  lines.forEach(line => {
+    if (line.trim() === "---") {
+      html += "<hr>";
+    } else if (line.startsWith("🏛️") || line.startsWith("🛀") || line.startsWith("🍝")) {
+      html += `<h2>${line}</h2>`;
+    } else if (line.startsWith("🕘") || line.startsWith("🍝") || line.startsWith("🍕") || line.startsWith("🌇") || line.startsWith("🎭") || line.startsWith("🎶")) {
+      html += `<h3>${line}</h3>`;
+    } else if (line.match(/^\d{1,2}:\d{2}/)) {
+      html += `<p><strong>${line}</strong></p>`;
+    } else if (line.trim() !== "") {
+      html += `<p>${line}</p>`;
+    }
+  });
+  return html;
+}
+
     saveButton.style.display = "inline-block";
 
     saveButton.onclick = () => {
