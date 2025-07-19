@@ -1,4 +1,4 @@
-{
+module.exports = {
   "rome": {
     "3": {
       "relax": {
@@ -185,4 +185,4 @@ Rome glows at night — it’s magical and serene."
       }
     }
   }
-}
+};
