@@ -244,3 +244,18 @@ form button:hover {
   margin: 0.4rem 0;
 }
 
+form select {
+  appearance: none;
+  background-color: rgba(255, 255, 255, 0.95);
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg width='16' height='16' fill='%232a9d8f' viewBox='0 0 16 16'%3E%3Cpath d='M4.646 6.646a.5.5 0 0 1 .708 0L8 9.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1rem;
+  padding-right: 2.5rem;
+  cursor: pointer;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+form select:hover {
+  box-shadow: 0 0 0 3px rgba(42, 157, 143, 0.2);
+}
