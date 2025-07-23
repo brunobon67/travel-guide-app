@@ -1,113 +1,229 @@
-/* ========== General Page Layout ========== */
-body {
-  font-family: 'Segoe UI', sans-serif;
-  background: #f4f6f8;
+/* === Header & Menu Layout === */
+/* HEADER AND NAVIGATION */
+header {
+  background-color: #fff;
+  padding: 12px 24px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 10;
+}
+
+
+
+.navbar {
+  position: absolute;
+  left: 20px;
+  top: 12px;
+}
+
+.hamburger {
+  font-size: 26px;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  color: #e60000;
+  z-index: 20;
+  position: relative;
+}
+
+
+.hamburger:hover {
+  transform: scale(1.1);
+}
+
+#menu {
+  position: absolute;
+  top: 60px; /* â¬…ï¸ increased from 50px */
+  left: 20px;
+  background-color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  max-height: 0;
+  z-index: 15;
+  width: 200px;
+}
+
+
+#menu.expanded {
+  max-height: 300px;
+}
+
+#menu ul {
   margin: 0;
-  padding: 0;
+  padding: 8px 0;
+  list-style: none;
+}
+
+#menu li a {
+  display: block;
+  padding: 12px 16px;
   color: #333;
+  text-decoration: none;
 }
 
-.container {
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 2rem;
+#menu li a:hover {
+  background-color: #f7f7f7;
 }
 
-/* ========== Form Layout ========== */
+#menu ul li {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+#menu ul li:last-child {
+  border-bottom: none;
+}
+
+#menu ul li a {
+  display: block;
+  padding: 14px 20px;
+  color: #444;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#menu ul li a:hover {
+  background-color: #e60000;
+  color: white;
+}
+
+/* === Modern & Clean Form Layout === */
 .form-container {
-  background: #fff;
-  padding: 2rem;
-  border-radius: 1rem;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.08);
-  margin-top: 2rem;
+  max-width: 650px;
+  margin: 60px auto;
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
 }
 
-#trip-form {
+form {
+  background-color: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 }
 
-.form-row {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-@media (min-width: 600px) {
-  .form-row {
-    flex-direction: row;
-  }
-
-  .form-row > div {
-    flex: 1;
-  }
-}
-
-label {
+form label {
+  color: #fff;
   font-weight: 600;
-  margin-bottom: 0.3rem;
-  display: block;
-  color: #444;
-}
-
-/* ========== Select & Input Fields ========== */
-#trip-form select,
-#trip-form input,
-#trip-form textarea {
-  appearance: none;
-  width: 100%;
-  padding: 0.75rem 1rem;
   font-size: 1rem;
-  border-radius: 0.75rem;
-  border: 1px solid #ccc;
-  background-color: #f9f9f9;
-  background-image: url("data:image/svg+xml,%3Csvg fill='%232a9d8f' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 1rem center;
-  background-size: 1.2rem;
-  transition: border 0.3s ease, box-shadow 0.3s ease;
 }
 
-#trip-form select:focus,
-#trip-form input:focus,
-#trip-form textarea:focus {
+form input,
+form select,
+form textarea {
+  background-color: rgba(255, 255, 255, 0.85);
+  color: #333;
+  font-size: 1rem;
+  padding: 14px 18px;
+  border-radius: 12px;
+  border: none;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+  transition: box-shadow 0.3s ease, border 0.3s ease;
+}
+
+form input:focus,
+form select:focus,
+form textarea:focus {
   outline: none;
-  border-color: #2a9d8f;
-  box-shadow: 0 0 0 3px rgba(42, 157, 143, 0.2);
+  border: 2px solid #2a9d8f;
+  box-shadow: 0 0 6px rgba(42, 157, 143, 0.3);
 }
 
-#trip-form textarea {
+form textarea {
   min-height: 120px;
   resize: vertical;
 }
 
-/* ========== Submit Button ========== */
-#trip-form button[type="submit"] {
-  padding: 0.75rem 1.5rem;
-  font-size: 1.1rem;
+form button {
+  background-color: #e60000;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
+  padding: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+form button:hover {
+  background-color: #cc0000;
+  transform: translateY(-2px);
+}
+
+/* Save button style */
+#save-button {
   background-color: #2a9d8f;
   color: white;
+  font-weight: bold;
+  padding: 12px;
   border: none;
-  border-radius: 0.75rem;
+  border-radius: 10px;
+  margin-top: 1rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
-#trip-form button[type="submit"]:hover {
-  background-color: #21867a;
+#save-button:hover {
+  background-color: #1e7a68;
 }
 
-/* ========== Itinerary Display Box ========== */
+@media (max-width: 600px) {
+  form {
+    padding: 24px;
+  }
+
+  form button,
+  form input,
+  form select,
+  form textarea {
+    font-size: 1rem;
+  }
+}
+
+
+.hero {
+  text-align: center;
+  padding: 60px 20px 30px;
+}
+
+.hero-title {
+  font-size: 2.6rem;
+  font-weight: 800;
+  color: #222222;  /* <-- cambia da #ffffff */
+  margin-bottom: 10px;
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #555555;  /* <-- cambia da #f1f1f1 */
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+
 .itinerary-box {
   background: #fff;
   padding: 2rem;
   border-radius: 1rem;
-  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   line-height: 1.6;
-  margin: 2rem auto;
   max-width: 800px;
+  margin: 2rem auto;
   font-size: 1rem;
+  color: #333;
 }
 
 .itinerary-box h2 {
@@ -128,8 +244,18 @@ label {
   margin: 0.4rem 0;
 }
 
-hr {
-  margin: 1.5rem 0;
-  border: none;
-  border-top: 1px solid #ddd;
+#trip-form select {
+  appearance: none;
+  background-color: rgba(255, 255, 255, 0.95);
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg width='16' height='16' fill='%232a9d8f' viewBox='0 0 16 16'%3E%3Cpath d='M4.646 6.646a.5.5 0 0 1 .708 0L8 9.293l2.646-2.647a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1rem;
+  padding-right: 2.5rem;
+  cursor: pointer;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+form select:hover {
+  box-shadow: 0 0 0 3px rgba(42, 157, 143, 0.2);
 }
