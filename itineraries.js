@@ -125,9 +125,8 @@ End in Trastevere – Stop for a final glass of wine or gelato
 
 
     }
-    }
-  }
-}
+    },
+
 
           
 module.exports = {
