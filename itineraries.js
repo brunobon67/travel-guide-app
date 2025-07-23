@@ -125,12 +125,7 @@ End in Trastevere – Stop for a final glass of wine or gelato
 
 
     }
-    },
-
-
-          
-module.exports = {
-  rome: {
+  },
     "3": {
       culture: {
         itinerary: `🏛️ Day 1: Ancient Rome & Classical Foundations
