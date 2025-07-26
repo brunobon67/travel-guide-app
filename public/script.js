@@ -2,7 +2,6 @@ import { auth } from "/firebase.js";
 
 const form = document.getElementById('trip-form');
 const cityInput = document.getElementById('destination');
-const daysInput = form.querySelector('input[name="days"]:checked');
 const tripTypeInput = document.getElementById('tripType'); // ✅ new
 const responseContainer = document.getElementById('chatgpt-response');
 const loadingMessage = document.getElementById('loading-message');
@@ -12,6 +11,7 @@ form.addEventListener('submit', async (e) => {
   e.preventDefault();
 
   const city = cityInput.value.trim().toLowerCase();
+  const daysInput = form.querySelector('input[name="days"]:checked');
   const days = daysInput ? parseInt(daysInput.value) : null;
   const tripType = tripTypeInput.value.trim().toLowerCase(); // ✅ new
 
