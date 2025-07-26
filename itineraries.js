@@ -170,7 +170,7 @@ Flavors to try: Ricotta & fig, Pistachio from Bronte, or Zabaione
 
 Optional: Walk to Ponte Sisto to enjoy your gelato while overlooking the Tiber.`
       }
-    }
+    },
   "2": {
       culture: {
         itinerary:
