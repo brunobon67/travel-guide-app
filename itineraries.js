@@ -173,8 +173,7 @@ Optional: Walk to Ponte Sisto to enjoy your gelato while overlooking the Tiber.`
     },
   "2": {
       culture: {
-        itinerary:
-    `2-Day Cultural Itinerary in Rome
+        itinerary:   `2-Day Cultural Itinerary in Rome
 Theme: History • Art • Architecture • Sacred Spaces • Local Traditions
 Pace: Active, immersive (with rest built-in)
 Ideal Days: Midweek (to avoid big crowds at major sites)
