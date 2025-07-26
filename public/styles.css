@@ -314,3 +314,32 @@ input[name="days"]:checked + .day-toggle {
   color: white;
   border-color: #d90429;
 }
+
+
+input[name="days"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+input[name="days"]:checked + label.day-toggle {
+  background-color: #d90429;
+  color: white;
+  border-color: #d90429;
+}
+
+.day-toggle {
+  padding: 12px 24px;
+  background: #f9e6e6;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+  text-align: center;
+  color: #a00000;
+}
+
+.day-toggle:hover {
+  background-color: #f4cccc;
+}
