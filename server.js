@@ -24,6 +24,9 @@ app.post("/generate-itinerary", async (req, res) => {
   const tripKey = tripType.toLowerCase();
   const dayKey = String(days);
 
+  console.log("📦 Looking for:", cityKey, dayKey, tripKey);
+  console.log("📂 Found itinerary object:", itineraries?.[cityKey]?.[dayKey]?.[tripKey]);
+
   const itinerary = itineraries?.[cityKey]?.[dayKey]?.[tripKey]?.itinerary;
 
   if (itinerary) {
