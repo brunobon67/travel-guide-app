@@ -329,68 +329,80 @@ Or relax in Trastevere’s piazzas with live music and late-night gelato from Ot
          }, 
 
   food: {
-        itinerary: `Day 1 – Traditional Roman Flavors: Trastevere, Campo de' Fiori, Testaccio
-09:00 – Breakfast at Pasticceria Regoli
- Via dello Statuto, 60, 00185 Roma
- Start your day with a maritozzo (sweet bun with whipped cream) and a cappuccino at this classic Roman pastry shop.
-10:00 – Visit Campo de' Fiori Market
- Piazza Campo de' Fiori, 00186 Roma
- Browse a lively food market. Taste local fruits, cheeses, cured meats, olive oils, and explore spices and produce.
-12:00 – Lunch at Roscioli Salumeria con Cucina
- Via dei Giubbonari, 21/22, 00186 Roma
- A unique deli-meets-restaurant. Try their carbonara or amatriciana pasta and a glass of red wine.
-14:00 – Dessert at Pompi
- Via della Croce, 82, 00187 Roma
- Sample Rome’s most famous tiramisu. Try classic or seasonal varieties.
-15:30 – Snack in the Jewish Ghetto (Carciofo alla Giudia)
- Nonna Betta – Via del Portico d'Ottavia, 16, 00186 Roma
- Taste the famous Roman-Jewish fried artichoke.
-17:30 – Aperitivo at Freni e Frizioni
- Via del Politeama, 4/6, 00153 Roma
- Enjoy an aperol spritz or glass of wine with small complimentary snacks in trendy Trastevere.
-19:30 – Dinner at Tonnarello or Da Enzo al 29
- Tonnarello – Via della Paglia, 1/2/3, 00153 Roma
- Da Enzo – Via dei Vascellari, 29, 00153 Roma
- Try Roman favorites like cacio e pepe, gricia, and house wine. Be prepared for a short wait.
-21:00 – Gelato at Otaleg
- Via di San Cosimato, 14a, 00153 Roma
- One of the top artisanal gelato shops in the city.
-Day 2 – Markets, Street Food, and Local Favorites
-08:30 – Breakfast at Pasticceria Andreotti
- Via Ostiense, 54b, 00154 Roma
- Classic Roman-style breakfast with cornetto and espresso.
-10:00 – Food Tour at Mercato di Testaccio
- Via Aldo Manuzio, 66b, 00153 Roma
- Highlights:
-Mordi e Vai: Panino with slow-cooked beef
+        itinerary: ` <h2>🍝 Day 1 – Traditional Roman Flavors: Trastevere, Campo de' Fiori, Testaccio</h2>
 
+<h3>09:00 – Breakfast at Pasticceria Regoli</h3>
+<p><strong>📍 Via dello Statuto, 60, 00185 Roma</strong><br>
+Start your day with a maritozzo (sweet bun with whipped cream) and a cappuccino at this classic Roman pastry shop.</p>
 
-CasaManco: Gourmet pizza by the slice
+<h3>10:00 – Visit Campo de' Fiori Market</h3>
+<p><strong>📍 Piazza Campo de' Fiori, 00186 Roma</strong><br>
+Browse a lively food market. Taste local fruits, cheeses, cured meats, olive oils, and explore spices and produce.</p>
 
+<h3>12:00 – Lunch at Roscioli Salumeria con Cucina</h3>
+<p><strong>📍 Via dei Giubbonari, 21/22, 00186 Roma</strong><br>
+A unique deli-meets-restaurant. Try their carbonara or amatriciana pasta and a glass of red wine.</p>
 
-Dess’Art: Traditional Roman pastries
+<h3>14:00 – Dessert at Pompi</h3>
+<p><strong>📍 Via della Croce, 82, 00187 Roma</strong><br>
+Sample Rome’s most famous tiramisu. Try classic or seasonal varieties.</p>
 
+<h3>15:30 – Snack in the Jewish Ghetto (Carciofo alla Giudia)</h3>
+<p><strong>📍 Nonna Betta – Via del Portico d'Ottavia, 16, 00186 Roma</strong><br>
+Taste the famous Roman-Jewish fried artichoke.</p>
 
-12:30 – Cheese and Wine Tasting at La Tradizione
- Via Cipro, 8e, 00136 Roma
- Enjoy tastings of raw milk cheeses, salumi, and Lazio wines. Ask for pairing recommendations.
-15:00 – Coffee at Sciascia Caffè 1919
- Via Fabio Massimo, 80/a, 00192 Roma
- Historic coffee bar serving espresso with melted chocolate.
-16:00 – Leisure Walk from Castel Sant’Angelo to Ponte Milvio
- Optional stops:
-Supplì near the Vatican walls
+<h3>17:30 – Aperitivo at Freni e Frizioni</h3>
+<p><strong>📍 Via del Politeama, 4/6, 00153 Roma</strong><br>
+Enjoy an aperol spritz or glass of wine with small complimentary snacks in trendy Trastevere.</p>
 
+<h3>19:30 – Dinner at Tonnarello or Da Enzo al 29</h3>
+<p><strong>Tonnarello – Via della Paglia, 1/2/3, 00153 Roma<br>
+Da Enzo – Via dei Vascellari, 29, 00153 Roma</strong><br>
+Try Roman favorites like cacio e pepe, gricia, and house wine. Be prepared for a short wait.</p>
 
-Cannoli at Siciliani Creativi (Via Cola di Rienzo, 196)
+<h3>21:00 – Gelato at Otaleg</h3>
+<p><strong>📍 Via di San Cosimato, 14a, 00153 Roma</strong><br>
+One of the top artisanal gelato shops in the city.</p>
 
+<hr>
 
-19:30 – Dinner at Flavio al Velavevodetto
- Via di Monte Testaccio, 97, 00153 Roma
- Well-known for authentic Roman dishes like rigatoni con la pajata and trippa alla romana.
-21:00 – Wine Bar at Il Goccetto
- Via dei Banchi Vecchi, 14, 00186 Roma
- Relax with a glass of wine or try a traditional Italian digestivo.`
+<h2>🍷 Day 2 – Markets, Street Food, and Local Favorites</h2>
+
+<h3>08:30 – Breakfast at Pasticceria Andreotti</h3>
+<p><strong>📍 Via Ostiense, 54b, 00154 Roma</strong><br>
+Classic Roman-style breakfast with cornetto and espresso.</p>
+
+<h3>10:00 – Food Tour at Mercato di Testaccio</h3>
+<p><strong>📍 Via Aldo Manuzio, 66b, 00153 Roma</strong><br>
+Highlights:</p>
+<ul>
+  <li><strong>Mordi e Vai:</strong> Panino with slow-cooked beef</li>
+  <li><strong>CasaManco:</strong> Gourmet pizza by the slice</li>
+  <li><strong>Dess’Art:</strong> Traditional Roman pastries</li>
+</ul>
+
+<h3>12:30 – Cheese and Wine Tasting at La Tradizione</h3>
+<p><strong>📍 Via Cipro, 8e, 00136 Roma</strong><br>
+Enjoy tastings of raw milk cheeses, salumi, and Lazio wines. Ask for pairing recommendations.</p>
+
+<h3>15:00 – Coffee at Sciascia Caffè 1919</h3>
+<p><strong>📍 Via Fabio Massimo, 80/a, 00192 Roma</strong><br>
+Historic coffee bar serving espresso with melted chocolate.</p>
+
+<h3>16:00 – Leisure Walk from Castel Sant’Angelo to Ponte Milvio</h3>
+<p>Optional stops:</p>
+<ul>
+  <li><strong>Supplì</strong> near the Vatican walls</li>
+  <li><strong>Cannoli</strong> at Siciliani Creativi (Via Cola di Rienzo, 196)</li>
+</ul>
+
+<h3>19:30 – Dinner at Flavio al Velavevodetto</h3>
+<p><strong>📍 Via di Monte Testaccio, 97, 00153 Roma</strong><br>
+Well-known for authentic Roman dishes like rigatoni con la pajata and trippa alla romana.</p>
+
+<h3>21:00 – Wine Bar at Il Goccetto</h3>
+<p><strong>📍 Via dei Banchi Vecchi, 14, 00186 Roma</strong><br>
+Relax with a glass of wine or try a traditional Italian digestivo.</p>`
 
 
       }
