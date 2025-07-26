@@ -2,10 +2,7 @@ module.exports = {
   rome: {
     "1": {
       culture: {
-        itinerary: `🇮🇹 Rome in 1 Day – Cultural Highlights
-Theme: History • Art • Architecture
-
-🕗 8:00 AM – Breakfast at Pasticceria Regoli
+        itinerary: `🕗 8:00 AM – Breakfast at Pasticceria Regoli
 📍 Via dello Statuto, 60
 
 What to Order: A classic maritozzo con la panna (sweet bun with cream) and cappuccino.
@@ -119,7 +116,9 @@ Campo de' Fiori – lively or relaxed, depending on day
 
 Ponte Sisto – cross to see Tiber River lights
 
-End in Trastevere – Stop for a final glass of wine or gelato
+End in Trastevere – Stop for a final glass of wine or gelato'
+
+
       }
     },
      "2": {
