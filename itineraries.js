@@ -326,6 +326,7 @@ Cozy, traditional — arrive early or book well in advance
 Route: Ponte Sisto → Campo de’ Fiori → Piazza Navona
 
 Or relax in Trastevere’s piazzas with live music and late-night gelato from Otaleg or Fatamorgana`
-   }
+    }
   }
 };
+
