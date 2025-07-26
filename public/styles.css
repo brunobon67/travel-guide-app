@@ -305,3 +305,30 @@ form select:hover {
   margin: 0;
 }
 
+.day-toggle-group {
+  display: flex;
+  gap: 1rem;
+  margin: 0.5rem 0 1rem;
+}
+
+.day-toggle {
+  padding: 12px 24px;
+  background: #f0f0f0;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+  text-align: center;
+}
+
+.day-toggle:hover {
+  background-color: #e0e0e0;
+}
+
+input[name="days"]:checked + .day-toggle {
+  background-color: #2a9d8f;
+  color: white;
+  border-color: #2a9d8f;
+}
+
