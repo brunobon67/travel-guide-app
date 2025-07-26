@@ -355,9 +355,7 @@ Or relax in Trastevere’s piazzas with live music and late-night gelato from Ot
 21:00 – Gelato at Otaleg
  Via di San Cosimato, 14a, 00153 Roma
  One of the top artisanal gelato shops in the city.
-
 Day 2 – Markets, Street Food, and Local Favorites
-
 08:30 – Breakfast at Pasticceria Andreotti
  Via Ostiense, 54b, 00154 Roma
  Classic Roman-style breakfast with cornetto and espresso.
@@ -392,9 +390,7 @@ Cannoli at Siciliani Creativi (Via Cola di Rienzo, 196)
  Well-known for authentic Roman dishes like rigatoni con la pajata and trippa alla romana.
 21:00 – Wine Bar at Il Goccetto
  Via dei Banchi Vecchi, 14, 00186 Roma
- Relax with a glass of wine or try a traditional Italian digestivo.
-
-`
+ Relax with a glass of wine or try a traditional Italian digestivo.`
 
 
       }
