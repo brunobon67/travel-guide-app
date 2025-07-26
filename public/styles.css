@@ -275,4 +275,33 @@ form select:hover {
   font-size: 1rem;
   color: #333;
 }
+.checkbox-group {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  padding: 0.2rem 0;
+}
+
+.checkbox-option {
+  background: rgba(255, 255, 255, 0.85);
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+  transition: box-shadow 0.2s ease;
+}
+
+.checkbox-option:hover {
+  box-shadow: 0 0 0 3px rgba(42, 157, 143, 0.15);
+}
+
+.checkbox-option input[type="radio"] {
+  accent-color: #2a9d8f;
+  transform: scale(1.1);
+  margin: 0;
+}
 
