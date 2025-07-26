@@ -271,6 +271,162 @@ Flavors to try: Ricotta & fig, Pistachio from Bronte, or Zabaione
 Optional: Walk to Ponte Sisto to enjoy your gelato while overlooking the Tiber.`
       }
     }
+  "2": {
+      culture: {
+        itinerary:
+    2-Day Cultural Itinerary in Rome
+Theme: History • Art • Architecture • Sacred Spaces • Local Traditions
+Pace: Active, immersive (with rest built-in)
+Ideal Days: Midweek (to avoid big crowds at major sites)
+
+📅 Day 1: Ancient Rome & the Heart of the City
+Theme: Ancient Empire • Renaissance Revival • Urban Culture
+
+🕗 8:00 AM – Breakfast at Pasticceria Regoli
+📍 Via dello Statuto, 60
+
+Classic Roman breakfast: cappuccino + maritozzo con panna
+
+Historic pasticceria beloved by locals
+
+🏛️ 9:00 AM – Colosseum (Skip-the-line + Underground Tour)
+📍 Piazza del Colosseo
+
+Explore the Flavian Amphitheatre from its foundations to upper tiers
+
+Tour Tip: Choose a guide who includes underground access & the arena floor
+
+⏱️ Time: ~1.5–2 hours
+
+🏛️ 11:00 AM – Roman Forum & Palatine Hill
+📍 Via della Salara Vecchia
+
+Walk the Via Sacra, see the Temple of Saturn, Curia, House of the Vestals
+
+Climb Palatine Hill for sweeping views and visit the House of Augustus (if open)
+
+⏱️ Time: ~1.5 hours
+
+🍽️ 1:00 PM – Lunch at Osteria da Fortunata
+📍 Via del Pellegrino, 11 (near Campo de’ Fiori)
+
+Handmade pasta by Nonna right at the entrance
+
+Try: Tonnarelli cacio e pepe or amatriciana with a glass of Frascati
+
+🏛️ 2:30 PM – Capitoline Hill & Museums
+📍 Piazza del Campidoglio (Michelangelo’s Piazza)
+
+View: Equestrian statue of Marcus Aurelius, Tabularium, Capitoline Venus
+
+Excellent museum for ancient statuary and Roman busts
+
+⏱️ Time: ~1.5 hours
+
+⛪ 4:30 PM – Pantheon
+📍 Piazza della Rotonda
+
+Originally a Roman temple, now a church
+
+Admire the massive oculus, coffered dome, and Raphael’s tomb
+
+⏱️ Time: 30 minutes
+🎫 Entry fee: €5 (book online or at kiosk)
+
+🌇 5:15 PM – Piazza Navona & Caravaggio in San Luigi dei Francesi
+Explore Bernini’s Fountain of the Four Rivers
+
+Visit San Luigi dei Francesi for three Caravaggio masterpieces (free entry)
+
+⏱️ Time: ~45 minutes
+
+🍸 6:30 PM – Aperitivo at Salotto 42
+📍 Piazza di Pietra (in front of Hadrian's Temple)
+
+Sip a Negroni or local white wine with elegant snacks
+
+Elegant, quiet, and very Roman
+
+🍽️ 8:00 PM – Dinner at Armando al Pantheon
+📍 Via di Santa Chiara, 8
+
+Intimate, traditional Roman trattoria
+
+Try: Saltimbocca alla romana or lamb with herbs
+
+⏱️ Optional Night Walk after Dinner:
+
+Route: Pantheon → Trevi Fountain → Spanish Steps (magical at night)
+
+📅 Day 2: Sacred Rome, Art & Trastevere
+Theme: Vatican • Baroque Art • Jewish-Roman Heritage • Local Life
+
+🕗 7:30 AM – Breakfast at Roscioli Caffè
+📍 Piazza Benedetto Cairoli, 16
+
+Elegant Roman coffee bar with pastries
+
+Order at the counter: Espresso + cornetto alla crema
+
+🎨 8:00 AM – Vatican Museums (Early Access)
+📍 Viale Vaticano
+
+Book early morning entry (skip-the-line)
+
+Must-sees: Sistine Chapel, Raphael Rooms, Gallery of Maps, Laocoön
+
+Tip: Go straight to the Sistine first, then loop back
+
+⏱️ Time: ~2–2.5 hours
+
+⛪ 10:30 AM – St. Peter’s Basilica & Dome
+📍 Piazza San Pietro
+
+Marvel at Michelangelo’s Pietà, Bernini’s Baldacchino, and papal tombs
+
+Optional: Climb the dome (~320 steps or elevator + stairs) for epic views
+
+⏱️ Time: ~1.5 hours
+
+🍽️ 12:30 PM – Lunch at Sora Lella (Tiber Island)
+📍 Via di Ponte Quattro Capi, 16
+
+Roman-Jewish cuisine with a view
+
+Try: Carciofi alla giudia, gnocchi alla romana, or ox cheek in red wine
+
+🕓 2:00 PM – Jewish Ghetto Walking Tour
+📍 Start at Portico of Octavia
+
+Visit the Teatro di Marcello, Great Synagogue, Fontana delle Tartarughe
+
+Learn about Rome’s ancient Jewish community — one of the oldest in Europe
+
+⏱️ Time: ~1–1.5 hours
+
+⛪ 3:30 PM – Cross to Trastevere: Visit Santa Maria in Trastevere
+One of the oldest churches in Rome (3rd century origins)
+
+Admire golden Byzantine mosaics and quiet spiritual ambiance
+
+🍷 4:30 PM – Aperitivo at Freni e Frizioni (Trastevere)
+📍 Via del Politeama, 4
+
+Trendy bar in a former garage
+
+Creative cocktails and a great people-watching spot
+
+🍽️ 6:30 PM – Dinner at Da Enzo al 29
+📍 Via dei Vascellari, 29
+
+Trastevere gem known for its carbonara, supplì, and tiramisu
+
+Cozy, traditional — arrive early or book well in advance
+
+🌙 8:00 PM – Optional Night Walk along the Tiber
+Route: Ponte Sisto → Campo de’ Fiori → Piazza Navona
+
+Or relax in Trastevere’s piazzas with live music and late-night gelato from Otaleg or Fatamorgana
   },
   venice: {
     "1": {
