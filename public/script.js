@@ -7,6 +7,18 @@ const responseContainer = document.getElementById('chatgpt-response');
 const loadingMessage = document.getElementById('loading-message');
 const saveButton = document.getElementById('save-button');
 
+const dayError = document.getElementById('day-error');
+const daysInput = form.querySelector('input[name="days"]:checked');
+
+// Clear error initially
+dayError.style.display = 'none';
+
+if (!daysInput) {
+  dayError.style.display = 'block';
+  return; // Stop form submission
+}
+
+
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
 
