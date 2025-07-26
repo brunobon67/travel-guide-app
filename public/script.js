@@ -7,6 +7,22 @@ const responseContainer = document.getElementById('chatgpt-response');
 const loadingMessage = document.getElementById('loading-message');
 const saveButton = document.getElementById('save-button');
 const dayError = document.getElementById('day-error');
+const hiddenDaysInput = document.getElementById('days');
+
+// Day button logic
+document.querySelectorAll('.day-btn').forEach(button => {
+  button.addEventListener('click', () => {
+    // Set value in hidden input
+    hiddenDaysInput.value = button.dataset.value;
+
+    // Style buttons
+    document.querySelectorAll('.day-btn').forEach(btn => btn.classList.remove('active'));
+    button.classList.add('active');
+
+    // Hide error
+    dayError.style.display = 'none';
+  });
+});
 
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -16,17 +32,14 @@ form.addEventListener('submit', async (e) => {
 
   const city = cityInput.value.trim().toLowerCase();
   const tripType = tripTypeInput.value.trim().toLowerCase();
-  const daysInput = form.querySelector('input[name="days"]:checked');
-  const days = daysInput ? parseInt(daysInput.value) : null;
+  const days = hiddenDaysInput.value;
 
-  // Show day selection error if not selected
-  if (!daysInput) {
+  if (!days) {
     dayError.style.display = 'block';
     return;
   }
 
-  // Basic validation
-  if (!city || isNaN(days) || !tripType) return;
+  if (!city || !tripType) return;
 
   loadingMessage.textContent = "⏳ Generating your travel guide...";
   responseContainer.innerHTML = "";
@@ -36,7 +49,7 @@ form.addEventListener('submit', async (e) => {
     const res = await fetch('/generate-itinerary', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ city, days, tripType })
+      body: JSON.stringify({ city, days: parseInt(days), tripType })
     });
 
     const data = await res.json();
@@ -46,7 +59,6 @@ form.addEventListener('submit', async (e) => {
 
     const formatted = formatItineraryToHTML(data.itinerary);
     responseContainer.innerHTML = `<div class="itinerary-box">${formatted}</div>`;
-
     saveButton.style.display = "inline-block";
 
     saveButton.onclick = () => {
