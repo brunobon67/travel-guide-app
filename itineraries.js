@@ -327,31 +327,5 @@ Route: Ponte Sisto → Campo de’ Fiori → Piazza Navona
 
 Or relax in Trastevere’s piazzas with live music and late-night gelato from Otaleg or Fatamorgana`
   },
-  venice: {
-    "1": {
-      culture: {
-        itinerary: `🎭 Venice in 1 Day – Classic Culture Tour
-
-🕘 9:00 AM – St. Mark’s Basilica  
-🕙 10:30 AM – Doge’s Palace  
-🕛 12:30 PM – Lunch on the Grand Canal  
-🕑 2:00 PM – Peggy Guggenheim Collection  
-🕓 4:00 PM – Gondola ride  
-🕕 6:00 PM – Sunset at Rialto  
-🍝 8:00 PM – Dinner in Cannaregio`
-      }
-    },
-    "2": {
-      adventure: {
-        itinerary: `🛶 Venice in 2 Days – Hidden Paths & Islands
-
-🌅 Day 1  
-Row Venice lesson • Seafood lunch • Cicchetti crawl
-
-🏝️ Day 2  
-Murano glass • Burano lunch • Torcello ruins  
-Dinner near Teatro La Fenice`
-      }
-    }
-  }
+ 
 };
