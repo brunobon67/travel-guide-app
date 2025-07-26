@@ -99,159 +99,72 @@ End your culinary day with high-quality, natural-flavor gelato in Trastevere.</p
     },
   "2": {
       culture: {
-        itinerary:   `2-Day Cultural Itinerary in Rome
-Theme: History • Art • Architecture • Sacred Spaces • Local Traditions
-Pace: Active, immersive (with rest built-in)
-Ideal Days: Midweek (to avoid big crowds at major sites)
+        itinerary:   `<h2>Rome – 2-Day Cultural Itinerary</h2>
 
-📅 Day 1: Ancient Rome & the Heart of the City
-Theme: Ancient Empire • Renaissance Revival • Urban Culture
+<h3>Day 1 – Ancient Rome & the Historic Center</h3>
 
-🕗 8:00 AM – Breakfast at Pasticceria Regoli
-📍 Via dello Statuto, 60
+<p><strong>08:30 – Colosseum</strong><br>
+Piazza del Colosseo, 1, 00184 Roma<br>
+Start your exploration at Rome’s most iconic monument. Book a guided or skip-the-line tour that includes the underground and arena floor.</p>
 
-Classic Roman breakfast: cappuccino + maritozzo con panna
+<p><strong>10:00 – Roman Forum & Palatine Hill</strong><br>
+Via della Salara Vecchia, 5/6, 00186 Roma<br>
+Stroll through the ruins of temples, basilicas, and imperial palaces where Roman civilization began.</p>
 
-Historic pasticceria beloved by locals
+<p><strong>12:30 – Lunch at Angelino ai Fori</strong><br>
+Largo Corrado Ricci, 43a, 00184 Roma<br>
+Dine on traditional Roman cuisine with a view of the Forum.</p>
 
-🏛️ 9:00 AM – Colosseum (Skip-the-line + Underground Tour)
-📍 Piazza del Colosseo
+<p><strong>14:00 – Capitoline Museums</strong><br>
+Piazza del Campidoglio, 1, 00186 Roma<br>
+Visit the world’s oldest public museum with classical art, sculptures, and views over the Forum.</p>
 
-Explore the Flavian Amphitheatre from its foundations to upper tiers
+<p><strong>16:00 – Pantheon</strong><br>
+Piazza della Rotonda, 00186 Roma<br>
+Explore one of the best-preserved ancient Roman temples, now a church.</p>
 
-Tour Tip: Choose a guide who includes underground access & the arena floor
+<p><strong>17:00 – Piazza Navona</strong><br>
+Piazza Navona, 00186 Roma<br>
+Enjoy the Baroque architecture, fountains, and street performers in this historic square.</p>
 
-⏱️ Time: ~1.5–2 hours
+<p><strong>19:30 – Dinner at Armando al Pantheon</strong><br>
+Salita dei Crescenzi, 31, 00186 Roma<br>
+A family-run trattoria near the Pantheon offering classic Roman recipes in a warm atmosphere.</p>
 
-🏛️ 11:00 AM – Roman Forum & Palatine Hill
-📍 Via della Salara Vecchia
+<p><strong>21:00 – Trevi Fountain (Evening Visit)</strong><br>
+Piazza di Trevi, 00187 Roma<br>
+Toss a coin into the beautifully lit fountain to ensure your return to Rome.</p>
 
-Walk the Via Sacra, see the Temple of Saturn, Curia, House of the Vestals
+<h3>Day 2 – Vatican, Baroque Rome & Hidden Gems</h3>
 
-Climb Palatine Hill for sweeping views and visit the House of Augustus (if open)
+<p><strong>08:30 – Vatican Museums & Sistine Chapel</strong><br>
+Viale Vaticano, 00165 Roma<br>
+Start early to avoid crowds. Admire masterpieces by Michelangelo, Raphael, and others.</p>
 
-⏱️ Time: ~1.5 hours
+<p><strong>11:30 – St. Peter’s Basilica</strong><br>
+Piazza San Pietro, 00120 Città del Vaticano<br>
+Climb to the dome for panoramic views. Visit Michelangelo’s Pietà and Bernini’s altar.</p>
 
-🍽️ 1:00 PM – Lunch at Osteria da Fortunata
-📍 Via del Pellegrino, 11 (near Campo de’ Fiori)
+<p><strong>13:00 – Lunch at Ristorante Arlù</strong><br>
+Borgo Pio, 135, 00193 Roma<br>
+A local favorite for Roman dishes near the Vatican, tucked into a quiet alley.</p>
 
-Handmade pasta by Nonna right at the entrance
+<p><strong>14:30 – Castel Sant'Angelo</strong><br>
+Lungotevere Castello, 50, 00193 Roma<br>
+Explore this historic fortress and enjoy views from the rooftop terrace.</p>
 
-Try: Tonnarelli cacio e pepe or amatriciana with a glass of Frascati
+<p><strong>16:00 – Piazza di Spagna & Spanish Steps</strong><br>
+Piazza di Spagna, 00187 Roma<br>
+Relax on the famous steps and enjoy the elegant atmosphere of Rome's fashion district.</p>
 
-🏛️ 2:30 PM – Capitoline Hill & Museums
-📍 Piazza del Campidoglio (Michelangelo’s Piazza)
+<p><strong>17:30 – Galleria Borghese (Optional, Reservation Required)</strong><br>
+Piazzale Scipione Borghese, 5, 00197 Roma<br>
+Admire works by Caravaggio, Bernini, and Canova in this stunning villa museum.</p>
 
-View: Equestrian statue of Marcus Aurelius, Tabularium, Capitoline Venus
-
-Excellent museum for ancient statuary and Roman busts
-
-⏱️ Time: ~1.5 hours
-
-⛪ 4:30 PM – Pantheon
-📍 Piazza della Rotonda
-
-Originally a Roman temple, now a church
-
-Admire the massive oculus, coffered dome, and Raphael’s tomb
-
-⏱️ Time: 30 minutes
-🎫 Entry fee: €5 (book online or at kiosk)
-
-🌇 5:15 PM – Piazza Navona & Caravaggio in San Luigi dei Francesi
-Explore Bernini’s Fountain of the Four Rivers
-
-Visit San Luigi dei Francesi for three Caravaggio masterpieces (free entry)
-
-⏱️ Time: ~45 minutes
-
-🍸 6:30 PM – Aperitivo at Salotto 42
-📍 Piazza di Pietra (in front of Hadrian's Temple)
-
-Sip a Negroni or local white wine with elegant snacks
-
-Elegant, quiet, and very Roman
-
-🍽️ 8:00 PM – Dinner at Armando al Pantheon
-📍 Via di Santa Chiara, 8
-
-Intimate, traditional Roman trattoria
-
-Try: Saltimbocca alla romana or lamb with herbs
-
-⏱️ Optional Night Walk after Dinner:
-
-Route: Pantheon → Trevi Fountain → Spanish Steps (magical at night)
-
-📅 Day 2: Sacred Rome, Art & Trastevere
-Theme: Vatican • Baroque Art • Jewish-Roman Heritage • Local Life
-
-🕗 7:30 AM – Breakfast at Roscioli Caffè
-📍 Piazza Benedetto Cairoli, 16
-
-Elegant Roman coffee bar with pastries
-
-Order at the counter: Espresso + cornetto alla crema
-
-🎨 8:00 AM – Vatican Museums (Early Access)
-📍 Viale Vaticano
-
-Book early morning entry (skip-the-line)
-
-Must-sees: Sistine Chapel, Raphael Rooms, Gallery of Maps, Laocoön
-
-Tip: Go straight to the Sistine first, then loop back
-
-⏱️ Time: ~2–2.5 hours
-
-⛪ 10:30 AM – St. Peter’s Basilica & Dome
-📍 Piazza San Pietro
-
-Marvel at Michelangelo’s Pietà, Bernini’s Baldacchino, and papal tombs
-
-Optional: Climb the dome (~320 steps or elevator + stairs) for epic views
-
-⏱️ Time: ~1.5 hours
-
-🍽️ 12:30 PM – Lunch at Sora Lella (Tiber Island)
-📍 Via di Ponte Quattro Capi, 16
-
-Roman-Jewish cuisine with a view
-
-Try: Carciofi alla giudia, gnocchi alla romana, or ox cheek in red wine
-
-🕓 2:00 PM – Jewish Ghetto Walking Tour
-📍 Start at Portico of Octavia
-
-Visit the Teatro di Marcello, Great Synagogue, Fontana delle Tartarughe
-
-Learn about Rome’s ancient Jewish community — one of the oldest in Europe
-
-⏱️ Time: ~1–1.5 hours
-
-⛪ 3:30 PM – Cross to Trastevere: Visit Santa Maria in Trastevere
-One of the oldest churches in Rome (3rd century origins)
-
-Admire golden Byzantine mosaics and quiet spiritual ambiance
-
-🍷 4:30 PM – Aperitivo at Freni e Frizioni (Trastevere)
-📍 Via del Politeama, 4
-
-Trendy bar in a former garage
-
-Creative cocktails and a great people-watching spot
-
-🍽️ 6:30 PM – Dinner at Da Enzo al 29
-📍 Via dei Vascellari, 29
-
-Trastevere gem known for its carbonara, supplì, and tiramisu
-
-Cozy, traditional — arrive early or book well in advance
-
-🌙 8:00 PM – Optional Night Walk along the Tiber
-Route: Ponte Sisto → Campo de’ Fiori → Piazza Navona
-
-Or relax in Trastevere’s piazzas with live music and late-night gelato from Otaleg or Fatamorgana`
+<p><strong>19:30 – Dinner at Ristorante Nino</strong><br>
+Via Borgognona, 11, 00187 Roma<br>
+Finish the day with refined Roman dishes near the Spanish Steps.</p>
+`
          }, 
 
   food: {
