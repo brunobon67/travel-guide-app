@@ -357,6 +357,7 @@ Or relax in Trastevere’s piazzas with live music and late-night gelato from Ot
  One of the top artisanal gelato shops in the city.
 
 Day 2 – Markets, Street Food, and Local Favorites
+
 08:30 – Breakfast at Pasticceria Andreotti
  Via Ostiense, 54b, 00154 Roma
  Classic Roman-style breakfast with cornetto and espresso.
