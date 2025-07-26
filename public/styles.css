@@ -304,7 +304,6 @@ form select:hover {
   transform: scale(1.1);
   margin: 0;
 }
-
 .day-toggle-group {
   display: flex;
   gap: 1rem;
@@ -313,22 +312,22 @@ form select:hover {
 
 .day-toggle {
   padding: 12px 24px;
-  background: #f0f0f0;
+  background: #f9e6e6;
   border-radius: 12px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
   border: 2px solid transparent;
   text-align: center;
+  color: #a00000;
 }
 
 .day-toggle:hover {
-  background-color: #e0e0e0;
+  background-color: #f4cccc;
 }
 
 input[name="days"]:checked + .day-toggle {
-  background-color: #2a9d8f;
+  background-color: #d90429; /* 🔴 Red */
   color: white;
-  border-color: #2a9d8f;
+  border-color: #d90429;
 }
-
