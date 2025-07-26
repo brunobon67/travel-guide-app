@@ -116,7 +116,7 @@ Campo de' Fiori – lively or relaxed, depending on day
 
 Ponte Sisto – cross to see Tiber River lights
 
-End in Trastevere – Stop for a final glass of wine or gelato'
+End in Trastevere – Stop for a final glass of wine or gelato`
 
 
       }
