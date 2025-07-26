@@ -326,7 +326,84 @@ Cozy, traditional — arrive early or book well in advance
 Route: Ponte Sisto → Campo de’ Fiori → Piazza Navona
 
 Or relax in Trastevere’s piazzas with live music and late-night gelato from Otaleg or Fatamorgana`
-         }
+         }, 
+
+  food: {
+        itinerary: `🍽️ Day 1: Trastevere, Campo de' Fiori & Testaccio – Classic Roman Flavors
+🕘 09:00 – Breakfast at Pasticceria Regoli (Esquilino)
+Order: Maritozzo con la panna (sweet bun filled with whipped cream), cappuccino
+
+Why: Iconic Roman bakery dating back to 1916
+
+🛒 10:00 – Campo de’ Fiori Market Walk
+Explore Rome’s most famous open-air food market
+
+Taste samples: fresh fruits, cheese (pecorino romano), salumi, olive oils
+
+Optional: Small guided food market tour
+
+🍝 12:00 – Lunch at Roscioli Salumeria con Cucina (near Campo)
+Dish to try: Carbonara or Amatriciana, with a glass of local red
+
+Tip: Reserve in advance; it's part deli, part fine trattoria
+
+☕ 14:00 – Coffee & Tiramisu at Bar Pompi
+Famous for: Best tiramisu in Rome (original + seasonal versions)
+
+🏙️ 15:00 – Walk through Jewish Ghetto & Try Carciofi alla Giudia
+At Nonna Betta or Giggetto
+
+Fried artichoke: a Roman-Jewish specialty
+
+🍷 17:30 – Aperitivo in Trastevere
+At Freni e Frizioni or Ombre Rosse
+
+Enjoy aperol spritz or vermouth with small bites (olive ascolane, focaccia, cheese)
+
+🍕 19:30 – Dinner at Tonnarello or Da Enzo al 29 (Trastevere)
+Must-try dishes: Cacio e pepe, Gricia, Saltimbocca
+
+Reserve early or expect a wait — worth it!
+
+🍦 21:00 – Gelato at Otaleg or Fior di Luna
+Creative flavors, real ingredients
+
+🥖 Day 2: Vatican Area, Prati & Street Food Staples
+🕘 08:30 – Roman Breakfast at Pasticceria Andreotti (E.U.R. or Testaccio)
+Try: Sfogliatella, espresso, or cornetto alla crema
+
+🥪 10:00 – Testaccio Market (Mercato Testaccio)
+A true foodie paradise
+
+Must-try stalls:
+
+Mordi e Vai: legendary panino with slow-cooked beef
+
+CasaManco: gourmet pizza al taglio
+
+Desserts from Dess’Art or Da Artenio
+
+🧀 12:30 – Cheese & Wine Tasting in Prati
+Join a small-group tasting at La Tradizione or Beppe e i Suoi Formaggi
+
+Pairings: raw milk cheeses, prosciutto, Lazio wines
+
+🥂 15:00 – Caffè & Dolce at Sciascia Caffè 1919 (Prati)
+Elegant espresso bar with incredible chocolate-dipped coffee
+
+🚶 16:00 – Leisure walk: Castel Sant’Angelo → Ponte Milvio
+Optional food stops: Supplì near Vatican walls, Sicilian cannoli shop
+
+🍽️ 19:00 – Final Dinner: Trattoria Pennestri or Flavio al Velavevodetto (Testaccio)
+Known for: Authentic Roman dishes, slow food, seasonal ingredients
+
+Must-try: Trippa alla Romana (Roman-style tripe), rigatoni con la pajata, tiramisù
+
+🍷 21:00 – Digestivo at Il Goccetto (wine bar) or rooftop bar near Piazza Venezia
+End with a grappa, amaro, or local limoncello`
+
+
+      }
     }  // 👈 close "2" days block
   }    // 👈 close "rome" block
 };     // 👈 close entire module.exports
