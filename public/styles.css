@@ -276,24 +276,13 @@ form select:hover {
   color: #333;
 }
 
-/* Hide radio inputs but keep them valid for form logic */
-input[name="days"] {
-  position: absolute;
-  opacity: 0;
-  width: 0;
-  height: 0;
-  pointer-events: none;
-}
-
-/* Group layout */
 .day-toggle-group {
   display: flex;
   gap: 1rem;
   margin: 0.5rem 0 1rem;
 }
 
-/* Style labels like buttons */
-.day-toggle {
+.day-btn {
   padding: 12px 24px;
   background: #f9e6e6;
   border-radius: 12px;
@@ -301,45 +290,15 @@ input[name="days"] {
   cursor: pointer;
   transition: all 0.2s ease;
   border: 2px solid transparent;
-  text-align: center;
   color: #a00000;
 }
 
-.day-toggle:hover {
+.day-btn:hover {
   background-color: #f4cccc;
 }
 
-input[name="days"]:checked + .day-toggle {
+.day-btn.active {
   background-color: #d90429;
   color: white;
   border-color: #d90429;
-}
-
-
-input[name="days"] {
-  position: absolute;
-  opacity: 0;
-  pointer-events: none;
-}
-
-input[name="days"]:checked + label.day-toggle {
-  background-color: #d90429;
-  color: white;
-  border-color: #d90429;
-}
-
-.day-toggle {
-  padding: 12px 24px;
-  background: #f9e6e6;
-  border-radius: 12px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  border: 2px solid transparent;
-  text-align: center;
-  color: #a00000;
-}
-
-.day-toggle:hover {
-  background-color: #f4cccc;
 }
