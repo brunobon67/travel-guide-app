@@ -70,16 +70,13 @@
   </optgroup>
 </select>
 
-<label>📆 How many days?</label>
-<div class="checkbox-group">
-  <label class="checkbox-option">
-    <input type="radio" name="days" value="1" required />
-    1 Day
-  </label>
-  <label class="checkbox-option">
-    <input type="radio" name="days" value="2" />
-    2 Days
-  </label>
+        <label> How many days?</label>
+<div class="day-toggle-group">
+  <input type="radio" name="days" value="1" id="day1" required hidden />
+  <label for="day1" class="day-toggle">1 Day</label>
+
+  <input type="radio" name="days" value="2" id="day2" hidden />
+  <label for="day2" class="day-toggle">2 Days</label>
 </div>
 
 
