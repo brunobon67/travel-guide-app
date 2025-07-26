@@ -2,67 +2,51 @@ module.exports = {
   rome: {
     "1": {
       culture: {
-        itinerary: `🕗 8:00 AM – Breakfast at Pasticceria Regoli
-📍 Via dello Statuto, 60
+        itinerary: `<h2>Rome – 1-Day Cultural Itinerary</h2>
 
-What to Order: A classic maritozzo con la panna (sweet bun with cream) and cappuccino.
+<h3>Morning</h3>
+<p><strong>08:30 – Colosseum</strong><br>
+Piazza del Colosseo, 1, 00184 Roma<br>
+Start your day at Rome’s most iconic landmark. Book a skip-the-line tour to explore the arena and underground levels.</p>
 
-Traditional Roman pastry shop, perfect start to the day.
+<p><strong>10:00 – Roman Forum & Palatine Hill</strong><br>
+Via della Salara Vecchia, 5/6, 00186 Roma<br>
+Walk through ancient temples and ruins where Roman history was made.</p>
 
-🕘 9:00 AM – Colosseum (Skip-the-line Entry or Guided Tour)
-📍 Piazza del Colosseo
+<h3>Midday</h3>
+<p><strong>12:30 – Lunch at Angelino ai Fori</strong><br>
+Largo Corrado Ricci, 43a, 00184 Roma<br>
+Enjoy a classic Roman lunch just steps from the Forum.</p>
 
-Walk through the Flavian Amphitheatre, imagining gladiator battles.
+<h3>Afternoon</h3>
+<p><strong>14:00 – Pantheon</strong><br>
+Piazza della Rotonda, 00186 Roma<br>
+Visit one of the best-preserved monuments of ancient Rome.</p>
 
-Optional: Book an Underground & Arena Floor tour for deeper context.
+<p><strong>15:00 – Coffee at Tazza d’Oro</strong><br>
+Via degli Orfani, 84, 00186 Roma<br>
+Relax with a famous granita di caffè next to the Pantheon.</p>
 
-Allow: ~1 hour for general visit, 1.5–2 hours with tour.
+<p><strong>15:30 – Piazza Navona</strong><br>
+Piazza Navona, 00186 Roma<br>
+Stroll through this elegant baroque square and enjoy street art and fountains.</p>
 
-TIP: Use the "Stern entrance" (entrata gruppi) for fast access if booked.
+<h3>Late Afternoon</h3>
+<p><strong>16:30 – Castel Sant'Angelo</strong><br>
+Lungotevere Castello, 50, 00193 Roma<br>
+Explore the museum and terrace views, and learn about its papal past.</p>
 
-🕙 10:30 AM – Roman Forum & Palatine Hill
-📍 Via della Salara Vecchia
+<h3>Evening</h3>
+<p><strong>18:30 – Spanish Steps</strong><br>
+Climb to the top for beautiful sunset views of the city.</p>
 
-Walk along the Via Sacra, see the Arch of Titus, Temple of Vesta, and the Curia (Senate House).
+<p><strong>19:30 – Dinner at Ristorante Nino</strong><br>
+Via Borgognona, 11, 00187 Roma<br>
+Dine on traditional Italian cuisine in a historic atmosphere.</p>
 
-Climb Palatine Hill to view imperial palaces and panoramic views over the Circus Maximus.
+<p><strong>21:00 – Trevi Fountain</strong><br>
+Wrap up the day with a visit to this iconic fountain and toss a coin for luck.</p>`
 
-🕛 12:00 PM – Capitoline Hill & Piazza del Campidoglio
-📍 Designed by Michelangelo
-
-Admire the Piazza’s symmetry, the Equestrian Statue of Marcus Aurelius, and views over the Forum.
-
-Optional Quick Stop: Peek into the Tabularium or Capitoline Museums (quick 20–30 min highlights).
-
-🍝 1:00 PM – Lunch at Roscioli (Salumeria con Cucina)
-📍 Via dei Giubbonari, 21 (10-minute walk)
-
-Elegant deli-restaurant fusion. Reserve ahead.
-
-🕑 2:15 PM – Pantheon
-📍 Piazza della Rotonda
-
-Admire the perfect dome with oculus, coffered ceiling, and tombs (Raphael & Italian kings).
-
-🕝 3:00 PM – Piazza Navona
-📍 5-min walk from Pantheon
-
-Fountain of the Four Rivers • Church of Sant'Agnese • Street artists
-
-🕓 4:00 PM – Trevi Fountain
-Toss a coin and grab artisanal gelato nearby.
-
-🕔 5:00 PM – Spanish Steps
-Climb to Trinità dei Monti and enjoy panoramic views.
-
-🕕 6:00 PM – Aperitivo at Salotto 42
-Overlooking Hadrian’s Temple
-
-🍷 7:30 PM – Dinner at Armando al Pantheon
-Traditional Roman cuisine in an authentic setting.
-
-🌙 9:30 PM – Night Walk
-Pantheon → Navona → Campo de' Fiori → Ponte Sisto → Trastevere`
       },
     
       food: {
