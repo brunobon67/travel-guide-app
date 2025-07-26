@@ -117,9 +117,112 @@ Campo de' Fiori – lively or relaxed, depending on day
 Ponte Sisto – cross to see Tiber River lights
 
 End in Trastevere – Stop for a final glass of wine or gelato`
+    }
+  
+     food: {
+        itinerary: 
+        
+       ` 🕗 8:00 AM – Breakfast at Antico Forno Roscioli
+📍 Via dei Chiavari, 34
 
+Start with an authentic Roman-style cornetto and espresso al banco (standing at the bar like a local).
 
-      }
+Bonus: Try a slice of pizza bianca — the fluffy, salted Roman focaccia.
+
+Walk 5 min to Campo de’ Fiori as it begins to wake up.
+
+🧺 8:45 AM – Campo de’ Fiori Market (Morning Stroll)
+📍 Campo de' Fiori
+
+Watch vendors set up: seasonal produce, cheeses, salumi, spices, and olive oil.
+
+Tasting Tip: Try a piece of porchetta from a stall or a slice of pecorino romano.
+
+Optional: Grab a jar of truffle salt or chili-spiced olives as an edible souvenir.
+
+🥐 9:30 AM – Sweet Bite at Forno Campo de’ Fiori
+📍 Via dei Baullari, 5
+
+Order a slice of pizza rossa (paper-thin focaccia topped with tomato) – a Roman street snack.
+
+Eat it standing outside like a local — hot, fresh, unforgettable.
+
+🧀 10:15 AM – Cheese & Salumi Tasting at La Tradizione
+📍 Via Cipro, 8 (quick metro or cab ride to Vatican side)
+
+This gourmet shop is packed with regional delicacies.
+
+Do a mini-tasting:
+
+Caciocavallo, pecorino di fossa, guanciale, and finocchiona
+
+Pair with fresh bread and olive oil
+
+They often offer tastings if you ask — or pick up a picnic-style snack for later.
+
+🍝 12:00 PM – Lunch at Felice a Testaccio
+📍 Via Mastro Giorgio, 29 (Testaccio neighborhood — Rome’s food heart)
+
+Must-visit traditional trattoria in the historic working-class food district.
+
+Dish to Order: Cacio e pepe (they mix it tableside), or tonnarelli alla gricia
+
+Optional: Sample trippa alla romana or coda alla vaccinara (oxtail stew) if you're adventurous.
+
+Pair with a glass of Frascati white wine.
+
+🍷 1:30 PM – Digestivo Walk Through Testaccio Market
+📍 Via B. Franklin, 12
+
+Explore local stalls of butchers, bakers, and specialty counters.
+
+Stop at Trapizzino (inside the market): a pizza-pocket stuffed with stews like chicken cacciatore or eggplant parm.
+
+Optional: Chat with locals at Casa Manco for artisan-style pizza by the slice.
+
+☕ 2:30 PM – Coffee Ritual at Sant’Eustachio Il Caffè
+📍 Piazza Sant'Eustachio, 82
+
+Legendary Roman espresso bar since 1938.
+
+Order: Gran caffè or shakerato (espresso shaken with ice and sugar).
+
+Enjoy near the Pantheon.
+
+🍸 4:00 PM – Aperitivo at Il Goccetto
+📍 Via dei Banchi Vecchi, 14
+
+Cozy enoteca with over 800 Italian wines.
+
+Choose a local red (like Cesanese or Montepulciano d’Abruzzo)
+
+Served with snacks: taralli, olives, maybe some pecorino.
+
+🍽️ 7:00 PM – Dinner at Trattoria Da Teo (Trastevere)
+📍 Piazza dei Ponziani, 7A
+
+Intimate, family-run and well-loved by locals.
+
+Recommended dishes:
+
+Carciofi alla giudia (Jewish-style fried artichoke)
+
+Saltimbocca alla romana
+
+Tonnarelli alla carbonara
+
+House wine is great, but they also offer natural wine pairings.
+
+🍨 9:00 PM – Gelato Nightcap at Gelateria del Viale
+📍 Viale Trastevere, 313
+
+End the night with artisanal gelato.
+
+Flavors to try: Ricotta & fig, Pistachio from Bronte, or Zabaione
+
+Optional: Walk to Ponte Sisto to enjoy your gelato while overlooking the Tiber `
+}
+    
     },
      "2": {
       culture: {
