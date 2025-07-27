@@ -58,6 +58,7 @@ form.addEventListener('submit', async (e) => {
     if (!data.itinerary) throw new Error("No itinerary returned.");
 
     const formatted = formatItineraryToHTML(data.itinerary);
+    document.getElementById("scroll-indicator").style.display = "block";
     responseContainer.innerHTML = `<div class="itinerary-box">${formatted}</div>`;
     saveButton.style.display = "inline-block";
 
