@@ -16,19 +16,29 @@ onAuthStateChanged(auth, (user) => {
   }
 
   savedPlans.forEach((plan, index) => {
-    const planDiv = document.createElement("div");
-    planDiv.classList.add("plan");
+    // Create accordion button
+    const button = document.createElement("button");
+    button.className = "accordion";
+    button.innerText = `📌 Plan #${index + 1} - Saved on ${plan.date}`;
 
-    planDiv.innerHTML = `
-      <h3>📍 Plan #${index + 1} - Saved on ${plan.date}</h3>
-      <pre>${plan.itinerary}</pre>
-    `;
+    // Create hidden panel
+    const panel = document.createElement("div");
+    panel.className = "panel";
 
-    planDiv.addEventListener("click", () => {
-      const itinerary = planDiv.querySelector("pre");
-      itinerary.style.display = itinerary.style.display === "block" ? "none" : "block";
+    const pre = document.createElement("pre");
+    pre.textContent = plan.itinerary;
+
+    panel.appendChild(pre);
+    container.appendChild(button);
+    container.appendChild(panel);
+
+    button.addEventListener("click", () => {
+      button.classList.toggle("active");
+      if (panel.style.maxHeight) {
+        panel.style.maxHeight = null;
+      } else {
+        panel.style.maxHeight = panel.scrollHeight + "px";
+      }
     });
-
-    container.appendChild(planDiv);
   });
 });
