@@ -67,7 +67,14 @@ form.addEventListener('submit', async (e) => {
       if (!user) return alert("You must be logged in to save.");
       const key = `savedPlans_${user.uid}`;
       const saved = JSON.parse(localStorage.getItem(key)) || [];
-      saved.push({ date: new Date().toLocaleString(), itinerary: data.itinerary });
+      saved.push({
+  date: new Date().toLocaleString(),
+  itinerary: data.itinerary,
+  city,
+  days,
+  tripType
+});
+
       localStorage.setItem(key, JSON.stringify(saved));
       alert("✅ Travel guide saved!");
     };
