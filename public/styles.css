@@ -3,13 +3,14 @@
 header {
   background-color: #fff;
   padding: 12px 24px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  box-shadow: none; /* ← Remove shadow */
   display: flex;
   align-items: center;
   justify-content: space-between;
   position: relative;
   z-index: 10;
 }
+
 
 
 
