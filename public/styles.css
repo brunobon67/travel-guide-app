@@ -302,3 +302,41 @@ form select:hover {
   color: white;
   border-color: #d90429;
 }
+
+
+.accordion {
+  background-color: #d90429;
+  color: white;
+  cursor: pointer;
+  padding: 14px 20px;
+  width: 100%;
+  text-align: left;
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  margin-bottom: 10px;
+  transition: background-color 0.3s;
+}
+
+.accordion:hover,
+.accordion.active {
+  background-color: #a9031f;
+}
+
+.panel {
+  background-color: #f9f9f9;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  padding: 0 1rem;
+  border-left: 2px solid #ccc;
+  border-radius: 0 0 8px 8px;
+  margin-bottom: 1rem;
+}
+
+.panel pre {
+  white-space: pre-wrap;
+  padding: 1rem 0;
+}
