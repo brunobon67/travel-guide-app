@@ -289,8 +289,8 @@ form select:hover {
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
-  border: 2px solid #d90429;
-  color: #d90429;
+  border: 2px solid #f5e9dc; /* soft cream-white border */
+  color: #d90429; /* deep red text */
 }
 
 .day-btn:hover {
