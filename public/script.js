@@ -63,8 +63,12 @@ form.addEventListener('submit', async (e) => {
     saveButton.style.display = "inline-block";
 
     saveButton.onclick = () => {
-      const user = auth.currentUser;
-      if (!user) return alert("You must be logged in to save.");
+     const user = auth.currentUser;
+if (!user) {
+  alert("🔐 You must be logged in to save your itinerary.\n\nClick OK to go to login.");
+  window.location.href = "/login.html";
+  return;
+}
       const key = `savedPlans_${user.uid}`;
       const saved = JSON.parse(localStorage.getItem(key)) || [];
       saved.push({
