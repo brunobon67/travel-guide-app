@@ -341,3 +341,53 @@ form select:hover {
   white-space: pre-wrap;
   padding: 1rem 0;
 }
+
+
+/* General container centering */
+.login-container, .register-container {
+  max-width: 400px;
+  margin: 5vh auto;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Form fields spacing */
+.login-container form, .register-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Center header */
+.login-container h1, .register-container h1 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/* Button styling */
+.login-container button,
+.register-container button {
+  background-color: #e60012;
+  color: white;
+  padding: 0.8rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-container button:hover,
+.register-container button:hover {
+  background-color: #c40010;
+}
+
+/* Responsive padding */
+@media (max-width: 480px) {
+  .login-container, .register-container {
+    margin: 2vh auto;
+    padding: 1rem;
+  }
+}
