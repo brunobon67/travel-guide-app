@@ -19,7 +19,9 @@ onAuthStateChanged(auth, (user) => {
     // Create accordion button
     const button = document.createElement("button");
     button.className = "accordion";
-    button.innerText = `📌 Plan #${index + 1} - Saved on ${plan.date}`;
+const cityName = plan.city?.charAt(0).toUpperCase() + plan.city?.slice(1) || "Trip";
+const tripType = plan.tripType?.charAt(0).toUpperCase() + plan.tripType?.slice(1) || "";
+button.innerText = `📌 ${cityName}, ${plan.days} day trip, ${tripType}`;
 
     // Create hidden panel
     const panel = document.createElement("div");
