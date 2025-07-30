@@ -621,6 +621,433 @@ End the night with a glass of Italian wine or a digestive like amaro or grappa.<
       }
     }  // 👈 close "2" days block
   }    // 👈 close "rome" block
+
+  napoli: {
+  "1": {
+    culture: {
+      itinerary: `<h2>Naples – 1-Day Cultural Itinerary</h2>
+
+<h3>Morning</h3>
+<p><strong>09:00 – National Archaeological Museum</strong><br>
+Piazza Museo, 19, 80135 Napoli<br>
+Begin with one of the most important archaeological museums in the world, featuring treasures from Pompeii and Herculaneum.</p>
+
+<p><strong>11:00 – Naples Cathedral (Duomo di San Gennaro)</strong><br>
+Via Duomo, 147, 80138 Napoli<br>
+Visit the stunning cathedral and the Chapel of San Gennaro, the city’s patron saint.</p>
+
+<h3>Midday</h3>
+<p><strong>12:30 – Lunch at Tandem Ragù</strong><br>
+Via Paladino, 51, 80138 Napoli<br>
+Enjoy authentic Neapolitan ragù pasta in the historic center.</p>
+
+<h3>Afternoon</h3>
+<p><strong>14:00 – Spaccanapoli Walking Tour</strong><br>
+Explore the narrow streets of the historic center, passing by churches, piazzas, and artisan shops.</p>
+
+<p><strong>16:00 – Cloister of Santa Chiara</strong><br>
+Via Santa Chiara, 49/c, 80134 Napoli<br>
+Relax in this peaceful monastery courtyard decorated with beautiful majolica tiles.</p>
+
+<h3>Evening</h3>
+<p><strong>18:00 – Sunset at Castel dell'Ovo</strong><br>
+Via Eldorado, 3, 80132 Napoli<br>
+Stroll along the seafront and enjoy panoramic views of the Bay of Naples from this historic castle.</p>
+
+<p><strong>20:00 – Dinner at Trattoria da Nennella</strong><br>
+Vico Lungo Teatro Nuovo, 103/104, 80134 Napoli<br>
+End the day with classic Neapolitan comfort food and a lively local atmosphere.</p>`
+    },
+    food: {
+      itinerary: `<h2>Naples – 1-Day Food Itinerary</h2>
+
+<h3>Morning</h3>
+<p><strong>08:30 – Breakfast at Gran Caffè Gambrinus</strong><br>
+Via Chiaia, 1/2, 80132 Napoli<br>
+Start with a sfogliatella and cappuccino in this iconic historic café.</p>
+
+<p><strong>09:30 – Pignasecca Market</strong><br>
+Via Pignasecca, 80134 Napoli<br>
+Wander through the market and sample fresh produce, cheese, and local street food.</p>
+
+<h3>Midday</h3>
+<p><strong>12:00 – Pizza Tasting at Sorbillo</strong><br>
+Via dei Tribunali, 32, 80138 Napoli<br>
+Try authentic Neapolitan pizza at one of the city’s most famous pizzerias.</p>
+
+<p><strong>14:00 – Espresso Break at Caffè Mexico</strong><br>
+Piazza Dante, 86, 80135 Napoli<br>
+Enjoy a strong Neapolitan coffee at this local favorite.</p>
+
+<h3>Afternoon</h3>
+<p><strong>15:00 – Sfogliatella at Sfogliatella Mary</strong><br>
+Galleria Umberto I, 80132 Napoli<br>
+Taste the classic riccia or frolla versions of this iconic pastry.</p>
+
+<h3>Evening</h3>
+<p><strong>18:00 – Aperitivo at Enoteca Belledonne</strong><br>
+Vico Belledonne a Chiaia, 18, 80121 Napoli<br>
+Sip local wines with small bites before dinner.</p>
+
+<p><strong>20:00 – Dinner at Trattoria da Concetta</strong><br>
+Via Speranzella, 82, 80132 Napoli<br>
+End your day with classic Neapolitan dishes in a cozy setting.</p>`
+    },
+    relax: {
+      itinerary: `<h2>Naples – 1-Day Relaxing Itinerary</h2>
+
+<h3>Morning</h3>
+<p><strong>09:00 – Breakfast at Caffè del Professore</strong><br>
+Via Toledo, 16, 80134 Napoli<br>
+Start with a slow coffee and sfogliatella in a relaxing café.</p>
+
+<p><strong>10:00 – Villa Comunale Gardens</strong><br>
+Via Caracciolo, 80121 Napoli<br>
+Take a peaceful stroll by the sea in this historic park with fountains and statues.</p>
+
+<h3>Midday</h3>
+<p><strong>12:00 – Lunch at Palazzo Petrucci</strong><br>
+Via Posillipo, 16C, 80123 Napoli<br>
+Enjoy a slow lunch with sea views and refined Neapolitan cuisine.</p>
+
+<h3>Afternoon</h3>
+<p><strong>14:00 – Relax at Posillipo Seafront</strong><br>
+Stroll along the seaside and take in the panoramic views of the Gulf of Naples and Mount Vesuvius.</p>
+
+<p><strong>16:00 – Coffee Break at Chalet Ciro</strong><br>
+Via Mergellina, 80122 Napoli<br>
+Try a graffa (Neapolitan doughnut) with your coffee by the sea.</p>
+
+<h3>Evening</h3>
+<p><strong>18:00 – Aperitivo at Transatlantico</strong><br>
+Borgo Marinari, 80132 Napoli<br>
+Enjoy drinks overlooking Castel dell’Ovo and the bay.</p>
+
+<p><strong>20:00 – Dinner at La Cantina dei Lazzari</strong><br>
+Via Santa Lucia, 88, 80132 Napoli<br>
+Relax over a leisurely dinner in a warm, intimate setting.</p>`
+    },
+    romantic: {
+      itinerary: `<h2>Naples – 1-Day Romantic Itinerary</h2>
+
+<h3>Morning</h3>
+<p><strong>08:30 – Breakfast at Gran Caffè Gambrinus</strong><br>
+Via Chiaia, 1/2, 80132 Napoli<br>
+Share a sweet pastry and cappuccino in this historic, elegant café.</p>
+
+<p><strong>09:30 – Castel dell’Ovo & Borgo Marinari</strong><br>
+Via Eldorado, 3, 80132 Napoli<br>
+Walk along the castle and harbor, enjoying the views of the sea together.</p>
+
+<h3>Midday</h3>
+<p><strong>12:00 – Lunch at Ristorante La Bersagliera</strong><br>
+Borgo Marinari, 10, 80132 Napoli<br>
+Dine on seafood with stunning views of the bay.</p>
+
+<h3>Afternoon</h3>
+<p><strong>14:00 – Walk along Posillipo & Mergellina</strong><br>
+Stroll by the sea and enjoy the sunset views over the Gulf of Naples.</p>
+
+<h3>Evening</h3>
+<p><strong>18:00 – Aperitivo at Transatlantico</strong><br>
+Borgo Marinari, 80132 Napoli<br>
+Sip wine or cocktails while watching the harbor lights come alive.</p>
+
+<p><strong>20:00 – Romantic Dinner at Palazzo Petrucci</strong><br>
+Via Posillipo, 16C, 80123 Napoli<br>
+End your day with an elegant candlelit dinner overlooking the sea.</p>`
+    },
+    wine: {
+      itinerary: `<h2>Naples – 1-Day Wine Tasting Itinerary</h2>
+
+<h3>Morning</h3>
+<p><strong>09:00 – Breakfast at Gran Caffè Gambrinus</strong><br>
+Via Chiaia, 1/2, 80132 Napoli<br>
+Start your day with a sfogliatella and cappuccino in one of Naples’ most historic cafés.</p>
+
+<p><strong>10:00 – Pignasecca Market</strong><br>
+Via Pignasecca, 80134 Napoli<br>
+Sample local cheeses and wines while exploring the vibrant market.</p>
+
+<h3>Midday</h3>
+<p><strong>12:00 – Wine Tasting Lunch at Enoteca Belledonne</strong><br>
+Vico Belledonne a Chiaia, 18, 80121 Napoli<br>
+Taste Falanghina, Greco di Tufo, and Aglianico with local small plates.</p>
+
+<h3>Afternoon</h3>
+<p><strong>15:30 – Wine Experience at Enoteca Provinciale dei Vini di Napoli</strong><br>
+Via Cesare Battisti, 80133 Napoli<br>
+Discover regional wines in a guided tasting session.</p>
+
+<h3>Evening</h3>
+<p><strong>18:00 – Aperitivo at Barril</strong><br>
+Via G. Fiorelli, 11, 80121 Napoli<br>
+Relax with a final glass of wine and small bites to end your day.</p>
+
+<p><strong>20:00 – Dinner at Veritas</strong><br>
+Corso Vittorio Emanuele, 141, 80121 Napoli<br>
+Finish with a refined dinner paired with Campanian wines.</p>`
+    }
+  },
+
+  "2": {
+     culture: {
+    itinerary: `<h2>Naples – 2-Day Cultural Itinerary</h2>
+
+<h3>Day 1 – Historic Center & Museums</h3>
+<p><strong>09:00 – National Archaeological Museum</strong><br>
+Piazza Museo, 19, 80135 Napoli<br>
+Begin with one of the world’s top collections of ancient art and artifacts.</p>
+
+<p><strong>11:30 – Spaccanapoli Walk</strong><br>
+Stroll along this historic street, passing churches like Gesù Nuovo and Santa Chiara.</p>
+
+<p><strong>13:00 – Lunch at Tandem Ragù</strong><br>
+Via Paladino, 51, 80138 Napoli<br>
+Taste traditional Neapolitan ragù pasta.</p>
+
+<p><strong>14:30 – Cloister of Santa Chiara</strong><br>
+Via Santa Chiara, 49/c, 80134 Napoli<br>
+Relax in this serene cloister with beautiful majolica tiles.</p>
+
+<p><strong>16:00 – Piazza del Plebiscito & Royal Palace</strong><br>
+Piazza del Plebiscito, 80132 Napoli<br>
+Explore the grand piazza and the historic royal residence of Naples.</p>
+
+<p><strong>19:00 – Dinner at Trattoria da Nennella</strong><br>
+Vico Lungo Teatro Nuovo, 103, 80134 Napoli<br>
+Enjoy a lively and authentic Neapolitan dinner.</p>
+
+<h3>Day 2 – Castles & Coastal Views</h3>
+<p><strong>09:00 – Breakfast at Sfogliatella Mary</strong><br>
+Galleria Umberto I, 80132 Napoli<br>
+Start with a fresh sfogliatella and espresso.</p>
+
+<p><strong>10:00 – Castel dell’Ovo</strong><br>
+Via Eldorado, 3, 80132 Napoli<br>
+Visit this seaside fortress and enjoy panoramic bay views.</p>
+
+<p><strong>12:00 – Lunch at La Bersagliera</strong><br>
+Borgo Marinari, 10, 80132 Napoli<br>
+Dine on seafood in a romantic setting by the water.</p>
+
+<p><strong>14:00 – Certosa di San Martino & Castel Sant’Elmo</strong><br>
+Largo S. Martino, 5, 80129 Napoli<br>
+Take the funicular to Vomero for amazing city views and cultural treasures.</p>
+
+<p><strong>17:00 – Coffee at Gran Caffè Gambrinus</strong><br>
+Via Chiaia, 1/2, 80132 Napoli<br>
+Relax with a coffee in the historic heart of Naples.</p>
+
+<p><strong>19:00 – Dinner at Veritas</strong><br>
+Corso Vittorio Emanuele, 141, 80121 Napoli<br>
+End with a refined dinner and a view over the city.</p>`
+  },
+
+  food: {
+    itinerary: `<h2>Naples – 2-Day Food Itinerary</h2>
+
+<h3>Day 1 – Street Food & Pizza</h3>
+<p><strong>08:30 – Breakfast at Gran Caffè Gambrinus</strong><br>
+Via Chiaia, 1/2, 80132 Napoli<br>
+Start with a sfogliatella and cappuccino.</p>
+
+<p><strong>09:30 – Pignasecca Market</strong><br>
+Sample local products and street foods like fried pizza and arancini.</p>
+
+<p><strong>12:00 – Pizza at Sorbillo</strong><br>
+Via dei Tribunali, 32, 80138 Napoli<br>
+Try authentic Neapolitan pizza fresh from the oven.</p>
+
+<p><strong>14:00 – Coffee Break at Caffè Mexico</strong><br>
+Piazza Dante, 86, 80135 Napoli<br>
+Recharge with a classic Neapolitan espresso.</p>
+
+<p><strong>17:00 – Aperitivo at Enoteca Belledonne</strong><br>
+Vico Belledonne a Chiaia, 18, 80121 Napoli<br>
+Enjoy local wines with cheese and charcuterie.</p>
+
+<p><strong>20:00 – Dinner at Trattoria da Concetta</strong><br>
+Via Speranzella, 82, 80132 Napoli<br>
+Savor classic Neapolitan dishes in a cozy environment.</p>
+
+<h3>Day 2 – Traditional Flavors</h3>
+<p><strong>09:00 – Breakfast at Pasticceria Capparelli</strong><br>
+Via dei Tribunali, 325, 80138 Napoli<br>
+Try babà or sfogliatella for a sweet start.</p>
+
+<p><strong>11:00 – Mercato di Porta Nolana</strong><br>
+Discover the fish and produce market, perfect for culinary photos.</p>
+
+<p><strong>13:00 – Lunch at Osteria della Mattonella</strong><br>
+Via Giovanni Nicotera, 13, 80132 Napoli<br>
+A traditional trattoria serving pasta, parmigiana, and fried specialties.</p>
+
+<p><strong>15:00 – Gelato at Gay-Odin</strong><br>
+Via Benedetto Croce, 61, 80134 Napoli<br>
+Enjoy artisanal chocolate and gelato in the heart of the city.</p>
+
+<p><strong>18:00 – Aperitivo at Barril</strong><br>
+Via G. Fiorelli, 11, 80121 Napoli<br>
+End the day with wine or spritz paired with light bites.</p>
+
+<p><strong>20:00 – Dinner at Palazzo Petrucci</strong><br>
+Via Posillipo, 16C, 80123 Napoli<br>
+Conclude with an elegant seaside dinner featuring modern Neapolitan cuisine.</p>`
+  },
+
+  relax: {
+    itinerary: `<h2>Naples – 2-Day Relaxing Itinerary</h2>
+
+<h3>Day 1 – Coastal Strolls & Gardens</h3>
+<p><strong>09:00 – Breakfast at Caffè del Professore</strong><br>
+Via Toledo, 16, 80134 Napoli<br>
+Enjoy a slow breakfast with coffee and sfogliatella.</p>
+
+<p><strong>10:00 – Villa Comunale & Lungomare</strong><br>
+Take a leisurely walk along the seaside promenade with bay views.</p>
+
+<p><strong>12:00 – Lunch at La Bersagliera</strong><br>
+Borgo Marinari, 10, 80132 Napoli<br>
+Dine on seafood by the water.</p>
+
+<p><strong>14:00 – Relax in Posillipo</strong><br>
+Stroll along the quiet streets and enjoy panoramic views of the Gulf of Naples.</p>
+
+<p><strong>17:00 – Aperitivo at Transatlantico</strong><br>
+Borgo Marinari, 80132 Napoli<br>
+Have drinks overlooking Castel dell’Ovo and the harbor.</p>
+
+<p><strong>20:00 – Dinner at La Cantina dei Lazzari</strong><br>
+Via Santa Lucia, 88, 80132 Napoli<br>
+End the day with a cozy, relaxed meal.</p>
+
+<h3>Day 2 – Spa & Scenic Walks</h3>
+<p><strong>09:00 – Breakfast at Gran Caffè Gambrinus</strong><br>
+Via Chiaia, 1/2, 80132 Napoli<br>
+Start with a cappuccino and pastry.</p>
+
+<p><strong>10:00 – Morning Spa at Terme di Agnano</strong><br>
+Via Agnano Astroni, 24, 80125 Napoli<br>
+Enjoy thermal baths and wellness treatments.</p>
+
+<p><strong>13:00 – Lunch at Rosiello</strong><br>
+Via Posillipo, 68, 80123 Napoli<br>
+A peaceful spot with sea views and fresh local cuisine.</p>
+
+<p><strong>15:00 – Stroll in Parco Virgiliano</strong><br>
+Viale Virgilio, 80123 Napoli<br>
+Relax with a slow walk and stunning views of the islands.</p>
+
+<p><strong>18:00 – Aperitivo at Barril</strong><br>
+Via G. Fiorelli, 11, 80121 Napoli<br>
+Sip wine or cocktails in a quiet lounge to end your day.</p>
+
+<p><strong>20:00 – Dinner at Palazzo Petrucci</strong><br>
+Via Posillipo, 16C, 80123 Napoli<br>
+End your relaxing trip with a refined dinner by the sea.</p>`
+  },
+
+  romantic: {
+    itinerary: `<h2>Naples – 2-Day Romantic Itinerary</h2>
+
+<h3>Day 1 – Coastal Romance</h3>
+<p><strong>08:30 – Breakfast at Gran Caffè Gambrinus</strong><br>
+Via Chiaia, 1/2, 80132 Napoli<br>
+Share a sweet pastry in a historic, elegant café.</p>
+
+<p><strong>09:30 – Castel dell’Ovo & Borgo Marinari</strong><br>
+Walk along the harbor and enjoy beautiful sea views together.</p>
+
+<p><strong>12:00 – Lunch at La Bersagliera</strong><br>
+Borgo Marinari, 10, 80132 Napoli<br>
+Savor seafood in a romantic waterside setting.</p>
+
+<p><strong>14:00 – Afternoon Stroll in Posillipo</strong><br>
+Take in the coastal scenery and peaceful neighborhoods.</p>
+
+<p><strong>18:00 – Sunset Aperitivo at Transatlantico</strong><br>
+Borgo Marinari, 80132 Napoli<br>
+Toast with wine or cocktails while watching the sunset.</p>
+
+<p><strong>20:00 – Romantic Dinner at Palazzo Petrucci</strong><br>
+Via Posillipo, 16C, 80123 Napoli<br>
+End with a candlelit dinner overlooking the sea.</p>
+
+<h3>Day 2 – Hidden Gems & Views</h3>
+<p><strong>09:00 – Breakfast at Roscioli Caffè (Naples equivalent: Mexico)</strong><br>
+Piazza Dante, 86, 80135 Napoli<br>
+Start with a light breakfast before exploring.</p>
+
+<p><strong>10:00 – Certosa di San Martino & Castel Sant’Elmo</strong><br>
+Enjoy panoramic city views and serene monastery gardens.</p>
+
+<p><strong>12:00 – Lunch at Rosiello</strong><br>
+Via Posillipo, 68, 80123 Napoli<br>
+Romantic terrace dining with a view of the Gulf of Naples.</p>
+
+<p><strong>15:00 – Giardini di Palazzo Reale</strong><br>
+Piazza del Plebiscito, 80132 Napoli<br>
+Walk in the royal gardens and enjoy quiet moments.</p>
+
+<p><strong>18:30 – Aperitivo at Salotto Nunziata</strong><br>
+Via Santa Lucia, 80132 Napoli<br>
+Relax with wine or cocktails in an intimate setting.</p>
+
+<p><strong>20:00 – Dinner at Veritas</strong><br>
+Corso Vittorio Emanuele, 141, 80121 Napoli<br>
+Finish your romantic getaway with refined cuisine and great wine.</p>`
+  },
+
+  wine: {
+    itinerary: `<h2>Naples – 2-Day Wine Tasting Itinerary</h2>
+
+<h3>Day 1 – City Wine Experience</h3>
+<p><strong>09:00 – Breakfast at Gran Caffè Gambrinus</strong><br>
+Via Chiaia, 1/2, 80132 Napoli<br>
+Enjoy a pastry and cappuccino before a day of tastings.</p>
+
+<p><strong>10:00 – Pignasecca Market</strong><br>
+Sample local cheeses, olives, and early-morning wine from regional vendors.</p>
+
+<p><strong>12:00 – Wine Lunch at Rimessa Belledonne</strong><br>
+Vico Belledonne a Chiaia, 18, 80121 Napoli<br>
+Curated tasting with Campanian wines and local small plates.</p>
+
+<p><strong>15:00 – Visit Enoteca Provinciale dei Vini</strong><br>
+Via Cesare Battisti, 80133 Napoli<br>
+Learn about the best wines of the region with an optional guided tasting.</p>
+
+<p><strong>18:00 – Aperitivo at Barril</strong><br>
+Via G. Fiorelli, 11, 80121 Napoli<br>
+Relax with Falanghina or Aglianico wines paired with snacks.</p>
+
+<p><strong>20:00 – Dinner at Veritas</strong><br>
+Corso Vittorio Emanuele, 141, 80121 Napoli<br>
+Pair your meal with recommended Campanian wines.</p>
+
+<h3>Day 2 – Vineyard Excursion</h3>
+<p><strong>08:30 – Breakfast at Sfogliatella Mary</strong><br>
+Galleria Umberto I, 80132 Napoli<br>
+Grab a quick pastry before your excursion.</p>
+
+<p><strong>09:30 – Excursion to Campi Flegrei Vineyards</strong><br>
+Pozzuoli & Bacoli<br>
+Take a guided vineyard tour with tastings of local wines grown on volcanic soil.</p>
+
+<p><strong>13:00 – Lunch at La Fattoria del Campiglione</strong><br>
+Via Campiglione, 1, Pozzuoli<br>
+Enjoy rustic Campanian cuisine paired with house wines.</p>
+
+<p><strong>15:30 – Return to Naples & Relax</strong><br>
+Walk along Lungomare or have a coffee at Chalet Ciro by the sea.</p>
+
+<p><strong>18:00 – Final Aperitivo at Transatlantico</strong><br>
+Borgo Marinari, 80132 Napoli<br>
+Toast to your wine journey overlooking the harbor.</p>`
+  }
+}
+
 };     // 👈 close entire module.exports
 
 
