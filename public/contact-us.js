@@ -1,4 +1,4 @@
-emailjs.init("k-pLBkzSztIp6MenN");
+:::emailjs.init("k-pLBkzSztIp6MenN");
 
 const form = document.getElementById("contact-form");
 const messageEl = document.getElementById("form-message");
@@ -7,13 +7,23 @@ const submitBtn = form.querySelector('button[type="submit"]');
 form.addEventListener("submit", function (event) {
   event.preventDefault();
 
+  // Collect form data manually
+  const formData = {
+    from_name: form.from_name.value,
+    from_email: form.from_email.value,
+    message: form.message.value,
+  };
+
+  console.log("Sending data:", formData); // ✅ Debug check
+
   // Disable the button and show spinner
   submitBtn.disabled = true;
   submitBtn.textContent = "Sending...";
   messageEl.innerHTML = `<span class="spinner"></span> Sending...`;
   messageEl.style.color = "#555";
 
-  emailjs.sendForm("service_muyt2eo", "template_mzbzxzi", this)
+  // Use send() instead of sendForm()
+  emailjs.send("service_muyt2eo", "template_mzbzxzi", formData)
     .then(() => {
       messageEl.textContent = "✅ Message sent successfully!";
       messageEl.style.color = "#2a9d8f";
@@ -25,7 +35,6 @@ form.addEventListener("submit", function (event) {
       console.error("EmailJS error:", error);
     })
     .finally(() => {
-      // Re-enable button
       submitBtn.disabled = false;
       submitBtn.textContent = "Send Message";
     });
