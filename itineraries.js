@@ -1045,6 +1045,8 @@ Walk along Lungomare or have a coffee at Chalet Ciro by the sea.</p>
 <p><strong>18:00 – Final Aperitivo at Transatlantico</strong><br>
 Borgo Marinari, 80132 Napoli<br>
 Toast to your wine journey overlooking the harbor.</p>`
+  } 
+  }  // 👈 close "2" days block
   }
 };     // 👈 close entire module.exports
 
