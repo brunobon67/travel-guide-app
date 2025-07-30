@@ -7,22 +7,19 @@ const submitBtn = form.querySelector('button[type="submit"]');
 form.addEventListener("submit", function (event) {
   event.preventDefault();
 
-  // Collect form data manually
   const formData = {
     from_name: form.from_name.value,
     from_email: form.from_email.value,
-    message: form.message.value,
+    message: form.message.value
   };
 
-  console.log("Sending data:", formData); // ✅ Debug check
+  console.log("Sending data:", formData); // Check in browser console
 
-  // Disable the button and show spinner
   submitBtn.disabled = true;
   submitBtn.textContent = "Sending...";
   messageEl.innerHTML = `<span class="spinner"></span> Sending...`;
   messageEl.style.color = "#555";
 
-  // Use send() instead of sendForm()
   emailjs.send("service_muyt2eo", "template_mzbzxzi", formData)
     .then(() => {
       messageEl.textContent = "✅ Message sent successfully!";
@@ -38,4 +35,4 @@ form.addEventListener("submit", function (event) {
       submitBtn.disabled = false;
       submitBtn.textContent = "Send Message";
     });
-})
+});
