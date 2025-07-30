@@ -38,4 +38,4 @@ form.addEventListener("submit", function (event) {
       submitBtn.disabled = false;
       submitBtn.textContent = "Send Message";
     });
-});
+})
