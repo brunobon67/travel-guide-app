@@ -1046,8 +1046,6 @@ Walk along Lungomare or have a coffee at Chalet Ciro by the sea.</p>
 Borgo Marinari, 80132 Napoli<br>
 Toast to your wine journey overlooking the harbor.</p>`
   }
-}
-
 };     // 👈 close entire module.exports
 
 
