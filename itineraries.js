@@ -620,7 +620,7 @@ End the night with a glass of Italian wine or a digestive like amaro or grappa.<
 
       }
     }  // 👈 close "2" days block
-  }    // 👈 close "rome" block
+  } ,   // 👈 close "rome" block
 
   napoli: {
   "1": {
